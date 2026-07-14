@@ -109,8 +109,9 @@ AgentTestMethodology/
 │   └── golden_dataset.template.json   # Golden dataset schema
 └── results/
     └── PheronAgent/
-        ├── README.md                                    # What this folder contains
-        └── run_qwen3.5-9b_20260713_k5_scoringfinal.md   # Published (k=5) certified result
+        ├── README.md                    # What this folder contains
+        ├── datasets/                    # Filled-in golden-dataset examples (seed + smoke)
+        └── run_qwen3.5-9b_*.{md,jsonl}  # 32 real result files, Section 2.7 naming — see folder README
 ```
 
 ---

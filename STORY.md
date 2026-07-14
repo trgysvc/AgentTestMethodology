@@ -4,6 +4,44 @@ This is not a marketing narrative. It's a reconstruction — from actual session
 
 The subject throughout is **PheronAgent**, a macOS-native AI agent running a local 9B-parameter model (Qwen3.5-9B). The methodology that emerged from testing it is now meant to outlive it.
 
+A note on completeness: this account is built from two independent kinds of evidence. Session transcripts (chat history) were mined in two passes — one covering 2026-06-29 onward, a second hunting backward for earlier test-related activity — but transcripts alone bottomed out at 2026-05-24, with a session that already showed a working test harness and no record of how it got there. That gap was closed with a more reliable source: `git log`. Commit history doesn't summarize or forget, so it's used here as the source of record wherever the two disagree or transcripts run out.
+
+---
+
+## Chapter 0 — The Engine That Was Sacrificed (2026-05-02 to 2026-05-29)
+
+Git history places the actual zero point at **2026-05-02**, in commit `7cb6ea03`: `refactor: implement XPC-based EliteService daemon with enhanced orchestration and autonomous audit automation scripts`. Buried inside that unrelated infrastructure commit, as an apparent afterthought, was a new 34-line file: `Tests/scenarios.json` — six scenarios (`SYS_001`, `WET_001`, `GIT_001`, `XCD_001`, `CAL_001`, `SHL_001`), each just a prompt and a list of expected tool-ID numbers. No harness came with it. Nothing in the commit or the sessions around it suggests a deliberate "let's start testing" decision — it reads like a developer jotting down a handful of sanity-check prompts while building something else entirely.
+
+Then nothing happened to it for 27 days. It was never run, never referenced again, and — as the record shows below — never even remembered when the *next* test harness was built.
+
+That next attempt started fresh, unconnected, on **2026-05-24** (commit `de53e922`, again nominally about something else — "usage tracking for API tasks, daily log rotation, daemon support"). In one commit, 324 lines of `Tests/RouterHealth/harness.py` and a new 189-line `Tests/RouterHealth/scenarios.json` appeared together — a different location, a different ID scheme (`CHAT-001`, `TOOL-001..008`, `CHAIN-001..003`, `CLARIFY-001..002` — 16 scenarios, no overlap at all with the May 2nd file), built as if the earlier one didn't exist. It's not a rewrite or an expansion; it's independent invention of roughly the same idea, three and a half weeks later, by the same project.
+
+The same day the harness was created, it was put to work — the first full, live, end-to-end run, internally code-named **"Hermes"** in that day's conversation (a project nickname for the test marathon itself, not a model). The instruction that kicked it off set a rule that would resurface, in slightly different words, for the rest of this project's life:
+
+> *"You'll run the app in the background like we did for Hermes, and test our prompts one by one, in order. You will not try to fix anything that goes wrong. Everything's being logged anyway. Once every test is done, we'll fix the broken or slow ones one at a time."*
+
+Run everything first. Don't fix mid-flight. Fix in bulk, with full evidence, afterward. That single instruction is the direct ancestor of the "list findings, discuss, then fix" rule and the "test documentation is our constitution" stance that show up again and again later in this story.
+
+The run itself was uneven, and it was left uneven on purpose. `PASS [TOOL-003] 37.6s`. `PASS [TOOL-004] 898.1s` — nearly fifteen minutes, because of a CLARIFY-vs-Critic deadlock that the harness patiently waited out instead of timing out. `FAIL [TOOL-006]`, `FAIL [TOOL-007]`, `FAIL [TOOL-008]` — routing and tool-selection problems, noted and left alone, exactly as instructed. By 2026-05-25, the marathon was declared complete.
+
+The very next day, 2026-05-26, the harness was rebuilt around a much larger scenario set — 30 scenarios, written in Turkish, organized under category codes that would survive, essentially unchanged, all the way to the 77/86-block battery that exists today: `HESAP` (arithmetic), `SISTEM` (system info), `DOSYA` (files), `HAVA` (weather), `UYGULAMA` (app launching), `CLARIFY`, `ZINCIR` (tool chains), `EDGE`. Results were captured into a file called `results_v2.json` — the direct naming ancestor of what would later become `scenarios_v2.json`.
+
+That run surfaced the first hard bug the "don't fix mid-flight" rule was ever tested against: `HESAP-03` crashed the server outright — an `NSExpression` evaluation throwing an Objective-C exception that Swift's `try/catch` structurally cannot intercept. Per the standing instruction, it wasn't touched. It was logged as a known server-crash bug and skipped, to be dealt with later, with everything else.
+
+Over the following two days (05-26 into 05-27), a second class of problem showed up: thermal throttling. `ZINCIR` scenarios that ran fine early in a session started failing later in the same session — not because the logic was wrong, but because the Apple Neural Engine had throttled down after sustained load, and later turns simply took too long. Partial re-runs (`--skip N`) were used to isolate just the affected subset — the first appearance of "hardware state affects test outcome" as a variable this project had to account for, weeks before Part 9.5's cost/latency section gave it a name.
+
+By 2026-05-28, in a session working directly inside `Tests/RouterHealth/`, the harness's own validation logic was tightened: each scenario's `expected_tool` field was clarified (`null` meaning "any tool call is acceptable"), a stale, unrelated Swift Package test (`testResearchCategoryHasWebSearch`) was deleted, and a new scenario — `SAF-01` — was added specifically to verify a Safari `performSearch` fix, bringing the set to 31 scenarios. The session ended clean: **31/31 passing.**
+
+Then, on 2026-05-29, in a session explicitly about project-wide cleanup ("Project Structure Cleanup & Standardization"), `Tests/RouterHealth/` was flagged as clutter — 28 accumulated `results_*.json` files plus the harness script itself. With approval, one command ran:
+
+```
+rm -f Tests/RouterHealth/results_*.json Tests/RouterHealth/harness.py Tests/scenarios.json
+```
+
+`harness.py` — the engine — was gone. Every historical result file was gone. `Tests/scenarios.json` — the original six-scenario file from May 2nd, untouched and unreferenced for 27 days — was finally, quietly deleted in the same command, having never once been run. But look closely at what's *not* in that command: **`scenarios_v2.json` is missing from it.** The 31 hand-written, Turkish-language golden scenarios that had actually been used survived. Only the things nobody had touched in weeks — the forgotten first attempt, and the engine that replaced it — were swept away together.
+
+Nobody noticed the engine was gone for exactly one month.
+
 ---
 
 ## Chapter 1 — Why Testing Became Non-Negotiable (2026-06-29)
@@ -18,7 +56,7 @@ Then the focus shifted to `Tests/AgentTestSuite/`, with one instruction: look, r
 
 The report was not encouraging:
 
-- `PROTOCOL.md` and `README.md` both referenced a `RouterHealthTests` XCTest class that **did not exist**. The Python harness (`harness.py`) that used to run the 31 scenarios in `scenarios_v2.json` had been deleted in an earlier cleanup pass, and nothing had replaced it.
+- `PROTOCOL.md` and `README.md` both referenced a `RouterHealthTests` XCTest class that **did not exist**. The Python harness (`harness.py`) that used to run the scenarios in `scenarios_v2.json` — the same engine sacrificed exactly one month earlier in the 2026-05-29 cleanup pass (Chapter 0) — had been deleted, and nothing had replaced it. The 31 golden scenarios that survived that cleanup had been sitting unused for a month.
 - A `golden_dataset_v1.json` file was documented as present. It wasn't.
 - Helper scripts (`marathon_runner.sh`, `full_audit_runner.sh`) referenced test class names, executable targets, and resource paths that had all been renamed months earlier. They would "pass" by silently running zero tests.
 - The CI layer-2 integration tests were configured to skip themselves unless `PHERON_LIVE_INFERENCE=1` — while the protocol document told CI to set that variable to `0`. The tests had never actually run in CI.
