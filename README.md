@@ -102,7 +102,11 @@ AgentTestMethodology/
 ├── CHANGELOG.md                # Version history extracted from the main document
 └── templates/
     ├── BLANK_TEST_BLOCK.template.md      # Empty test block — fill in for your agent
-    └── golden_dataset.template.json     # Golden dataset schema
+    └── golden_dataset.template.json      # Golden dataset schema
+└── results/
+    └── PheronAgent/
+    ├── README.md                          # Empty test block — fill in for your agent
+    └── V1.0_2026-07.MD                    # Golden dataset schema
 ```
 
 ---
