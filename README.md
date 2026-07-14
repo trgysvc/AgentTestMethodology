@@ -105,8 +105,9 @@ AgentTestMethodology/
     └── golden_dataset.template.json      # Golden dataset schema
 └── results/
     └── PheronAgent/
-    ├── README.md                          # Empty test block — fill in for your agent
-    └── V1.0_2026-07.MD                    # Golden dataset schema
+    ├── README.md                              # Empty test block — fill in for your agent
+    └── calibration_<model>_<YYYYMMDD>.md      # Calibration dataset schema
+    └── run_<model>_<YYYYMMDD>_k<n>.md         # Published (k=5) certified result
 ```
 
 ---
