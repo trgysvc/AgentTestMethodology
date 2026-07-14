@@ -1,6 +1,6 @@
 {
   "schema_version": "1.1",
-  "_comment": "Phase 1 seed set (~10 blocks) for GoldenDatasetRunnerTests.swift — deliberately small and hand-verified against Tests/AgentTestSuite/Pheron_Agent_Kapsamli_Test_Dokumantasyonu.md, Kısım II. Covers every BlockGrader.swift evaluation path: STATE+no_tool_call, STATE+tool, KEYWORD, a Phase-2-deferred chain (tools_order set → needs_review), and a JUDGE example (needs_review). The full 77-block canonical suite is a separate Phase 2 data-entry task, not this file.",
+  "_comment": "Phase 1 seed set (~10 blocks) for GoldenDatasetRunnerTests.swift — deliberately small and hand-verified against METHODOLOGY_TR.md, Kısım II. Covers every BlockGrader.swift evaluation path: STATE+no_tool_call, STATE+tool, KEYWORD, a Phase-2-deferred chain (tools_order set → needs_review), and a JUDGE example (needs_review). The full 77-block canonical suite is a separate Phase 2 data-entry task, not this file.",
   "blocks": [
     {
       "schema_version": "1.1",

@@ -145,7 +145,7 @@
 | EK-TOOL-08 (Markdown Report) | 20 | ❌ FAIL | "analiz" kelimesi vision kategorisiyle çakıştı, yanlış araç (get_system_telemetry) çağrıldı. emptyResponse crash'i ayrıca düzeltildi (top-level fallback). |
 | EK-TOOL-09 (WhatsApp) | 17/37 | ✅ PASS (gerçek testle doğrulandı) | Kurgusal isimle ("Ahmet") başarısız ama gerçek numarayla (+905442462323) kullanıcı tarafından canlı doğrulandı — mesaj + parmak izi doğrulaması başarılı |
 | EK-TOOL-10 (Apple Calendar) | 54/21 | ✅ PASS | CALL(54), gerçek takvim etkinliği oluşturuldu ve doğrulandı |
-| EK-TOOL-11 (Apple Mail) | 55 | ✅ PASS (gerçek testle doğrulandı) | turgaysavaci@gmail.com'a gerçek test maili gönderildi, kullanıcı tarafından onaylandı |
+| EK-TOOL-11 (Apple Mail) | 55 | ✅ PASS (gerçek testle doğrulandı) | user@example.com'a gerçek test maili gönderildi, kullanıcı tarafından onaylandı |
 | EK-TOOL-12 (Blender 3D) | 60 | ⚠️ PARTIAL | CALL(60) doğru UBID ama uydurulmuş action ("render_cube_background") — araç doğru reddetti, model retry etmedi |
 | EK-TOOL-13 (Xcode Builder) | 47 | ⚠️ PARTIAL | Gereksiz yere klasör sordu, CALL(47) hiç tetiklenmedi |
 | EK-TOOL-14 (Shortcuts List) | 50 | ✅ PASS | CALL(50), doğru |
@@ -193,7 +193,7 @@ Test edilen: L1(21) + L2(11) + L3(7) + L4(5) + HR(4) + GÜV(6/6) + EK-TOOL(28/29
 12. TaskClassifier "swift"/"model" kelime çakışmaları
 13. Brightness/Volume parametre birimi + safari_automation kategori eksikliği
 
-**Gerçek dünya doğrulaması (kullanıcı katılımıyla):** Gerçek WhatsApp mesajı (+905442462323) parmak izi doğrulamasıyla başarıyla gönderildi; gerçek e-posta (turgaysavaci@gmail.com) başarıyla gönderildi.
+**Gerçek dünya doğrulaması (kullanıcı katılımıyla):** Gerçek WhatsApp mesajı (+905442462323) parmak izi doğrulamasıyla başarıyla gönderildi; gerçek e-posta (user@example.com) başarıyla gönderildi.
 
 **Açık kalan, düzeltilmemiş bulgular:**
 - git_tool/github_tool ve safari_automation/browser_tool gibi "yerli araç vs MCP" tercih tutarsızlıkları (kısmen çözüldü, tam çözüm için her kombinasyon ayrı ayrı incelenmeli)
