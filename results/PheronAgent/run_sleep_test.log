@@ -1,0 +1,10 @@
+=== L3-TOOL-05 (sleep) run 1/3 starting ===
+  response: {"done":true,"response":"Sistem uyku moduna alındı.","toolsUsed":["system_sleep","Managing system power states..."],"category":""}
+[DONE] L3-TOOL-05 run 1/3
+=== L3-TOOL-05 (sleep) run 2/3 starting ===
+  response: {"done":true,"response":"Sistem uyku moduna alındı.","category":"","toolsUsed":["system_sleep","Managing system power states..."]}
+[DONE] L3-TOOL-05 run 2/3
+=== L3-TOOL-05 (sleep) run 3/3 starting ===
+  response: {"response":"Bilgisayarınız uyku moduna alındı.","toolsUsed":["system_sleep","Managing system power states..."],"category":"","done":true}
+[DONE] L3-TOOL-05 run 3/3
+SLEEP TEST COMPLETE
