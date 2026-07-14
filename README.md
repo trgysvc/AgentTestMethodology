@@ -10,7 +10,7 @@ Version 7 · 2026-07-14
 
 A framework-agnostic, architecture-independent test methodology and battery that any agent developer can apply directly to their own project — regardless of language, runtime, or toolset.
 
-The primary document (`METHODOLOGY_TR.md` — currently Turkish only; an English `METHODOLOGY.md` translation is planned once the methodology itself stabilizes) is structured in five layers:
+The primary document (`METHODOLOGY_TR.md` — currently Turkish only; `METHODOLOGY.md` exists as an English summary/table-of-contents document, but a full English translation of the primary document is planned once the methodology itself stabilizes) is structured in five layers:
 
 | Layer | Content |
 |---|---|
