@@ -1,6 +1,6 @@
 # Ajan Sınama Dokümantasyonu — Evrensel Metodoloji + PheronAgent Vaka Çalışması
 
-**Sürüm 5 · 2026-07-14**
+**Sürüm 7 · 2026-07-14**
 
 ---
 
@@ -15,13 +15,13 @@ Belge beş katmandan oluşur: sektördeki ajan değerlendirme benchmark'larını
 | Amacınız | Nereye bakın |
 |---|---|
 | Kendi ajanınız için hazır bir test bataryası | **Kısım II, Bölüm 4-10** — 58 çekirdek blok. Her blok "Evrensel Yetenek" (araç-bağımsız tanım) ve "PheronAgent Referans Uygulaması" (somut örnek) olarak ikiye ayrılmıştır; sadece referans-uygulama alanını kendi aracınızın adıyla değiştirerek uyarlayabilirsiniz. |
-| Boş, projeden bağımsız şablon dosyası | `Tests/AgentTestSuite/templates/` (`golden_dataset.template.json`, `BLANK_TEST_BLOCK.template.md`) |
-| Sektördeki benchmark'ları anlamak | **Kısım I** — BFCL, GAIA, τ-bench, NESTFUL dahil 34 akademik/sektörel kaynağın ne ölçtüğünü özetler |
+| Boş, projeden bağımsız şablon dosyası | `templates/` (`golden_dataset.template.json`, `BLANK_TEST_BLOCK.template.md`) |
+| Sektördeki benchmark'ları anlamak | **Kısım I** — BFCL, GAIA, τ-bench, NESTFUL dahil 61 akademik/sektörel kaynağın ne ölçtüğünü özetler |
 | Metodolojinin gerçek bir ajanda uygulanışını görmek | **Kısım III, IV, VI** — PheronAgent'ın araç kataloğu, iç tutarlılaştırma süreci, dosya envanteri (vaka çalışması; doğrudan kopyalanacak şablon değildir) |
 | İleri düzey/aspiratif doğrulanabilirlik fikirlerini (kriptografik kanıt, ZKP, küresel şeffaflık portalı) görmek | **Kısım V** — henüz uygulanmamış, tek geliştiricili bir proje için ölçek olarak orantısız bir vizyon dokümanı olarak açıkça işaretli |
 | Bu belgenin kendi güvenilirliğini denetlemek | **Kısım VII-IX** — tespit edilen tutarsızlıklar, çözüm kayıtları, her dış atfın doğrulama durumu |
 
-Yeniden kullanım şartları için `Tests/AgentTestSuite/LICENSE` (CC BY 4.0 metodoloji, MIT şablon dosyaları).
+Yeniden kullanım şartları için `LICENSE` (CC BY 4.0 metodoloji) ve `LICENSE-docs.md`; `templates/` altındaki makine-okunur dosyalar MIT ile lisanslıdır.
 
 ---
 
@@ -498,7 +498,20 @@ Görevleri araç düğümleri ve bağımlılık kenarlarından oluşan bir grafi
 **Orijinal başarı oranı (2023):** ~%14 (GPT-4 tabanlı ajanlar)  
 **Güncel SOTA:** ~%61.7
 
-**Varyantlar:** VisualWebArena (görsel görevler), VideoWebArena (canlı web siteleri)
+**Varyantlar:** VisualWebArena (bkz. 3.1b), VideoWebArena (canlı web siteleri)
+
+---
+
+##### 3.1b VisualWebArena (CMU, ECCV 2024)
+
+**Makale:** "VisualWebArena: Evaluating Multimodal Agents on Realistic Visual Web Tasks" · arXiv:2401.13649  
+**Ölçek:** 910 görev · WebArena'nın 3 alanı üzerinde (e-ticaret, forum, klasman) görsel-gerektiren varyant
+
+**WebArena'dan Temel Fark:** Görevler ekran görüntüsü analizi, görsel kıyaslama ve görüntü-tabanlı akıl yürütme gerektiriyor — salt DOM/metin çözümlemeleri yetersiz kalır.
+
+**Değerlendirme:** Programatik doğrulayıcılar + görsel doğrulama adımları; temel ajanlar ~%16.4, multimodal ajanlar %29.5'e çıkabiliyor (2024 ortası itibarıyla).
+
+**Neden Önemli?** Metin-tabanlı WebArena'nın görsel-modal versiyonu — "web navigation" yeteneğini görsel akıl yürütmeden bağımsız test etmenin mümkün olmadığı görev sınıfını izole eder. BrowserGym bu benchmark'ı da sarmalıyor.
 
 ---
 
@@ -559,6 +572,21 @@ BrowserGym bir benchmark değil, birleştirici bir **çerçeve**dir. WebArena, W
 
 **Orijinal sonuç:** WebVoyager ajanı %59.1, metin-only GPT-4 çok daha düşük.  
 **Neden Önemli?** Görsel anlayışın (ekran görüntüleri) web ajan performansını DOM-only yaklaşıma göre dramatik biçimde iyileştirdiğini kanıtladı.
+
+---
+
+##### 3.6 AssistantBench (Tel Aviv / Princeton, 2024)
+
+**Makale:** "AssistantBench: Can Web Agents Solve Realistic and Time-Consuming Tasks?" · arXiv:2407.15711  
+**Ölçek:** 214 görev · gerçek dünyadan elle toplanmış, zaman-alıcı araştırma/planlama görevleri
+
+**Ne Test Eder?** Kullanıcıların gerçek hayatta bir asistana yaptıracağı uzun soluklu, çok-adımlı görevler — seyahat planlaması, fiyat karşılaştırması, akademik bilgi derleme, yerel hizmet araştırması gibi. Görevler hem arama/gezinme hem sentez/karar gerektiriyor.
+
+**Değerlendirme:** Doğruluk (exact-match veya insan doğrulaması) + görev tamamlama süresi. Görevler kasıtlı olarak birkaç dakikayı aşacak biçimde tasarlanmış — mevcut ajanlar dakikalar içinde biter dedikleri görevleri genellikle tamamlayamıyor.
+
+**Neden Önemli?** WebArena/Mind2Web görevlerin çoğu birkaç tıklama/adım gerektirirken AssistantBench gerçek dünya "uzun-ufuklu web araştırması" senaryosunu hedefler. GAIA'nın web-ağırlıklı karşılığı olarak değerlendirilebilir.
+
+**Bulgular:** En iyi ajanlar bile görevlerin yalnızca ~%%25'ini tam olarak tamamlayabiliyor; insan başarısı ~%%74. Görev süresi ve maliyet, kısa-ufuklu benchmark'lara göre kat kat daha yüksek.
 
 ---
 
@@ -839,7 +867,7 @@ Bu iki metriğin birlikte değerlendirilmesi zorunludur: Yardımcılığı düş
 
 ---
 
-##### 6.10 CyBench (Stanford, 2024)
+##### 6.10 Cybench (Stanford, 2024)
 
 **Makale:** "Cybench: A Framework for Evaluating Cybersecurity Capabilities and Risk of Language Models" · arXiv:2408.08926
 
@@ -855,7 +883,7 @@ Bu iki metriğin birlikte değerlendirilmesi zorunludur: Yardımcılığı düş
 
 **Kaynak:** OWASP GenAI Security Project — 9 Aralık 2025'te yayınlandı, küresel meslektaş incelemesinden (peer review) geçmiş bir çerçeve. genai.owasp.org
 
-Bu belgenin Bölüm 6'daki her bir benchmark'ı (AgentHarm, InjecAgent, AgentDojo, ASB, ToolEmu, R-Judge, SafeAgentBench, PrivacyLens, ST-WebAgentBench, CyBench) belirli bir saldırı yüzeyini test eder ama hiçbiri "ajan güvenliği" için sektör-çapında tek bir taksonomi sunmaz. OWASP ASI 2026, LLM için olan OWASP Top 10'un ajan-özel halefi olarak bu boşluğu dolduruyor — otonom sistemlerin geleneksel uygulama güvenliğinin (ve hatta LLM Top 10'un) varsaymadığı riskler taşıdığı gerekçesiyle.
+Bu belgenin Bölüm 6'daki her bir benchmark'ı (AgentHarm, InjecAgent, AgentDojo, ASB, ToolEmu, R-Judge, SafeAgentBench, PrivacyLens, ST-WebAgentBench, Cybench) belirli bir saldırı yüzeyini test eder ama hiçbiri "ajan güvenliği" için sektör-çapında tek bir taksonomi sunmaz. OWASP ASI 2026, LLM için olan OWASP Top 10'un ajan-özel halefi olarak bu boşluğu dolduruyor — otonom sistemlerin geleneksel uygulama güvenliğinin (ve hatta LLM Top 10'un) varsaymadığı riskler taşıdığı gerekçesiyle.
 
 | Kod | Risk | Açıklama |
 |-----|------|---------|
@@ -1476,12 +1504,13 @@ Tüm benchmark'lardan çapraz-analiz:
 | Çok-Modal Entegrasyon | GAIA L2+, WebVoyager | Görüntü/PDF'den akıl yürütmeye bilgi çıkaramama |
 | Oturumlar Arası Bellek | LongMemEval, LoCoMo | Önceki oturumlardan olgular karıştırılıyor veya unutuluyor |
 | Güvenilirlik/Tutarlılık | τ-bench pass^k | Görevi bazen geçiyor ama k≥3 denemede güvenilir değil |
+| Güvenlik/Hassasiyet | PrivacyLens, ST-WebAgentBench, Cybench | Hassas verinin araç çıktısına sızması veya ajan manipülasyonu |
 
 ---
 
 #### Bölüm 11 — Pheron Agent İçin Öncelikli Test Alanları
 
-Araştırmayı mevcut Pheron Agent mimarisiyle ilişkilendirerek:
+Araştırmayı mevcut Pheron Agent mimarisiyle ilişkilerek:
 
 ##### 11.1 OpenClaw'dan Uyarlanan "Deterministik-Önce" Test Mimarisi
 
@@ -1604,7 +1633,7 @@ Survey'in belirttiği kritik eksiklikler — maliyet-verimlilik, güvenlik/dayan
                     │                                       │
                     │ AgentHarm, InjecAgent, AgentDojo, ASB,│
    Güvenlik ────────►│ ToolEmu, R-Judge, SafeAgentBench,     │
-                    │ PrivacyLens, ST-WebAgentBench, CyBench,│
+                    │ PrivacyLens, ST-WebAgentBench, Cybench,│
                     │ OWASP ASI 2026, OWASP MCP Top 10,     │
                     │ Astrix Scanner                        │
                     │                                       │
@@ -5484,12 +5513,12 @@ Aşağıdaki her madde şu alanları içerir: **Tam başlık**, **yazarlar**, **
 - **Bulgu özeti:** 375 görev, 3.057 ST-politikası, 6 dikey değerlendirme boyutu.
 - **Durum:** ✅ BAĞIMSIZ DOĞRULANDI (2026-07-14, WebSearch)
 
-**50. CyBench**
+**50. Cybench**
 - **Tam başlık:** "Cybench: A Framework for Evaluating Cybersecurity Capabilities and Risk of Language Models"
 - **Kurum:** Stanford
 - **arXiv:** 2408.08926 — https://arxiv.org/abs/2408.08926
 - **Bulgu özeti:** 4 CTF yarışmasından 40 profesyonel-seviye görev; 8 model değerlendirildi (GPT-4o, o1-preview, Claude 3 Opus/3.5 Sonnet dahil).
-- **Durum:** ✅ BAĞIMSIZ DOĞRULANDI (2026-07-14, WebSearch — ilk aramada "CyBench" adı belirsiz çıktı, "Cybench" yazımıyla doğrulandı, plana ⚠️ olarak girmişti, burada ✅'ya yükseltildi)
+- **Durum:** ✅ BAĞIMSIZ DOĞRULANDI (2026-07-14, WebSearch — doğru yazım "Cybench" olarak teyit edildi; belge gövdesinde de düzeltildi)
 
 **51. OWASP Top 10 for Agentic Applications 2026 (ASI01–ASI10)**
 - **Kaynak:** OWASP GenAI Security Project
@@ -5665,8 +5694,8 @@ Bu belgenin "evrensel/üçüncü taraflarla paylaşılacak referans kaynak" iddi
 | 1 | Kalibrasyon/kontrol grubu yok — dışarıdan biri "%44 kötü mü, test paketi mi sert?" sorusunu yanıtlayamıyor | Kısım II, Bölüm 2.4 (prosedür tanımlı, koşum **YÜRÜTME BEKLİYOR**) |
 | 2 | Değerlendirici tutarlılığı (inter-rater reliability) hiç tartışılmıyor — 3 farklı tester (Antigravity AI, Claude Sonnet 5, Turgay) karışık kullanıldı | Kısım II, Bölüm 2.5 |
 | 3 | k=1/k=3 sonuçlar istatistiksel uyarı olmadan düz yüzde sunuluyor | Kısım II, Bölüm 2.6 — minimum-k kuralı |
-| 4 | Başka firmaların kopyalayıp kullanacağı jenerik/boş bir şablon yok | `Tests/AgentTestSuite/templates/golden_dataset.template.json` ve `BLANK_TEST_BLOCK.template.md` (bu belgenin dışında, ayrı dosyalar) |
-| 5 | Metodolojinin yeniden kullanım şartı/lisansı belirsiz | `Tests/AgentTestSuite/LICENSE` (CC BY 4.0 — dokümantasyon/metodoloji; MIT — `templates/` altındaki makine-okunur dosyalar) |
+| 4 | Başka firmaların kopyalayıp kullanacağı jenerik/boş bir şablon yok | `templates/golden_dataset.template.json` ve `BLANK_TEST_BLOCK.template.md` (repo kökünde) |
+| 5 | Metodolojinin yeniden kullanım şartı/lisansı belirsiz | `LICENSE` (CC BY 4.0 — dokümantasyon/metodoloji; MIT — `templates/` altındaki makine-okunur dosyalar) |
 
 **Önemli sınır:** Madde 1 (kalibrasyon) yalnızca **prosedür** olarak kapatıldı — gerçek bir referans-model koşumu bu revizyonda yapılmadı. Madde 2 ve 3'ün kuralları bundan sonraki koşumlar için bağlayıcıdır; geçmiş koşumlar geriye dönük olarak yeniden sınıflandırıldı (bkz. Bölüm 2.6 madde 3) ama yeniden koşulmadı.
 
@@ -5680,9 +5709,9 @@ Belgenin birincil kimliği (bkz. başındaki "Ne İşe Yarar") evrensel bir ajan
 
 **Sınırlar:**
 - Bu belge bir **derleme ve tutarlılaştırma** çalışmasıdır — orijinal araştırma değildir.
-- Kısım II'nin çekirdek 58 bloğu (Bölüm 4-10) evrensel olarak tasarlandı ve doğrudan uyarlanabilir — ama Kısım II'nin Bölüm 13'ü (19 EK-TOOL bloğu) ile Kısım III ve Kısım IV'ün TAMAMI PheronAgent'a özgüdür, başka bir projeye doğrudan uygulanamaz; sadece format/metodoloji taşınabilir, içerik (UBID'ler, prompt'lar) o projeye göre yeniden yazılmalıdır. Doğrudan kopyalanabilir, PheronAgent'a özgü olmayan boş şablonlar için `Tests/AgentTestSuite/templates/` klasörüne bakın (Bölüm IX.4.1, madde 4).
+- Kısım II'nin çekirdek 58 bloğu (Bölüm 4-10) evrensel olarak tasarlandı ve doğrudan uyarlanabilir — ama Kısım II'nin Bölüm 13'ü (19 EK-TOOL bloğu) ile Kısım III ve Kısım IV'ün TAMAMI PheronAgent'a özgüdür, başka bir projeye doğrudan uygulanamaz; sadece format/metodoloji taşınabilir, içerik (UBID'ler, prompt'lar) o projeye göre yeniden yazılmalıdır. Doğrudan kopyalanabilir, PheronAgent'a özgü olmayan boş şablonlar için `templates/` klasörüne bakın (Bölüm IX.4.1, madde 4).
 - PDF'in (Kısım V) önerileri aspiratiftir, doğrulanmış en iyi pratik değildir.
 - **Kalibrasyon/kontrol grubu (Bölüm 2.4) henüz koşulmadı** — bu belgedeki hiçbir pass oranı, dışarıdan bilinen bir referans modelle karşılaştırılarak "bu test paketi ne kadar sert" sorusuna cevap vermez. Bu koşum tamamlanana kadar, sonuçlar yalnızca Pheron Agent'ın kendi içindeki göreceli ilerleme (öncesi/sonrası) olarak okunmalıdır — mutlak bir zorluk/başarı ölçütü olarak değil.
 - **Değerlendirici çeşitliliği (Bölüm 2.5):** `results/` klasöründeki koşumlar en az 3 farklı değerlendirici tarafından yapıldı, hiçbiri çift-puanlamayla doğrulanmadı. Bu, geçmiş sayılardaki olası tutarsızlığın kaynağı olabilir.
 - **Küçük örneklem (Bölüm 2.6) — güncellendi 2026-07-14:** `results/` klasöründeki erken koşumlar (2026-06-29 – 07-03 arası) k=1 veya k=3 ile yapıldı, "exploratory" statüsündedir. Ancak bu artık klasörün tamamı için geçerli değil: `results_434_final_14.jsonl` + `results_434_final_72.jsonl` (436 kayıt, 86 test) programatik olarak sayıldı — **82/86 test k=5, 2 test k=10, 2 test k=3** ile koşulmuş, yani k≥5 kuralını fiilen karşılıyor. Yine de bu koşum henüz golden-dataset şemasına (Bölüm 2.1, `tester`/`run_type` alanları) dökülmediği için resmi olarak `"published"` etiketlenmiş değil — sayısal olarak hazır, biçimsel olarak değil. Bu belgeyle birlikte ayrıca paylaşılacak bir sonuç dokümanı hazırlanırken bu ayrım (hangi koşum k≥5 VE hangi koşum şemaya uygun biçimlendirilmiş) okuyucuya açıkça belirtilmelidir.
-- **Lisans:** Bu belgenin ve Kısım I-IX metodolojisinin yeniden kullanım şartları `Tests/AgentTestSuite/LICENSE` dosyasında tanımlıdır (CC BY 4.0). `templates/` altındaki makine-okunur dosyalar ayrıca MIT ile lisanslıdır.
+- **Lisans:** Bu belgenin ve Kısım I-IX metodolojisinin yeniden kullanım şartları `LICENSE` dosyasında tanımlıdır (CC BY 4.0). `templates/` altındaki makine-okunur dosyalar ayrıca MIT ile lisanslıdır.
