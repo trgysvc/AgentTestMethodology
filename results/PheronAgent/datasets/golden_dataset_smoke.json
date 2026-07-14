@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.1",
+  "_comment": "Single-block smoke dataset — fast, low-risk sanity check for the runner's own mechanics (e.g. model_id attribution), not a real evaluation set. Use golden_dataset_seed.json for actual grading.",
+  "blocks": [
+    {
+      "schema_version": "1.1",
+      "test_id": "SMOKE-01",
+      "level": "L1",
+      "category": "sohbet",
+      "prompt": "merhaba, nasılsın?",
+      "layer": "Live",
+      "yakalayan_katman": "Regex/Deterministic",
+      "evaluation_type": "STATE",
+      "expected": { "no_tool_call": true },
+      "fail_patterns": ["any real tool dispatched"],
+      "k": 1,
+      "threshold": "baseline_calibrated",
+      "tester": "claude-sonnet-5",
+      "run_type": "exploratory"
+    }
+  ]
+}

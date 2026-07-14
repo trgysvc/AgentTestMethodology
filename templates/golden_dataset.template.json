@@ -1,0 +1,32 @@
+{
+  "_comment": "Generic, project-agnostic golden-dataset entry template. Derived from the Pheron Agent test documentation, Kısım II / Bölüm 2.1 (schema v1.1). Delete this _comment key before use — JSON does not support real comments. Fork this file, fill one object per test block, and keep the field set below unchanged so tooling built against this schema stays portable across projects.",
+  "_license": "MIT — see ../LICENSE",
+  "_schema_version": "1.1",
+
+  "schema_version": "1.1",
+  "test_id": "REPLACE-ME (e.g. L1-CATEGORY-01 — pick your own level/category naming scheme)",
+  "level": "REPLACE-ME (e.g. L1, L2, L3, L4 — your own tiering, does not have to match Pheron's)",
+  "category": "REPLACE-ME (e.g. the functional area this block probes)",
+  "prompt": "REPLACE-ME (the exact input given to the agent — must be reproducible verbatim)",
+  "layer": "REPLACE-ME (one of: Unit | Integration | E2E | Live — see Kısım II Bölüm 1.1 for the 4-layer definition this is adapted from)",
+  "yakalayan_katman": "REPLACE-ME (which internal layer is expected to resolve this: Regex/Deterministic | TaskClassifier-equivalent | ANE/local-model | LLM — adapt names to your own architecture)",
+  "evaluation_type": "REPLACE-ME (one of: STATE | KEYWORD | JUDGE — see Kısım II Bölüm 3.4 for definitions)",
+  "expected": {
+    "_comment": "Free-form object — put whatever your grading needs (tool id, tool name, substring match, exact value, etc.)",
+    "tool": "REPLACE-ME or null if no tool call is expected",
+    "result_contains": "REPLACE-ME or null"
+  },
+  "fail_patterns": [
+    "REPLACE-ME: list the concrete conditions that constitute a FAIL for this block, not a vague description"
+  ],
+  "k": 5,
+  "threshold": "baseline_calibrated",
+  "tester": "REPLACE-ME (fixed identity string, e.g. \"gpt-4o\", \"human-reviewer-1\" — required, do not leave blank; enables inter-rater tracking, see Bölüm 2.5)",
+  "run_type": "exploratory",
+
+  "_field_notes": {
+    "k": "Minimum 5 before this entry's result may be reported as a published pass rate — see Bölüm 2.6 (minimum-k rule). k=1..4 runs are exploratory/bug-hunting only.",
+    "threshold": "Do not hardcode a number here until you have actually measured a baseline (Bölüm 2.2). Leave as \"baseline_calibrated\" until then.",
+    "run_type": "\"exploratory\" (k<5, bug-hunting) or \"published\" (k>=5, may be shared externally). Set to \"published\" only after the k>=5 condition is actually met."
+  }
+}

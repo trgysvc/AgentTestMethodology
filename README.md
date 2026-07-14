@@ -2,7 +2,7 @@
 
 **Universal AI Agent Testing Methodology — with PheronAgent as Reference Case Study**
 
-Version 6 · 2026-07-14
+Version 7 · 2026-07-14
 
 ---
 
@@ -10,7 +10,7 @@ Version 6 · 2026-07-14
 
 A framework-agnostic, architecture-independent test methodology and battery that any agent developer can apply directly to their own project — regardless of language, runtime, or toolset.
 
-The primary document (`METHODOLOGY.md`) is structured in five layers:
+The primary document (`METHODOLOGY_TR.md` — currently Turkish only; an English `METHODOLOGY.md` translation is planned once the methodology itself stabilizes) is structured in five layers:
 
 | Layer | Content |
 |---|---|
@@ -37,6 +37,9 @@ The primary document (`METHODOLOGY.md`) is structured in five layers:
 
 **To audit this document's own claims:**
 → Parts VII–IX — detected inconsistencies, resolution records, and verification status of every external citation.
+
+**To read how this came to exist:**
+→ `STORY.md` — the actual multi-week process: real bugs found in a running agent, real test runs, real corrections. Not a marketing narrative.
 
 ---
 
@@ -95,26 +98,26 @@ Each block specifies: prerequisite tier, test type, input prompt, expected behav
 
 ```
 AgentTestMethodology/
-├── METHODOLOGY.md              # Primary document (v6, ~5000 lines)
-├── README.md                   # This file
-├── LICENSE                     # MIT — templates and code
-├── LICENSE-docs.md             # CC BY 4.0 — documentation and methodology
-├── CHANGELOG.md                # Version history extracted from the main document
-└── templates/
-    ├── BLANK_TEST_BLOCK.template.md      # Empty test block — fill in for your agent
-    └── golden_dataset.template.json      # Golden dataset schema
+├── METHODOLOGY_TR.md                  # Primary document, Turkish (v7, ~5700 lines)
+├── STORY.md                           # How this methodology actually came to be
+├── README.md                          # This file
+├── LICENSE                            # MIT — templates and code
+├── LICENSE-docs.md                    # CC BY 4.0 — documentation and methodology
+├── CHANGELOG.md                       # Version-by-version history
+├── templates/
+│   ├── BLANK_TEST_BLOCK.template.md   # Empty test block — fill in for your agent
+│   └── golden_dataset.template.json   # Golden dataset schema
 └── results/
     └── PheronAgent/
-    ├── README.md                              # Empty test block — fill in for your agent
-    └── calibration_<model>_<YYYYMMDD>.md      # Calibration dataset schema
-    └── run_<model>_<YYYYMMDD>_k<n>.md         # Published (k=5) certified result
+        ├── README.md                                    # What this folder contains
+        └── run_qwen3.5-9b_20260713_k5_scoringfinal.md   # Published (k=5) certified result
 ```
 
 ---
 
 ## Reuse
 
-**Documentation and methodology** (METHODOLOGY.md, README.md, all `.md` content): [CC BY 4.0](LICENSE-docs.md) — free to use, adapt, and distribute with attribution.
+**Documentation and methodology** (METHODOLOGY_TR.md, README.md, all `.md` content): [CC BY 4.0](LICENSE-docs.md) — free to use, adapt, and distribute with attribution.
 
 **Templates and code** (`templates/`, any scripts): [MIT](LICENSE) — no restrictions.
 
@@ -150,11 +153,4 @@ Please open an issue before submitting a PR for structural changes to Part II.
 
 ## Version History
 
-| Version | Date | Summary |
-|---|---|---|
-| 1 | 2026-06-29 | 7 source files merged, line-by-line diff verified |
-| 2 | 2026-06-30 | File name mismatches resolved; 19/29 UBID coverage gaps closed |
-| 3 | 2026-07-01 | Part IX bibliography added; 26 citations consolidated; 3 independently web-verified |
-| 4 | 2026-07-08 | 5 methodological gaps closed: calibration procedure, inter-rater reliability, minimum-k rule, blank templates, license |
-| 5 | 2026-07-14 | Scope reframed: universal methodology primary, PheronAgent case study secondary; 58 core blocks split into Universal Capability + Reference Implementation |
-| 6 | 2026-07-14 | 27 new external citations (all independently web-verified): τ²-bench, TheAgentCompany, Terminal-Bench, SWE-Lancer, MLE-bench, 5 new function-calling benchmarks, 6 new security benchmarks, BEAM, OWASP ASI 2026 full taxonomy, OWASP MCP Top 10, 7 new methodology sections (cost/latency, observability, harness guide, red-teaming, anti-gaming, multi-agent, regulatory map), IBM ACL 2026 5-perspective survey cross-check. Citation count: 34 → 61. |
+See [`CHANGELOG.md`](CHANGELOG.md) for the full version-by-version history (currently at Version 7). For the story behind *why* each version changed what it changed — including the real bugs and dead ends that drove it — see [`STORY.md`](STORY.md).
