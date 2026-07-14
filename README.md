@@ -10,7 +10,7 @@ Version 7 · 2026-07-14
 
 A framework-agnostic, architecture-independent test methodology and battery that any agent developer can apply directly to their own project — regardless of language, runtime, or toolset.
 
-The primary document (`METHODOLOGY_TR.md` — currently Turkish only; `METHODOLOGY.md` exists as an English summary/table-of-contents document, but a full English translation of the primary document is planned once the methodology itself stabilizes) is structured in five layers:
+The primary document exists in two languages: `METHODOLOGY.md` (English) and `METHODOLOGY_TR.md` (Turkish, the original — this is where the methodology was actually developed; see `STORY.md`). Both are structured in five layers:
 
 | Layer | Content |
 |---|---|
@@ -98,7 +98,8 @@ Each block specifies: prerequisite tier, test type, input prompt, expected behav
 
 ```
 AgentTestMethodology/
-├── METHODOLOGY_TR.md                  # Primary document, Turkish (v7, ~5700 lines)
+├── METHODOLOGY.md                     # Primary document, English (v7, ~5750 lines)
+├── METHODOLOGY_TR.md                  # Primary document, Turkish original (v7, ~5700 lines)
 ├── STORY.md                           # How this methodology actually came to be
 ├── README.md                          # This file
 ├── LICENSE                            # MIT — templates and code
@@ -118,7 +119,7 @@ AgentTestMethodology/
 
 ## Reuse
 
-**Documentation and methodology** (METHODOLOGY_TR.md, README.md, all `.md` content): [CC BY 4.0](LICENSE-docs.md) — free to use, adapt, and distribute with attribution.
+**Documentation and methodology** (METHODOLOGY.md, METHODOLOGY_TR.md, README.md, all `.md` content): [CC BY 4.0](LICENSE-docs.md) — free to use, adapt, and distribute with attribution.
 
 **Templates and code** (`templates/`, any scripts): [MIT](LICENSE) — no restrictions.
 
