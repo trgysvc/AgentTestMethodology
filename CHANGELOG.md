@@ -2,6 +2,10 @@
 
 All notable changes to the methodology document are recorded here. Version numbers refer to the "Sürüm Geçmişi" table inside `METHODOLOGY_TR.md` itself — this file mirrors that table in English for readers who don't read the primary document end to end.
 
+## Translation note — 2026-07-14
+
+`METHODOLOGY.md`, a full English translation of `METHODOLOGY_TR.md` (Version 7, all 9 Parts), was added. This is a translation only — no content, test criteria, or citations were changed in the process. Two sections (`VisualWebArena`, `AssistantBench`) were caught missing from an initial machine-translated draft during verification (a heading-count and table-count diff against the Turkish source) and restored before publishing.
+
 ## Pre-history — 2026-05-02 to 2026-05-29 (before Version 1)
 
 No methodology document existed yet. The true first artifact, per `git log`, was a forgotten 6-scenario `Tests/scenarios.json` committed 2026-05-02 as a side-effect of an unrelated daemon refactor — never run, never referenced again. A completely independent, unconnected effort started fresh 22 days later (2026-05-24): a Python harness (`Tests/RouterHealth/harness.py`) running a new hand-written scenario set that grew from 16 to 31 scenarios over the following days, establishing conventions (Turkish category codes like `HESAP`/`SISTEM`/`DOSYA`/`ZINCIR`, an `expected_tool` validation field, a "run everything first, fix in bulk afterward" discipline) that persisted through every later version. On 2026-05-29, a single project-wide cleanup commit deleted both the long-forgotten May 2nd file and the actively-used harness script and its result history — but not the 31-scenario data itself, which survived and resurfaced a month later as the seed of Version 1. See `STORY.md`, Chapter 0, for the full account.
