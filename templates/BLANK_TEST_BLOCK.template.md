@@ -1,6 +1,6 @@
 # Blank Agent Test Block Template
 
-License: CC BY 4.0 — see `../LICENSE`. Fork freely, attribution appreciated.
+License: MIT — see `../LICENSE`. No restrictions on use or attribution.
 
 This is a project-agnostic fill-in template for a single agent test block, extracted
 from the Pheron Agent test documentation methodology (Kısım II — Operasyonel Test
