@@ -1,0 +1,329 @@
+{
+  "blocks" : [
+    {
+      "category" : "coklu-tur",
+      "evaluation_type" : "STATE",
+      "k" : 5,
+      "level" : "MT",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_at_k_all" : false,
+      "pass_rate" : 0.8,
+      "prompt" : "Swift 6'nın en büyük değişikliği ne?",
+      "test_id" : "MT-01",
+      "trials" : [
+        {
+          "duration_seconds" : 59.05450904369354,
+          "index" : 0,
+          "status" : "pass",
+          "tools_used" : [
+
+          ]
+        },
+        {
+          "duration_seconds" : 70.45851707458496,
+          "index" : 1,
+          "status" : "pass",
+          "tools_used" : [
+
+          ]
+        },
+        {
+          "duration_seconds" : 68.70561599731445,
+          "index" : 2,
+          "status" : "pass",
+          "tools_used" : [
+
+          ]
+        },
+        {
+          "duration_seconds" : 76.42789995670319,
+          "index" : 3,
+          "reason" : "Expected tool 'web_search' not among real tools called: []",
+          "status" : "fail",
+          "tools_used" : [
+
+          ]
+        },
+        {
+          "duration_seconds" : 63.622363924980164,
+          "index" : 4,
+          "status" : "pass",
+          "tools_used" : [
+
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 5,
+      "level" : "EK-TOOL",
+      "needs_review" : false,
+      "pass_at_1" : false,
+      "pass_at_k_all" : false,
+      "pass_rate" : 0.2,
+      "prompt" : "'Proje Son Durumu' konulu bir e-postayı user@example.com adresine gönder (legacy email client ile)",
+      "test_id" : "EK-TOOL-21",
+      "trials" : [
+        {
+          "duration_seconds" : 28.388401985168457,
+          "index" : 0,
+          "reason" : "Expected tool 'send_email' not among real tools called: []",
+          "status" : "fail",
+          "tools_used" : [
+
+          ]
+        },
+        {
+          "duration_seconds" : 28.639896035194397,
+          "index" : 1,
+          "reason" : "Expected tool 'send_email' not among real tools called: []",
+          "status" : "fail",
+          "tools_used" : [
+
+          ]
+        },
+        {
+          "duration_seconds" : 1177.9393980503082,
+          "index" : 2,
+          "status" : "pass",
+          "tools_used" : [
+            "send_email"
+          ]
+        },
+        {
+          "duration_seconds" : 22.766963005065918,
+          "index" : 3,
+          "reason" : "Expected tool 'send_email' not among real tools called: []",
+          "status" : "fail",
+          "tools_used" : [
+
+          ]
+        },
+        {
+          "duration_seconds" : 23.334465980529785,
+          "index" : 4,
+          "reason" : "Expected tool 'send_email' not among real tools called: []",
+          "status" : "fail",
+          "tools_used" : [
+
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "JUDGE",
+      "k" : 5,
+      "level" : "EK-TOOL",
+      "needs_review" : true,
+      "pass_at_1" : false,
+      "pass_at_k_all" : false,
+      "pass_rate" : 0,
+      "prompt" : "Unreal Engine aracını kullanarak sahneyi build et ve hata loglarını getir",
+      "test_id" : "EK-TOOL-29",
+      "trials" : [
+        {
+          "duration_seconds" : 227.565495967865,
+          "index" : 0,
+          "reason" : "JUDGE evaluation type requires a calibrated judge (Bölüm 2.3, Cohen's kappa ≥ 0.6) — not implemented in Phase 1",
+          "status" : "needs_review",
+          "tools_used" : [
+            "file_manager_action",
+            "Listing PheronAgent\/..."
+          ]
+        },
+        {
+          "duration_seconds" : 141.8988469839096,
+          "index" : 1,
+          "reason" : "JUDGE evaluation type requires a calibrated judge (Bölüm 2.3, Cohen's kappa ≥ 0.6) — not implemented in Phase 1",
+          "status" : "needs_review",
+          "tools_used" : [
+            "unreal_engine_tool"
+          ]
+        },
+        {
+          "duration_seconds" : 586.6802690029144,
+          "index" : 2,
+          "reason" : "Double\/extra dispatch: expected only 'unreal_engine_tool', got [\"blender_3d\", \"xcode_engine\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "blender_3d",
+            "Executing 3D operations in Blender...",
+            "xcode_engine",
+            "Building and analyzing Xcode project..."
+          ]
+        },
+        {
+          "duration_seconds" : 657.3046590089798,
+          "index" : 3,
+          "reason" : "Double\/extra dispatch: expected only 'unreal_engine_tool', got [\"blender_3d\", \"unreal_engine_tool\", \"shell_exec\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "blender_3d",
+            "Executing 3D operations in Blender...",
+            "unreal_engine_tool",
+            "shell_exec",
+            "Running: which unreal...",
+            "Listing directory..."
+          ]
+        },
+        {
+          "duration_seconds" : 977.8661109209061,
+          "index" : 4,
+          "reason" : "Double\/extra dispatch: expected only 'unreal_engine_tool', got [\"unreal_engine_tool\", \"app_launcher\", \"learn_application_ui\", \"web_search\", \"web_fetch\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "unreal_engine_tool",
+            "app_launcher",
+            "Launching application...",
+            "learn_application_ui",
+            "Scanning application ecosystem...",
+            "web_search",
+            "Searching: Unreal Engine 6 macOS download official site...",
+            "web_fetch",
+            "Fetching dev.epicgames.com..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 5,
+      "level" : "L3-TOOL",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_at_k_all" : true,
+      "pass_rate" : 1,
+      "prompt" : "mevcut Swift projesini Xcode derleyicisi ile build et",
+      "test_id" : "L3-TOOL-13",
+      "trials" : [
+        {
+          "duration_seconds" : 1179.4523109197617,
+          "index" : 0,
+          "status" : "pass",
+          "tools_used" : [
+            "xcode_engine"
+          ]
+        },
+        {
+          "duration_seconds" : 1179.7033669948578,
+          "index" : 1,
+          "status" : "pass",
+          "tools_used" : [
+            "xcode_engine"
+          ]
+        },
+        {
+          "duration_seconds" : 1180.6902339458466,
+          "index" : 2,
+          "status" : "pass",
+          "tools_used" : [
+            "xcode_engine"
+          ]
+        },
+        {
+          "duration_seconds" : 1178.7877880334854,
+          "index" : 3,
+          "status" : "pass",
+          "tools_used" : [
+            "xcode_engine"
+          ]
+        },
+        {
+          "duration_seconds" : 1174.8618949651718,
+          "index" : 4,
+          "status" : "pass",
+          "tools_used" : [
+            "xcode_engine"
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 5,
+      "level" : "L3-TOOL",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_at_k_all" : false,
+      "pass_rate" : 0.6,
+      "prompt" : "GitHub reposundaki son açık pull request'leri listele",
+      "test_id" : "L3-TOOL-16",
+      "trials" : [
+        {
+          "duration_seconds" : 21.686843991279602,
+          "index" : 0,
+          "status" : "pass",
+          "tools_used" : [
+            "github_tool",
+            "Executing tool: github_tool..."
+          ]
+        },
+        {
+          "duration_seconds" : 42.715856075286865,
+          "index" : 1,
+          "reason" : "Double\/extra dispatch: expected only 'github_tool', got [\"github_tool\", \"memory_tool\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "github_tool",
+            "Executing tool: github_tool...",
+            "memory_tool",
+            "Executing tool: memory_tool..."
+          ]
+        },
+        {
+          "duration_seconds" : 78.07782196998596,
+          "index" : 2,
+          "reason" : "Double\/extra dispatch: expected only 'github_tool', got [\"git_tool\", \"shell_exec\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "git_tool",
+            "Executing tool: git_tool...",
+            "shell_exec",
+            "Running: cd /Users/<user>\/Developer\/PheronAgent &...",
+            "Running: which gh && gh --version..."
+          ]
+        },
+        {
+          "duration_seconds" : 19.069507002830505,
+          "index" : 3,
+          "status" : "pass",
+          "tools_used" : [
+            "github_tool",
+            "Executing tool: github_tool..."
+          ]
+        },
+        {
+          "duration_seconds" : 23.327394008636475,
+          "index" : 4,
+          "status" : "pass",
+          "tools_used" : [
+            "github_tool",
+            "Executing tool: github_tool..."
+          ]
+        }
+      ]
+    }
+  ],
+  "dataset_path" : "Tests/AgentTestSuite/Tests\/AgentTestSuite\/datasets\/golden_dataset_targeted_verify.json",
+  "git_commit" : "8ab08327965245880a37f5508a8b1115e1cf4baf",
+  "k" : 5,
+  "model_id" : "unknown",
+  "report_schema_version" : "results-1.0",
+  "run_type" : "published",
+  "summary" : {
+    "graded_blocks" : 4,
+    "needs_review_blocks" : 1,
+    "pass_at_1_count" : 3,
+    "pass_at_1_rate" : 0.6,
+    "total_blocks" : 5
+  },
+  "tester" : "automated-runner-v1",
+  "timestamp" : "2026-07-23T05:34:45Z",
+  "total_duration_seconds" : 10302.055492043495
+}

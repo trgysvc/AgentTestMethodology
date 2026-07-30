@@ -1,0 +1,27 @@
+warning: 'eliteagent': dependency 'swift-tokenizers' is not used by any target
+warning: 'eliteagent': dependency 'swift-hf-api' is not used by any target
+[0/1] Planning build
+[1/1] Compiling plugin GenerateManual
+[2/2] Compiling plugin GenerateDoccReference
+Building for debugging...
+[2/20] Write swift-version-15D9132313371EBE.txt
+[3/5] Linking PheronAgent
+[4/5] Applying PheronAgent
+Build complete! (7.96s)
+Test Suite 'Selected tests' started at 2026-07-15 18:16:16.381.
+Test Suite 'PheronAgentPackageTests.xctest' started at 2026-07-15 18:16:16.382.
+Test Suite 'GoldenDatasetRunnerTests' started at 2026-07-15 18:16:16.382.
+Test Case '-[PheronAgentTests.GoldenDatasetRunnerTests testGoldenDataset]' started.
+Tests/AgentTestSuite/Tests/PheronAgentTests/GoldenDataset/GoldenDatasetRunnerTests.swift:272: -[PheronAgentTests.GoldenDatasetRunnerTests testGoldenDataset] : Test skipped - PheronAgent.app not reachable at localhost:11500 — launch it and wait for the model to finish loading first. (Could not connect to the server.)
+Test Case '-[PheronAgentTests.GoldenDatasetRunnerTests testGoldenDataset]' skipped (0.020 seconds).
+Test Suite 'GoldenDatasetRunnerTests' passed at 2026-07-15 18:16:16.403.
+	 Executed 1 test, with 1 test skipped and 0 failures (0 unexpected) in 0.020 (0.021) seconds
+Test Suite 'PheronAgentPackageTests.xctest' passed at 2026-07-15 18:16:16.403.
+	 Executed 1 test, with 1 test skipped and 0 failures (0 unexpected) in 0.020 (0.021) seconds
+Test Suite 'Selected tests' passed at 2026-07-15 18:16:16.403.
+	 Executed 1 test, with 1 test skipped and 0 failures (0 unexpected) in 0.020 (0.021) seconds
+􀟈  Test run started.
+􀄵  Testing Library Version: 6.3 (980fec0f03c56f7)
+􀄵  Target Platform: arm64-apple-macosx
+􁁛  Test run with 0 tests in 0 suites passed after 0.001 seconds.
+EXIT_CODE=0

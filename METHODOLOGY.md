@@ -1840,6 +1840,10 @@ Each test block in this document can be exported into `golden_dataset_v1.json` u
 - `tester` (added in v1.1, **required**): who ran/scored this block — not free text, but a fixed identity (e.g. `"claude-sonnet-5"`, `"antigravity-ai"`, `"turgay-manual"`). See Section 2.5 — rater consistency cannot be tracked without this field.
 - `run_type` (added in v1.1, **required**): `"exploratory"` (k<5, discovery/bug-hunting run) | `"published"` (k≥5, conforms to the Section 2.6 rule, shareable externally). See Section 2.6.
 
+> [!IMPORTANT]
+> **Adapting Reference Files to Your Environment:**
+> All reference test blocks and golden dataset examples use sanitized placeholders (`<USER_HOME>` for local user paths and `user@example.com` for email/integration tests). When executing tests on your own environment, ensure you substitute these placeholders with your agent's actual local workspace paths and test accounts.
+
 ##### 2.2 Baseline Measurement Procedure
 
 **Complete these steps before setting a threshold:**

@@ -1840,6 +1840,10 @@ Bu belgedeki her test bloğu aşağıdaki JSON şeması ile `golden_dataset_v1.j
 - `tester` (v1.1'de eklendi, **zorunlu**): Bu bloğu kim koştu/puanladı — serbest metin değil, sabit bir kimlik (ör. `"claude-sonnet-5"`, `"antigravity-ai"`, `"turgay-manual"`). Bkz. Bölüm 2.5 — değerlendirici tutarlılığı bu alan olmadan izlenemez.
 - `run_type` (v1.1'de eklendi, **zorunlu**): `"exploratory"` (k<5, keşif/hata-avlama turu) | `"published"` (k≥5, Bölüm 2.6 kuralına uygun, dışarıya paylaşılabilir). Bkz. Bölüm 2.6.
 
+> [!IMPORTANT]
+> **Yerel Ortam Uyarısı (Environment Configuration):**
+> Referans test bloklarında ve golden dataset örneklerinde dosya yolları `<USER_HOME>`/bağıl yollar ve e-posta adresleri `user@example.com` olarak jenerikleştirilmiştir. Kendi ajanınızı kendi makinenizde test ederken test prompt'larındaki ve kabul kriterlerindeki bu yolları/e-postaları kendi sisteminizin gerçek çalışma zamanı (runtime) ortam değişkenlerine ve test hesaplarına göre güncellemelisiniz.
+
 ##### 2.2 Baseline Ölçüm Prosedürü
 
 **Eşik belirlemeden önce bu adımları tamamla:**

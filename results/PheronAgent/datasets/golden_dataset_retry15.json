@@ -1,0 +1,399 @@
+{
+  "schema_version": "1.1",
+  "blocks": [
+    {
+      "schema_version": "1.1",
+      "test_id": "L4-YÜK-01",
+      "level": "L4",
+      "category": "yuk",
+      "prompt": "merhaba",
+      "layer": "Live",
+      "yakalayan_katman": "Regex/Deterministic + TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "no_tool_call": true
+      },
+      "turns": [
+        "merhaba",
+        "istanbul hava",
+        "cpu kullanımı",
+        "1847 × 293",
+        "swift dosyalarını say"
+      ],
+      "turn_expected": [
+        {
+          "no_tool_call": true
+        },
+        {
+          "tool": "get_weather"
+        },
+        {
+          "tool": "get_system_telemetry"
+        },
+        {
+          "tool": "calculator_op"
+        },
+        {
+          "tool": "shell_exec"
+        }
+      ],
+      "fail_patterns": [
+        "2 veya daha fazla yanlış routing",
+        "uygulama crash",
+        "bir isteğin cevabı bir öncekiyle karıştı"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L4-YÜK-02",
+      "level": "L4",
+      "category": "yuk",
+      "prompt": "aynı anda: cpu kullanımı, şu anki saat, ve disk alanını göster",
+      "layer": "E2E",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": null,
+        "tool": null,
+        "tools_order": [
+          "get_system_telemetry",
+          "system_date"
+        ],
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Seri çalışmış (birbirini beklemişler)",
+        "1 veya 2 araç atlanmış"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory",
+      "notes": "v59: tools_order corrected — see golden_dataset_86.json's L4-YÜK-02 note. get_system_telemetry already returns CPU/RAM/disk/thermal/OS in one call; a second call was never needed."
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "MT-04",
+      "level": "MT",
+      "category": "coklu-tur",
+      "prompt": "İsmim Turgay olduğunu hatırla",
+      "layer": "E2E",
+      "yakalayan_katman": "LLM",
+      "evaluation_type": "KEYWORD",
+      "expected": {
+        "result_contains": "Turgay"
+      },
+      "turns": [
+        "İsmim Turgay olduğunu hatırla",
+        "Favori rengim mavi",
+        "Hangi şehirdeyim?",
+        "Benim hakkımda ne biliyorsun?"
+      ],
+      "turn_expected": [
+        null,
+        null,
+        null,
+        {
+          "result_contains": "Turgay"
+        }
+      ],
+      "fail_patterns": [
+        "Tur 4: isim veya renk unutulmuş",
+        "Tur 4: söylenmeyen şehri uydurdu"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-25",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "MCP bellek aracını kullanarak 'Turgay Swift geliştiricisidir' bilgisini kalıcı hafızaya ekle",
+      "layer": "Integration",
+      "yakalayan_katman": "TaskClassifier / LLM",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 97,
+        "tool": "memory_tool",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": "Turgay Swift geliştiricisidir",
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok veya bilgi eksik"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-29",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "Unreal Engine aracını kullanarak sahneyi build et ve hata loglarını getir",
+      "layer": "Integration",
+      "yakalayan_katman": "TaskClassifier / LLM",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 104,
+        "tool": "unreal_engine_tool",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L3-TOOL-01",
+      "level": "L3-TOOL",
+      "category": "tool-coverage",
+      "prompt": "'/Users/<user>/Local Documents/Suno Downloads/Aura di Luce (Aura of Light - Işık Hale)/Aura di Luce (Aura of Light - Işık Hale) (1).mp3' dosyasındaki müziğin DNA analizini yap ve bana müzik türünü söyle",
+      "layer": "E2E",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 18,
+        "tool": "music_dna",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L3-TOOL-07",
+      "level": "L3-TOOL",
+      "category": "tool-coverage",
+      "prompt": "Swift 6 dökümantasyon sayfasını tarayıcıda doğrudan aç",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 170,
+        "tool": "browser_native",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L3-TOOL-08",
+      "level": "L3-TOOL",
+      "category": "tool-coverage",
+      "prompt": "proje performans analizini içeren bir markdown raporu tasarla",
+      "layer": "E2E",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 20,
+        "tool": "research_report",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L3-TOOL-12",
+      "level": "L3-TOOL",
+      "category": "tool-coverage",
+      "prompt": "Blender ile arka planda 3D küp modeli render et",
+      "layer": "E2E",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 60,
+        "tool": "blender_3d",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L3-TOOL-13",
+      "level": "L3-TOOL",
+      "category": "tool-coverage",
+      "prompt": "mevcut Swift projesini Xcode derleyicisi ile build et",
+      "layer": "E2E",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 47,
+        "tool": "xcode_engine",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L3-TOOL-14",
+      "level": "L3-TOOL",
+      "category": "tool-coverage",
+      "prompt": "sistemdeki mevcut kestirmeleri listele",
+      "layer": "Integration",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 50,
+        "tool": "discover_shortcuts",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L3-TOOL-15",
+      "level": "L3-TOOL",
+      "category": "tool-coverage",
+      "prompt": "Stripe üzerindeki son ödemeleri listele",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 100,
+        "tool": "stripe_tool",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L3-TOOL-16",
+      "level": "L3-TOOL",
+      "category": "tool-coverage",
+      "prompt": "GitHub reposundaki son açık pull request'leri listele",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 101,
+        "tool": "github_tool",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L3-TOOL-18",
+      "level": "L3-TOOL",
+      "category": "tool-coverage",
+      "prompt": "Higgsfield kullanarak 'dalgalı denizde giden gemi' videosu üret",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "JUDGE",
+      "expected": {
+        "ubid": 87,
+        "tool": "higgsfield_generate",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L3-TOOL-19",
+      "level": "L3-TOOL",
+      "category": "tool-coverage",
+      "prompt": "/Users/<user>/Local Documents/Suno Downloads/Aura di Luce (Aura of Light - Işık Hale) dizinindeki MP3 dosyalarının ID3 etiketlerini txt ve jpeg dosyalarını kullanarak otomatik doldur, TPE1 değerini 'Aura Artist' ve TALB değerini 'Aura Album' olarak ez (override et)",
+      "layer": "E2E",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": null,
+        "tool": null,
+        "tools_order": [
+          "file_manager_action",
+          "id3_processor"
+        ],
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    }
+  ]
+}

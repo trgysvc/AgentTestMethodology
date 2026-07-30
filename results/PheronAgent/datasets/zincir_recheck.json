@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.1",
+  "blocks": [
+    {
+      "schema_version": "1.1",
+      "test_id": "L2-ZINCIR-03",
+      "level": "L2",
+      "category": "zincir",
+      "prompt": "sistem durumunu kontrol et: CPU, RAM, disk alanı ve macOS sürümünü birlikte raporla",
+      "layer": "E2E",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": null,
+        "tool": null,
+        "tools_order": [
+          "get_system_telemetry",
+          "get_system_info"
+        ],
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Sadece biri çağrıldı",
+        "Model bilgileri uydurdu"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L2-ZINCIR-05",
+      "level": "L2",
+      "category": "zincir",
+      "prompt": "hem cpu kullanımını hem de güncel saati aynı anda göster",
+      "layer": "E2E",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": null,
+        "tool": null,
+        "tools_order": [
+          "get_system_telemetry",
+          "system_date"
+        ],
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Sadece biri çağrıldı",
+        "İki araç aynı durationMs (seri çalışmış, startTime hatası)"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    }
+  ]
+}

@@ -1,0 +1,927 @@
+{
+  "blocks" : [
+    {
+      "category" : "sistem",
+      "evaluation_type" : "STATE",
+      "k" : 5,
+      "level" : "L1",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_at_k_all" : true,
+      "pass_rate" : 1,
+      "prompt" : "macOS versiyonum nedir?",
+      "test_id" : "L1-SISTEM-02",
+      "trials" : [
+        {
+          "duration_seconds" : 0.2618600130081177,
+          "index" : 0,
+          "response_text" : "System Info: [OS]: macOS Version 26.5.2 (Build 25F84)\n[CPU]: 10 Cores\n[MEM]: 16 GB RAM\n[AUTO]: Elite Native Mode",
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 0.26261305809020996,
+          "index" : 1,
+          "response_text" : "System Info: [OS]: macOS Version 26.5.2 (Build 25F84)\n[CPU]: 10 Cores\n[MEM]: 16 GB RAM\n[AUTO]: Elite Native Mode",
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 0.267084002494812,
+          "index" : 2,
+          "response_text" : "System Info: [OS]: macOS Version 26.5.2 (Build 25F84)\n[CPU]: 10 Cores\n[MEM]: 16 GB RAM\n[AUTO]: Elite Native Mode",
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 0.2686300277709961,
+          "index" : 3,
+          "response_text" : "System Info: [OS]: macOS Version 26.5.2 (Build 25F84)\n[CPU]: 10 Cores\n[MEM]: 16 GB RAM\n[AUTO]: Elite Native Mode",
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 0.272955060005188,
+          "index" : 4,
+          "response_text" : "System Info: [OS]: macOS Version 26.5.2 (Build 25F84)\n[CPU]: 10 Cores\n[MEM]: 16 GB RAM\n[AUTO]: Elite Native Mode",
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "web",
+      "evaluation_type" : "STATE",
+      "k" : 5,
+      "level" : "L2",
+      "needs_review" : false,
+      "pass_at_1" : false,
+      "pass_at_k_all" : false,
+      "pass_rate" : 0.8,
+      "prompt" : "Swift 6 concurrency ile ilgili en önemli değişiklikler neler, araştır",
+      "test_id" : "L2-WEB-01",
+      "trials" : [
+        {
+          "duration_seconds" : 112.8846470117569,
+          "index" : 0,
+          "reason" : "Double\/extra dispatch: expected only 'web_search', got [\"web_search\", \"web_fetch\"]",
+          "response_text" : "Task requires too many steps or entered a planning loop. Please simplify the task or provide more information.",
+          "status" : "fail",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 concurrency özellikleri ve değişiklik...",
+            "web_fetch",
+            "Fetching developer.apple.com..."
+          ]
+        },
+        {
+          "duration_seconds" : 210.71362805366516,
+          "index" : 1,
+          "response_text" : "Task requires too many steps or entered a planning loop. Please simplify the task or provide more information.",
+          "status" : "pass",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 en önemli özellikleri ve değişiklikle..."
+          ]
+        },
+        {
+          "duration_seconds" : 81.50835108757019,
+          "index" : 2,
+          "response_text" : "Swift 6'nın concurrency (eşzamanlılık) modeli ile ilgili en önemli değişiklikler ve özellikleri şunlardır:\n\n1. **Veri Yarışı Güvenliği (Data Race Safety):** Swift 6, veri yarışlarını (data races) derleme zamanında tespit etme yeteneğine sahiptir. Bu sayede uygulamalarınızın çoklu iş parçacığılı çalışırken anlık veri tutarsızlığı riskini minimize eder ve kodunuzun güvenliğini artırır.\n\n2. **Tip Güvenli Hata Yönetimi (Typed Throws):** Swift 6'da hata yönetimi artık tip güvenlidir. Bu, hataların derleme sırasında kontrol edilebilir olması demektir ve runtime'taki hata yönetimini daha sağlam hale getirir.\n\n3. **Actor Yapısı:** Swift 5'e göre Swift 6'da actor sistemi geliştirilmiştir. Actor'lar, veri erişimi için güvenli bir mekanizma sunarak concurrency modellerini kolaylaştırır. Özellikle `await` kelimesiyle yapılan çağrular artık daha güvenli ve yönetilebilir hale gelmiştir.\n\n4. **Low-Level Senkronizasyon:** Swift 6, düşük seviyeli senkronizasyon araçlarını destekler. Bu sayede geliştiriciler eşzamanlı görevleri daha etkin bir şekilde yönetebilir ve performansı optimize edebilir.\n\n5. **Concurrency Global Capture Semantics:** Swift 6'da global değişkenlerin concurrency bağlamındaki davranışı netleştirilmiştir. Bu, özellikle `actor` dışı durumlar için önemli bir iyileştirmedir.\n\nBu özellikler sayesinde Swift 6, eşzamanlı programlama modellerini daha güvenli ve verimli hale getirerek geliştiricilere modern uygulama geliştirmesi için güçlü bir altyapı sunar. Ancak, bazı Apple kütüphaneleri hala tam Swift 6 uyumlu olmayabilir; bu nedenle projelerinizi yavaş yavaş güncellemek faydalı olabilir.\n\nKaynak: [https:\/\/medium.com\/@farukcansaz\/swift-6-concurrency-tam-rehber](https:\/\/medium.com\/@farukcansaz\/swift-6-concurrency-tam-rehber)",
+          "status" : "pass",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 en önemli değişiklikler özellikleri..."
+          ]
+        },
+        {
+          "duration_seconds" : 65.34961295127869,
+          "index" : 3,
+          "response_text" : "Swift 6 concurrency ile ilgili en önemli değişiklikler şunlardır (Kaynak: https:\/\/www.google.com\/search?q=Swift%206%20en%20%C3%B6nemli%20de%C4%9Fi%C5%9Fiklikler%20%C3%B6zellikleri):\n\n1.  **Veri Yarışı Güvenliği (Data Race Safety):** Swift 6, veri yarışlarını derleme zamanında önleyen güçlü bir güvenlik modeli sunar. Derleyici, aynı anda birden fazla iş parçacığının (thread) aynı veriye erişmesini engeller ve bu hataları kod çalışmadan önce yakalar. Ayrıca, kodlar varsayılan olarak eşzamanlılık kurallarına tam uyumlu şekilde denetlenir.\n2.  **Typed Throws:** Hata fırlatan fonksiyonların imzasında tam olarak hangi türde hata (Error) döndüreceğini net bir şekilde belirtmenizi sağlar, böylece hata yönetimi tip güvenliği kazanır.\n3.  **Non-copyable Types:** Bellekte gereksiz kopyalama yapmayan, performans ve kaynak yönetimi açısından kritik nesneler tanımlamaya imkan tanır.\n\nBu özellikler Swift'in eşzamanlılık (concurrency) güvenliğini ve hata yönetimindeki tip güvenliliğini önemli ölçüde artırır.",
+          "status" : "pass",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 en önemli değişiklikler özellikleri..."
+          ]
+        },
+        {
+          "duration_seconds" : 63.025156021118164,
+          "index" : 4,
+          "response_text" : "Swift 6'nın eşzamanlılık (concurrency) ile ilgili en önemli değişiklikleri şu şekilde özetleyebilirim:\n\n1. **Veri Yarışı Güvenliği (Data Race Safety):** Swift 6, veri yarışı hatalarını derleme zamanında tespit etme yeteneğini sunar. Bu sayede çoklu görevli uygulamalar daha güvenli hale gelir ve hata riski azalır.\n2. **Tam Eşzamanlılık Denetimleri:** Varsayılan olarak eşzamanlılık denetimleri aktif edilir, bu da kodun doğru çalışması için gerekli kontrollerin otomatik olarak yapılmasını sağlar.\n\nBu özellikler, Swift 6'nın çoklu görev desteğini önemli ölçüde güçlendirir ve uygulama güvenliğini artırır. Daha detaylı bilgi için [bu videoyu](https:\/\/www.youtube.com\/watch?v=example) izleyebilir veya ilgili dokümantasyonları inceleyebilirsiniz.\n\nKaynak: Google Arama Sonuçları (https:\/\/www.google.com\/search?q=Swift%206%20concurrency%20%C3%B6zellikleri%20de%C4%9Fi%C5%9Fikler)",
+          "status" : "pass",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 concurrency özellikleri değişiklikler..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "web",
+      "evaluation_type" : "JUDGE",
+      "k" : 5,
+      "level" : "L2",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_at_k_all" : true,
+      "pass_rate" : 1,
+      "prompt" : "https:\/\/www.swift.org\/documentation\/ adresindeki içeriği oku ve özetle",
+      "test_id" : "L2-WEB-02",
+      "trials" : [
+        {
+          "duration_seconds" : 186.6674998998642,
+          "index" : 0,
+          "response_text" : "https:\/\/www.swift.org\/documentation\/ sayfası şu bölümleri içerir:\\n\\n1. **Giriş (Getting Started):** Yeni başlayanlar için başlangıç rehberi ve Apple'daki Swift kaynakları.\\n2. **Dil Referansı:** 'The Swift Programming Language' kitabı, dilin yetkin bir turu, kapsamlı kılavuzu ve resmi referansını sunar.\\n3. **API Tasarım Rehberleri:** Kodun büyük Swift ekosisteminin bir parçası gibi hissettirmesi için API adlandırma ve kalıp önerileri.\\n4. **Standart Kütüphane:** Swift programları yazmak için temel işlevsellik katmanı tanımlar.\\n5. **Çekirdek Kütüphaneler (Core Libraries):** Standart kütüphaneden daha üst düzey, tüm platformlarda kullanılabilir araçlar.\\n6. **Paket Yöneticisi:** Swift paketlerinin dağıtımını ve kullanımını yöneten, bağımlılıkları otomatik olarak indirip derleyen bir aracıdır.\\n7. **REPL & Debugder (İnce Ayar):** LLDB debugderi, zengin bir REPL ve Swift için ince ayar ortamı sağlar.\\n\\n**Makaleler:** Sunucu uygulamaları, C++ ile karışım, değerli\/referans türleri, DocC doküman derleyicisi, Swift 6 eşzamanlılık kontrolü, Linux\/Android\/WebAssembly SDK başlangıç rehberleri ve VS Code entegrasyonu.\\n\\n**Katkıda Bulunma:** Swift Evrim Süreci, Kaynak Kodu deposu, Sürekli Entegrasyon (CI), Kaynak Uyumluluk Testi, Derleyici Mimarisine Genel Bakış ve Aylık Sürüm Çıkarımları.\n\nKaynak: https:\/\/www.swift.org\/documentation\/",
+          "status" : "pass",
+          "tools_used" : [
+            "web_fetch",
+            "Fetching www.swift.org..."
+          ]
+        },
+        {
+          "duration_seconds" : 77.00076496601105,
+          "index" : 1,
+          "response_text" : "İşte https:\/\/www.swift.org\/documentation\/ sayfasındaki içerik özeti:\n\n**Swift Dökümantasyonu (Overview):** Bu sayfa, geliştiricilerin Swift ile ilgili tüm kaynaklara erişebileceği ana giriş noktasıdır. İçerisinde şu temel bölümler yer almaktadır:\n\n1.  **İlk Adım ve Kaynaklar:**\n    *   Yeni başlayanlar için \"Getting started guide\".\n    *   Apple'ın geliştirici sitesindeki (developer.apple.com) Swift kaynakları.\n\n2.  **Dil Referansı ve Kılavuzlar:**\n    *   **\"The Swift Programming Language\" (TSPL):** Dilin otoriter referans kütüphanesi, kapsamlı bir rehber sunar.\n    *   **API Tasarım Kuralları:** Kodun Swift ekosisteminin doğal bir parçası gibi hissettirmesini sağlayan isimlendirme ve alışkanlık kurallarını açıklar.\n\n3.  **Kütüphaneler:**\n    *   **Standart Kütüphane (Standard Library):** Swift programları için temel işlevselliği tanımlar.\n    *   **Çekirdek Kütüphaneleri (Core Libraries):** Swift'in desteklediği tüm platformlar üzerinde kullanılabilen daha üst düzey araçları sağlar.\n\n4.  **Yönetim Araçları:**\n    *   **Swift Paket Yöneticisi (Package Manager):** Swift kod paketlerinin dağıtımını ve kullanımını yönetir, bağımlılıkları otomatik olarak indirip derler.\n\n5.  **Hata Ayıklama ve REPL:** LLDB hata ayıklayıcı zengin bir REPL sunma ve Swift için hata ayıklama ortamı sağlar.\n\n6.  **Diğer Önemli Başlıklar:**\n    *   **Swift Hakkında (About):** Dilin temel özellikleri, desteklenen platformlar ve açık kaynak projeleri özetlenir.\n    *   **Yazılımcılar İçin Makaleler:** Sunucu tarafı Swift, C++ ile karışım, Değerli ve Referanslı türler, DocC dökümantasyon derleyicisi vb.\n    *   **Etkileşim:** Dilde yapılan değişikliklerin nasıl yönetildiği (Swift Evolution), kaynak kodu (GitHub'da), sürekli entegrasyon (CI) süreçleri ve derleyici mimarisi hakkında bilgiler verilir.\n\n**Kaynak: https:\/\/www.swift.org\/documentation\/**",
+          "status" : "pass",
+          "tools_used" : [
+            "web_fetch",
+            "Fetching www.swift.org..."
+          ]
+        },
+        {
+          "duration_seconds" : 184.7681839466095,
+          "index" : 2,
+          "response_text" : "https:\/\/www.swift.org\/documentation\/ adresindeki sayfa, Swift programlama dili için kapsamlı bir öğrenme ve başvuru kaynağı sunar. İçerik şunları özetlemektedir:\n\n**Swift'e Giriş:**\n- Yeni başlayanlar için 'Getting started guide' (Başlangıç rehberi) önerilir.\n- Apple geliştirici sitesindeki Swift kaynaklarına yönlendirme yapılır.\n- **TSPL (The Swift Programming Language):** Dilin yetkin bir başvuru kitabıdır; keşif turu, kapsamlı kılavuz ve resmi referans içerir.\n\n**Dokümantasyon Türleri:**\n1.  **API Tasarım Kılavuzu:** API'lerin kodun Swift ekosisteminin bir parçası gibi hissetmesini sağlayan isimlendirme ve kalıp kurallarını açıklar. Bu, görevimizdeki 'Step 1: API Tasarım Kılavuzu'na doğrudan karşılık gelir.\n2.  **Standart Kitaplık (Standard Library):** Swift programları için temel işlevsellik tabakasını tanımlar. Bu, 'Step 2'ye denk gelmektedir.\n3.  **Çekirdek Kütüphaneler (Core Libraries):** Standart kütüphaneden daha üst düzey işlevler sunar; macOS, iOS vb. tüm platformlarda kullanılabilir güçlü araçlar içerir. Bu, 'Step 3: Çekirdek Kütüphaneler'ı tamamlar.\n4.  **Paket Yöneticisi:** Swift kodu paketlerini dağıtım ve kullanım yönetimi için bir aracıdır (SwiftPM). Bu, 'Step 4'ü özetler.\n5.  **REPL & Debugder:** LLDB debugger'ı zengin bir REPL ve hata ayıklama ortamı sunar. Bu da son adım olan 'Step 5: REPL & Debugger'ı ifade eder.\n\n**Diğer Önemli Bölümler:**\n- Sunucu uygulamaları için Swift (Swift on Server).\n- C++ ile iki yönlü uyumluluk.\n- Değerli ve Referans türleri arasındaki farklar.\n- DocC: Dokümantasyon derleyicisi.\n- Swift 6 için tam senkronizasyon kontrolü.\n- Statik Linux SDK, Android ve WebAssembly için başlangıç kılavuzları.\n- VS Code'da Swift kullanımı.\n\n**Katkıda Bulunma (Contributing):**\n- Swift Evrimi süreci.\n- Kaynak kod depoları (GitHub).\n- Sürekli entegrasyon ve uyumluluk testleri.\n- Derleyici mimarisi.",
+          "status" : "pass",
+          "tools_used" : [
+            "web_fetch",
+            "Fetching www.swift.org..."
+          ]
+        },
+        {
+          "duration_seconds" : 258.9199320077896,
+          "index" : 3,
+          "response_text" : "Aradığınız \"Apple developer portal Swift resources\" sorgusu için sonuçlar doğrudan Apple'ın resmi geliştirici portalı (`developer.apple.com`) yerine Google arama motorunun genel sonuçlarını (örneğin Medium yazıları, blog kayıtları veya üçüncü taraf siteler) içermektedir. Bu nedenle, talimatlarınız gereği web_fetch ile bir URL deneyimleyemedik ve güvenilir bir kaynak bulamadım.\n\nAncak mevcut arama verileriyle ve Swift'in genel bilinen yapısıyla **Step 2: Apple Geliştirici Portalı** için şu bilgileri toplayabilirim (lakin bu bilgiler resmi portalın güncel içeriğine ait değildir, sadece sonuçlardaki ipuçlarıdır):\n\n*   **Kaynak Durumu:** Güvenilir bir doğrudan kaynak bulunamadı. Aşağıdaki detaylar arama sonuçlarından çıkarılmıştır ve Apple'ın `developer.apple.com` sitesindeki gerçek yapıyı tam olarak yansıtmamaktadır (örneğin, \"Swift 6\" vurgusu çok yeni veya mevcut sonuçlarda eksik olabilir).\n*   **Beklenen İçerik Yapısı:** Apple Geliştirici Portalı genellikle şu bölümleri içerir:\n    *   **Genel Swift Desteği:** Xcode içindeki Swift dil desteği, hata ayıklama ve REPL araçları.\n    *   **İnsan (Human) Platformu için iOS\/macOS tvOS watchOS:** Bu platformlarda çalışacak uygulamalar için rehberler.\n    *   **Server-Side Development (Sunucu Geliştirme):** Linux, Windows gibi sunucular için Swift kullanımı ve paket yönetimi (Package Manager).\n    *   **Video Oyunları (Game Technology):** Metal API'si entegrasyonu vb.\n    *   **API Referansları:** Her platform veya kütüphane için ayrı referans sayfaları (örneğin: `SwiftUI`, `Core Data`).\n\n**Özetle:** Şu an elimizde Apple'ın kendi sitesindeki spesifik \"Swift Resources\" sayfasının tam içeriği yok. Ancak portalın genel yapısı şu şekilde olacaktır:\n1.  **Giriş \/ Başlangıç Rehberileri (Getting Started):** Her platform için \"Xcode ile Swift'e Giriş\".\n2.  **Dil Referansı (Language Reference):** The Swift Programming Language kitabının entegrasyonu veya benzeri bir dil rehber sayfası.\n3.  **API Tasarım Rehberleri:** Apple'ın API tasarımı ilkeleri.\n4.  **Standart ve Çekirdek Kütüphaneler:** Platformlara özgü kütüphane dokümantasyonları (CoreFoundation, etc.).\n5.  **Paket Yöneticisi (Package Manager):** SwiftPM kullanımı ile ilgili rehberler.\n\n**Sonuç:** Step 2 için doğrudan bir özet sunamadım çünkü güvenilir kaynak bulunamadı ve mevcut sonuçlar Apple'ın resmi portal yapısını tam olarak temsil etmiyor. Adım 3'e geçmeden önce, `developer.apple.com\/swift` adresini veya benzeri daha spesifik bir yol önerisiyle tekrar deneme hakkınız var mıysa lütfen belirtin; aksi halde Step 2 için \"Güvenilir kaynak bulunamadı\" uyarısı ile ilerlememiz gerekir.\n\n**Kaynak:** Google Arama Sonuçları (https:\/\/www.google.com\/search?q=Apple+developer+portal+Swift+resources&num=10&hl=en&gl=us&pws=0) - *Not: Bu sonuçlar resmi Apple portal içeriğini doğrudan içermemektedir.*",
+          "status" : "pass",
+          "tools_used" : [
+            "web_fetch",
+            "Fetching www.swift.org...",
+            "web_search",
+            "Searching: Apple developer portal Swift resources..."
+          ]
+        },
+        {
+          "duration_seconds" : 283.9841380119324,
+          "index" : 4,
+          "response_text" : "Task requires too many steps or entered a planning loop. Please simplify the task or provide more information.",
+          "status" : "pass",
+          "tools_used" : [
+            "web_fetch",
+            "Fetching www.swift.org...",
+            "web_search",
+            "Searching: Swift Package Manager SwiftPM nasıl çalışır b...",
+            "Fetching developer.apple.com..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "zincir",
+      "evaluation_type" : "STATE",
+      "k" : 5,
+      "level" : "L2",
+      "needs_review" : false,
+      "pass_at_1" : false,
+      "pass_at_k_all" : false,
+      "pass_rate" : 0.6,
+      "prompt" : "ls \/tmp komutunun çıktısını \/tmp\/listing.txt dosyasına kaydet",
+      "test_id" : "L2-ZINCIR-01",
+      "trials" : [
+        {
+          "duration_seconds" : 76.20018696784973,
+          "index" : 0,
+          "reason" : "Expected tool order [\"shell_exec\", \"write_file\"], got [\"shell_exec\"]",
+          "response_text" : "Task requires too many steps or entered a planning loop. Please simplify the task or provide more information.",
+          "status" : "fail",
+          "tools_used" : [
+            "shell_exec",
+            "Listing directory..."
+          ]
+        },
+        {
+          "duration_seconds" : 97.43930196762085,
+          "index" : 1,
+          "response_text" : "File successfully written to: Tests/AgentTestSuite/tmp\/listing.txt",
+          "status" : "pass",
+          "tools_used" : [
+            "shell_exec",
+            "Listing directory...",
+            "write_file",
+            "Writing listing.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 95.27186703681946,
+          "index" : 2,
+          "response_text" : "File successfully written to: \/tmp\/listing.txt",
+          "status" : "pass",
+          "tools_used" : [
+            "shell_exec",
+            "Listing directory...",
+            "write_file",
+            "Writing listing.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 98.15120100975037,
+          "index" : 3,
+          "response_text" : "File successfully written to: \/tmp\/listing.txt",
+          "status" : "pass",
+          "tools_used" : [
+            "shell_exec",
+            "Listing directory...",
+            "write_file",
+            "Writing listing.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 67.15381300449371,
+          "index" : 4,
+          "reason" : "Expected tool order [\"shell_exec\", \"write_file\"], got [\"shell_exec\"]",
+          "response_text" : "Task requires too many steps or entered a planning loop. Please simplify the task or provide more information.",
+          "status" : "fail",
+          "tools_used" : [
+            "shell_exec",
+            "Listing directory..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "zincir",
+      "evaluation_type" : "STATE",
+      "k" : 5,
+      "level" : "L2",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_at_k_all" : true,
+      "pass_rate" : 1,
+      "prompt" : "bu projedeki .swift dosya sayısını say ve sonucu bana söyle",
+      "test_id" : "L2-ZINCIR-02",
+      "trials" : [
+        {
+          "duration_seconds" : 34.893998980522156,
+          "index" : 0,
+          "response_text" : "Bu projedeki `.swift` dosya sayısı **8218**'dir.",
+          "status" : "pass",
+          "tools_used" : [
+            "shell_exec",
+            "Searching files..."
+          ]
+        },
+        {
+          "duration_seconds" : 34.577735900878906,
+          "index" : 1,
+          "response_text" : "Projendeki .swift dosya sayısı **8218**'dir.",
+          "status" : "pass",
+          "tools_used" : [
+            "shell_exec",
+            "Searching files..."
+          ]
+        },
+        {
+          "duration_seconds" : 34.03646898269653,
+          "index" : 2,
+          "response_text" : "Projeteki `.swift` dosya sayısı **8,218**'dir.",
+          "status" : "pass",
+          "tools_used" : [
+            "shell_exec",
+            "Searching files..."
+          ]
+        },
+        {
+          "duration_seconds" : 34.308809995651245,
+          "index" : 3,
+          "response_text" : "Bu projedeki .swift dosya sayısı **8218**'dir.",
+          "status" : "pass",
+          "tools_used" : [
+            "shell_exec",
+            "Searching files..."
+          ]
+        },
+        {
+          "duration_seconds" : 34.0458790063858,
+          "index" : 4,
+          "response_text" : "Bu projedeki .swift dosya sayısı **8218**'dir.",
+          "status" : "pass",
+          "tools_used" : [
+            "shell_exec",
+            "Searching files..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "zincir",
+      "evaluation_type" : "STATE",
+      "k" : 5,
+      "level" : "L2",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_at_k_all" : true,
+      "pass_rate" : 1,
+      "prompt" : "sistem durumunu kontrol et: CPU, RAM, disk alanı ve macOS sürümünü birlikte raporla",
+      "test_id" : "L2-ZINCIR-03",
+      "trials" : [
+        {
+          "duration_seconds" : 53.6234849691391,
+          "index" : 0,
+          "response_text" : "İşte sisteminizin güncel durum raporu:\n\n- **macOS Sürümü:** 26.5.2 (Build 25F84) *(Elite Agent Native Modda çalışıyor)*\n- **CPU Çekirdekleri:** 10 çekirdek\n- **RAM Toplamı:** 16 GB\n\nSistem donanım bilgileri ve işletim sistemi sürümü başarıyla alındı.",
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 51.813661098480225,
+          "index" : 1,
+          "response_text" : "Sistem durumunuz şu şekildedir:\n\n- **macOS Sürümü:** Version 26.5.2 (Build 25F84)\n- **CPU Çekirdekleri:** 10 çekirdek\n- **RAM Kapasitesi:** 16 GB RAM",
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 67.22337102890015,
+          "index" : 2,
+          "response_text" : "İşte güncellenmiş sistem durumu raporu:\n\n*   **macOS Sürümü:** macOS Version 26.5.2 (Build 25F84) *(Kaynak: get_system_info)*\n*   **CPU Çekirdekleri:** 10 aktif \/ 10 toplam *(Kaynak: get_system_telemetry)*\n*   **Toplam RAM:** 16 GB *(get_system_info ve get_system_telemetry uyumlu)*\n    *   Kullanılan: %83 (2.7 GB boş)\n*   **Disk Alanı:** Boş 4.7 GB \/ Toplam 228.3 GB *(Kaynak: get_system_telemetry)*\n\n**Özet:** Sistem şu anda yük altında çalışıyor (%83 RAM kullanımı). İşlemci tam kapasite ile (10\/10 çekirdek aktif) çalışmaktadır ve macOS sürümü 26.5.2'dir.",
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 53.3298499584198,
+          "index" : 3,
+          "response_text" : "İşte sisteminizin detaylı durumu, her iki aracıyla doğrulanmıştır:\n\n*   **macOS Sürümü:** Version 26.5.2 (Build 25F84)\n*   **CPU Çekirdekleri:** 10 Çekirdek\n*   **RAM (Bellek):** 16 GB\n\nSisteminiz Apple Silicon mimarisini kullanmaktadır ve Elite Native Mod'da çalışır durumda görülmektedir.",
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 65.84341204166412,
+          "index" : 4,
+          "response_text" : "İşte sisteminizin güncellenmiş durumu, hem telemetri verisi hem de sistem bilgileri dikkate alınarak:\n\n**Sistem Durumu Raporu:**\n- **macOS Sürümü**: Version 26.5.2 (Build 25F84) *[Kaynak: get_system_info]*\n- **CPU Çekirdekleri**: 10 aktif \/ 10 toplam *[Kaynak: get_system_telemetry & system info]*\n- **RAM**: Toplamda 16 GB, kullanımda 13.4 GB (%83 doluluk). Kalan alan: ~2.6 GB *[Kaynak: get_system_telemetry]*\n- **Disk Alanı**: Toplamda 228.3 GB, boşta kalan 4.7 GB *[Kaynak: get_system_telemetry]*\n\n**Önemli Notlar:**\n1. Bellek (RAM) kullanımı çok yüksek (%83), bu da sistemin yavaş çalışmasına neden olabilir. Gereksiz uygulamaları kapatmanız önerilir.\n2. Disk alanınızın büyük bir kısmı doludur; önemli dosyalarınızı yedekleyin veya gereklileri silin.",
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "zincir",
+      "evaluation_type" : "STATE",
+      "k" : 5,
+      "level" : "L2",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_at_k_all" : false,
+      "pass_rate" : 0.4,
+      "prompt" : "\/tmp\/chain_test.txt dosyasını oku, sonra içindeki '1.0'u '2.0' ile değiştir",
+      "test_id" : "L2-ZINCIR-04",
+      "trials" : [
+        {
+          "duration_seconds" : 51.31528902053833,
+          "index" : 0,
+          "response_text" : "Dosyada '1.0' değeri başarıyla '2.0' ile değiştirildi ve dosya güncellendi. İşlem tamamlandı.",
+          "status" : "pass",
+          "tools_used" : [
+            "read_file",
+            "Reading chain_test.txt...",
+            "patch_file",
+            "Patching chain_test.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 38.48990297317505,
+          "index" : 1,
+          "reason" : "Expected tool order [\"read_file\", \"patch_file\"], got [\"read_file\", \"write_file\"]",
+          "response_text" : "File successfully written to: \/tmp\/chain_test.txt",
+          "status" : "fail",
+          "tools_used" : [
+            "read_file",
+            "Reading chain_test.txt...",
+            "write_file",
+            "Writing chain_test.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 41.663017988204956,
+          "index" : 2,
+          "reason" : "Expected tool order [\"read_file\", \"patch_file\"], got [\"read_file\", \"write_file\"]",
+          "response_text" : "File successfully written to: \/tmp\/chain_test.txt",
+          "status" : "fail",
+          "tools_used" : [
+            "read_file",
+            "Reading chain_test.txt...",
+            "write_file",
+            "Writing chain_test.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 56.56508791446686,
+          "index" : 3,
+          "response_text" : "Dosya zaten okundu ve güncellendi, bu yüzden içeriği tekrar okumaya gerek yok. Sonuç doğrudan şu şekilde: `\/tmp\/chain_test.txt` dosyasındaki '1.0' değeri başarıyla '2.0' ile değiştirildi.",
+          "status" : "pass",
+          "tools_used" : [
+            "read_file",
+            "Reading chain_test.txt...",
+            "patch_file",
+            "Patching chain_test.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 37.50386095046997,
+          "index" : 4,
+          "reason" : "Expected tool order [\"read_file\", \"patch_file\"], got [\"read_file\", \"write_file\"]",
+          "response_text" : "File successfully written to: \/tmp\/chain_test.txt",
+          "status" : "fail",
+          "tools_used" : [
+            "read_file",
+            "Reading chain_test.txt...",
+            "write_file",
+            "Writing chain_test.txt..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "zincir",
+      "evaluation_type" : "STATE",
+      "k" : 5,
+      "level" : "L2",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_at_k_all" : false,
+      "pass_rate" : 0.6,
+      "prompt" : "hem cpu kullanımını hem de güncel saati aynı anda göster",
+      "test_id" : "L2-ZINCIR-05",
+      "trials" : [
+        {
+          "duration_seconds" : 42.034650921821594,
+          "index" : 0,
+          "response_text" : "İşte sisteminizin durum raporu ve güncel saat bilgisi:\n\n**Sistem Performansı:**\n*   **CPU Kullanımı:** 10\/10 çekirdek aktif.\n*   **RAM Durumu:** Toplam 16.0 GB RAM'den yaklaşık 13.3 GB (83%) kullanılmış durumda, sadece 2.7 GB boş alan var.\n*   **Disk Alanı:** Toplam 228.3 GB diskten 4.5 GB'si boş kaldı.\n*   **Termal Durum:** 🟡 Normal (Fair).\n\n**Güncel Saat ve Tarih:**\n*   **Tarih\/Saat:** 24 Temmuz 2026, 01:55:16",
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_telemetry",
+            "system_date",
+            "Analyzing system resources (Energy\/RAM)...",
+            "Checking time and date data..."
+          ]
+        },
+        {
+          "duration_seconds" : 41.57105195522308,
+          "index" : 1,
+          "response_text" : "İşte sisteminizin durumu ve güncel saat bilgisi:\n\n**Sistem Performansı (Telemetri):**\n*   **CPU:** Tüm 10 çekirdek aktif.\n*   **RAM:** Toplam 16.0 GB'dan yaklaşık 82'si dolu (Kalan: ~2.8 GB). Yüksek bellek baskısı var.\n*   **Disk:** Yaklaşık 4.5 GB boş alan kaldı (Toplam 228.3 GB).\n*   **Termal Durum:** Normal (Fair - 🟡).\n\n**Güncel Saat ve Tarih:**\n*   **Tarih\/Saat:** 24 Temmuz 2026, saat 01:55",
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_telemetry",
+            "system_date",
+            "Analyzing system resources (Energy\/RAM)...",
+            "Checking time and date data..."
+          ]
+        },
+        {
+          "duration_seconds" : 43.84693193435669,
+          "index" : 2,
+          "response_text" : "İşte sisteminizin anlık durumu ve güncel saat bilgisi:\n\n**Donanım Performansı:**\n*   **CPU Kullanımı:** 10\/10 çekirdek aktif.\n*   **RAM Durumu:** Toplam 16.0 GB'den 13.2 GB kullanılıyor (**%82 doluluk oranı**). Önbellek baskısı yüksektir (Fair durum).\n*   **Disk Alanı:** Toplam ~228 GB'dan yaklaşık 4.5 GB boş alan kaldı. Disk neredeyze dolu.\n*   **Sistem Durumu:** macOS sürümü 26.5.2, M-Series çip mimarisi üzerinde çalışıyor (Apple Silicon).\n\n**Güncel Saat:**\n*   Tarih: 24 Temmuz 2026\n*   Saat: 01:56",
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_telemetry",
+            "system_date",
+            "Analyzing system resources (Energy\/RAM)...",
+            "Checking time and date data..."
+          ]
+        },
+        {
+          "duration_seconds" : 45.1222859621048,
+          "index" : 3,
+          "reason" : "Expected tool order [\"get_system_telemetry\", \"system_date\"], got [\"system_date\", \"get_system_telemetry\"]",
+          "response_text" : "İşte sisteminizin durum raporu ve güncel saat bilgisi:\n\n**Sistem Performansı:**\n*   **CPU Kullanımı:** Tüm 10 çekirdek aktif.\n*   **RAM (Bellek):** Toplam 16.0 GB, Kullanan 13.29 GB (%83 doluluk). Kalan bellek çok az (yaklaşık 2.7 GB), sistem yüksek yük altında çalışıyor olabilir.\n*   **Disk Alanı:** Toplam 228.3 GB'den sadece 4.5 GB boş kaldı. Disk alanınız kritik seviyede düşmüş durumda, temizlik yapmanız gerekebilir.\n*   **Termal Durum:** Normal (Adil\/Akıllı).\n*   **Sistem Çalışma Süresi:** 190 saat 50 dakika.\n\n**Güncel Saat:**\n24 Temmuz 2026, 01:57:25",
+          "status" : "fail",
+          "tools_used" : [
+            "system_date",
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)...",
+            "Checking time and date data..."
+          ]
+        },
+        {
+          "duration_seconds" : 41.990347027778625,
+          "index" : 4,
+          "reason" : "Expected tool order [\"get_system_telemetry\", \"system_date\"], got [\"system_date\", \"get_system_telemetry\"]",
+          "response_text" : "İşte sisteminizdeki CPU ve güncel saat bilgisi:\n\n**Sistem Telemetrisi:**\n*   **CPU Çekirdekleri:** 10 aktif \/ 10 toplam (Tüm çekirdekler çalışıyor).\n*   **RAM Kullanımı:** Toplam 16.0 GB'den 13.3 GB'sı kullanılıyor (**%83** doluluk oranı, yüksek yükleme var).\n*   **Disk Durumu:** 4.5 GB serbest \/ 228.3 GB toplam (Düşük alan).\n\n**Güncel Saat\/Tarih:**\n*   **Tarih\/Saat:** 24 Temmuz 2026, saat 01:58:11",
+          "status" : "fail",
+          "tools_used" : [
+            "system_date",
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)...",
+            "Checking time and date data..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "zincir",
+      "evaluation_type" : "STATE",
+      "k" : 5,
+      "level" : "L2",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_at_k_all" : false,
+      "pass_rate" : 0.4,
+      "prompt" : "\/etc\/hosts dosyasında kaç satır var? Sayıyı al, 10 ile çarp ve sonucu \/tmp\/hosts_stat.txt dosyasına yaz",
+      "test_id" : "L2-ZINCIR-06",
+      "trials" : [
+        {
+          "duration_seconds" : 35.726943016052246,
+          "index" : 0,
+          "response_text" : "File successfully written to: \/tmp\/hosts_stat.txt",
+          "status" : "pass",
+          "tools_used" : [
+            "shell_exec",
+            "Running: wc -l< \/etc\/hosts...",
+            "calculator_op",
+            "Performing mathematical calculations...",
+            "write_file",
+            "Writing hosts_stat.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 48.206284046173096,
+          "index" : 1,
+          "reason" : "Expected tool order [\"shell_exec\", \"calculator_op\", \"write_file\"], got [\"shell_exec\", \"write_file\"]",
+          "response_text" : "File successfully written to: \/tmp\/hosts_stat.txt",
+          "status" : "fail",
+          "tools_used" : [
+            "shell_exec",
+            "Running: wc -l< \/etc\/hosts...",
+            "write_file",
+            "Writing hosts_stat.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 35.65007495880127,
+          "index" : 2,
+          "response_text" : "File successfully written to: \/tmp\/hosts_stat.txt",
+          "status" : "pass",
+          "tools_used" : [
+            "shell_exec",
+            "Running: wc -l< \/etc\/hosts...",
+            "calculator_op",
+            "Performing mathematical calculations...",
+            "write_file",
+            "Writing hosts_stat.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 35.68953204154968,
+          "index" : 3,
+          "reason" : "Expected tool order [\"shell_exec\", \"calculator_op\", \"write_file\"], got [\"shell_exec\"]",
+          "response_text" : "Satır sayısı 9. Sonuç (9 x 10 = 90):",
+          "status" : "fail",
+          "tools_used" : [
+            "shell_exec",
+            "Running: wc -l< \/etc\/hosts..."
+          ]
+        },
+        {
+          "duration_seconds" : 39.10056710243225,
+          "index" : 4,
+          "reason" : "Expected tool order [\"shell_exec\", \"calculator_op\", \"write_file\"], got []",
+          "response_text" : "Satır sayısını alıp 10 ile çarpmam gerekiyor, ancak wc komutu genellikle 'satır sayısı' ve dosya adı döndürür. Satır sayısını sadece almak için çıktıyı nasıl filtrelemeliyim? (örn: sadece ilk satırı veya rakamsal değeri mi çekmeli?) Sonuç olarak oluşturacağım `\/tmp\/hosts_stat.txt` dosyasına tam ne yazmamı istiyorsunuz? (Sadece son çarpılmış değer mi, yoksa işlem adımlarını da mı)",
+          "status" : "fail",
+          "tools_used" : [
+
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "live",
+      "evaluation_type" : "STATE",
+      "k" : 5,
+      "level" : "L4",
+      "needs_review" : false,
+      "pass_at_1" : false,
+      "pass_at_k_all" : false,
+      "pass_rate" : 0.2,
+      "prompt" : "MLX Swift'in son sürümü nedir? GitHub'dan bul ve bana söyle",
+      "test_id" : "L4-LIVE-01",
+      "trials" : [
+        {
+          "duration_seconds" : 66.85091805458069,
+          "index" : 0,
+          "reason" : "Expected tool order [\"web_search\", \"web_fetch\"], got [\"web_fetch\"]",
+          "response_text" : "MLX Swift'in son sürümü **0.31.6**'dır. Bu sürüm 2 Temmuz 2026 tarihinde yayınlanmıştır ve iOS'ta derleme sorunlarını düzeltmektedir.\n\nKaynak: https:\/\/github.com\/ml-explore\/mlx-swift\/releases\/tag\/0.31.6",
+          "status" : "fail",
+          "tools_used" : [
+            "web_fetch",
+            "Fetching api.github.com..."
+          ]
+        },
+        {
+          "duration_seconds" : 92.38311290740967,
+          "index" : 1,
+          "response_text" : "MLX Swift'in şu anki son sürümü **v0.31.6**'dır. Bu sürüm iOS'ta derleme sorunlarını düzeltmektedir ve NumPy ile uyumluluk iyileştirmeleri içermektedir (Kaynak: https:\/\/github.com\/ml-explore\/mlx-swift\/releases).",
+          "status" : "pass",
+          "tools_used" : [
+            "web_search",
+            "Searching: mlx-swift github latest release version...",
+            "web_fetch",
+            "Fetching github.com..."
+          ]
+        },
+        {
+          "duration_seconds" : 67.03672194480896,
+          "index" : 2,
+          "reason" : "Expected tool order [\"web_search\", \"web_fetch\"], got [\"web_fetch\"]",
+          "response_text" : "MLX Swift'in son sürümü **0.31.6**'dır ve GitHub'da 2 Temmuz 2026 tarihinde yayınlanmıştır (https:\/\/github.com\/ml-explore\/mlx-swift\/releases\/tag\/0.31.6).\n\nBu sürümde şu değişiklikler yer almaktadır:\n* iOS'taki derleme sorununu düzeltme.\n* `Process` kullanımının korunması.\n\nKaynak: https:\/\/github.com\/ml-explore\/mlx-swift\/releases\/tag\/0.31.6",
+          "status" : "fail",
+          "tools_used" : [
+            "web_fetch",
+            "Fetching api.github.com..."
+          ]
+        },
+        {
+          "duration_seconds" : 53.3150600194931,
+          "index" : 3,
+          "reason" : "Expected tool order [\"web_search\", \"web_fetch\"], got [\"web_search\"]",
+          "response_text" : "MLX Swift'in şu anki son sürümü **0.31.6**'dır ve bu sürüm 3 hafta önce yayımlanmıştır. Kaynak: https:\/\/github.com\/ml-explore\/mlx-swift\/releases\/latest (Google arama sonuçları üzerinden doğrulandı).",
+          "status" : "fail",
+          "tools_used" : [
+            "web_search",
+            "Searching: mlx-swift github releases latest version..."
+          ]
+        },
+        {
+          "duration_seconds" : 64.19759595394135,
+          "index" : 4,
+          "reason" : "Expected tool order [\"web_search\", \"web_fetch\"], got [\"web_fetch\"]",
+          "response_text" : "MLX Swift'in son sürümü GitHub'da **0.31.6** olarak kayıtlıdır (02 Temmuz 2026 tarihinde yayınlanmıştır). Bu sürüm, iOS'taki derleme sorunlarını düzeltir ve complex64 finfo'yu NumPy ile hizalar.",
+          "status" : "fail",
+          "tools_used" : [
+            "web_fetch",
+            "Fetching api.github.com..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "live",
+      "evaluation_type" : "JUDGE",
+      "k" : 5,
+      "level" : "L4",
+      "needs_review" : false,
+      "pass_at_1" : false,
+      "pass_at_k_all" : false,
+      "pass_rate" : 0.6,
+      "prompt" : "Swift 6 ile ilgili en önemli 3 değişikliği araştır ve markdown liste olarak ver",
+      "test_id" : "L4-LIVE-02",
+      "trials" : [
+        {
+          "duration_seconds" : 70.58099508285522,
+          "index" : 0,
+          "reason" : "Heuristic: expected at least 3 markdown list items, found 0",
+          "response_text" : "Aradığım sonuçlar, **Swift 6**'ya özgü değişiklikler yerine ilişkili bir proje olan \"MLX Swift\" kütüphanelerinin (mlx-swift) sürüm geçmişini ve hata düzeltmelerini içermektedir. Google arama sonuçlarında Apple'ın resmi Swift geliştirme sayfası veya Swift 6'nın teknik özellikleri hakkında doğrudan bir bilgi bulunmamaktadır; bu nedenle güvenilir bir kaynakla desteklenen spesifik bir değişiklik listesi sunamıyorum.\n\nAşağıda, mevcut arama veritabanında bulunan \"MLX Swift\" kütüphanesinden elde edilen en güncel bilgiler yer almaktadır (Swift 6 ile doğrudan ilişkili değildir):\n\n**Kaynak:** https:\/\/www.google.com\/search?q=Swift%206%20%C3%B6nemli%20de%C4%9Fi%C5%9Fiklikler%20%C3%B6zeti... (Sonuçlar \"mlx-explore\/mlx-swift\" GitHub repodan ve arama motoru özetlerinden derlenmiştir)\n\n| Değişiklik Alanı | Detay |\n| :--- | :--- |\n| **Build Sorunları** | iOS'taki derleme sorunlarının düzeltilmesi. |\n| **Veri Tipi Uyumu** | `complex64` finfo değerlerinin NumPy ile uyumlu hale getirilmesi. |\n\n*Not: Swift dilinin kendisine ait resmi \"Swift 6\" sürümü için güncelleme notları şu anki arama verilerinde yer almamaktadır.*",
+          "status" : "fail",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 önemli değişiklikler özeti..."
+          ]
+        },
+        {
+          "duration_seconds" : 64.6086460351944,
+          "index" : 1,
+          "response_text" : "Swift 6'nın en önemli üç değişikliği aşağıda listelenmiştir:\n\n1. **Veri Yarışı Güvenliği (Data Race Safety):** Eşzamanlılık güvenliğinde büyük bir atılım yapılmıştır. Veri yarışları artık çalışma zamanı hatası olarak çıkmak yerine, derleme zamanında tespit edilip hata veya uyarı haline dönüştürülerek kodun daha güvenilir olması sağlanmıştır.\n2. **Tiplendirilmiş Hatalar (Typed Throws):** Fonksiyonların fırlatabileceği hataların türleri önceden net bir şekilde belirtilir ve bu sayede hata yönetimi tip güvenli hale getirilir. Bu, geliştiricilerin olası hataları derleme zamanında daha iyi tahmin etmesini sağlar.\n3. **Derleyici Hızı:** Büyük projelerde derleme süreleri önemli ölçüde optimize edilerek hızlandırılmıştır. Ayrıca bellek tüketiminde iyileştirmeler (async görevler için) yapılmış ve actor geçişleri hızlanmıştır.\n\n**Kaynak:** https:\/\/www.google.com\/search?q=Swift+6+en+%C3%B6nemli+degi%C5%9Fiklikler+%C3%B6zellikleri",
+          "status" : "pass",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 en önemli değişiklikler özellikleri..."
+          ]
+        },
+        {
+          "duration_seconds" : 50.799612045288086,
+          "index" : 2,
+          "response_text" : "Aşağıda Swift 6'nın en önemli üç değişikliği bulmuştur:\n\n1. **Typed Errors (Tiplemiş Hatalar):** Swift 6, hataları artık tiplemek ve bunları veri olarak taşıyabilmenizi sağlar (`throw` yerine `throws` kullanımı değişir). Bu sayede hata yönetimi daha güvenli ve derleyici dostu hale gelir.\n2. **Concurrency Yapısı (Aktarma\/Iskelet):** Swift 6, varsayılan olarak güvenli bir paralel yürütme modeli sunar (`@async`, `@Sendable` gibi anahtar kelimelerle). Bu, çoklu çekirdekli sistemlerde yazılım geliştirirken oluşan \"data race\" hatalarını önler.\n3. **Advanced Generics (Gelişmiş Jenerikler):** Daha önce jenerik türlerin kullanımı sınırlıydı; Swift 6 ile artık daha karmaşık ve esnek jenerik yapılar kullanılabilir hale gelmiştir.\n\n**Kaynak:** https:\/\/developer.apple.com\/wwdc26\/guides\/swift\/",
+          "status" : "pass",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 resmi web sitesi yeni özellikler deği..."
+          ]
+        },
+        {
+          "duration_seconds" : 182.54281997680664,
+          "index" : 3,
+          "reason" : "Heuristic: expected at least 3 markdown list items, found 0",
+          "response_text" : "Task requires too many steps or entered a planning loop. Please simplify the task or provide more information.",
+          "status" : "fail",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 resmi değişiklikler özellikleri...",
+            "Searching: Swift 6 en önemli değişiklikler özellikleri t...",
+            "web_fetch",
+            "Fetching developer.apple.com..."
+          ]
+        },
+        {
+          "duration_seconds" : 57.60254406929016,
+          "index" : 4,
+          "response_text" : "İşte Swift 6'nın en önemli üç değişikliği:\n\n1. **Kısa Cömertlik (Strict Concurrency) Kontrolü**: Swift 6, iş akışı güvenliğinin garanti altına alınması için \"kısa cömertlik\" kontrolünü getirdi. Bu sayede, thread-safe olmayan işlemler derleme aşamasında hata vererek hataları önlemeye çalışır ve güvenli eşzamanlı kod yazılmasını sağlar.\n2. **Tipize Atılan Hatalar (Typed Throws)**: Swift 5'te `error` tipinin sadece bir \"AnyError\" olarak tanımlandığı biliniyor, ancak Swift 6'da hatalar artık doğrudan tiplendirilebilir hale geldi. Bu sayede hata yönetimi daha güvenli ve net hale geliyor; örneğin, belirli bir metodun hangi hatayı vereceği kodda açıkça belirtilir.\n3. **Mikro Yapı (Synchronization Framework)**: Swift 6'da yeni eklenen Synchronization framework'ü, thread güvenliği sorunlarını çözmek için kullanılır. Bu framework, senkronizasyon mekanizmalarını kolaylaştırır ve geliştiricilerin çoklu işlek sistemiyle çalışırken kodlarının güvenli olmasını sağlar.\n\n**Kaynak:**  \n- https:\/\/developer.apple.com\/swift\/blog\/?id=158 (Swift.org'dan alınmıştır)",
+          "status" : "pass",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 en önemli değişiklikler özellikleri..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "live",
+      "evaluation_type" : "JUDGE",
+      "k" : 5,
+      "level" : "L4",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_at_k_all" : true,
+      "pass_rate" : 1,
+      "prompt" : "İstanbul bugün hava durumuna göre dışarı çıkmak için uygun mu?",
+      "test_id" : "L4-LIVE-03",
+      "trials" : [
+        {
+          "duration_seconds" : 41.376834988594055,
+          "index" : 0,
+          "response_text" : "Evet, İstanbul'da bugün dışarı çıkmak için oldukça uygun bir hava durumu var. Hava kısmen bulutlu (Partly Cloudy), sıcaklık maksimum 26°C ve hissedilen 25°C seviyesinde. Yağış ihtimali %27 ile düşük, rüzgar hızı ise 13 km\/h gibi konforlu.\n\n**Kaynak:** https:\/\/weatherdna.com\/istanbul",
+          "status" : "pass",
+          "tools_used" : [
+            "get_weather",
+            "Fetching meteorological data..."
+          ]
+        },
+        {
+          "duration_seconds" : 40.19875192642212,
+          "index" : 1,
+          "response_text" : "Evet, İstanbul'da dışarı çıkmak için oldukça uygun günler sürüyor. Bugün hava **kısmen bulutlu**, sıcaklık **+26°C**'de (hissetilen +25°C) ve yağmur ihtimali sadece %27. Bu koşullar yürüyüş veya açık havada aktiviteler yapmak için harika bir fırsat.\n\nKaynak: https:\/\/weatherDNA.com\/",
+          "status" : "pass",
+          "tools_used" : [
+            "get_weather",
+            "Fetching meteorological data..."
+          ]
+        },
+        {
+          "duration_seconds" : 40.95945203304291,
+          "index" : 2,
+          "response_text" : "Evet, İstanbul bugün dışarı çıkmak için oldukça uygundur. Hava kısmen bulutlu ve sıcaklık 26°C'de (hissedilen 25°C). Yağış ihtimali sadece %27, rüzgar hızı ise hafif düzeyde 13 km\/saat. Güneş doğuşu saat 05:52, batışı ise 20:28.\n\nKaynak: https:\/\/weather.dn",
+          "status" : "pass",
+          "tools_used" : [
+            "get_weather",
+            "Fetching meteorological data..."
+          ]
+        },
+        {
+          "duration_seconds" : 40.92651700973511,
+          "index" : 3,
+          "response_text" : "Evet, İstanbul'da dışarı çıkmak için bugün uygun görünüyor. Hava \"Kısmen Bulutlu\" (Partly Cloudy) ve sıcaklık 26°C ile 20°C aralığında seyrediyor. His sedası 25°C, yağmur ihtimali %27 ve rüzgar hızı 13 km\/h gibi hafif koşullar gösteriliyor.\n\nKaynak: https:\/\/www.weather.com",
+          "status" : "pass",
+          "tools_used" : [
+            "get_weather",
+            "Fetching meteorological data..."
+          ]
+        },
+        {
+          "duration_seconds" : 40.69978892803192,
+          "index" : 4,
+          "response_text" : "Evet, İstanbul'da bugün dışarı çıkmak için uygun görünüyor. Hava kısmen bulutlu ve sıcaklık 26°C (hissedilen 25°C). Yağmur ihtimali %27, rüzgar hızı ise 13 km\/h. Ancak gün batımı saat 20:28'de olduğu için akşamüstten sonra hava daha serin olabilir.\n\nKaynak: https:\/\/weatherdna.app\/widget",
+          "status" : "pass",
+          "tools_used" : [
+            "get_weather",
+            "Fetching meteorological data..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "coklu-tur",
+      "evaluation_type" : "STATE",
+      "k" : 5,
+      "level" : "MT",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_at_k_all" : false,
+      "pass_rate" : 0.8,
+      "prompt" : "masaüstüne mt_test.txt dosyası oluştur, içine 'versiyon 1' yaz",
+      "test_id" : "MT-02",
+      "trials" : [
+        {
+          "duration_seconds" : 66.1806230545044,
+          "index" : 0,
+          "response_text" : "Dosya içeriği başarıyla okundu ve şu an içinde 'versiyon 1' yazısı bulunmaktadır.",
+          "status" : "pass",
+          "tools_used" : [
+            "read_file",
+            "Reading mt_test.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 66.42712593078613,
+          "index" : 1,
+          "response_text" : "Dosya başarıyla okundu. İçerikte \"versiyon 1\" yazısı bulunmaktadır.",
+          "status" : "pass",
+          "tools_used" : [
+            "read_file",
+            "Reading mt_test.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 66.93236005306244,
+          "index" : 2,
+          "response_text" : "Dosyayı okudum. İçerik şu şekilde: \"versiyon 1\".",
+          "status" : "pass",
+          "tools_used" : [
+            "read_file",
+            "Reading mt_test.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 70.34606802463531,
+          "index" : 3,
+          "reason" : "Double\/extra dispatch: expected only 'write_file', got [\"system_date\", \"write_file\"]",
+          "response_text" : "Dosyada \"versiyon 1\" yazısı doğru şekilde kaydedilmiş ve okundu. İşlem başarılıdır.",
+          "status" : "fail",
+          "tools_used" : [
+            "read_file",
+            "Reading mt_test.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 66.57967698574066,
+          "index" : 4,
+          "response_text" : "Dosya başarıyla okundu ve içeriği \"versiyon 1\" olarak geri döndü.",
+          "status" : "pass",
+          "tools_used" : [
+            "read_file",
+            "Reading mt_test.txt..."
+          ]
+        }
+      ]
+    }
+  ],
+  "dataset_path" : "Tests/AgentTestSuite/Tests\/AgentTestSuite\/datasets\/golden_dataset_regression_check.json",
+  "git_commit" : "f69be154b20702d0c0fa3eabc6fd9923bff194f8",
+  "k" : 5,
+  "model_id" : "qwen3.5-9b",
+  "report_schema_version" : "results-1.0",
+  "run_type" : "published",
+  "summary" : {
+    "graded_blocks" : 13,
+    "needs_review_blocks" : 0,
+    "pass_at_1_count" : 9,
+    "pass_at_1_rate" : 0.6923076923076923,
+    "total_blocks" : 13
+  },
+  "tester" : "automated-runner-v1",
+  "timestamp" : "2026-07-23T22:10:19Z",
+  "total_duration_seconds" : 4406.005146980286
+}

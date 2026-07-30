@@ -1,0 +1,16 @@
+warning: 'eliteagent': dependency 'swift-tokenizers' is not used by any target
+warning: 'eliteagent': dependency 'swift-hf-api' is not used by any target
+[0/1] Planning build
+[1/1] Compiling plugin GenerateManual
+[2/2] Compiling plugin GenerateDoccReference
+Building for debugging...
+[2/17] Write swift-version-15D9132313371EBE.txt
+Build complete! (7.02s)
+Test Suite 'Selected tests' started at 2026-07-23 08:31:20.248.
+Test Suite 'PheronAgentPackageTests.xctest' started at 2026-07-23 08:31:20.249.
+Test Suite 'GoldenDatasetRunnerTests' started at 2026-07-23 08:31:20.249.
+Test Case '-[PheronAgentTests.GoldenDatasetRunnerTests testGoldenDataset]' started.
+􀟈  Test run started.
+􀄵  Testing Library Version: 6.3 (980fec0f03c56f7)
+􀄵  Target Platform: arm64-apple-macosx
+􁁛  Test run with 0 tests in 0 suites passed after 0.001 seconds.

@@ -1,0 +1,29 @@
+warning: 'eliteagent': dependency 'swift-tokenizers' is not used by any target
+warning: 'eliteagent': dependency 'swift-hf-api' is not used by any target
+[0/1] Planning build
+[1/1] Compiling plugin GenerateManual
+[2/2] Compiling plugin GenerateDoccReference
+Building for debugging...
+[2/18] Write swift-version-15D9132313371EBE.txt
+Build complete! (6.74s)
+Test Suite 'Selected tests' started at 2026-07-23 08:34:42.077.
+Test Suite 'PheronAgentPackageTests.xctest' started at 2026-07-23 08:34:42.078.
+Test Suite 'GoldenDatasetRunnerTests' started at 2026-07-23 08:34:42.078.
+Test Case '-[PheronAgentTests.GoldenDatasetRunnerTests testGoldenDataset]' started.
+Test Case '-[PheronAgentTests.GoldenDatasetRunnerTests testGoldenDataset]' passed (10305.294 seconds).
+[GoldenDatasetRunner] MT-01: Swift 6'nın en büyük değişikliği ne?
+[GoldenDatasetRunner] EK-TOOL-21: 'Proje Son Durumu' konulu bir e-postayı user@example.com adresine gönder (legacy email client ile)
+[GoldenDatasetRunner] EK-TOOL-29: Unreal Engine aracını kullanarak sahneyi build et ve hata loglarını getir
+[GoldenDatasetRunner] L3-TOOL-13: mevcut Swift projesini Xcode derleyicisi ile build et
+[GoldenDatasetRunner] L3-TOOL-16: GitHub reposundaki son açık pull request'leri listele
+[GoldenDatasetRunner] Report written: Tests/AgentTestSuite/Tests/AgentTestSuite/results/auto_run_20260723_0834.json / Tests/AgentTestSuite/Tests/AgentTestSuite/results/auto_run_20260723_0834.md
+Test Suite 'GoldenDatasetRunnerTests' passed at 2026-07-23 11:26:27.373.
+	 Executed 1 test, with 0 failures (0 unexpected) in 10305.294 (10305.295) seconds
+Test Suite 'PheronAgentPackageTests.xctest' passed at 2026-07-23 11:26:27.373.
+	 Executed 1 test, with 0 failures (0 unexpected) in 10305.294 (10305.295) seconds
+Test Suite 'Selected tests' passed at 2026-07-23 11:26:27.373.
+	 Executed 1 test, with 0 failures (0 unexpected) in 10305.294 (10305.296) seconds
+􀟈  Test run started.
+􀄵  Testing Library Version: 6.3 (980fec0f03c56f7)
+􀄵  Target Platform: arm64-apple-macosx
+􁁛  Test run with 0 tests in 0 suites passed after 0.001 seconds.

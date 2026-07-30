@@ -41,6 +41,10 @@ The primary document exists in two languages: `METHODOLOGY.md` (English) and `ME
 **To read how this came to exist:**
 → `STORY.md` — the actual multi-week process: real bugs found in a running agent, real test runs, real corrections. Not a marketing narrative.
 
+> [!IMPORTANT]
+> **Adapting Reference Files to Your Environment:**
+> All reference run logs and golden dataset files use sanitized placeholders (`<USER_HOME>` for local user paths and `user@example.com` for email/integration tests). When executing tests on your own environment, ensure you substitute these placeholders with your agent's actual local workspace paths and test accounts.
+
 ---
 
 ## Coverage

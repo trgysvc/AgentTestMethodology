@@ -1,0 +1,119 @@
+{
+  "blocks" : [
+    {
+      "category" : "zincir",
+      "evaluation_type" : "STATE",
+      "k" : 3,
+      "level" : "L2",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_rate" : 1,
+      "prompt" : "sistem durumunu kontrol et: CPU, RAM, disk alanı ve macOS sürümünü birlikte raporla",
+      "test_id" : "L2-ZINCIR-03",
+      "trials" : [
+        {
+          "duration_seconds" : 47.91172993183136,
+          "index" : 0,
+          "response_text" : "İşte sisteminizin tam durum raporunun özeti:\n\n- **macOS Sürümü**: 26.5.2 (Build 25F84)\n- **CPU Durumu**: Tüm 10 çekirdek aktif çalışıyor.\n- **RAM Kullanımı**: Toplam 16 GB RAM'in yaklaşık %83'ü kullanılmış durumda (Kullanılan: ~13.3 GB, Kalan: ~2.7 GB). Bellek baskısı yüksektir.\n- **Disk Alanı**: Toplam 228.3 GB disk alanından sadece 4.5 GB boş kalmış durumda (yaklaşık %98 doluluk oranı). Diskiniz aşırı doludur ve hemen dosyalar silinmelidir veya daha büyük bir depolama kullanmalısınız.\n- **Termal Durum**: Cool (Normal), soğutma sistemi sorun yaşamıyor.\n\n**Öneri**: Sistem disk alanınız kritik seviyede, önemli olmayan dosyaları temizlemeniz gerekebilir.",
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 42.230419993400574,
+          "index" : 1,
+          "response_text" : "İşte tam sistem durum raporunuz:\n\n- **macOS Sürümü:** macOS Version 26.5.2 (Build 25F84)\n- **CPU Çekirdekleri:** 10 çekirdek\n- **RAM:** 16 GB RAM",
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 62.205397963523865,
+          "index" : 2,
+          "response_text" : "İşte sisteminizin güncellenmiş durumu, hem telemetri verisi hem de sistem bilgileri kullanılarak:\n\n*   **macOS Sürümü:** Version 26.5.2 (Build 25F84) *[Günlük Sistem Bilgilerinden]*\n*   **Termal Durum:** 🟡 Normal (Fair)\n*   **CPU Çekirdekleri:** 10 aktif \/ 10 toplam\n*   **Toplam RAM:** 16.0 GB\n*   **Kullanılan RAM:** 13.3 GB (%83 doluluk oranı)\n*   **Disk Alanı (Serbest\/Toplam):** 4.8 GB \/ 228.3 GB\n\nSistem yüksek bellek baskısı altında çalışıyor ve disk alanınız oldukça kısıtlı durumda görünüyor.",
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "zincir",
+      "evaluation_type" : "STATE",
+      "k" : 3,
+      "level" : "L2",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_rate" : 0.6666666666666666,
+      "prompt" : "hem cpu kullanımını hem de güncel saati aynı anda göster",
+      "test_id" : "L2-ZINCIR-05",
+      "trials" : [
+        {
+          "duration_seconds" : 44.428771018981934,
+          "index" : 0,
+          "response_text" : "İşte sisteminizin güncel durumu ve saat bilgisi:\n\n**Sistem Telemetrisi:**\n*   **CPU Kullanımı:** 10\/10 çekirdek aktif.\n*   **RAM (Bellek):** Toplamda 16.0 GB RAM'in yaklaşık %82'si (13.1 GB) kullanılmış durumda; serbest olan 2.9 GB.\n*   **Disk Alanı:** Toplam 228.3 GB'den 4.8 GB'ı boşalmış durumda.\n*   **Termal Durum:** Normal (Eşit).\n\n**Güncel Saat:**\n*   **Tarih\/Saat:** 24 Temmuz 2026, saat 01:07",
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_telemetry",
+            "system_date",
+            "Analyzing system resources (Energy\/RAM)...",
+            "Checking time and date data..."
+          ]
+        },
+        {
+          "duration_seconds" : 40.50037610530853,
+          "index" : 1,
+          "reason" : "Expected tool order [\"get_system_telemetry\", \"system_date\"], got [\"system_date\", \"get_system_telemetry\"]",
+          "response_text" : "İşte sisteminizin durum raporu ve güncel saat bilgisi:\n\n**Donanım Kullanımı:**\n*   **CPU:** 10\/10 çekirdek aktif.\n*   **RAM Toplamı:** 16.0 GB (Kullanılan: 82% \/ Serbest: 2.7 GB).\n*   **Disk:** 4.8 GB serbest, toplamda 228.3 GB.\n*   **Termal Durum:** Normal (Fair - 🟡).\n\n**Güncel Saat:**\n*   **Tarih\/Saat:** 24 Temmuz 2026, 01:08:34.",
+          "status" : "fail",
+          "tools_used" : [
+            "system_date",
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)...",
+            "Checking time and date data..."
+          ]
+        },
+        {
+          "duration_seconds" : 35.641141057014465,
+          "index" : 2,
+          "response_text" : "İşte sisteminizden alınan CPU ve saat bilgisi:\n\n*   **CPU Kullanımı:** %100 (Tüm 10 çekirdek aktif çalışıyor)\n*   **Güncel Saat:** 24 Temmuz 2026, saat 01:09\n\nKaynak: Sistem Telemetrisi ve Tarih Aracı",
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_telemetry",
+            "system_date",
+            "Analyzing system resources (Energy\/RAM)...",
+            "Checking time and date data..."
+          ]
+        }
+      ]
+    }
+  ],
+  "dataset_path" : "Tests/AgentTestSuite/Tests\/AgentTestSuite\/datasets\/zincir_recheck.json",
+  "git_commit" : "f69be154b20702d0c0fa3eabc6fd9923bff194f8",
+  "k" : 3,
+  "model_id" : "qwen3.5-9b",
+  "report_schema_version" : "results-1.0",
+  "run_type" : "exploratory",
+  "summary" : {
+    "graded_blocks" : 2,
+    "needs_review_blocks" : 0,
+    "pass_at_1_count" : 2,
+    "pass_at_1_rate" : 1,
+    "total_blocks" : 2
+  },
+  "tester" : "automated-runner-v1",
+  "timestamp" : "2026-07-23T22:04:49Z",
+  "total_duration_seconds" : 276.067489027977
+}

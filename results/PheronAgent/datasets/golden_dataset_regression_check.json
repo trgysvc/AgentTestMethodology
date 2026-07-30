@@ -1,0 +1,386 @@
+{
+  "schema_version": "1.1",
+  "blocks": [
+    {
+      "schema_version": "1.1",
+      "test_id": "L1-SISTEM-02",
+      "level": "L1",
+      "category": "sistem",
+      "prompt": "macOS versiyonum nedir?",
+      "layer": "E2E",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 58,
+        "tool": "get_system_info",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": "macOS",
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "get_system_telemetry çağrıldı (yanlış araç)"
+      ],
+      "k": 5,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "published"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L2-WEB-01",
+      "level": "L2",
+      "category": "web",
+      "prompt": "Swift 6 concurrency ile ilgili en önemli değişiklikler neler, araştır",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 45,
+        "tool": "web_search",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": "concurrency",
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Araç yok, model eğitim bilgisinden yanıt verdi",
+        "[WEB_FETCH_THIN] döndü ve yeniden denenmedi"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L2-WEB-02",
+      "level": "L2",
+      "category": "web",
+      "prompt": "https://www.swift.org/documentation/ adresindeki içeriği oku ve özetle",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "JUDGE",
+      "expected": {
+        "ubid": 46,
+        "tool": null,
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null,
+        "require_tool_called": "web_fetch"
+      },
+      "fail_patterns": [
+        "[WEB_FETCH_404] döndü (sayfa gerçekten var)",
+        "Yanıt hayal ürünü içerik (araç çağrısı yok)"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L2-ZINCIR-01",
+      "level": "L2",
+      "category": "zincir",
+      "prompt": "ls /tmp komutunun çıktısını /tmp/listing.txt dosyasına kaydet",
+      "layer": "E2E",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": null,
+        "tool": null,
+        "tools_order": [
+          "shell_exec",
+          "write_file"
+        ],
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Sıra yanlış: write_file önce",
+        "write_file'a sabit metin yazılmış (shell çıktısı değil)",
+        "Sadece biri çağrıldı"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L2-ZINCIR-02",
+      "level": "L2",
+      "category": "zincir",
+      "prompt": "bu projedeki .swift dosya sayısını say ve sonucu bana söyle",
+      "layer": "E2E",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 32,
+        "tool": "shell_exec",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Model dosya sayısını tahmin etti (araç yok)",
+        "Sayı 0 veya negatif"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L2-ZINCIR-03",
+      "level": "L2",
+      "category": "zincir",
+      "prompt": "sistem durumunu kontrol et: CPU, RAM, disk alanı ve macOS sürümünü birlikte raporla",
+      "layer": "E2E",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": null,
+        "tool": null,
+        "tools_order": [
+          "get_system_telemetry",
+          "get_system_info"
+        ],
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Sadece biri çağrıldı",
+        "Model bilgileri uydurdu"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L2-ZINCIR-04",
+      "level": "L2",
+      "category": "zincir",
+      "prompt": "/tmp/chain_test.txt dosyasını oku, sonra içindeki '1.0'u '2.0' ile değiştir",
+      "layer": "E2E",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": null,
+        "tool": null,
+        "tools_order": [
+          "read_file",
+          "patch_file"
+        ],
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "patch_file önce çağrıldı (read etmeden)",
+        "Yanlış dize değiştirildi"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory",
+      "setup": [
+        "printf 'versiyon: 1.0' > /tmp/chain_test.txt"
+      ],
+      "teardown": [
+        "rm -f /tmp/chain_test.txt"
+      ]
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L2-ZINCIR-05",
+      "level": "L2",
+      "category": "zincir",
+      "prompt": "hem cpu kullanımını hem de güncel saati aynı anda göster",
+      "layer": "E2E",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": null,
+        "tool": null,
+        "tools_order": [
+          "get_system_telemetry",
+          "system_date"
+        ],
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Sadece biri çağrıldı",
+        "İki araç aynı durationMs (seri çalışmış, startTime hatası)"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L2-ZINCIR-06",
+      "level": "L2",
+      "category": "zincir",
+      "prompt": "/etc/hosts dosyasında kaç satır var? Sayıyı al, 10 ile çarp ve sonucu /tmp/hosts_stat.txt dosyasına yaz",
+      "layer": "E2E",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": null,
+        "tool": null,
+        "tools_order": [
+          "shell_exec",
+          "calculator_op",
+          "write_file"
+        ],
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Adım atlandı (sadece 2 araç çağrıldı)",
+        "M yanlış (N'yi shell'den almamış, tahmin etmiş)",
+        "Dosya oluşmadı",
+        "Model N'yi araç çağrısı yapmadan uydurdu"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L4-LIVE-01",
+      "level": "L4",
+      "category": "live",
+      "prompt": "MLX Swift'in son sürümü nedir? GitHub'dan bul ve bana söyle",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": null,
+        "tool": null,
+        "tools_order": [
+          "web_search",
+          "web_fetch"
+        ],
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Yanıt \"bilmiyorum\"",
+        "Sürüm numarası uydurulmuş (kaynak yok)",
+        "[WEB_FETCH_THIN] döndü + yeniden denenmedi"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L4-LIVE-02",
+      "level": "L4",
+      "category": "live",
+      "prompt": "Swift 6 ile ilgili en önemli 3 değişikliği araştır ve markdown liste olarak ver",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier → LLM",
+      "evaluation_type": "JUDGE",
+      "expected": {
+        "ubid": 45,
+        "tool": null,
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null,
+        "require_tool_called": "web_search",
+        "min_list_items": 3,
+        "require_url": true
+      },
+      "fail_patterns": [
+        "Eğitim verisinden cevap (kaynak yok, araç yok)",
+        "3'ten az madde"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L4-LIVE-03",
+      "level": "L4",
+      "category": "live",
+      "prompt": "İstanbul bugün hava durumuna göre dışarı çıkmak için uygun mu?",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "JUDGE",
+      "expected": {
+        "ubid": 81,
+        "tool": null,
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": "İstanbul",
+        "no_tool_call": null,
+        "require_tool_called": "get_weather"
+      },
+      "fail_patterns": [
+        "Hava verisi olmadan yorum yapıldı",
+        "Yanlış şehir"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "MT-02",
+      "level": "MT",
+      "category": "coklu-tur",
+      "prompt": "masaüstüne mt_test.txt dosyası oluştur, içine 'versiyon 1' yaz",
+      "layer": "E2E",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "tool": "write_file"
+      },
+      "turns": [
+        "masaüstüne mt_test.txt dosyası oluştur, içine 'versiyon 1' yaz",
+        "az önce oluşturduğun dosyayı oku"
+      ],
+      "turn_expected": [
+        {
+          "tool": "write_file"
+        },
+        {
+          "tool": "read_file"
+        }
+      ],
+      "teardown": [
+        "rm -f ~/Desktop/mt_test.txt"
+      ],
+      "fail_patterns": [
+        "Tur 2: hangi dosya bilmeden yanlış dosya okudu",
+        "Tur 2: dosya içeriğini uydurdu"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    }
+  ]
+}

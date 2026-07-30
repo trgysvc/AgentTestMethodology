@@ -10,6 +10,9 @@ are implied by this template. Copy this block once per test case into your own s
 See `golden_dataset.template.json` for the machine-readable equivalent of the same
 fields — keep both in sync if you extend either.
 
+> [!NOTE]
+> When writing prompts or acceptance criteria involving local files or test accounts, use generic placeholders (e.g., `<USER_HOME>/workspace` for home directory paths, `user@example.com` for test emails) and replace them dynamically at runtime in your test harness.
+
 ---
 
 ## Test Block Anatomy

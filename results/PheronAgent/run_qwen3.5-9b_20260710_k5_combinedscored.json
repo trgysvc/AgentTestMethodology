@@ -1311,12 +1311,12 @@
       {
         "run": 1,
         "verdict": "UNCLEAR",
-        "reason": "inconclusive: output redirected to workspace: '~/yok_abc.txt' is outside the workspace, so the file was saved to /users/trgysvc/workspaces/pheronagent/yok_abc.txt i"
+        "reason": "inconclusive: output redirected to workspace: '~/yok_abc.txt' is outside the workspace, so the file was saved to /Users/<user>/workspaces/pheronagent/yok_abc.txt i"
       },
       {
         "run": 2,
         "verdict": "UNCLEAR",
-        "reason": "inconclusive: file successfully written to: /users/trgysvc/workspaces/pheronagent/yok_abc.txt"
+        "reason": "inconclusive: file successfully written to: /Users/<user>/workspaces/pheronagent/yok_abc.txt"
       },
       {
         "run": 3,
@@ -1558,7 +1558,7 @@
       {
         "run": 3,
         "verdict": "UNCLEAR",
-        "reason": "inconclusive: dosya nereye kaydedilecek? geçerli bir workspace içi yol (örn: /users/trgysvc/workspaces/pheronagent/test.txt) veya home dizini (/users/trgysvc/) için"
+        "reason": "inconclusive: dosya nereye kaydedilecek? geçerli bir workspace içi yol (örn: /Users/<user>/workspaces/pheronagent/test.txt) veya home dizini (/Users/<user>/) için"
       }
     ]
   },

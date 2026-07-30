@@ -1,0 +1,154 @@
+{
+  "blocks" : [
+    {
+      "category" : "web",
+      "evaluation_type" : "JUDGE",
+      "k" : 3,
+      "level" : "L2",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_rate" : 1,
+      "prompt" : "https:\/\/www.swift.org\/documentation\/ adresindeki içeriği oku ve özetle",
+      "test_id" : "L2-WEB-02",
+      "trials" : [
+        {
+          "duration_seconds" : 72.7633650302887,
+          "index" : 0,
+          "status" : "pass",
+          "tools_used" : [
+            "web_fetch",
+            "Fetching www.swift.org..."
+          ]
+        },
+        {
+          "duration_seconds" : 68.60110199451447,
+          "index" : 1,
+          "status" : "pass",
+          "tools_used" : [
+            "web_fetch",
+            "Fetching www.swift.org..."
+          ]
+        },
+        {
+          "duration_seconds" : 56.32479500770569,
+          "index" : 2,
+          "status" : "pass",
+          "tools_used" : [
+            "web_fetch",
+            "Fetching www.swift.org..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "live",
+      "evaluation_type" : "JUDGE",
+      "k" : 3,
+      "level" : "L4",
+      "needs_review" : false,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "Swift 6 ile ilgili en önemli 3 değişikliği araştır ve markdown liste olarak ver",
+      "test_id" : "L4-LIVE-02",
+      "trials" : [
+        {
+          "duration_seconds" : 51.63496208190918,
+          "index" : 0,
+          "reason" : "Heuristic: expected at least 3 markdown list items, found 0",
+          "status" : "fail",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 en önemli değişiklikler özellikler..."
+          ]
+        },
+        {
+          "duration_seconds" : 192.69716894626617,
+          "index" : 1,
+          "reason" : "Heuristic: expected at least 3 markdown list items, found 0",
+          "status" : "fail",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 en önemli değişiklikler özellikler..."
+          ]
+        },
+        {
+          "duration_seconds" : 51.494558930397034,
+          "index" : 2,
+          "reason" : "Heuristic: expected at least 3 markdown list items, found 0",
+          "status" : "fail",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 en önemli özellikler değişiklikler..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "live",
+      "evaluation_type" : "JUDGE",
+      "k" : 3,
+      "level" : "L4",
+      "needs_review" : false,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "İstanbul bugün hava durumuna göre dışarı çıkmak için uygun mu?",
+      "test_id" : "L4-LIVE-03",
+      "trials" : [
+        {
+          "duration_seconds" : 63.83334505558014,
+          "index" : 0,
+          "reason" : "Heuristic: response did not mention required term 'İstanbul'",
+          "status" : "fail",
+          "tools_used" : [
+            "get_weather",
+            "Fetching meteorological data...",
+            "get_system_info",
+            "Querying system hardware\/software info...",
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)..."
+          ]
+        },
+        {
+          "duration_seconds" : 58.876631021499634,
+          "index" : 1,
+          "reason" : "Heuristic: response did not mention required term 'İstanbul'",
+          "status" : "fail",
+          "tools_used" : [
+            "get_weather",
+            "Fetching meteorological data...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 68.80633795261383,
+          "index" : 2,
+          "reason" : "Heuristic: response did not mention required term 'İstanbul'",
+          "status" : "fail",
+          "tools_used" : [
+            "get_weather",
+            "Fetching meteorological data...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        }
+      ]
+    }
+  ],
+  "dataset_path" : "Tests/AgentTestSuite/Tests\/AgentTestSuite\/datasets\/judge_heuristic_check.json",
+  "git_commit" : "4a5740dce5adbd3a3b7146ca392519c5d5b13973",
+  "k" : 3,
+  "model_id" : "qwen3.5-9b",
+  "report_schema_version" : "results-1.0",
+  "run_type" : "exploratory",
+  "summary" : {
+    "graded_blocks" : 3,
+    "needs_review_blocks" : 0,
+    "pass_at_1_count" : 1,
+    "pass_at_1_rate" : 0.3333333333333333,
+    "total_blocks" : 3
+  },
+  "tester" : "automated-runner-v1",
+  "timestamp" : "2026-07-23T19:09:38Z",
+  "total_duration_seconds" : 689.6917079687119
+}

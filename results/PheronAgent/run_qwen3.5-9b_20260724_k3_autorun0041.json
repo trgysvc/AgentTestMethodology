@@ -1,0 +1,115 @@
+{
+  "blocks" : [
+    {
+      "category" : "zincir",
+      "evaluation_type" : "STATE",
+      "k" : 3,
+      "level" : "L2",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_rate" : 1,
+      "prompt" : "sistem durumunu kontrol et: CPU, RAM, disk alanı ve macOS sürümünü birlikte raporla",
+      "test_id" : "L2-ZINCIR-03",
+      "trials" : [
+        {
+          "duration_seconds" : 46.83339703083038,
+          "index" : 0,
+          "response_text" : "Task requires too many steps or entered a planning loop. Please simplify the task or provide more information.",
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 53.69689893722534,
+          "index" : 1,
+          "response_text" : "Task requires too many steps or entered a planning loop. Please simplify the task or provide more information.",
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 55.27186596393585,
+          "index" : 2,
+          "response_text" : "Task requires too many steps or entered a planning loop. Please simplify the task or provide more information.",
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "zincir",
+      "evaluation_type" : "STATE",
+      "k" : 3,
+      "level" : "L2",
+      "needs_review" : false,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "hem cpu kullanımını hem de güncel saati aynı anda göster",
+      "test_id" : "L2-ZINCIR-05",
+      "trials" : [
+        {
+          "duration_seconds" : 0.27209198474884033,
+          "index" : 0,
+          "reason" : "Expected tool order [\"get_system_telemetry\", \"system_date\"], got [\"get_system_telemetry\"]",
+          "response_text" : "[🖥 System Telemetry Report]\n─────────────────────────────\n• OS             : macOS (Version 26.5.2 (Build 25F84))\n• Thermal State  : 🟡 Normal (Fair)\n• CPU Cores      : 10 active \/ 10 total\n• Total RAM      : 16.0 GB\n• Used RAM       : 15.6 GB (97%)\n• Free RAM       : 0.4 GB\n• Disk (Free\/Total): 6.3 GB \/ 228.3 GB\n• Uptime         : 189h 37m\n• Architecture   : Apple Silicon (M-Series, arm64)\n─────────────────────────────",
+          "status" : "fail",
+          "tools_used" : [
+            "get_system_telemetry",
+            "Checking resource metrics..."
+          ]
+        },
+        {
+          "duration_seconds" : 0.2733800411224365,
+          "index" : 1,
+          "reason" : "Expected tool order [\"get_system_telemetry\", \"system_date\"], got [\"get_system_telemetry\"]",
+          "response_text" : "[🖥 System Telemetry Report]\n─────────────────────────────\n• OS             : macOS (Version 26.5.2 (Build 25F84))\n• Thermal State  : 🟡 Normal (Fair)\n• CPU Cores      : 10 active \/ 10 total\n• Total RAM      : 16.0 GB\n• Used RAM       : 14.7 GB (91%)\n• Free RAM       : 1.3 GB\n• Disk (Free\/Total): 6.3 GB \/ 228.3 GB\n• Uptime         : 189h 37m\n• Architecture   : Apple Silicon (M-Series, arm64)\n─────────────────────────────",
+          "status" : "fail",
+          "tools_used" : [
+            "get_system_telemetry",
+            "Checking resource metrics..."
+          ]
+        },
+        {
+          "duration_seconds" : 0.27124297618865967,
+          "index" : 2,
+          "reason" : "Expected tool order [\"get_system_telemetry\", \"system_date\"], got [\"get_system_telemetry\"]",
+          "response_text" : "[🖥 System Telemetry Report]\n─────────────────────────────\n• OS             : macOS (Version 26.5.2 (Build 25F84))\n• Thermal State  : 🟡 Normal (Fair)\n• CPU Cores      : 10 active \/ 10 total\n• Total RAM      : 16.0 GB\n• Used RAM       : 14.7 GB (91%)\n• Free RAM       : 1.3 GB\n• Disk (Free\/Total): 6.3 GB \/ 228.3 GB\n• Uptime         : 189h 37m\n• Architecture   : Apple Silicon (M-Series, arm64)\n─────────────────────────────",
+          "status" : "fail",
+          "tools_used" : [
+            "get_system_telemetry",
+            "Checking resource metrics..."
+          ]
+        }
+      ]
+    }
+  ],
+  "dataset_path" : "Tests/AgentTestSuite/Tests\/AgentTestSuite\/datasets\/zincir_recheck.json",
+  "git_commit" : "f69be154b20702d0c0fa3eabc6fd9923bff194f8",
+  "k" : 3,
+  "model_id" : "qwen3.5-9b",
+  "report_schema_version" : "results-1.0",
+  "run_type" : "exploratory",
+  "summary" : {
+    "graded_blocks" : 2,
+    "needs_review_blocks" : 0,
+    "pass_at_1_count" : 1,
+    "pass_at_1_rate" : 0.5,
+    "total_blocks" : 2
+  },
+  "tester" : "automated-runner-v1",
+  "timestamp" : "2026-07-23T21:41:32Z",
+  "total_duration_seconds" : 159.76463997364044
+}

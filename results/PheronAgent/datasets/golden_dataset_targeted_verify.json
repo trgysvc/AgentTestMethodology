@@ -1,0 +1,134 @@
+{
+  "schema_version": "1.1",
+  "blocks": [
+    {
+      "schema_version": "1.1",
+      "test_id": "MT-01",
+      "level": "MT",
+      "category": "coklu-tur",
+      "prompt": "Swift 6'nın en büyük değişikliği ne?",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier → LLM",
+      "evaluation_type": "STATE",
+      "expected": {
+        "tool": "web_search"
+      },
+      "turns": [
+        "Swift 6'nın en büyük değişikliği ne?",
+        "bunu önceki projemize nasıl uygularız?"
+      ],
+      "turn_expected": [
+        {
+          "tool": "web_search"
+        },
+        {
+          "no_tool_call": true
+        }
+      ],
+      "fail_patterns": [
+        "Tur 2: bağlamı kaybetti, tekrar arama yaptı",
+        "Tur 2: 'ne hakkında konuşuyorduk?' benzeri yanıt"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-21",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "'Proje Son Durumu' konulu bir e-postayı user@example.com adresine gönder (legacy email client ile)",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 22,
+        "tool": "send_email",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-29",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "Unreal Engine aracını kullanarak sahneyi build et ve hata loglarını getir",
+      "layer": "Integration",
+      "yakalayan_katman": "TaskClassifier / LLM",
+      "evaluation_type": "JUDGE",
+      "expected": {
+        "ubid": 104,
+        "tool": "unreal_engine_tool",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L3-TOOL-13",
+      "level": "L3-TOOL",
+      "category": "tool-coverage",
+      "prompt": "mevcut Swift projesini Xcode derleyicisi ile build et",
+      "layer": "E2E",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 47,
+        "tool": "xcode_engine",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L3-TOOL-16",
+      "level": "L3-TOOL",
+      "category": "tool-coverage",
+      "prompt": "GitHub reposundaki son açık pull request'leri listele",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 101,
+        "tool": "github_tool",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    }
+  ]
+}

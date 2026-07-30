@@ -1,0 +1,894 @@
+{
+  "blocks" : [
+    {
+      "category" : "sistem",
+      "evaluation_type" : "STATE",
+      "k" : 5,
+      "level" : "L1",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_at_k_all" : true,
+      "pass_rate" : 1,
+      "prompt" : "macOS versiyonum nedir?",
+      "test_id" : "L1-SISTEM-02",
+      "trials" : [
+        {
+          "duration_seconds" : 0.2728910446166992,
+          "index" : 0,
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 0.27278900146484375,
+          "index" : 1,
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 0.2604188919067383,
+          "index" : 2,
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 0.27191197872161865,
+          "index" : 3,
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 0.27091705799102783,
+          "index" : 4,
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "web",
+      "evaluation_type" : "STATE",
+      "k" : 5,
+      "level" : "L2",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_at_k_all" : false,
+      "pass_rate" : 0.8,
+      "prompt" : "Swift 6 concurrency ile ilgili en önemli değişiklikler neler, araştır",
+      "test_id" : "L2-WEB-01",
+      "trials" : [
+        {
+          "duration_seconds" : 73.71092009544373,
+          "index" : 0,
+          "status" : "pass",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 concurrency en önemli değişiklikler..."
+          ]
+        },
+        {
+          "duration_seconds" : 55.60879397392273,
+          "index" : 1,
+          "status" : "pass",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 concurrency en önemli değişiklikler..."
+          ]
+        },
+        {
+          "duration_seconds" : 196.78047895431519,
+          "index" : 2,
+          "reason" : "Double\/extra dispatch: expected only 'web_search', got [\"web_search\", \"web_fetch\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 concurrency features changes document...",
+            "Searching: Swift 6 default actor isolation MainActor cha...",
+            "web_fetch",
+            "Fetching swift.org..."
+          ]
+        },
+        {
+          "duration_seconds" : 204.025848031044,
+          "index" : 3,
+          "status" : "pass",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 concurrency features changes...",
+            "Searching: Swift 6 migration path guide..."
+          ]
+        },
+        {
+          "duration_seconds" : 60.348212003707886,
+          "index" : 4,
+          "status" : "pass",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 concurrency özellikleri ve değişiklik..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "web",
+      "evaluation_type" : "JUDGE",
+      "k" : 5,
+      "level" : "L2",
+      "needs_review" : true,
+      "pass_at_1" : false,
+      "pass_at_k_all" : false,
+      "pass_rate" : 0,
+      "prompt" : "https:\/\/www.swift.org\/documentation\/ adresindeki içeriği oku ve özetle",
+      "test_id" : "L2-WEB-02",
+      "trials" : [
+        {
+          "duration_seconds" : 82.70692300796509,
+          "index" : 0,
+          "reason" : "JUDGE evaluation type requires a calibrated judge (Bölüm 2.3, Cohen's kappa ≥ 0.6) — not implemented in Phase 1",
+          "status" : "needs_review",
+          "tools_used" : [
+            "web_fetch",
+            "Fetching www.swift.org..."
+          ]
+        },
+        {
+          "duration_seconds" : 54.7180449962616,
+          "index" : 1,
+          "reason" : "JUDGE evaluation type requires a calibrated judge (Bölüm 2.3, Cohen's kappa ≥ 0.6) — not implemented in Phase 1",
+          "status" : "needs_review",
+          "tools_used" : [
+            "web_fetch",
+            "Fetching www.swift.org..."
+          ]
+        },
+        {
+          "duration_seconds" : 59.4075630903244,
+          "index" : 2,
+          "reason" : "JUDGE evaluation type requires a calibrated judge (Bölüm 2.3, Cohen's kappa ≥ 0.6) — not implemented in Phase 1",
+          "status" : "needs_review",
+          "tools_used" : [
+            "web_fetch",
+            "Fetching www.swift.org..."
+          ]
+        },
+        {
+          "duration_seconds" : 74.68613195419312,
+          "index" : 3,
+          "reason" : "JUDGE evaluation type requires a calibrated judge (Bölüm 2.3, Cohen's kappa ≥ 0.6) — not implemented in Phase 1",
+          "status" : "needs_review",
+          "tools_used" : [
+            "web_fetch",
+            "Fetching www.swift.org..."
+          ]
+        },
+        {
+          "duration_seconds" : 71.46246898174286,
+          "index" : 4,
+          "reason" : "JUDGE evaluation type requires a calibrated judge (Bölüm 2.3, Cohen's kappa ≥ 0.6) — not implemented in Phase 1",
+          "status" : "needs_review",
+          "tools_used" : [
+            "web_fetch",
+            "Fetching www.swift.org..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "zincir",
+      "evaluation_type" : "STATE",
+      "k" : 5,
+      "level" : "L2",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_at_k_all" : true,
+      "pass_rate" : 1,
+      "prompt" : "ls \/tmp komutunun çıktısını \/tmp\/listing.txt dosyasına kaydet",
+      "test_id" : "L2-ZINCIR-01",
+      "trials" : [
+        {
+          "duration_seconds" : 84.421138048172,
+          "index" : 0,
+          "status" : "pass",
+          "tools_used" : [
+            "shell_exec",
+            "Listing directory...",
+            "write_file",
+            "Writing listing.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 35.92897403240204,
+          "index" : 1,
+          "status" : "pass",
+          "tools_used" : [
+            "shell_exec",
+            "Listing directory...",
+            "write_file",
+            "Writing listing.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 35.89137005805969,
+          "index" : 2,
+          "status" : "pass",
+          "tools_used" : [
+            "shell_exec",
+            "Listing directory...",
+            "write_file",
+            "Writing listing.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 84.14976108074188,
+          "index" : 3,
+          "status" : "pass",
+          "tools_used" : [
+            "shell_exec",
+            "Listing directory...",
+            "write_file",
+            "Writing listing.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 35.940847992897034,
+          "index" : 4,
+          "status" : "pass",
+          "tools_used" : [
+            "shell_exec",
+            "Listing directory...",
+            "write_file",
+            "Writing listing.txt..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "zincir",
+      "evaluation_type" : "STATE",
+      "k" : 5,
+      "level" : "L2",
+      "needs_review" : false,
+      "pass_at_1" : false,
+      "pass_at_k_all" : false,
+      "pass_rate" : 0.6,
+      "prompt" : "bu projedeki .swift dosya sayısını say ve sonucu bana söyle",
+      "test_id" : "L2-ZINCIR-02",
+      "trials" : [
+        {
+          "duration_seconds" : 25.019227027893066,
+          "index" : 0,
+          "reason" : "Expected tool 'shell_exec' not among real tools called: [\"write_file\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "write_file",
+            "Writing .swift..."
+          ]
+        },
+        {
+          "duration_seconds" : 29.981509923934937,
+          "index" : 1,
+          "status" : "pass",
+          "tools_used" : [
+            "shell_exec",
+            "Searching files..."
+          ]
+        },
+        {
+          "duration_seconds" : 32.572067975997925,
+          "index" : 2,
+          "reason" : "Double\/extra dispatch: expected only 'shell_exec', got [\"write_file\", \"shell_exec\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "write_file",
+            "shell_exec",
+            "Searching files..."
+          ]
+        },
+        {
+          "duration_seconds" : 29.455901980400085,
+          "index" : 3,
+          "status" : "pass",
+          "tools_used" : [
+            "shell_exec",
+            "Searching files..."
+          ]
+        },
+        {
+          "duration_seconds" : 38.02488398551941,
+          "index" : 4,
+          "status" : "pass",
+          "tools_used" : [
+            "shell_exec",
+            "Searching files..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "zincir",
+      "evaluation_type" : "STATE",
+      "k" : 5,
+      "level" : "L2",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_at_k_all" : true,
+      "pass_rate" : 1,
+      "prompt" : "sistem durumunu kontrol et: CPU, RAM, disk alanı ve macOS sürümünü birlikte raporla",
+      "test_id" : "L2-ZINCIR-03",
+      "trials" : [
+        {
+          "duration_seconds" : 62.50260806083679,
+          "index" : 0,
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 57.633103013038635,
+          "index" : 1,
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 60.519635915756226,
+          "index" : 2,
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 62.82567501068115,
+          "index" : 3,
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 70.58156204223633,
+          "index" : 4,
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "zincir",
+      "evaluation_type" : "STATE",
+      "k" : 5,
+      "level" : "L2",
+      "needs_review" : false,
+      "pass_at_1" : false,
+      "pass_at_k_all" : false,
+      "pass_rate" : 0.4,
+      "prompt" : "\/tmp\/chain_test.txt dosyasını oku, sonra içindeki '1.0'u '2.0' ile değiştir",
+      "test_id" : "L2-ZINCIR-04",
+      "trials" : [
+        {
+          "duration_seconds" : 30.38191306591034,
+          "index" : 0,
+          "reason" : "Expected tool order [\"read_file\", \"patch_file\"], got [\"read_file\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "read_file",
+            "Reading chain_test.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 133.3009729385376,
+          "index" : 1,
+          "reason" : "Expected tool order [\"read_file\", \"patch_file\"], got [\"read_file\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "read_file",
+            "Reading chain_test.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 136.69638693332672,
+          "index" : 2,
+          "status" : "pass",
+          "tools_used" : [
+            "read_file",
+            "Reading chain_test.txt...",
+            "patch_file",
+            "Patching chain_test.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 36.908365964889526,
+          "index" : 3,
+          "status" : "pass",
+          "tools_used" : [
+            "read_file",
+            "Reading chain_test.txt...",
+            "patch_file",
+            "Patching chain_test.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 31.107908010482788,
+          "index" : 4,
+          "reason" : "Expected tool order [\"read_file\", \"patch_file\"], got [\"read_file\", \"write_file\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "read_file",
+            "Reading chain_test.txt...",
+            "write_file",
+            "Writing chain_test.txt..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "zincir",
+      "evaluation_type" : "STATE",
+      "k" : 5,
+      "level" : "L2",
+      "needs_review" : false,
+      "pass_at_1" : false,
+      "pass_at_k_all" : false,
+      "pass_rate" : 0,
+      "prompt" : "hem cpu kullanımını hem de güncel saati aynı anda göster",
+      "test_id" : "L2-ZINCIR-05",
+      "trials" : [
+        {
+          "duration_seconds" : 49.702322006225586,
+          "index" : 0,
+          "reason" : "Expected tool order [\"get_system_telemetry\", \"system_date\"], got [\"get_system_info\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "Analyzing system resources (Energy\/RAM)...",
+            "Checking time and date data...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 52.349807024002075,
+          "index" : 1,
+          "reason" : "Expected tool order [\"get_system_telemetry\", \"system_date\"], got [\"get_system_info\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "Analyzing system resources (Energy\/RAM)...",
+            "Checking time and date data...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 49.800772070884705,
+          "index" : 2,
+          "reason" : "Expected tool order [\"get_system_telemetry\", \"system_date\"], got [\"get_system_info\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "Analyzing system resources (Energy\/RAM)...",
+            "Checking time and date data...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 57.95393097400665,
+          "index" : 3,
+          "reason" : "Expected tool order [\"get_system_telemetry\", \"system_date\"], got [\"get_system_info\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "Analyzing system resources (Energy\/RAM)...",
+            "Checking time and date data...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 60.10629403591156,
+          "index" : 4,
+          "reason" : "Expected tool order [\"get_system_telemetry\", \"system_date\"], got [\"get_system_info\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "Analyzing system resources (Energy\/RAM)...",
+            "Checking time and date data...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "zincir",
+      "evaluation_type" : "STATE",
+      "k" : 5,
+      "level" : "L2",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_at_k_all" : false,
+      "pass_rate" : 0.6,
+      "prompt" : "\/etc\/hosts dosyasında kaç satır var? Sayıyı al, 10 ile çarp ve sonucu \/tmp\/hosts_stat.txt dosyasına yaz",
+      "test_id" : "L2-ZINCIR-06",
+      "trials" : [
+        {
+          "duration_seconds" : 29.817540049552917,
+          "index" : 0,
+          "status" : "pass",
+          "tools_used" : [
+            "shell_exec",
+            "Running: wc -l< \/etc\/hosts...",
+            "calculator_op",
+            "Performing mathematical calculations...",
+            "write_file",
+            "Writing hosts_stat.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 29.747053027153015,
+          "index" : 1,
+          "status" : "pass",
+          "tools_used" : [
+            "shell_exec",
+            "Running: wc -l< \/etc\/hosts...",
+            "calculator_op",
+            "Performing mathematical calculations...",
+            "write_file",
+            "Writing hosts_stat.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 29.48968505859375,
+          "index" : 2,
+          "reason" : "Expected tool order [\"shell_exec\", \"calculator_op\", \"write_file\"], got [\"shell_exec\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "shell_exec",
+            "Running: wc -l< \/etc\/hosts..."
+          ]
+        },
+        {
+          "duration_seconds" : 54.97245895862579,
+          "index" : 3,
+          "reason" : "Expected tool order [\"shell_exec\", \"calculator_op\", \"write_file\"], got [\"shell_exec\", \"write_file\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "shell_exec",
+            "Running: wc -l< \/etc\/hosts...",
+            "write_file",
+            "Writing hosts_stat.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 29.562896013259888,
+          "index" : 4,
+          "status" : "pass",
+          "tools_used" : [
+            "shell_exec",
+            "Running: wc -l< \/etc\/hosts...",
+            "calculator_op",
+            "Performing mathematical calculations...",
+            "write_file",
+            "Writing hosts_stat.txt..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "live",
+      "evaluation_type" : "STATE",
+      "k" : 5,
+      "level" : "L4",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_at_k_all" : false,
+      "pass_rate" : 0.2,
+      "prompt" : "MLX Swift'in son sürümü nedir? GitHub'dan bul ve bana söyle",
+      "test_id" : "L4-LIVE-01",
+      "trials" : [
+        {
+          "duration_seconds" : 71.31419694423676,
+          "index" : 0,
+          "status" : "pass",
+          "tools_used" : [
+            "web_search",
+            "Searching: mlx-swift github releases latest version...",
+            "web_fetch",
+            "Fetching github.com..."
+          ]
+        },
+        {
+          "duration_seconds" : 39.40428602695465,
+          "index" : 1,
+          "reason" : "Expected tool order [\"web_search\", \"web_fetch\"], got [\"web_search\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "web_search",
+            "Searching: mlx-swift github releases latest version..."
+          ]
+        },
+        {
+          "duration_seconds" : 50.1500860452652,
+          "index" : 2,
+          "reason" : "Expected tool order [\"web_search\", \"web_fetch\"], got [\"web_search\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "web_search",
+            "Searching: mlx-swift github releases latest..."
+          ]
+        },
+        {
+          "duration_seconds" : 42.28640604019165,
+          "index" : 3,
+          "reason" : "Expected tool order [\"web_search\", \"web_fetch\"], got [\"web_search\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "web_search",
+            "Searching: mlx-swift github releases latest version..."
+          ]
+        },
+        {
+          "duration_seconds" : 35.925013065338135,
+          "index" : 4,
+          "reason" : "Expected tool order [\"web_search\", \"web_fetch\"], got [\"web_search\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "web_search",
+            "Searching: MLX Swift latest release version number..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "live",
+      "evaluation_type" : "JUDGE",
+      "k" : 5,
+      "level" : "L4",
+      "needs_review" : true,
+      "pass_at_1" : false,
+      "pass_at_k_all" : false,
+      "pass_rate" : 0,
+      "prompt" : "Swift 6 ile ilgili en önemli 3 değişikliği araştır ve markdown liste olarak ver",
+      "test_id" : "L4-LIVE-02",
+      "trials" : [
+        {
+          "duration_seconds" : 49.836726903915405,
+          "index" : 0,
+          "reason" : "JUDGE evaluation type requires a calibrated judge (Bölüm 2.3, Cohen's kappa ≥ 0.6) — not implemented in Phase 1",
+          "status" : "needs_review",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 önemli değişiklikler özellikler..."
+          ]
+        },
+        {
+          "duration_seconds" : 52.06716001033783,
+          "index" : 1,
+          "reason" : "JUDGE evaluation type requires a calibrated judge (Bölüm 2.3, Cohen's kappa ≥ 0.6) — not implemented in Phase 1",
+          "status" : "needs_review",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 en önemli özellikler değişiklikler..."
+          ]
+        },
+        {
+          "duration_seconds" : 47.35377895832062,
+          "index" : 2,
+          "reason" : "JUDGE evaluation type requires a calibrated judge (Bölüm 2.3, Cohen's kappa ≥ 0.6) — not implemented in Phase 1",
+          "status" : "needs_review",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 özellikler değişiklikler özet..."
+          ]
+        },
+        {
+          "duration_seconds" : 67.25318706035614,
+          "index" : 3,
+          "reason" : "JUDGE evaluation type requires a calibrated judge (Bölüm 2.3, Cohen's kappa ≥ 0.6) — not implemented in Phase 1",
+          "status" : "needs_review",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 en önemli değişiklikler özellikleri..."
+          ]
+        },
+        {
+          "duration_seconds" : 50.381108045578,
+          "index" : 4,
+          "reason" : "JUDGE evaluation type requires a calibrated judge (Bölüm 2.3, Cohen's kappa ≥ 0.6) — not implemented in Phase 1",
+          "status" : "needs_review",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 en önemli değişiklikler özellikler..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "live",
+      "evaluation_type" : "JUDGE",
+      "k" : 5,
+      "level" : "L4",
+      "needs_review" : false,
+      "pass_at_1" : false,
+      "pass_at_k_all" : false,
+      "pass_rate" : 0,
+      "prompt" : "İstanbul bugün hava durumuna göre dışarı çıkmak için uygun mu?",
+      "test_id" : "L4-LIVE-03",
+      "trials" : [
+        {
+          "duration_seconds" : 63.53140592575073,
+          "index" : 0,
+          "reason" : "Double\/extra dispatch: expected only 'get_weather', got [\"get_weather\", \"get_system_info\", \"get_system_telemetry\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "get_weather",
+            "Fetching meteorological data...",
+            "get_system_info",
+            "Querying system hardware\/software info...",
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)..."
+          ]
+        },
+        {
+          "duration_seconds" : 67.23027503490448,
+          "index" : 1,
+          "reason" : "Double\/extra dispatch: expected only 'get_weather', got [\"get_weather\", \"get_system_telemetry\", \"get_system_info\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "get_weather",
+            "Fetching meteorological data...",
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 61.6702299118042,
+          "index" : 2,
+          "reason" : "Double\/extra dispatch: expected only 'get_weather', got [\"get_weather\", \"get_system_info\", \"get_system_telemetry\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "get_weather",
+            "Fetching meteorological data...",
+            "get_system_info",
+            "Querying system hardware\/software info...",
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)..."
+          ]
+        },
+        {
+          "duration_seconds" : 53.363337993621826,
+          "index" : 3,
+          "reason" : "Double\/extra dispatch: expected only 'get_weather', got [\"get_weather\", \"get_system_info\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "get_weather",
+            "Fetching meteorological data...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 55.531980991363525,
+          "index" : 4,
+          "reason" : "Double\/extra dispatch: expected only 'get_weather', got [\"get_weather\", \"get_system_info\", \"get_system_telemetry\"]",
+          "status" : "fail",
+          "tools_used" : [
+            "get_weather",
+            "Fetching meteorological data...",
+            "get_system_info",
+            "Querying system hardware\/software info...",
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "coklu-tur",
+      "evaluation_type" : "STATE",
+      "k" : 5,
+      "level" : "MT",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_at_k_all" : true,
+      "pass_rate" : 1,
+      "prompt" : "masaüstüne mt_test.txt dosyası oluştur, içine 'versiyon 1' yaz",
+      "test_id" : "MT-02",
+      "trials" : [
+        {
+          "duration_seconds" : 55.74526810646057,
+          "index" : 0,
+          "status" : "pass",
+          "tools_used" : [
+            "read_file",
+            "Reading mt_test.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 56.15840709209442,
+          "index" : 1,
+          "status" : "pass",
+          "tools_used" : [
+            "read_file",
+            "Reading mt_test.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 58.79332399368286,
+          "index" : 2,
+          "status" : "pass",
+          "tools_used" : [
+            "read_file",
+            "Reading mt_test.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 54.64596390724182,
+          "index" : 3,
+          "status" : "pass",
+          "tools_used" : [
+            "read_file",
+            "Reading mt_test.txt..."
+          ]
+        },
+        {
+          "duration_seconds" : 53.35676610469818,
+          "index" : 4,
+          "status" : "pass",
+          "tools_used" : [
+            "read_file",
+            "Reading mt_test.txt..."
+          ]
+        }
+      ]
+    }
+  ],
+  "dataset_path" : "Tests/AgentTestSuite/Tests\/AgentTestSuite\/datasets\/golden_dataset_regression_check.json",
+  "git_commit" : "1e9742f75f1cd3826b1e8da05a7fd3db0b49456b",
+  "k" : 5,
+  "model_id" : "qwen3.5-9b",
+  "report_schema_version" : "results-1.0",
+  "run_type" : "published",
+  "summary" : {
+    "graded_blocks" : 11,
+    "needs_review_blocks" : 2,
+    "pass_at_1_count" : 7,
+    "pass_at_1_rate" : 0.5384615384615384,
+    "total_blocks" : 13
+  },
+  "tester" : "automated-runner-v1",
+  "timestamp" : "2026-07-23T17:56:35Z",
+  "total_duration_seconds" : 3615.1516810655594
+}

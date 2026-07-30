@@ -1,0 +1,115 @@
+{
+  "blocks" : [
+    {
+      "category" : "zincir",
+      "evaluation_type" : "STATE",
+      "k" : 3,
+      "level" : "L2",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_rate" : 1,
+      "prompt" : "sistem durumunu kontrol et: CPU, RAM, disk alanı ve macOS sürümünü birlikte raporla",
+      "test_id" : "L2-ZINCIR-03",
+      "trials" : [
+        {
+          "duration_seconds" : 48.435168981552124,
+          "index" : 0,
+          "response_text" : "Task requires too many steps or entered a planning loop. Please simplify the task or provide more information.",
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 51.359230041503906,
+          "index" : 1,
+          "response_text" : "Task requires too many steps or entered a planning loop. Please simplify the task or provide more information.",
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        },
+        {
+          "duration_seconds" : 57.8813099861145,
+          "index" : 2,
+          "response_text" : "Task requires too many steps or entered a planning loop. Please simplify the task or provide more information.",
+          "status" : "pass",
+          "tools_used" : [
+            "get_system_telemetry",
+            "Analyzing system resources (Energy\/RAM)...",
+            "get_system_info",
+            "Querying system hardware\/software info..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "zincir",
+      "evaluation_type" : "STATE",
+      "k" : 3,
+      "level" : "L2",
+      "needs_review" : false,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "hem cpu kullanımını hem de güncel saati aynı anda göster",
+      "test_id" : "L2-ZINCIR-05",
+      "trials" : [
+        {
+          "duration_seconds" : 47.620919942855835,
+          "index" : 0,
+          "reason" : "Expected tool order [\"get_system_telemetry\", \"system_date\"], got []",
+          "response_text" : "Task requires too many steps or entered a planning loop. Please simplify the task or provide more information.",
+          "status" : "fail",
+          "tools_used" : [
+            "Analyzing system resources (Energy\/RAM)...",
+            "Checking time and date data..."
+          ]
+        },
+        {
+          "duration_seconds" : 45.491843938827515,
+          "index" : 1,
+          "reason" : "Expected tool order [\"get_system_telemetry\", \"system_date\"], got []",
+          "response_text" : "Task requires too many steps or entered a planning loop. Please simplify the task or provide more information.",
+          "status" : "fail",
+          "tools_used" : [
+            "Analyzing system resources (Energy\/RAM)...",
+            "Checking time and date data..."
+          ]
+        },
+        {
+          "duration_seconds" : 47.46024000644684,
+          "index" : 2,
+          "reason" : "Expected tool order [\"get_system_telemetry\", \"system_date\"], got []",
+          "response_text" : "Task requires too many steps or entered a planning loop. Please simplify the task or provide more information.",
+          "status" : "fail",
+          "tools_used" : [
+            "Analyzing system resources (Energy\/RAM)...",
+            "Checking time and date data..."
+          ]
+        }
+      ]
+    }
+  ],
+  "dataset_path" : "Tests/AgentTestSuite/Tests\/AgentTestSuite\/datasets\/zincir_recheck.json",
+  "git_commit" : "f69be154b20702d0c0fa3eabc6fd9923bff194f8",
+  "k" : 3,
+  "model_id" : "qwen3.5-9b",
+  "report_schema_version" : "results-1.0",
+  "run_type" : "exploratory",
+  "summary" : {
+    "graded_blocks" : 2,
+    "needs_review_blocks" : 0,
+    "pass_at_1_count" : 1,
+    "pass_at_1_rate" : 0.5,
+    "total_blocks" : 2
+  },
+  "tester" : "automated-runner-v1",
+  "timestamp" : "2026-07-23T21:46:59Z",
+  "total_duration_seconds" : 301.36530900001526
+}

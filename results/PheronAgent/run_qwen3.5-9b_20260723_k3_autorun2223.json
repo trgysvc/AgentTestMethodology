@@ -1,0 +1,164 @@
+{
+  "blocks" : [
+    {
+      "category" : "web",
+      "evaluation_type" : "JUDGE",
+      "k" : 3,
+      "level" : "L2",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_rate" : 1,
+      "prompt" : "https:\/\/www.swift.org\/documentation\/ adresindeki içeriği oku ve özetle",
+      "test_id" : "L2-WEB-02",
+      "trials" : [
+        {
+          "duration_seconds" : 72.39687597751617,
+          "index" : 0,
+          "response_text" : "İşte `https:\/\/www.swift.org\/documentation\/` adresinden alınan içerik özeti:\n\n**Swift Dökümantasyon Portalı**, geliştiricilerin Swift dilini, standart kütüphaneleri ve araçlarını keşfetmeleri için kapsamlı bir merkezdir. İçerdiği ana bölümler şunlardır:\n\n1.  **Yeni Geliştiriciler İçin Kaynaklar:**\n    *   Başlangıç rehberleri (Getting started).\n    *   Apple geliştirici portalındaki Swift kaynakları.\n    *   \"About Swift\" özeti (özellikler, desteklenen platformlar ve açık kaynak projeleri).\n\n2.  **Ana Döküman Bölümleri:**\n    *   **Dil Referansı:** \"The Swift Programming Language\" kitabı, dilin yetkin bir turu, kapsamlı bir rehber ve resmi referans niteliğindedir (TSPL).\n    *   **API Tasarım Rehberleri:** Kodun Swift ekosisteminin parçası gibi hissetmesini sağlayan isimlendirme ve kalıp kuralları.\n    *   **Standart Kütüphane:** Swift programları için temel işlevsellik katmanı.\n    *   **Çekirdek (Core) Kütüphaneleri:** Standart kütüphaneden daha üst düzey işlevler sunan, tüm platformlarda kullanılabilir güçlü araçlar.\n    *   **Paket Yöneticisi (Swift Package Manager):** Swift kodu paketlerinin dağıtımını ve kullanımını yöneten, bağımlılıkları otomatik indirme derleme ve bağlama sağlayan araç.\n    *   **REPL & Hata Ayıklayıcı:** LLDB hata ayıklayıcısı zengin bir REPL (Read-Eval-Print Loop) ve Swift için hata ayıklama ortamı sunar.\n\n3.  **Makaleler (İleri Düzey Konular):**\n    *   Sunucu Uygulamaları İçin Swift (\"Swift on Server\").\n    *   Swift ile C++ Eşleştirme: Çift yönlü uyumluluk desteği.\n    *   Değer ve Referans Türleri: Türkçedeki anlamı \"Value types\" (değer türleri) ve \"Reference types\" (referans türleri).\n    *   **DocC:** Swift kütüphaneleri ve paketler için döküman oluşturmayı kolaylaştıran bir döküman derleyicisi.\n    *   **Tam Eşzamanlılık Kontrolünü Açma:** Swift 6'ya hazırlık için paketlerde, projelerde ve CI senaryolarında eşzamanlılık (concurrency) kontrolünün tam olarak aktif edilmesi.\n    *   **Statik Linux SDK ile Başlangıç:** Bağımlılık olmadan (Swift runtime veya C kütüphanesi bile gerekmeden) Linux'ta ikili dosya derleme süreci.\n    *   Android ve WebAssembly için Swift SDK başlangıç rehberleri.\n    *   VS Code ile Swift başlangıcı.\n\n4.  **Katkıda Bulunma (Contributing):**\n    *   **Swift Evrimi:** Dildeki değişikliklerin nasıl sunulduğu, tartışıldığı ve kabul edildiği süreç.\n    *   **Kaynak Kodu:** GitHub'da barındırılan açık kaynak depoları.\n    *   **Sürekli Entegrasyon:** swift.org'daki kopyaları oluşturmak için kullanılan CI sistemi.\n    *   **Kaynak Uyumluluk Testleri:** Derleyici geriye dönük uyumunu test eden topluluk kaynağı.\n    *   **Derleyici Mimarisine Genel Bakış.**\n    *   **Aylık Non-Darwin (Linux\/Windows vb.) Swift Sürüm Çıkarım Süreci.**\n\n**Kaynak:** https:\/\/www.swift.org\/documentation\/",
+          "status" : "pass",
+          "tools_used" : [
+            "web_fetch",
+            "Fetching www.swift.org..."
+          ]
+        },
+        {
+          "duration_seconds" : 76.50525403022766,
+          "index" : 1,
+          "response_text" : "İşte https:\/\/www.swift.org\/documentation\/ sayfasındaki içeriğin özeti:\n\n**Swift Dokümantasyon Portalı (swift.org\/documentation), geliştiricilere aşağıdaki kaynakları sunmaktadır:**\n\n1.  **Başlangıç Kaynakları:** Yeni başlayanlar için \"Getting started\" rehberi, Apple Developer sitesindeki Swift kaynakları ve genel bakış (\"Overview\") bulunur.\n2.  **Ana Referanslar:**\n    *   **Dil Referansı (Language Reference):** TSPL kitabı olarak bilinen otoriter bir kılavuz; dilin tanıtımı, kapsamlı rehberlik ve resmi referansını içerir.\n    *   **API Tasarım Kılavuzları (API Design Guidelines):** Swift ekosisteminde tutarlılık sağlayan API isimlendirme ve desen kurallarını açıklar.\n3.  **Kütüphaneler:**\n    *   **Standart Kütüphane (Standard Library):** Program yazmak için temel işlevleri tanımlayan katman.\n    *   **Çekirdek Kütüphaneler (Core Libraries):** Swift'in desteklediği tüm platformlar arasında kullanılabilir üst seviye araçları sağlar.\n4.  **Araçlar:**\n    *   **Paket Yöneticisi (Swift Package Manager):** Swift paketlerinin dağıtımını ve kullanımını yönetir; bağımlılıkları otomatik olarak indirir, derler ve birleştirir.\n    *   **REPL & Debug'layıcı:** LLDB debug'layıcısı zengin bir REPL ve geliştirme ortamı sunar.\n\n**Diğer Önemli Bölümler:**\n*   **\"About Swift\":** Dilin temel özellikleri, desteklenen platformlar ve açık kaynak projelerine dair genel bir özet.\n*   **Makaleler (Articles):** Sunucu tarafı (\"Swift on Server\"), C++ ile karışımı, değer ve referans türleri arasındaki fark, DocC dokümantasyon derleyiciyi, Swift 6 için tam eşzamanlılık kontrolünü (Concurrency Checking) ve Linux\/Android\/WebAssembly\/Swift SDK'ları için başlangıç rehberlerini içerir.\n*   **Katkıda Bulunma:** Dilin nasıl evrimleştirdiği (\"Swift Evolution\"), kaynak kodu, sürekli entegrasyon (CI), uyumluluk testleri ve derleyici mimarisi hakkında bilgiler sunar.\n\nBu sayfa, Swift ekosisteminde öğrenme, uygulama ve katkıda bulunmak isteyen geliştiriciler için kapsamlı bir merkezi noktadır.",
+          "status" : "pass",
+          "tools_used" : [
+            "web_fetch",
+            "Fetching www.swift.org..."
+          ]
+        },
+        {
+          "duration_seconds" : 88.09783101081848,
+          "index" : 2,
+          "response_text" : "Swift.org\/documentation sayfası, Swift ekosistemindeki ana kaynakları ve öğrenme yollarını özetler:\\n\\n1. **Yeni Başlayanlar İçin Kaynaklar:**\\n   - **Başlangıç Rehberi (Getting started guide):** Yeni başlayanlara hitap eden rehber.\\n   - **developer.apple.com'daki Swift kaynakları.**\\n   - **Araçlar ve Araç Kiti (Tooling):** LLDB debugger, REPL (Read-Eval-Print Loop).\\n\\n2. **Dil Referansı:**\\n   - **TSPL Kitabı:** *The Swift Programming Language* resmi referans kitabı olarak kabul edilir.\\n     - **Kılavuz Tur (Guided Tour):** Dilin temel kavramlarını öğrenmek için interaktif bir yol haritası sunar.\\n     - **Genel Kılavuz (Comprehensive Guide):** Daha detaylı açıklamalar içerir.\\n     - **Resmi Referans:** Dilin teknik detayları için kullanılır.\\n\\n3. **API Tasarım Rehberleri (Guidelines):**\\n   - Swift'in API'larının nasıl tasarlanacağına dair kurallar ve öneriler sunulur. Bu, kodun Swift ekosistemiyle uyumlu olmasını sağlar.\\n\\n4. **Standart Kütüphane (Standard Library):**\\n   - Swift programları için temel fonksiyonlar ve yapılar sunar.\\n\\n5. **Çekirdek Kütüphaneler (Core Libraries):**\\n   - Standart kütüphaneden daha üst düzey işlevler sağlar (Swift daki standart kütüphane ile bir arada çalışır).\\n     - Örn: `Foundation`, `Glibc` benzeri fonksiyonlar.\\n\\n6. **Paket Yöneticisi (Package Manager):**\\n   - Swift Paket Yöneticisi, bağımlılıkları yönetmek ve derlemek için kullanılır. Xcode ile entegre çalışır.\\n\\n7. **Dökümantasyon Oluşturma (DocC):**\\n   - DocC, Swift projelerinin dökümanlarını otomatik olarak oluşturur. Kaynak kodun yorumları ve ek dokümanlar birleştirilir.\\n\\n8. **Hata Ayıklama (Debugger) & REPL:**\\n   - LLDB debugger ile hata ayıklama yapılabilir; aynı zamanda interaktif bir ortamda kod çalıştırılabilir.\\n\\n9. **Servis Uygulamaları İçin Swift on Server:**\\n   - Sunucu tarafı geliştirme için Swift'in kullanım alanları anlatılır (örneğin: Node.js, Python ile karşılaştırma).\\n\\n10. **Dil Değişimleri (Swift Evolution):**\\n    - Yeni özelliklerin nasıl eklendiği ve kabul edildiği süreci açıklanır.\\n\\nBu sayfa, Swift öğrenmek isteyenler için kapsamlı bir yol haritası sunar ve dilin farklı yönlerini (temel kavramlar, araçlar, kütüphaneler, dökümantasyon) ayrıntılı olarak tanıtır.",
+          "status" : "pass",
+          "tools_used" : [
+            "web_fetch",
+            "Fetching www.swift.org..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "live",
+      "evaluation_type" : "JUDGE",
+      "k" : 3,
+      "level" : "L4",
+      "needs_review" : false,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "Swift 6 ile ilgili en önemli 3 değişikliği araştır ve markdown liste olarak ver",
+      "test_id" : "L4-LIVE-02",
+      "trials" : [
+        {
+          "duration_seconds" : 49.50071203708649,
+          "index" : 0,
+          "reason" : "Heuristic: expected at least 3 markdown list items, found 0",
+          "response_text" : "Aradığınız konuyla ilgili veritabanında veya web sayfası sonuçlarında Swift 6'nın teknik özellikleri ve güncellemeleri hakkında herhangi bir bilgi bulunmamaktadır. Gördüğüm arama sonuçları tamamen gayrimenkul ilanlarına (satılık daireler vb.) aittir ve yazılım dünyasındaki \"Swift\" programlama dili ile ilgisi yoktur; bu nedenle size güvenilir bir kaynakla desteklenmiş Swift 6 değişiklikleri hakkında bilgi veremiyorum.\n\nEğer resmi Apple geliştirici belgelerini veya güncel teknik notları arıyorsanız, lütfen spesifik bir konuya odaklanmamızı isteyin (örneğin: \"Swift 6'da güvenli çağrılar\", \"Type inference improvements\" vb.) veya doğrudan `https:\/\/developer.apple.com\/swift\/` adresini kullanarak resmi kaynağı okumamıza izin verin.",
+          "status" : "fail",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 en önemli değişiklikler..."
+          ]
+        },
+        {
+          "duration_seconds" : 66.35898804664612,
+          "index" : 1,
+          "reason" : "Heuristic: expected at least 3 markdown list items, found 0",
+          "response_text" : "Aradığım sonuçlar arasında Swift 6'nın tam teknik detaylarını (örneğin \"en önemli 3 değişiklik\" olarak somut bir liste) içeren güvenilir, resmi ve yapılandırılmış bir kaynağı bulamadım. Bulunan sonuçlar genel duyurulara, otomobil modeline ait yanlış anlamlara veya henüz yayınlanmamış WWDC26 içeriklerine dayanıyor. Bu nedenle aşağıdaki bilgiler mevcut arama sonuçlarından sentezlenmiştir:\n\n1.  **Verimli Senkronizasyon (Efficient Concurrency):** Swift 5'te tanıtılan senkronizasyon sistemi, Swift 6'da bir dil moduna yükseltilir ve artık derleyici tarafından zorunlu hale gelir. Bu sayede veri yarışları (data races) derleme aşamasında tespit edilir ve kodda otomatik olarak güvenli çözümler üretilerek geliştiricilerin manuel müdahalesi azaltılır.\n2.  **Tip Açıklamaları için Derleyici Desteği:** Swift 6, tip açıklamalarını artık sadece yorum satırı değil, derlenmesi gereken gerçek meta veri olarak kabul eder. Bu sayede kodun ne zaman ve nasıl çalışacağı hakkında daha fazla bilgi verilir, böylece hata yakalama (error handling) ve performans optimizasyonu çok daha güvenilir hale gelir.\n3.  **Geliştirici Deneyimi İyileştirmeleri:** Derleme sürelerinde büyük iyileşmeler sağlanır ve günlük geliştirme sürecindeki sürtünmeler azaltılır. Örneğin, `@diagnose` gibi özelliklerle uyarı kontrolleri daha granüler hale gelir ve kodun üretim (production) ortamına alınma süreci hızlandırılır.\n\n*Not: Bu bilgiler arama sonuçlarında doğrudan belirtilen spesifik teknik detaylar olmamakla birlikte, Apple'ın duyuru metinleri ve blog yazılarında vurgulanan temel konulara dayanmaktadır.*",
+          "status" : "fail",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 resmi değişiklikler özellikler..."
+          ]
+        },
+        {
+          "duration_seconds" : 55.91952097415924,
+          "index" : 2,
+          "reason" : "Heuristic: expected at least 3 markdown list items, found 0",
+          "response_text" : "Araştırmam sonucunda Swift 6 ile ilgili en önemli 3 değişikliği aşağıda listeledim:\n\n1. **Veri Yarışı Güvenliği (Data-Race Safety by Default)**: Swift 6, eş zamanlı programlamayı dramatik olarak kolaylaştırır ve yeni bir dil modu ile derleme sırasında veri yarışlarını tespit ederek hata ayıklama süresini kısaltır.\n2. **Tip Sınıflandırılmış Hatalar (Typed Errors)**: Hata yönetimi artık daha güçlü hale geldi; `Error` tipindeki değişkenler yerine, özel hatalar tanımlamak için tiplendirilmiş bir yapı kullanılır ve bu sayede hataların doğru şekilde yakalanması sağlanır.\n3. **Geliştirici Deneyimini İyileştiren Yeni Öznitelikler**: Özellikle yeni eklenen `@diagnose` özniteliği ile derleme uyarılarını daha ince granülerlikte kontrol etmek ve geliştiricilerin kodlarını daha kolay anlaması sağlanır.\n\nKaynak: https:\/\/developer.apple.com\/wwdc26\/guides\/swift\/",
+          "status" : "fail",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 en önemli değişiklikler özellikler..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "live",
+      "evaluation_type" : "JUDGE",
+      "k" : 3,
+      "level" : "L4",
+      "needs_review" : false,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "İstanbul bugün hava durumuna göre dışarı çıkmak için uygun mu?",
+      "test_id" : "L4-LIVE-03",
+      "trials" : [
+        {
+          "duration_seconds" : 84.49706900119781,
+          "index" : 0,
+          "reason" : "Heuristic: response did not mention required term 'İstanbul'",
+          "response_text" : "Task requires too many steps or entered a planning loop. Please simplify the task or provide more information.",
+          "status" : "fail",
+          "tools_used" : [
+            "get_weather",
+            "Fetching meteorological data...",
+            "Analyzing system resources (Energy\/RAM)...",
+            "Querying system hardware\/software info...",
+            "get_system_info"
+          ]
+        },
+        {
+          "duration_seconds" : 72.47652792930603,
+          "index" : 1,
+          "reason" : "Heuristic: response did not mention required term 'İstanbul'",
+          "response_text" : "Task requires too many steps or entered a planning loop. Please simplify the task or provide more information.",
+          "status" : "fail",
+          "tools_used" : [
+            "get_weather",
+            "Fetching meteorological data...",
+            "Querying system hardware\/software info...",
+            "Analyzing system resources (Energy\/RAM)...",
+            "get_system_info"
+          ]
+        },
+        {
+          "duration_seconds" : 80.73921501636505,
+          "index" : 2,
+          "reason" : "Heuristic: response did not mention required term 'İstanbul'",
+          "response_text" : "Task requires too many steps or entered a planning loop. Please simplify the task or provide more information.",
+          "status" : "fail",
+          "tools_used" : [
+            "get_weather",
+            "Fetching meteorological data...",
+            "Analyzing system resources (Energy\/RAM)...",
+            "Querying system hardware\/software info...",
+            "get_system_info"
+          ]
+        }
+      ]
+    }
+  ],
+  "dataset_path" : "Tests/AgentTestSuite/Tests\/AgentTestSuite\/datasets\/judge_heuristic_check.json",
+  "git_commit" : "da7ea4901342ed42918d7a22788b841cffca9493",
+  "k" : 3,
+  "model_id" : "qwen3.5-9b",
+  "report_schema_version" : "results-1.0",
+  "run_type" : "exploratory",
+  "summary" : {
+    "graded_blocks" : 3,
+    "needs_review_blocks" : 0,
+    "pass_at_1_count" : 1,
+    "pass_at_1_rate" : 0.3333333333333333,
+    "total_blocks" : 3
+  },
+  "tester" : "automated-runner-v1",
+  "timestamp" : "2026-07-23T19:23:32Z",
+  "total_duration_seconds" : 651.1493409872055
+}

@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.1",
+  "blocks": [
+    {
+      "schema_version": "1.1",
+      "test_id": "L2-WEB-02",
+      "level": "L2",
+      "category": "web",
+      "prompt": "https://www.swift.org/documentation/ adresindeki içeriği oku ve özetle",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "JUDGE",
+      "expected": {
+        "ubid": 46,
+        "tool": null,
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null,
+        "require_tool_called": "web_fetch"
+      },
+      "fail_patterns": [
+        "[WEB_FETCH_404] döndü (sayfa gerçekten var)",
+        "Yanıt hayal ürünü içerik (araç çağrısı yok)"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L4-LIVE-02",
+      "level": "L4",
+      "category": "live",
+      "prompt": "Swift 6 ile ilgili en önemli 3 değişikliği araştır ve markdown liste olarak ver",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier → LLM",
+      "evaluation_type": "JUDGE",
+      "expected": {
+        "ubid": 45,
+        "tool": null,
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null,
+        "require_tool_called": "web_search",
+        "min_list_items": 3,
+        "require_url": true
+      },
+      "fail_patterns": [
+        "Eğitim verisinden cevap (kaynak yok, araç yok)",
+        "3'ten az madde"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "L4-LIVE-03",
+      "level": "L4",
+      "category": "live",
+      "prompt": "İstanbul bugün hava durumuna göre dışarı çıkmak için uygun mu?",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "JUDGE",
+      "expected": {
+        "ubid": 81,
+        "tool": null,
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": "İstanbul",
+        "no_tool_call": null,
+        "require_tool_called": "get_weather"
+      },
+      "fail_patterns": [
+        "Hava verisi olmadan yorum yapıldı",
+        "Yanlış şehir"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    }
+  ]
+}

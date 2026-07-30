@@ -1,0 +1,151 @@
+{
+  "blocks" : [
+    {
+      "category" : "web",
+      "evaluation_type" : "JUDGE",
+      "k" : 3,
+      "level" : "L2",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_rate" : 1,
+      "prompt" : "https:\/\/www.swift.org\/documentation\/ adresindeki içeriği oku ve özetle",
+      "test_id" : "L2-WEB-02",
+      "trials" : [
+        {
+          "duration_seconds" : 47.02224397659302,
+          "index" : 0,
+          "response_text" : "https:\/\/www.swift.org\/documentation\/ sayfası, geliştiricilere yönelik Swift ekosistemindeki temel kaynakları ve araçları özetler:\\n\\n**Temel Kaynaklar:**\\n- **Language Reference (TSPL):** Programlama dilinin yetkin bir rehber, kapsamlı kılavuz ve resmi referans kitabı.\\n- **API Design Guidelines:** Swift API'lerinin nasıl tasarlanacağına dair kurallar ve öneriler.\\n- **Standard Library & Core Libraries:** Swift'in temel fonksiyonlarını ve üst düzey araçları sunan kütüphaneler.\\n- **Package Manager (SwiftPM):** Bağımlılıkları yönetmek, indirmek derlemek için entegre paket yönetim aracı.\\n\\n**Geliştirme Araçları:**\\n- **REPL & Debugger (LLDB):** Kodu çalıştırmak ve hata ayıklamak için zengin bir ortam.\\n\\n**Özellikler:**\\n- Değer (Value) ve Referans (Reference) tipleri arasındaki farklar.\\n- C++ ile tam uyumluluk.\\n- Dokümantasyon oluşturucu DocC kompilatörü.\\n- Swift 6 için tam eşzamanlılık (concurrency checking) desteği.\\n\\n**Platform Destekleri:**\\n- Linux, Android ve WebAssembly gibi platformlar için özel başlangıç kılavuzları sunulmaktadır.\n\nKaynak: https:\/\/www.swift.org\/documentation\/",
+          "status" : "pass",
+          "tools_used" : [
+            "web_fetch",
+            "Fetching www.swift.org..."
+          ]
+        },
+        {
+          "duration_seconds" : 107.61236894130707,
+          "index" : 1,
+          "response_text" : "İşte https:\/\/www.swift.org\/documentation\/ adresinden okuduğum içeriğin özeti:\n\nSwift dokümantasyon sayfası, geliştiricilere Swift ile ilgili kapsamlı kaynakları sunmaktadır. Sayfada yer alan ana bölümler şunlardır:\n\n1.  **Kaynaklar (Resources):**\n    *   **Yeni Başlayanlar İçin Rehber:** Swift'e yeni başlayanların başlangıç için rehberi.\n    *   **Apple Geliştirici Sitesi Kaynakları:** Apple'ın geliştirici portalındaki Swift kaynaklarına yönlendirme.\n\n2.  **Dil Referansı ve Tasarım Kılavuzları:**\n    *   **Swift Programlama Dili (TSPL) Kitabı:** Dilin otoriter referans kaynağıdır; rehberli tur, kapsamlı kılavuz ve resmi dilreferansı içerir.\n    *   **API Tasarım Kılavuzları:** Swift ekosisteminde tutarlı bir geliştirici deneyimi sunmak için API adlandırma ve idiom kurallarını açıklar.\n\n3.  **Standart Kitaplık (Standard Library):** Swift programlar yazmak için temel işlevsellik tabakasını tanımlayan kütüphane.\n4.  **Çekirdek Kütüphaneler (Core Libraries):** Swift'in desteklediği tüm platformlarda kullanılabilir, standart kitaplığın ötesinde üst düzey işlevler sunan projeler.\n\n5.  **Paket Yöneticisi:** Swift kod paketlerinin dağıtım ve kullanımını yöneten araçtır; derleme sistemine entegredir ve bağımlılıkları otomatik olarak indirip derlemek için kullanılır.\n6.  **REPL & Debugder (LLDB):** Swift dili için zengin bir REPL (Read-Eval-Print Loop) ve hata ayıklama ortamı sağlar.\n\n7.  **Hakkında (About Swift):** Dilin temel özellikleri, desteklenen platformlar ve açık kaynak projelerinin özetlenmesi.\n\n**Makaleler (Articles) Bölümü:**\n*   **Sunucu için Swift:** Sunucu uygulamaları için özellikle uygun olan genel amaçlı bir programlama dili olarak Swift'in özelliklerini anlatır.\n*   **Swift ve C++'yı Karıştırma:** İki yönlü C++ ile uyumluluk desteği; C++ API'lerinin doğrudan çağrılabilmesi veya Swift API'lerinin kullanılabilmesi.\n*   **Değerli ve Referanslı Türler (Value and Reference types):** Swift türlerini iki kategoriye ayırır; farklı davranışları nedeniyle bu farkın anlaşılması önemlidir.\n*   **DocC:** Swift çerçeveleri ve paketleri için dokümantasyon üreten bir döküman derleyicisidir. Kaynak kodundaki yorumlar, uzantı dosyaları, makaleler ve derslerle birlikte çalışarak dokümantasyonu oluşturur.\n*   **Tam Eşzamanlılık Kontrolünü Aktifleştirme:** Swift 6'ya hazırlanmak için SwiftPM paketleri, Xcode projeleri ve CI betiklerinde tam eşzamanlılık kontrolünün nasıl aktif edileceği anlatılır.\n*   **Statik Linux SDK ile Başlangıç:** Sistem bağımlılığı olmayan (Swift runtime veya C kütüphanesi bile dahil) Linux için ikili dosya oluşturma başlatma rehberi. macOS, Windows ve Linux üzerinde geliştirip Linux'e dağıtım yapılabilir.\n*   **Android İçin Swift SDK ile Başlangıç:** Android için paketler oluşturmayı nasıl yapacağınızın açıklaması (karmaşık derleme).\n*   **WebAssembly için Swift SDK ile Başlangıç:** WebAssembly (Wasm) paketleri oluşturma başlatma rehberi.\n*   **VS Code'da Swift ile Başlangıç:** VS Code'un Swift eklentisiyle başlamak için rehber.\n\n**Katkıda Bulunanlar (Contributing):**\n*   **Swift Evrimi (Swift Evolution):** Dildeki değişikliklerin nasıl tanımlandığı, tartışıldığı ve onaylandığı süreç.\n*   **Kaynak Kodu:** Swift projesinin kodları GitHub.com'da açık kaynak olarak barındırılan birkaç depoya bölünmüştür.\n*   **Süreklilikli Entegrasyon (Continuous Integration):** swift.org'daki snapshot derlemeleri üreten ve aktif dallara karşı testler çalıştıran CI sistemi. Ayrıca kabul sürecinin bir parçasıdır.\n*   **Kaynak Uyumluluğu:** Derleyici regresyonlarını test etmek için Swift kaynak kodu korpusuna göre der",
+          "status" : "pass",
+          "tools_used" : [
+            "web_fetch",
+            "Fetching www.swift.org..."
+          ]
+        },
+        {
+          "duration_seconds" : 83.89665699005127,
+          "index" : 2,
+          "response_text" : "İşte https:\/\/www.swift.org\/documentation\/ adresindeki sayfanın özeti:\n\nBu sayfa, Swift ekosistemindeki **resmi dokümantasyon kaynaklarını** ve ilgili eğitim içeriklerini listeler. Başlıklar halinde ana başlıkları şu şekilde özetleyebiliriz:\n\n1.  **Swift'e Giriş (Getting Started):** Yeni başlayanlar için başlangıç rehberi, Apple geliştirici sitesindeki Swift kaynakları ve genel bir bakış sunumu yer alır.\n2.  **Dil Rehberliği:** Swift Programlama Dili kitabı (TSPL), dilin yetkin bir turu, kapsamlı bir kılavuzu ve resmi referansı içerir.\n3.  **API Tasarım Kılavuzları:** Kodun büyük Swift ekosisteminin bir parçası gibi hissetmesini sağlayan isimlendirme ve kalıp önerileri sunar.\n4.  **Standart Kütüphane (Standard Library):** Swift programları için temel işlevsellik tabakasını tanımlar.\n5.  **Çekirdek Kütüphaneler (Core Libraries):** Swift'in desteklediği tüm platformlarda bağımlı olabileceğiniz, standart kütüphaneden daha üst düzey yetenekler sağlar.\n6.  **Paket Yöneticisi:** Swift kodunun dağıtımı ve kullanımı için paketleri yöneten araçtır; derleme ve bağlama süreçlerini otomatikleştirir.\n7.  **REPL & Hata Ayıklayıcı (Debugger):** LLDB hata ayıklayıcısı, zengin bir REPL (İnteraktif Terminal) ve Swift kodu için hata ayıklama ortamı sağlar.\n\n**Diğer Önemli Başlıklar:**\n*   **Hakkında:** Dilin temel özellikleri, desteklenen platformlar ve açık kaynak projeleri hakkında genel bilgi verir.\n*   **Makaleler (Articles):** Sunucu tarafı Swift kullanımı, C++ ile karışım\/uyumluluk, Değerli ve Referanslı tipler arasındaki fark, DocC dokümantasyon derleyicisi, tamConcurrency kontrolü (Swift 6 için), Linux SDK'sı, Android WebAssembly SDK'ları ve VS Code entegrasyonu gibi konuları ele alır.\n*   **Katkıda Bulunma:** Swift Evolution (dil değişiklikleri süreci), Kaynak Kodu, Sürekli Entegrasyon, Kaynak Uyumluluğu testleri, Derleyici Mimarisi ve macOS olmayan aylık sürüm yayınları hakkında bilgi sağlar.\n\n**Kaynak: https:\/\/www.swift.org\/documentation\/**",
+          "status" : "pass",
+          "tools_used" : [
+            "web_fetch",
+            "Fetching www.swift.org..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "live",
+      "evaluation_type" : "JUDGE",
+      "k" : 3,
+      "level" : "L4",
+      "needs_review" : false,
+      "pass_at_1" : false,
+      "pass_rate" : 0.3333333333333333,
+      "prompt" : "Swift 6 ile ilgili en önemli 3 değişikliği araştır ve markdown liste olarak ver",
+      "test_id" : "L4-LIVE-02",
+      "trials" : [
+        {
+          "duration_seconds" : 81.01376807689667,
+          "index" : 0,
+          "reason" : "Heuristic: response did not contain a source URL",
+          "response_text" : "Aradığınız \"Swift 6\" ile ilgili teknik değişiklikler şu anki arama sonuçlarında (otomobil ve tarım araçları listeleri) bulunmamaktadır; aramanız yanlış bir terim veya bağlam gerektiriyor olabilir, çünkü Swift 6 henüz resmi olarak yayımlanmadığı için detaylı özellikleri konusunda güncel bir bilgi kaynağı şu anda erişilemiyor.\n\nEğer kastettiğiniz **Swift** dilinin son sürümü olan **Swift 5.x** (örneğin Swift 5.10) veya henüi geliştirme aşamasındaki **Swift 6'nın** henüz kamuoyuna açıklanmamış detayları ise, şu anda güvenilir bir kaynakla doğrulanmış spesifik bir değişiklik listesi sunamıyorum.\n\nYine de, Apple'ın geçmişte tanıttığı ve Swift 6'da da beklenen büyük konular şunlardır (ancak bunlar henüz resmi \"Swift 6\" sürümüne ait onaylı bir liste değildir):\n1. **Performans İyileştirmeleri:** Derleme hızında önemli artışlar.\n2. **Erişim Modülleri (Access Control):** Daha katı ve güvenli erişim kontrolü mekanizmaları.\n3. **Type Inference (Tip Çıkarma):** Derleyicinin tip tanımları olmadan daha akıllıca değişken tiplerini tahmin etmesi.\n\n**Önemli Not:** \"Swift 6\" projesi şu anda Apple'ın iç test aşamasındadır ve henüz resmi olarak yayımlanmadığı için, internet üzerindeki üçüncü taraf sitelerdeki \"en önemli değişiklikler\" iddialarının hepsi spekülasyon veya daha önceki sürümlerin (Swift 5) özelliklerinin yanlış etiketlenmiş halleri olabilir. Lütfen en güncel bilgiyi Apple'ın resmi blog adresinden (developer.apple.com\/swift\/) kontrol etmenizi öneririm, ancak şu anda web sayfasını çekmeye çalışmak için bir URL belirlemem gerekiyor; size bu URL'de hangi sayfayı aradığınızı söyleyebilir miyim? Veya sadece \"Swift 6 beklentileri\" olarak arama yapmak ister misiniz?\n\nDaha kesin bir yanıt verebilmem için: Arama sonuçlarınızda Swift ile ilgili herhangi bir teknik madde çıkmadı, bu da şu anda **Swift 6'nın henüz resmi bir sürüm çıktığını veya detaylı bir dokümantasyonun kamuoyuna açık olmadığını** gösteriyor.",
+          "status" : "fail",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 en önemli değişiklikler özellikler..."
+          ]
+        },
+        {
+          "duration_seconds" : 65.17005705833435,
+          "index" : 1,
+          "reason" : "Heuristic: expected at least 3 markdown list items, found 1",
+          "response_text" : "Swift 6'nın en önemli üç değişikliği aşağıda özetlenmiştir:\n\n1. **Eşzamanlılık Güvenliği (Strict Concurrency)**: Swift 5.5'te tanıtılan eşzamanlılık sistemi, Swift 6 ile birlikte derleyici tarafından zorunlu hale getirilerek veri yarışlarının (data races) tamamen engellenmesini sağlar. Bu, aynı anda erişilebilen kayıtları ve thread'leri statik olarak analiz ederek güvenli kod yazmayı garanti eder",
+          "status" : "fail",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 en önemli değişiklikler özellikler..."
+          ]
+        },
+        {
+          "duration_seconds" : 61.278555035591125,
+          "index" : 2,
+          "response_text" : "Aşağıda Swift 6 ile ilgili en önemli 3 değişiklik özetlenmiştir:\n\n1. **Tam Concurrency Kontrolü (Complete Concurrency Checking):** Swift 5'te asenkron kod için sunulan concurrency sistemi, Swift 6'da derleyici tarafından zorunlu hale getirilir ve verifikasyon gerektirir. Bu sayede veri yarışmaları (data races) garantili olarak önlenebilir; ancak bu durum projenin tamamen asenkron olması gerektiği anlamına gelir.\n2. **Typed Throws:** Hata yönetimi artık daha güçlü bir şekilde desteklenir. `throws` ifadesi artık sadece hatayı belirtmekle kalmaz, aynı zamanda hatanın türünü (örn: `Error`) da bildirerek tip güvenliği sağlar. Bu sayede hatalar derleme zamanında kontrol edilebilir ve yanlış kullanım durumunda kod çalışmaz.\n3. **Synchronization Framework:** Yeni bir senkronizasyon çerçevesi sunulmuştur. Bu framework, çoklu iş parçacığı ortamlarında güvenli veri paylaşımı sağlar ve thread güvenliği sorunlarını azaltır. Özellikle `Actor`'ların kullanım alanı genişletilerek daha esnek ve güvenli konkurans yapıları oluşturulabilir.\n\n**Kaynak:** https:\/\/developer.apple.com\/wwdc26\/guides\/swift\/",
+          "status" : "pass",
+          "tools_used" : [
+            "web_search",
+            "Searching: Swift 6 özellikleri değişiklikler resmi..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "live",
+      "evaluation_type" : "JUDGE",
+      "k" : 3,
+      "level" : "L4",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_rate" : 1,
+      "prompt" : "İstanbul bugün hava durumuna göre dışarı çıkmak için uygun mu?",
+      "test_id" : "L4-LIVE-03",
+      "trials" : [
+        {
+          "duration_seconds" : 40.68474102020264,
+          "index" : 0,
+          "response_text" : "Evet, İstanbul'da dışarı çıkmak için uygun görünüyor; hava \"Kısmen Açık\" (Mostly Clear), sıcaklık 26°C ve hissedilen 24°C. Ancak %25 yağmur ihtimali olduğu için bir şemsiye yanınızda bulundurmanız önerilir.\n\nKaynak: https:\/\/weatherdna.com",
+          "status" : "pass",
+          "tools_used" : [
+            "get_weather",
+            "Fetching meteorological data..."
+          ]
+        },
+        {
+          "duration_seconds" : 45.68707501888275,
+          "index" : 1,
+          "response_text" : "Evet, İstanbul bugün dışarı çıkmak için oldukça uygun görünüyor. Hava \"Neredeyse Açık\" (Mostly Clear) durumda ve sıcaklık gün içinde 26°C ile 20°C arasında değişiyor. Hissedilen sıcaklık 24°C, UV indeksi ise 7 seviyesinde (orta düzeyde güneş koruması önerilir). Yağış ihtimali %25, rüzgar hızı 16 km\/h ve nem oranı %56. Genel olarak bulutsuz veya az bulutlu bir hava durumu öngörülüyor; ancak öğleden sonra yağmur olma şansı olduğu için hafif bir yağmurluk yanınızda taşımakta fayda var.\n\nKaynak: WeatherDNA",
+          "status" : "pass",
+          "tools_used" : [
+            "get_weather",
+            "Fetching meteorological data..."
+          ]
+        },
+        {
+          "duration_seconds" : 40.38393294811249,
+          "index" : 2,
+          "response_text" : "Evet, İstanbul için hava durumu **Çoğunlukla Açık** ve sıcaklık **26°C**. Bu koşullar (güneşli havanın hakim olması ve yüksek ısının olmaması) dışarı çıkmak için oldukça uygundur. Ancak, nem oranı %56 ve rüzgar hızı 16 km\/h olduğu için hafif esintili bir gün olacak.\n\nKaynak: https:\/\/weatherdna.com\/istanbul",
+          "status" : "pass",
+          "tools_used" : [
+            "get_weather",
+            "Fetching meteorological data..."
+          ]
+        }
+      ]
+    }
+  ],
+  "dataset_path" : "Tests/AgentTestSuite/Tests\/AgentTestSuite\/datasets\/judge_heuristic_check.json",
+  "git_commit" : "da7ea4901342ed42918d7a22788b841cffca9493",
+  "k" : 3,
+  "model_id" : "qwen3.5-9b",
+  "report_schema_version" : "results-1.0",
+  "run_type" : "exploratory",
+  "summary" : {
+    "graded_blocks" : 3,
+    "needs_review_blocks" : 0,
+    "pass_at_1_count" : 2,
+    "pass_at_1_rate" : 0.6666666666666666,
+    "total_blocks" : 3
+  },
+  "tester" : "automated-runner-v1",
+  "timestamp" : "2026-07-23T19:56:30Z",
+  "total_duration_seconds" : 577.4159330129623
+}
