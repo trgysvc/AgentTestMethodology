@@ -112,11 +112,13 @@ AgentTestMethodology/
 ├── templates/
 │   ├── BLANK_TEST_BLOCK.template.md   # Empty test block — fill in for your agent
 │   └── golden_dataset.template.json   # Golden dataset schema
+├── scripts/
+│   └── sanitize_and_publish.py        # Sync + sanitize a result file from the private source repo
 └── results/
     └── PheronAgent/
-        ├── README.md                    # What this folder contains
-        ├── datasets/                    # Filled-in golden-dataset examples (seed + smoke)
-        └── run_qwen3.5-9b_*.{md,jsonl}  # 32 real result files, Section 2.7 naming — see folder README
+        ├── README.md                          # What this folder contains
+        ├── datasets/                          # 9 filled-in golden-dataset examples
+        └── run_qwen3.5-9b*.{md,json,jsonl,log} # 98 real result files, Section 2.7 naming — see folder README
 ```
 
 ---
@@ -127,7 +129,7 @@ AgentTestMethodology/
 
 **Templates and code** (`templates/`, any scripts): [MIT](LICENSE) — no restrictions.
 
-Attribution example: *"Based on AgentTestMethodology by Turgay Soysal (github.com/trgysvc/AgentTestMethodology), CC BY 4.0"*
+Attribution example: *"Based on AgentTestMethodology by Turgay Savacı (github.com/trgysvc/AgentTestMethodology), CC BY 4.0"*
 
 ---
 
