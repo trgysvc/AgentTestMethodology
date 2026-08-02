@@ -9,7 +9,7 @@ Full legal text: https://creativecommons.org/licenses/by/4.0/legalcode
 You are free to share and adapt this material for any purpose, including commercially, as long as you give appropriate credit, provide a link to the license, and indicate if changes were made. No warranties are given — the methodology is provided "as is," and the calibration/verification status for any given revision is stated explicitly within the document itself (see Part IX.5, "Scope and Limits").
 
 Attribution example:
-"Based on AgentTestMethodology by Turgay Soysal (github.com/trgysvc/AgentTestMethodology), CC BY 4.0"
+"Based on AgentTestMethodology by Turgay Savacı (github.com/trgysvc/AgentTestMethodology), CC BY 4.0"
 
 ---
 Note: machine-readable templates (`templates/golden_dataset.template.json`, `templates/BLANK_TEST_BLOCK.template.md`) and any scripts added to this repository are licensed separately under MIT — see `LICENSE`.

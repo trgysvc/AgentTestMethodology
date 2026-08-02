@@ -31,7 +31,7 @@ For reuse terms, see `LICENSE` (CC BY 4.0 for the methodology, MIT for template 
   Function-calling, multi-step reasoning (including τ²-bench), web/browser, OS/GUI/terminal, software engineering, security (including OWASP Top 10 for Agentic Applications 2026 / ASI01–ASI10), and memory benchmarks; MCP security (OWASP MCP Top 10); OpenClaw/Hermes harness analysis; evaluation methodology (LLM-as-judge, pass^k, exact match vs. partial credit, cost/latency, production observability, automated red-teaming, benchmark reliability, multi-agent systems, regulatory alignment map).
 
 - **Part II — Universal Agent Test Battery + PheronAgent Reference Implementation (Current, Canonical — Active)** (source: `PROTOCOL.md` v1.1 + Section 13 addendum)
-  Environment setup, golden dataset, acceptance/rejection taxonomy, **77 test blocks** (58 universal core blocks L1–L4/HR/MT/SEC — each split into Universal Capability + PheronAgent Reference Implementation — + 19 SUPP-TOOL case-study blocks), CI integration, result template.
+  Environment setup, golden dataset, acceptance/rejection taxonomy, **68 unique test blocks** (58 universal core blocks L1–L4/HR/MT/SEC — each split into Universal Capability + PheronAgent Reference Implementation — + 10 SUPP-TOOL case-study blocks, SUPP-TOOL-20..29). Section 13 also cross-references 19 earlier SUPP-TOOL entries (01..19) that were identified as exact duplicates of Part IV.b's L3-TOOL-01..19 and are no longer counted as separate blocks (see Version 8 note) — they are not part of the 68. CI integration, result template.
 
 - **Part III — Early Draft Format (Archive/Historical — Inactive)** (source: `agent_testing_protocol.md`)
   The predecessor/parallel version of PROTOCOL.md — ROUTE/UBID/CHAIN/MEM/SEC test blocks, Intent and UBID matrices. No longer in active use, reference only.
@@ -66,6 +66,7 @@ For reuse terms, see `LICENSE` (CC BY 4.0 for the methodology, MIT for template 
 | 5 | 2026-07-14 | **Scope clarification:** The document's primary identity was reframed from "PheronAgent's own test document" to "a universal agent test methodology, with PheronAgent as one case study." Each of Part II's 58 core blocks was split into "Universal Capability" (tool-agnostic) + "PheronAgent Reference Implementation" (concrete example); Section 13 and Part IV were explicitly labeled "PheronAgent-specific case study." The whole document was also re-read end to end and internal inconsistencies fixed: TOC/heading mismatches, verification via code that `RouterHealthTests` now genuinely exists, reflection of the k=5 run (436 records/86 tests) in `results/`, resolution of an internal contradiction in the bibliography's verification counts (Hermes). The front matter (purpose/usage) was brought into a professional document format (what it does → how to use it → table of contents), and the version history was moved here. |
 | 6 | 2026-07-14 | **2025–2026 gap-closing pass (27 new external citations, all independently web-verified):** Added to Part I: 5 new function-calling benchmarks (ToolSandbox, ComplexFuncBench, ACEBench, StableToolBench, MetaTool), τ²-bench (full section, dual-control), TheAgentCompany, Terminal-Bench, SWE-Lancer, MLE-bench, 6 new security benchmarks (ToolEmu, R-Judge, SafeAgentBench, PrivacyLens, ST-WebAgentBench, Cybench), and BEAM. New Section 6.11: full **OWASP Top 10 for Agentic Applications 2026** (ASI01–ASI10) taxonomy table + cross-mapping to the existing SEC-01..06 tests; Section 6.12: a coverage-control survey of 40 benchmarks (arXiv:2605.16282). Section 8.5 expanded with **OWASP MCP Top 10** and MCP supply-chain security methodology. 7 new methodology subsections added to Section 9: 9.5 cost/latency (CLEAR, HAL), 9.6 production observability (OTel GenAI semconv, LangSmith/Arize/Langfuse/Weave), 9.7 eval harness selection guide, 9.8 automated red-teaming (garak/PyRIT/DeepTeam), 9.9 benchmark reliability/anti-gaming, 9.10 multi-agent system testing, 9.11 regulatory alignment map (NIST RMF/MITRE ATLAS/EU AI Act/ISO 42001). Section 11.4 added: coverage cross-check against the IBM ACL 2026 five-perspective survey (arXiv:2503.16416). Part IX citation count: 34→61; the unverifiable "MCP-Atlas" name proposed by an external research pass was dropped in favor of the real OWASP MCP Top 10; "CyBench" was corrected to its actual name, "Cybench" (arXiv:2408.08926). |
 | 7 | 2026-07-14 | **Result-file naming and content schema added (Section 2.7):** The file-naming rule, previously defined only for calibration runs (`calibration_<model>_<YYYYMMDD>.md`), was extended to cover ordinary runs as well: `run_<model>_<YYYYMMDD>_k<n>[_<tag>].md/.jsonl`. The result-record formats of five industry tools (Inspect AI, OpenAI Evals, promptfoo, HAL harness, DeepEval — all independently web-verified) were reviewed and a common pattern extracted (run-level metadata record + sample-level attempt record, raw/summary separation); a new `.jsonl` schema based on this (`record_type`, `model`, `verdict`, `latency_ms`, `cost_tokens` fields) was defined — historical file content was not changed. The 32 real result files in `results/` were migrated to this new naming format (21 via `git mv`, 11 via `mv`); model attribution (`qwen3.5-9b`) was verified from the `Model:` field present consistently in every `.md` report, not assumed. |
+| 8 | 2026-08-02 | **Block-count correction (self-audit):** The "77 test blocks" figure was inflated — it double-counted the 19 SUPP-TOOL-01..19 entries added in Version 2, which this same document's Section 13 already marked as "DUPLICATE, see L3-TOOL-xx" / "counted only under L3-TOOL, not run separately." A number cannot be simultaneously excluded from counting and included in the headline total. **Corrected figure: 68 unique test blocks (58 core + 10 case-study, SUPP-TOOL-20..29).** SUPP-TOOL-01..19's 19 individual stub entries (each repeating the same boilerplate duplicate notice) were consolidated into a single mapping table in Section 13 — no content was lost, only redundant repetition. All "77" references throughout this document (front matter, Part II role box, Part VIII summary tables) were corrected to 68; historical changelog rows above (Version 2, 6) are left as-written since they are a dated record of what was believed at the time, not restated as current fact. This same inflation pattern is why Section 2.6's minimum-k rule and Section 2.4's calibration-run requirement exist — a headline number should never be more confident than the data supporting it. |
 
 ---
 
@@ -1664,9 +1665,9 @@ The critical gaps the survey identifies — cost-efficiency, safety/robustness e
 # PART II — UNIVERSAL AGENT TEST BATTERY + PHERONAGENT REFERENCE IMPLEMENTATION (CURRENT, CANONICAL — OFFICIAL STATUS: ACTIVE)
 
 > **Source file:** `PROTOCOL.md` (Version 1.1, 2026-06-29) + Section 13 (scope extension added in this document)
-> **Role:** This is the project's **single canonical test protocol** (see the Part VIII.3 consolidation decision). The original 58 test blocks (~232 trials) + the 19 SUPP-TOOL blocks added in this document (Section 13) make up a **total of 77 test blocks**. It includes the 4-layer architecture, golden dataset schema, acceptance/rejection taxonomy, CI integration, and certification template. Sections 1–12 are carried over below as-is (with the original heading hierarchy shifted two levels in); Section 13 is an addendum specific to this document.
+> **Role:** This is the project's **single canonical test protocol** (see the Part VIII.3 consolidation decision). The original 58 test blocks (~232 trials) + the 10 SUPP-TOOL-20..29 blocks added in this document (Section 13) make up a **total of 68 unique test blocks**. (Section 13 also lists SUPP-TOOL-01..19 as cross-references to Part IV.b's L3-TOOL-01..19 — these are the same 19 scenarios under a second ID, not additional blocks; see the Version 8 changelog entry.) It includes the 4-layer architecture, golden dataset schema, acceptance/rejection taxonomy, CI integration, and certification template. Sections 1–12 are carried over below as-is (with the original heading hierarchy shifted two levels in); Section 13 is an addendum specific to this document.
 >
-> **Version 5 scope distinction (important):** The **58 core blocks in Sections 4-10 form a universal test battery** — they test agent capabilities that are independent of any specific tool, language, or architecture (routing, chaining, memory, security, error recovery, multi-turn consistency). Each block now has two separate fields: **"Universal Capability"** (a tool-agnostic definition applicable to anyone) and **"PheronAgent Reference Implementation"** (the concrete counterpart of this capability in PheronAgent's own UBID/tool system — the Prompt/PASS/FAIL/k are written against this concrete counterpart). Anyone who wants to use this battery on another agent only needs to replace the "PheronAgent Reference Implementation" field with their own tool's name/call convention; the "Universal Capability" definition and the **structure** of the PASS/FAIL logic remain unchanged. The 19 SUPP-TOOL blocks in Section 13, however, are deliberately excluded from this distinction — they are a **case-study appendix** that validates PheronAgent's own tool catalog (Blender, Xcode, WhatsApp, etc.) and no attempt has been made to generalize them.
+> **Version 5 scope distinction (important):** The **58 core blocks in Sections 4-10 form a universal test battery** — they test agent capabilities that are independent of any specific tool, language, or architecture (routing, chaining, memory, security, error recovery, multi-turn consistency). Each block now has two separate fields: **"Universal Capability"** (a tool-agnostic definition applicable to anyone) and **"PheronAgent Reference Implementation"** (the concrete counterpart of this capability in PheronAgent's own UBID/tool system — the Prompt/PASS/FAIL/k are written against this concrete counterpart). Anyone who wants to use this battery on another agent only needs to replace the "PheronAgent Reference Implementation" field with their own tool's name/call convention; the "Universal Capability" definition and the **structure** of the PASS/FAIL logic remain unchanged. The 10 SUPP-TOOL-20..29 blocks in Section 13, however, are deliberately excluded from this distinction — they are a **case-study appendix** that validates PheronAgent's own tool catalog (Blender, Xcode, WhatsApp, etc.) and no attempt has been made to generalize them.
 
 ### Pheron Agent — Full Test Protocol and Certification Guide
 
@@ -1879,9 +1880,9 @@ For tests tagged [JUDGE] (requiring semantic judgment):
 
 ##### 2.4 Calibration / Control Group Protocol (Version 4 addendum)
 
-> **Why this section exists:** Pass rates reported in earlier revisions of this document (e.g. "44%", "L4: 0%") were measured only on Pheron Agent itself — there was no external reference point. When an outside reader sees such a number, they cannot answer the question "is Pheron Agent unreliable, or is this 77-block package simply very strict?" This section defines the **procedure** that closes that gap — see the "PENDING EXECUTION" principle in Section 2.6, which applies here as well: no number is written before it is measured.
+> **Why this section exists:** Pass rates reported in earlier revisions of this document (e.g. "44%", "L4: 0%") were measured only on Pheron Agent itself — there was no external reference point. When an outside reader sees such a number, they cannot answer the question "is Pheron Agent unreliable, or is this 68-block package simply very strict?" This section defines the **procedure** that closes that gap — see the "PENDING EXECUTION" principle in Section 2.6, which applies here as well: no number is written before it is measured.
 
-**Purpose:** To run the same 77 test blocks, with the same harness and the same Section 3 grading rules, on a **known reference model** as well, establishing a comparison point (control group). This is **not** a claim that "Pheron Agent is better/worse than X" — Pheron Agent uses a local, 9B-parameter, on-device model; a raw percentage comparison with a much larger frontier model accessed via a cloud API would not be fair. The sole purpose is to show, via an independent anchor, **how strict this test package itself is**.
+**Purpose:** To run the same 68 test blocks, with the same harness and the same Section 3 grading rules, on a **known reference model** as well, establishing a comparison point (control group). This is **not** a claim that "Pheron Agent is better/worse than X" — Pheron Agent uses a local, 9B-parameter, on-device model; a raw percentage comparison with a much larger frontier model accessed via a cloud API would not be fair. The sole purpose is to show, via an independent anchor, **how strict this test package itself is**.
 
 **Procedure:**
 
@@ -1892,7 +1893,7 @@ STEP 1: Select and document the reference model
   → The model choice is confirmed separately before publication — this document does
     not pre-fix a specific model name (provider availability changes over time).
 
-STEP 2: Same harness, same 77 blocks
+STEP 2: Same harness, same 68 blocks
   → All test block prompts in Part II are used verbatim, unmodified.
   → The reference model is scored using the same Section 3 (Acceptance/Rejection Taxonomy) rules.
   → The reference model's own tool/function calling API is used (Pheron's UBID
@@ -1918,7 +1919,7 @@ STEP 4: Present the comparison only in the context of "test strictness"
 | Area | Status |
 |---|---|
 | Reference model selection | 🔶 **PENDING EXECUTION** |
-| Run (77 blocks, same harness) | 🔶 **PENDING EXECUTION** |
+| Run (68 blocks, same harness) | 🔶 **PENDING EXECUTION** |
 | `results/calibration_*.md` | 🔶 **PENDING EXECUTION** — not yet created |
 | Comparison table | 🔶 **PENDING EXECUTION** — no numbers have been fabricated in this revision |
 
@@ -3622,85 +3623,35 @@ The existing `Tests/RouterHealth/scenarios_v2.json` (31 scenarios) is the founda
 
 ## Section 13 — PheronAgent-Specific Tool Catalog Case Study (NOT Part of the Universal Battery)
 
-> **Scope warning (Version 5):** The 19 SUPP-TOOL blocks in this section are **not part of the universal test battery**, unlike the 58 core blocks in Sections 4-10. Capabilities tested here — such as Blender rendering, Xcode build, WhatsApp messaging, Apple Calendar — are not general capabilities that any agent must have, but concrete parts of **PheronAgent's own tool catalog**. For someone building a different agent, these blocks may have no direct equivalent — this is a deliberate choice; trying to generalize them (e.g. forcing them into an abstract frame like "3D content generation capability" instead of "Blender render capability") would be meaningless. This section should be read as part of a case study showing **how the universal methodology applies to a real agent**.
+> **Scope warning (Version 5):** The SUPP-TOOL-20..29 blocks in this section are **not part of the universal test battery**, unlike the 58 core blocks in Sections 4-10. Capabilities tested here — such as Blender rendering, Xcode build, WhatsApp messaging, Apple Calendar — are not general capabilities that any agent must have, but concrete parts of **PheronAgent's own tool catalog**. For someone building a different agent, these blocks may have no direct equivalent — this is a deliberate choice; trying to generalize them (e.g. forcing them into an abstract frame like "3D content generation capability" instead of "Blender render capability") would be meaningless. This section should be read as part of a case study showing **how the universal methodology applies to a real agent**.
 >
-> **Why this section exists (previous rationale, still valid):** A gap identified in Part VII.4 — none of the 19 concrete L3-TOOL scenarios in `tool_testing_protocol.md` (Part IV) were included among these 58 test blocks (Sections 4–10). This section closes that coverage gap by adding those 19 scenarios in Part II's standard 5-field format.
+> **Why this section exists (previous rationale, still valid):** A gap identified in Part VII.4 — none of the 19 concrete L3-TOOL scenarios in `tool_testing_protocol.md` (Part IV) were included among these 58 test blocks (Sections 4–10). SUPP-TOOL-01..19 were originally written to close that coverage gap by duplicating those 19 scenarios into Part II's standard 5-field format.
+>
+> **Version 8 correction — SUPP-TOOL-01..19 retired as separate blocks:** Carrying full duplicate copies of L3-TOOL-01..19 in two places under two IDs is exactly the kind of double-count this document's own Section 2.6 (minimum-k rule) and Version 8 changelog entry warn against. The individual stub entries have been removed; the mapping is preserved below for traceability. **These 19 scenarios are counted once, under their L3-TOOL-01..19 identity in Part IV.b — not as separate Part II blocks.** Part II's own block count is 58 core + 10 SUPP-TOOL-20..29 = **68**, not 77.
 
-### SUPP-TOOL-01 — Music DNA (UBID: 18) — DUPLICATE, see L3-TOOL-01
+| Retired ID | UBID | Scenario | Canonical location |
+|---|---|---|---|
+| SUPP-TOOL-01 | 18 | Music DNA | L3-TOOL-01, Part IV.b |
+| SUPP-TOOL-02 | 43 | Media Control | L3-TOOL-02, Part IV.b |
+| SUPP-TOOL-03 | 56 | System Volume | L3-TOOL-03, Part IV.b |
+| SUPP-TOOL-04 | 57 | System Brightness | L3-TOOL-04, Part IV.b |
+| SUPP-TOOL-05 | 15 | System Sleep | L3-TOOL-05, Part IV.b |
+| SUPP-TOOL-06 | 40 | Safari Automation | L3-TOOL-06, Part IV.b |
+| SUPP-TOOL-07 | 170 | Native Browser | L3-TOOL-07, Part IV.b |
+| SUPP-TOOL-08 | 20 | Markdown Report | L3-TOOL-08, Part IV.b |
+| SUPP-TOOL-09 | 17 | WhatsApp Message | L3-TOOL-09, Part IV.b |
+| SUPP-TOOL-10 | 54 (sub: 21) | Apple Calendar | L3-TOOL-10, Part IV.b |
+| SUPP-TOOL-11 | 55 | Apple Mail | L3-TOOL-11, Part IV.b |
+| SUPP-TOOL-12 | 60 | Blender 3D Headless Automation | L3-TOOL-12, Part IV.b |
+| SUPP-TOOL-13 | 47 | Xcode Builder | L3-TOOL-13, Part IV.b |
+| SUPP-TOOL-14 | 50 | Apple Shortcuts Listing | L3-TOOL-14, Part IV.b |
+| SUPP-TOOL-15 | 100 | Stripe Integration | L3-TOOL-15, Part IV.b |
+| SUPP-TOOL-16 | 101 | GitHub Integration | L3-TOOL-16, Part IV.b |
+| SUPP-TOOL-17 | 103 | Notion Integration | L3-TOOL-17, Part IV.b |
+| SUPP-TOOL-18 | 87 | Higgsfield AI Video Generation | L3-TOOL-18, Part IV.b |
+| SUPP-TOOL-19 | 85 | ID3 Music Tag Processor | L3-TOOL-19, Part IV.b |
 
-> This block has the exact same prompt/Expected-Tool/Criteria as **L3-TOOL-01** in Part IV.b. Identified in the 2026-07 revision: these 19 blocks arose from the same scenario being duplicated under two separate IDs, due to the Part II/Part IV scope-gap discussion at that time. **It is a single, unique test scenario** — it is counted only under L3-TOOL-01 in coverage/pass-rate calculations, and is not run separately. See L3-TOOL-01 (Part IV.b) for prompt/criteria details.
-
-### SUPP-TOOL-02 — Media Control (UBID: 43) — DUPLICATE, see L3-TOOL-02
-
-> This block has the exact same prompt/Expected-Tool/Criteria as **L3-TOOL-02** in Part IV.b. Identified in the 2026-07 revision: these 19 blocks arose from the same scenario being duplicated under two separate IDs, due to the Part II/Part IV scope-gap discussion at that time. **It is a single, unique test scenario** — it is counted only under L3-TOOL-02 in coverage/pass-rate calculations, and is not run separately. See L3-TOOL-02 (Part IV.b) for prompt/criteria details.
-
-### SUPP-TOOL-03 — System Volume (UBID: 56) — DUPLICATE, see L3-TOOL-03
-
-> This block has the exact same prompt/Expected-Tool/Criteria as **L3-TOOL-03** in Part IV.b. Identified in the 2026-07 revision: these 19 blocks arose from the same scenario being duplicated under two separate IDs, due to the Part II/Part IV scope-gap discussion at that time. **It is a single, unique test scenario** — it is counted only under L3-TOOL-03 in coverage/pass-rate calculations, and is not run separately. See L3-TOOL-03 (Part IV.b) for prompt/criteria details.
-
-### SUPP-TOOL-04 — System Brightness (UBID: 57) — DUPLICATE, see L3-TOOL-04
-
-> This block has the exact same prompt/Expected-Tool/Criteria as **L3-TOOL-04** in Part IV.b. Identified in the 2026-07 revision: these 19 blocks arose from the same scenario being duplicated under two separate IDs, due to the Part II/Part IV scope-gap discussion at that time. **It is a single, unique test scenario** — it is counted only under L3-TOOL-04 in coverage/pass-rate calculations, and is not run separately. See L3-TOOL-04 (Part IV.b) for prompt/criteria details.
-
-### SUPP-TOOL-05 — System Sleep (UBID: 15) — DUPLICATE, see L3-TOOL-05
-
-> This block has the exact same prompt/Expected-Tool/Criteria as **L3-TOOL-05** in Part IV.b. Identified in the 2026-07 revision: these 19 blocks arose from the same scenario being duplicated under two separate IDs, due to the Part II/Part IV scope-gap discussion at that time. **It is a single, unique test scenario** — it is counted only under L3-TOOL-05 in coverage/pass-rate calculations, and is not run separately. See L3-TOOL-05 (Part IV.b) for prompt/criteria details.
-
-### SUPP-TOOL-06 — Safari Automation (UBID: 40) — DUPLICATE, see L3-TOOL-06
-
-> This block has the exact same prompt/Expected-Tool/Criteria as **L3-TOOL-06** in Part IV.b. Identified in the 2026-07 revision: these 19 blocks arose from the same scenario being duplicated under two separate IDs, due to the Part II/Part IV scope-gap discussion at that time. **It is a single, unique test scenario** — it is counted only under L3-TOOL-06 in coverage/pass-rate calculations, and is not run separately. See L3-TOOL-06 (Part IV.b) for prompt/criteria details.
-
-### SUPP-TOOL-07 — Native Browser (UBID: 170) — DUPLICATE, see L3-TOOL-07
-
-> This block has the exact same prompt/Expected-Tool/Criteria as **L3-TOOL-07** in Part IV.b. Identified in the 2026-07 revision: these 19 blocks arose from the same scenario being duplicated under two separate IDs, due to the Part II/Part IV scope-gap discussion at that time. **It is a single, unique test scenario** — it is counted only under L3-TOOL-07 in coverage/pass-rate calculations, and is not run separately. See L3-TOOL-07 (Part IV.b) for prompt/criteria details.
-
-### SUPP-TOOL-08 — Markdown Report (UBID: 20) — DUPLICATE, see L3-TOOL-08
-
-> This block has the exact same prompt/Expected-Tool/Criteria as **L3-TOOL-08** in Part IV.b. Identified in the 2026-07 revision: these 19 blocks arose from the same scenario being duplicated under two separate IDs, due to the Part II/Part IV scope-gap discussion at that time. **It is a single, unique test scenario** — it is counted only under L3-TOOL-08 in coverage/pass-rate calculations, and is not run separately. See L3-TOOL-08 (Part IV.b) for prompt/criteria details.
-
-### SUPP-TOOL-09 — WhatsApp Message (UBID: 17) — DUPLICATE, see L3-TOOL-09
-
-> This block has the exact same prompt/Expected-Tool/Criteria as **L3-TOOL-09** in Part IV.b. Identified in the 2026-07 revision: these 19 blocks arose from the same scenario being duplicated under two separate IDs, due to the Part II/Part IV scope-gap discussion at that time. **It is a single, unique test scenario** — it is counted only under L3-TOOL-09 in coverage/pass-rate calculations, and is not run separately. See L3-TOOL-09 (Part IV.b) for prompt/criteria details.
-
-### SUPP-TOOL-10 — Apple Calendar (UBID: 54, sub: 21) — DUPLICATE, see L3-TOOL-10
-
-> This block has the exact same prompt/Expected-Tool/Criteria as **L3-TOOL-10** in Part IV.b. Identified in the 2026-07 revision: these 19 blocks arose from the same scenario being duplicated under two separate IDs, due to the Part II/Part IV scope-gap discussion at that time. **It is a single, unique test scenario** — it is counted only under L3-TOOL-10 in coverage/pass-rate calculations, and is not run separately. See L3-TOOL-10 (Part IV.b) for prompt/criteria details.
-
-### SUPP-TOOL-11 — Apple Mail (UBID: 55) — DUPLICATE, see L3-TOOL-11
-
-> This block has the exact same prompt/Expected-Tool/Criteria as **L3-TOOL-11** in Part IV.b. Identified in the 2026-07 revision: these 19 blocks arose from the same scenario being duplicated under two separate IDs, due to the Part II/Part IV scope-gap discussion at that time. **It is a single, unique test scenario** — it is counted only under L3-TOOL-11 in coverage/pass-rate calculations, and is not run separately. See L3-TOOL-11 (Part IV.b) for prompt/criteria details.
-
-### SUPP-TOOL-12 — Blender 3D Headless Automation (UBID: 60) — DUPLICATE, see L3-TOOL-12
-
-> This block has the exact same prompt/Expected-Tool/Criteria as **L3-TOOL-12** in Part IV.b. Identified in the 2026-07 revision: these 19 blocks arose from the same scenario being duplicated under two separate IDs, due to the Part II/Part IV scope-gap discussion at that time. **It is a single, unique test scenario** — it is counted only under L3-TOOL-12 in coverage/pass-rate calculations, and is not run separately. See L3-TOOL-12 (Part IV.b) for prompt/criteria details.
-
-### SUPP-TOOL-13 — Xcode Builder (UBID: 47) — DUPLICATE, see L3-TOOL-13
-
-> This block has the exact same prompt/Expected-Tool/Criteria as **L3-TOOL-13** in Part IV.b. Identified in the 2026-07 revision: these 19 blocks arose from the same scenario being duplicated under two separate IDs, due to the Part II/Part IV scope-gap discussion at that time. **It is a single, unique test scenario** — it is counted only under L3-TOOL-13 in coverage/pass-rate calculations, and is not run separately. See L3-TOOL-13 (Part IV.b) for prompt/criteria details.
-
-### SUPP-TOOL-14 — Apple Shortcuts Listing (UBID: 50) — DUPLICATE, see L3-TOOL-14
-
-> This block has the exact same prompt/Expected-Tool/Criteria as **L3-TOOL-14** in Part IV.b. Identified in the 2026-07 revision: these 19 blocks arose from the same scenario being duplicated under two separate IDs, due to the Part II/Part IV scope-gap discussion at that time. **It is a single, unique test scenario** — it is counted only under L3-TOOL-14 in coverage/pass-rate calculations, and is not run separately. See L3-TOOL-14 (Part IV.b) for prompt/criteria details.
-
-### SUPP-TOOL-15 — Stripe Integration (UBID: 100) — DUPLICATE, see L3-TOOL-15
-
-> This block has the exact same prompt/Expected-Tool/Criteria as **L3-TOOL-15** in Part IV.b. Identified in the 2026-07 revision: these 19 blocks arose from the same scenario being duplicated under two separate IDs, due to the Part II/Part IV scope-gap discussion at that time. **It is a single, unique test scenario** — it is counted only under L3-TOOL-15 in coverage/pass-rate calculations, and is not run separately. See L3-TOOL-15 (Part IV.b) for prompt/criteria details.
-
-### SUPP-TOOL-16 — GitHub Integration (UBID: 101) — DUPLICATE, see L3-TOOL-16
-
-> This block has the exact same prompt/Expected-Tool/Criteria as **L3-TOOL-16** in Part IV.b. Identified in the 2026-07 revision: these 19 blocks arose from the same scenario being duplicated under two separate IDs, due to the Part II/Part IV scope-gap discussion at that time. **It is a single, unique test scenario** — it is counted only under L3-TOOL-16 in coverage/pass-rate calculations, and is not run separately. See L3-TOOL-16 (Part IV.b) for prompt/criteria details.
-
-### SUPP-TOOL-17 — Notion Integration (UBID: 103) — DUPLICATE, see L3-TOOL-17
-
-> This block has the exact same prompt/Expected-Tool/Criteria as **L3-TOOL-17** in Part IV.b. Identified in the 2026-07 revision: these 19 blocks arose from the same scenario being duplicated under two separate IDs, due to the Part II/Part IV scope-gap discussion at that time. **It is a single, unique test scenario** — it is counted only under L3-TOOL-17 in coverage/pass-rate calculations, and is not run separately. See L3-TOOL-17 (Part IV.b) for prompt/criteria details.
-
-### SUPP-TOOL-18 — Higgsfield AI Video Generation (UBID: 87) — DUPLICATE, see L3-TOOL-18
-
-> This block has the exact same prompt/Expected-Tool/Criteria as **L3-TOOL-18** in Part IV.b. Identified in the 2026-07 revision: these 19 blocks arose from the same scenario being duplicated under two separate IDs, due to the Part II/Part IV scope-gap discussion at that time. **It is a single, unique test scenario** — it is counted only under L3-TOOL-18 in coverage/pass-rate calculations, and is not run separately. See L3-TOOL-18 (Part IV.b) for prompt/criteria details.
-
-### SUPP-TOOL-19 — ID3 Music Tag Processor (UBID: 85) — DUPLICATE, see L3-TOOL-19
-
-> This block has the exact same prompt/Expected-Tool/Criteria as **L3-TOOL-19** in Part IV.b. Identified in the 2026-07 revision: these 19 blocks arose from the same scenario being duplicated under two separate IDs, due to the Part II/Part IV scope-gap discussion at that time. **It is a single, unique test scenario** — it is counted only under L3-TOOL-19 in coverage/pass-rate calculations, and is not run separately. See L3-TOOL-19 (Part IV.b) for prompt/criteria details.
+Each row above has the exact same prompt/Expected-Tool/Criteria as its L3-TOOL counterpart in Part IV.b — see that section for the actual scenario definitions. The genuinely new, non-duplicate blocks in this section start below at SUPP-TOOL-20.
 
 ### SUPP-TOOL-20 — Apple Calendar Events List (UBID: 54)
 
@@ -5135,7 +5086,7 @@ Of these 7 items, 6 (baseline not measured, SEC-04 not set up, Metal tests skipp
 
 **Decision on numerical conflicts:** When the two documents define the same test with different k/threshold values (e.g., L1-WEATHER-01's "post-baseline" approach vs. UBID-002's fixed "pass^5 ≥ 80%"), **Part II's approach governs** — meaning no fixed percentage is treated as final until the baseline measurement in Section 2.2 has been performed. The fixed percentages in Part III (e.g., 80%, 67%, 95%) may be used only as **initial reference points** until the baseline is measured — they are not binding.
 
-**Decision on tests present in Part II but not III / present in Part III but not II:** The unique content of both sides is **preserved** (nothing was deleted) — Part III continues to remain as an archive, and candidates that could potentially be moved to Part II in the future (Sections G/H — Intent and UBID matrices) are noted here: these are not part of Part II's official 58 (+19 SUPP = 77) test blocks, but are valuable as a reserve pool that could be added in the future.
+**Decision on tests present in Part II but not III / present in Part III but not II:** The unique content of both sides is **preserved** (nothing was deleted) — Part III continues to remain as an archive, and candidates that could potentially be moved to Part II in the future (Sections G/H — Intent and UBID matrices) are noted here: these are not part of Part II's official 58 (+10 SUPP-TOOL-20..29 = 68) test blocks, but are valuable as a reserve pool that could be added in the future.
 
 ---
 
@@ -5143,7 +5094,7 @@ Of these 7 items, 6 (baseline not measured, SEC-04 not set up, Metal tests skipp
 
 **Status: RESOLVED (19/27 items) + PARTIALLY RESOLVED (8/27 items remain open)**
 
-**What was done:** **Section 13 — Coverage Expansion** was added to the end of Part II (see above). The 19 concrete scenarios from `tool_testing_protocol.md` (musicDNA, mediaControl, systemVolume, systemBrightness, systemSleep, safariAutomation, nativeBrowser, markdownReport, whatsappMessage, appleCalendar, appleMail, blender3D, xcodeBuilder, shortcutList, stripeTool, githubTool, notionTool, higgsfieldGenerate, id3_processor) were converted into Part II's standard format as SUPP-TOOL-01..19. **The total number of test blocks is now 77, not 58** (58 + 19).
+**What was done:** **Section 13 — Coverage Expansion** was added to the end of Part II (see above). The 19 concrete scenarios from `tool_testing_protocol.md` (musicDNA, mediaControl, systemVolume, systemBrightness, systemSleep, safariAutomation, nativeBrowser, markdownReport, whatsappMessage, appleCalendar, appleMail, blender3D, xcodeBuilder, shortcutList, stripeTool, githubTool, notionTool, higgsfieldGenerate, id3_processor) were originally converted into Part II's standard format as SUPP-TOOL-01..19 — duplicating the same 19 scenarios that already existed as L3-TOOL-01..19 in Part IV.b. **Version 8 correction:** since these 19 were the identical scenarios under a second ID, not new coverage, they were retired as separate Part II blocks (see Section 13's mapping table) and are no longer added to the block count. **The total number of Part II test blocks is 68, not 58 or 77** (58 core + 10 genuinely new SUPP-TOOL-20..29 blocks).
 
 **Remaining open (not fabricated):** For 10 UBIDs (21, 22, 37, 49, 96, 97, 98, 99, 102, 104) there is no concrete scenario in any source document — UBID:22 is additionally a "ghost" entry that was never named at all. These are listed in Section 13.1 as a "real gap" — not closed, because closing it would mean inventing something.
 
@@ -5153,9 +5104,9 @@ Of these 7 items, 6 (baseline not measured, SEC-04 not set up, Metal tests skipp
 
 | Metric | Old value | New value |
 |---|---|---|
-| Total test blocks | 58 | **77** (58 original + 19 SUPP-TOOL) |
-| Total UBID coverage | 17 UBIDs | **36 UBIDs** (17 original + UBIDs covered by the 19 SUPP-TOOL) |
-| UBIDs left out of coverage | unclear ("~25" estimate) | **10** (verified by script: 21, 22, 37, 49, 96, 97, 98, 99, 102, 104) |
+| Total test blocks (Part II) | 58 | **68** (58 core + 10 SUPP-TOOL-20..29; see Version 8 correction — the 19 SUPP-TOOL-01..19 in this row's original "77" figure duplicated L3-TOOL-01..19 in Part IV.b and are no longer counted as separate Part II blocks) |
+| Total UBID coverage (whole document, Part II + Part IV.b) | 17 UBIDs | **36 UBIDs** (17 Part II core + 19 covered via Part IV.b's L3-TOOL-01..19, referenced not duplicated in Part II) |
+| UBIDs left out of coverage | unclear ("~25" estimate) | **0** as of SUPP-TOOL-20..29 (previously 10: 21, 22, 37, 49, 96, 97, 98, 99, 102, 104 — closed by those blocks; see Section 13's own note that scenario coverage is complete but live-run coverage is not) |
 
 ---
 
@@ -5712,13 +5663,16 @@ Each item below includes the following fields: **Full title**, **authors**, **in
 
 ## IX.4 — Verification Method and Scope (For Transparency)
 
-1. **30 academic citations were independently searched on the web and verified:** BFCL, API-Bank, ToolLLM, NESTFUL, GAIA, AgentBench, τ-bench, TaskBench, WebArena, Mind2Web, OSWorld, SWE-bench, AgentHarm, InjecAgent, LongMemEval, LoCoMo, WildClawBench, WebVoyager, AssistGUI, ScreenSpot, MobileAgentBench, AndroidWorld, SWE-bench Multimodal, MLAgentBench, Claw-SWE-Bench, MCPAgentBench, MCPToolBench++, MCP-Universe, MCPSecBench, Astrix Security OpenClaw Scanner.
+> **Version 8 note — this section was stale:** Items 1-4 below describe the state as of Version 3/4 (34 IX.2 citations, before the Version 6 gap-closing pass added 27 more). The itemized list was never updated when the count grew to 61, leaving a document that cited "40 total references / 39 verified" in one section while IX.2's own intro (above) said 61. Both numbers were true at different times; only the current one belongs in a "conclusion." The original itemized breakdown is kept below for traceability of the *first* verification pass; the corrected total follows it.
+
+1. **30 academic citations were independently searched on the web and verified (original, Version 3 pass):** BFCL, API-Bank, ToolLLM, NESTFUL, GAIA, AgentBench, τ-bench, TaskBench, WebArena, Mind2Web, OSWorld, SWE-bench, AgentHarm, InjecAgent, LongMemEval, LoCoMo, WildClawBench, WebVoyager, AssistGUI, ScreenSpot, MobileAgentBench, AndroidWorld, SWE-bench Multimodal, MLAgentBench, Claw-SWE-Bench, MCPAgentBench, MCPToolBench++, MCP-Universe, MCPSecBench, Astrix Security OpenClaw Scanner.
 2. **3 citations were verified via cross-reference** (matching the arXiv number exactly): BrowserGym, WorkArena, AgentDojo.
 2b. **1 citation (Hermes Function-Calling Dataset) was carried verbatim from the source, not independently verified** — it had previously been mistakenly included in this list as "verified" (corrected on 2026-07-14); it was already correctly marked with 📄 in its own IX.2.1 item 2 entry, it was merely inconsistent with this summary list.
 3. **6 technical standards/tools were researched and documented in detail:** RFC 8785 (JCS), SPIFFE, ezkl, zkPyTorch, NIST CAISI, Ed25519 (RFC 8032).
 4. **Erroneous references were corrected:** the Mind2Web (arXiv:2306.06070) and API-Bank (EMNLP 2023) data were corrected; Agent Security Bench (arXiv:2410.02644) was added.
+5. **Version 6 gap-closing pass added 27 more IX.2 citations** (see CHANGELOG Version 6 / this document's own version-history table): OWASP ASI 2026, OWASP MCP Top 10, τ²-bench, Terminal-Bench, TheAgentCompany, SWE-Lancer, MLE-bench, 5 function-calling benchmarks, 6 security benchmarks, BEAM, CLEAR, HAL, OTel GenAI semconv, plus observability/harness/red-team tool groups and 2 scope-check surveys — all marked ✅ independently web-verified at the time they were added, per that changelog entry.
 
-**Conclusion:** Of the 40 total references in the document — 34 academic/industry benchmarks and 6 technical standards — **39** have been independently verified, with their validity and details finalized. The sole exception: the Hermes Function-Calling Dataset (IX.2.1 item 2) was carried verbatim from the source document and was never independently searched in any revision — explicitly marked with 📄, honestly left as "unverified," with no fabricated verification added.
+**Corrected conclusion (Version 8):** The document currently cites **67 total external references** — **61** in IX.2 (benchmarks/tools/surveys) + **6** in IX.3 (technical standards for the Part V vision document). Of these, **66 are independently verified** (60 of IX.2's 61, plus all 6 of IX.3); the sole unverified exception remains the **Hermes Function-Calling Dataset** (IX.2.1 item 2) — carried verbatim from the source document, never independently searched in any revision, explicitly marked 📄, honestly left as "unverified" rather than assumed correct.
 
 **Suggestion for readers:** You can verify citations via `arxiv.org` and `rfc-editor.org`.
 

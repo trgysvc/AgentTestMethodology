@@ -2,7 +2,7 @@
 
 **Universal AI Agent Testing Methodology — with PheronAgent as Reference Case Study**
 
-Version 7 · 2026-07-14
+Version 8 · 2026-08-02
 
 ---
 
@@ -102,8 +102,8 @@ Each block specifies: prerequisite tier, test type, input prompt, expected behav
 
 ```
 AgentTestMethodology/
-├── METHODOLOGY.md                     # Primary document, English (v7, ~5750 lines)
-├── METHODOLOGY_TR.md                  # Primary document, Turkish original (v7, ~5700 lines)
+├── METHODOLOGY.md                     # Primary document, English (v8, ~5710 lines)
+├── METHODOLOGY_TR.md                  # Primary document, Turkish original (v8, ~5675 lines)
 ├── STORY.md                           # How this methodology actually came to be
 ├── README.md                          # This file
 ├── LICENSE                            # MIT — templates and code
@@ -161,4 +161,4 @@ Please open an issue before submitting a PR for structural changes to Part II.
 
 ## Version History
 
-See [`CHANGELOG.md`](CHANGELOG.md) for the full version-by-version history (currently at Version 7). For the story behind *why* each version changed what it changed — including the real bugs and dead ends that drove it — see [`STORY.md`](STORY.md).
+See [`CHANGELOG.md`](CHANGELOG.md) for the full version-by-version history (currently at Version 8). For the story behind *why* each version changed what it changed — including the real bugs and dead ends that drove it — see [`STORY.md`](STORY.md).

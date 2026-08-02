@@ -31,7 +31,7 @@ Yeniden kullanım şartları için `LICENSE` (CC BY 4.0 metodoloji) ve `LICENSE-
   Function-calling, çok adımlı akıl yürütme (τ²-bench dahil), web/tarayıcı, OS/GUI/terminal, yazılım mühendisliği, güvenlik (OWASP Top 10 for Agentic Applications 2026 / ASI01–ASI10 dahil), bellek benchmark'ları; MCP güvenliği (OWASP MCP Top 10); OpenClaw/Hermes harness analizi; değerlendirme metodolojisi (LLM-as-judge, pass^k, tam eşleşme vs. kısmi kredi, maliyet/gecikme, üretim gözlemlenebilirliği, otomatik red-teaming, benchmark güvenilirliği, çok-ajanlı sistemler, düzenleyici uyum haritası).
 
 - **Kısım II — Evrensel Ajan Test Bataryası + PheronAgent Referans Uygulaması (Güncel, Kanonik — Aktif)** (kaynak: `PROTOCOL.md` v1.1 + Bölüm 13 eki)
-  Ortam kurulumu, golden dataset, kabul/red taksonomisi, **77 test bloğu** (58 evrensel çekirdek blok L1–L4/HR/MT/GÜV — her biri Evrensel Yetenek + PheronAgent Referans Uygulaması ayrımıyla — + 19 EK-TOOL vaka çalışması bloğu), CI entegrasyonu, sonuç şablonu.
+  Ortam kurulumu, golden dataset, kabul/red taksonomisi, **68 benzersiz test bloğu** (58 evrensel çekirdek blok L1–L4/HR/MT/GÜV — her biri Evrensel Yetenek + PheronAgent Referans Uygulaması ayrımıyla — + 10 EK-TOOL vaka çalışması bloğu, EK-TOOL-20..29). Bölüm 13 ayrıca, Kısım IV.b'deki L3-TOOL-01..19 ile birebir aynı olduğu tespit edilen ve artık ayrı blok sayılmayan 19 eski EK-TOOL girdisine (01..19) çapraz referans verir (bkz. Sürüm 8 notu). CI entegrasyonu, sonuç şablonu.
 
 - **Kısım III — Erken Taslak Format (Arşiv/Tarihsel — Pasif)** (kaynak: `agent_testing_protocol.md`)
   PROTOCOL.md'nin öncülü/paralel versiyonu — ROUTE/UBID/CHAIN/MEM/SEC test blokları, Intent ve UBID matrisleri. Artık aktif kullanımda değil, sadece referans.
@@ -66,6 +66,7 @@ Yeniden kullanım şartları için `LICENSE` (CC BY 4.0 metodoloji) ve `LICENSE-
 | 5 | 2026-07-14 | **Kapsam netleştirmesi:** Belgenin birincil kimliği "PheronAgent'ın kendi test dokümanı" değil "evrensel ajan test metodolojisi, PheronAgent tek bir vaka çalışması" olarak yeniden çerçevelendi. Kısım II'nin 58 çekirdek bloğunun her biri "Evrensel Yetenek" (araç-bağımsız) + "PheronAgent Referans Uygulaması" (somut örnek) olarak ayrıştırıldı; Bölüm 13 ve Kısım IV açıkça "PheronAgent'a özgü vaka çalışması" diye etiketlendi. Ayrıca belge baştan sona yeniden okunup iç tutarsızlıklar düzeltildi: TOC ile bölüm başlıkları arası uyuşmazlık, `RouterHealthTests`'in artık gerçekten var olduğunun kod üzerinden doğrulanması, `results/` klasöründeki k=5 koşumunun (436 kayıt/86 test) yansıtılması, kaynakça doğrulama sayılarındaki (Hermes) iç çelişkinin giderilmesi. Ön kısım (amaç/kullanım) profesyonel doküman formatına (ne işe yarar → nasıl kullanılır → içindekiler) kavuşturuldu, sürüm geçmişi buraya taşındı. |
 | 6 | 2026-07-14 | **2025–2026 boşluk kapatma turu (27 yeni dış atıf, hepsi bağımsız web doğrulamalı):** Kısım I'e 5 yeni function-calling (ToolSandbox, ComplexFuncBench, ACEBench, StableToolBench, MetaTool), τ²-bench (tam bölüm, dual-control), TheAgentCompany, Terminal-Bench, SWE-Lancer, MLE-bench, 6 yeni güvenlik benchmark'ı (ToolEmu, R-Judge, SafeAgentBench, PrivacyLens, ST-WebAgentBench, CyBench) ve BEAM eklendi. Yeni Bölüm 6.11 **OWASP Top 10 for Agentic Applications 2026** (ASI01–ASI10) tam taksonomi tablosu + mevcut GÜV-01..06 testleriyle çapraz eşleme; Bölüm 6.12 40 benchmark'lık kapsam-kontrolü survey'i (arXiv:2605.16282). Bölüm 8.5 **OWASP MCP Top 10** ve MCP tedarik-zinciri güvenlik metodolojisiyle genişletildi. Bölüm 9'a 7 yeni metodoloji alt bölümü eklendi: 9.5 maliyet/gecikme (CLEAR, HAL), 9.6 üretim gözlemlenebilirliği (OTel GenAI semconv, LangSmith/Arize/Langfuse/Weave), 9.7 harness seçim rehberi, 9.8 otomatik red-teaming (garak/PyRIT/DeepTeam), 9.9 benchmark güvenilirliği/anti-gaming, 9.10 çok-ajanlı sistem testleri, 9.11 düzenleyici uyum haritası (NIST RMF/MITRE ATLAS/EU AI Act/ISO 42001). Bölüm 11.4 IBM ACL 2026 5-perspektif survey'iyle (arXiv:2503.16416) kapsam çapraz-kontrolü eklendi. Kısım IX atıf sayısı 34→61; agent'ın önerdiği doğrulanamayan "MCP-Atlas" ismi elendi, yerine gerçek OWASP MCP Top 10 kondu; "CyBench" adının gerçekte "Cybench" (arXiv:2408.08926) olduğu düzeltildi. |
 | 7 | 2026-07-14 | **Sonuç dosyası adlandırma ve içerik şeması eklendi (Bölüm 2.7):** Daha önce yalnızca kalibrasyon koşumları için tanımlı olan dosya adlandırma kuralı (`calibration_<model>_<YYYYMMDD>.md`) normal koşumları da kapsayacak şekilde genişletildi: `run_<model>_<YYYYMMDD>_k<n>[_<etiket>].md/.jsonl`. Beş sektör aracının (Inspect AI, OpenAI Evals, promptfoo, HAL harness, DeepEval — hepsi bağımsız web araştırmasıyla doğrulandı) sonuç kaydı formatları incelenip ortak desen (koşum-seviyesi meta kaydı + örnek-seviyesi deneme kaydı, ham/özet ayrımı) çıkarıldı; buna dayanan yeni `.jsonl` şeması (`record_type`, `model`, `verdict`, `latency_ms`, `cost_tokens` alanları) tanımlandı — geçmiş dosyaların içeriği değiştirilmedi. `results/` klasöründeki 32 gerçek sonuç dosyası bu yeni adlandırma formatına taşındı (21'i `git mv`, 11'i `mv` ile); model ataması (`qwen3.5-9b`) her `.md` raporunda tutarlı biçimde bulunan `Model:` alanından doğrulandı, tahmin edilmedi. |
+| 8 | 2026-08-02 | **Blok-sayısı düzeltmesi (öz-denetim):** "77 test bloğu" rakamı şişirilmişti — Sürüm 2'de eklenen 19 EK-TOOL-01..19 girdisi, bu belgenin kendi Bölüm 13'ünün zaten "DUPLIKE, bkz. L3-TOOL-xx" / "sadece L3-TOOL altında sayılır, ayrıca çalıştırılmaz" diye işaretlediği bloklardı. Bir sayı aynı anda hem sayım dışı bırakılıp hem toplam rakama dahil edilemez. **Düzeltilmiş rakam: 68 benzersiz test bloğu (58 çekirdek + 10 vaka çalışması, EK-TOOL-20..29).** EK-TOOL-01..19'un 19 ayrı stub girdisi (her biri aynı şablon-metni tekrarlıyordu) Bölüm 13'te tek bir eşleme tablosuna birleştirildi — içerik kaybı yok, sadece tekrar eden metin sadeleşti. Bu belgedeki tüm "77" referansları (ön kısım, Kısım II rolü kutusu, Kısım VIII özet tabloları, kalibrasyon bölümü) 68'e düzeltildi; yukarıdaki tarihli sürüm satırları (Sürüm 2, 6) o tarihte doğru sanılanın kaydı olarak olduğu gibi bırakıldı, güncel gerçek diye yeniden yazılmadı. Bu şişirme örüntüsü zaten Bölüm 2.6'nın minimum-k kuralının ve Bölüm 2.4'ün kalibrasyon-koşumu zorunluluğunun var oluş nedenidir — bir başlık rakamı, arkasındaki veriden asla daha kendinden emin olmamalı. |
 
 ---
 
@@ -1664,7 +1665,7 @@ Survey'in belirttiği kritik eksiklikler — maliyet-verimlilik, güvenlik/dayan
 # KISIM II — EVRENSEL AJAN TEST BATARYASI + PHERONAGENT REFERANS UYGULAMASI (GÜNCEL, KANONİK — RESMİ STATÜ: AKTİF)
 
 > **Kaynak dosya:** `PROTOCOL.md` (Sürüm 1.1, 2026-06-29) + Bölüm 13 (bu belgede eklenen kapsam genişletmesi)
-> **Rolü:** Bu, projenin **tek kanonik test protokolüdür** (bkz. Kısım VIII.3 tutarlılaştırma kararı). Orijinal 58 test bloğu (~232 deneme) + bu belgede eklenen 19 EK-TOOL bloğu (Bölüm 13) ile **toplam 77 test bloğu**. 4 katmanlı mimari, golden dataset şeması, kabul/red taksonomisi, CI entegrasyonu ve sertifikasyon şablonunu içerir. Bölüm 1–12 aşağıda olduğu gibi (orijinal başlık hiyerarşisi iki seviye içeri kaydırılmış olarak) aktarılmıştır; Bölüm 13 bu belgeye özgü ektir.
+> **Rolü:** Bu, projenin **tek kanonik test protokolüdür** (bkz. Kısım VIII.3 tutarlılaştırma kararı). Orijinal 58 test bloğu (~232 deneme) + bu belgede eklenen 10 EK-TOOL-20..29 bloğu (Bölüm 13) ile **toplam 68 benzersiz test bloğu**. (Bölüm 13 ayrıca EK-TOOL-01..19'u Kısım IV.b'deki L3-TOOL-01..19'a çapraz referans olarak listeler — bunlar ek blok değil, aynı 19 senaryonun ikinci bir ID altındaki halidir; bkz. Sürüm 8 değişiklik notu.) 4 katmanlı mimari, golden dataset şeması, kabul/red taksonomisi, CI entegrasyonu ve sertifikasyon şablonunu içerir. Bölüm 1–12 aşağıda olduğu gibi (orijinal başlık hiyerarşisi iki seviye içeri kaydırılmış olarak) aktarılmıştır; Bölüm 13 bu belgeye özgü ektir.
 >
 > **Sürüm 5 kapsam ayrımı (önemli):** Bölüm 4-10'daki **58 çekirdek blok evrensel bir test bataryasıdır** — her araç, dil veya mimariden bağımsız ajan yeteneklerini (routing, zincirleme, bellek, güvenlik, hata kurtarma, çok-turlu tutarlılık) test eder. Her blokta artık iki ayrı alan var: **"Evrensel Yetenek"** (araç-bağımsız, herkese uygulanabilir tanım) ve **"PheronAgent Referans Uygulaması"** (bu yeteneğin PheronAgent'ın kendi UBID/araç sisteminde somut karşılığı — Prompt/PASS/FAIL/k bu somut karşılığa göre yazılmıştır). Başka bir ajan üzerinde bu bataryayı kullanmak isteyen biri, yalnızca "PheronAgent Referans Uygulaması" alanını kendi aracının adı/çağrı biçimiyle değiştirir; "Evrensel Yetenek" tanımı ve PASS/FAIL mantığının **yapısı** değişmeden kalır. Bölüm 13'teki 19 EK-TOOL bloğu ise bilinçli olarak bu ayrıma dahil edilmemiştir — onlar PheronAgent'ın kendi araç kataloğunu (Blender, Xcode, WhatsApp vb.) doğrulayan bir **vaka çalışması eki**dir, genellemeye çalışılmamıştır.
 
@@ -1879,9 +1880,9 @@ ADIM 4: Her ay yeniden ölç
 
 ##### 2.4 Kalibrasyon / Kontrol Grubu Protokolü (Sürüm 4 eki)
 
-> **Neden bu bölüm var:** Bu belgenin önceki revizyonlarında raporlanan pass oranları (ör. "%44", "L4: %0") yalnızca Pheron Agent'ın kendi üzerinde ölçülmüştü — hiçbir dış referans noktası yoktu. Dışarıdan bir okuyucu bu sayıyı gördüğünde "Pheron Agent güvenilir değil mi, yoksa bu 77 blokluk paket zaten çok mu sert?" sorusuna cevap veremez. Bu bölüm o boşluğu kapatan **prosedürü** tanımlar — bkz. Bölüm 2.6'daki "YÜRÜTME BEKLİYOR" ilkesi, burada da geçerli: ölçüm yapılmadan sayı yazılmaz.
+> **Neden bu bölüm var:** Bu belgenin önceki revizyonlarında raporlanan pass oranları (ör. "%44", "L4: %0") yalnızca Pheron Agent'ın kendi üzerinde ölçülmüştü — hiçbir dış referans noktası yoktu. Dışarıdan bir okuyucu bu sayıyı gördüğünde "Pheron Agent güvenilir değil mi, yoksa bu 68 blokluk paket zaten çok mu sert?" sorusuna cevap veremez. Bu bölüm o boşluğu kapatan **prosedürü** tanımlar — bkz. Bölüm 2.6'daki "YÜRÜTME BEKLİYOR" ilkesi, burada da geçerli: ölçüm yapılmadan sayı yazılmaz.
 
-**Amaç:** Aynı 77 test bloğunu, aynı harness ve aynı Bölüm 3 grading kurallarıyla, **bilinen bir referans model** üzerinde de koşturup bir kıyas noktası (kontrol grubu) oluşturmak. Bu bir "Pheron Agent şundan üstün/altın" iddiası **değildir** — Pheron Agent yerel, 9B parametreli, cihaz-üstü çalışan bir model kullanıyor; bulut API'sinden erişilen çok daha büyük bir frontier modelle ham yüzde kıyası adil değildir. Amaç sadece: **bu test paketinin kendisinin ne kadar sert olduğunu** bağımsız bir çıpayla göstermek.
+**Amaç:** Aynı 68 test bloğunu, aynı harness ve aynı Bölüm 3 grading kurallarıyla, **bilinen bir referans model** üzerinde de koşturup bir kıyas noktası (kontrol grubu) oluşturmak. Bu bir "Pheron Agent şundan üstün/altın" iddiası **değildir** — Pheron Agent yerel, 9B parametreli, cihaz-üstü çalışan bir model kullanıyor; bulut API'sinden erişilen çok daha büyük bir frontier modelle ham yüzde kıyası adil değildir. Amaç sadece: **bu test paketinin kendisinin ne kadar sert olduğunu** bağımsız bir çıpayla göstermek.
 
 **Prosedür:**
 
@@ -1892,7 +1893,7 @@ ADIM 1: Referans model seç ve belgele
   → Model seçimi yayın öncesi ayrıca teyit edilir — bu belge belirli bir model adını
     önceden sabitlemez (sağlayıcı erişilebilirliği zamanla değişir).
 
-ADIM 2: Aynı harness, aynı 77 blok
+ADIM 2: Aynı harness, aynı 68 blok
   → Kısım II'deki tüm test bloğu prompt'ları birebir, değiştirilmeden kullanılır.
   → Referans model de aynı Bölüm 3 (Kabul/Red Taksonomisi) kurallarıyla puanlanır.
   → Referans modelin kendi araç/fonksiyon çağırma API'si kullanılır (Pheron'un UBID
@@ -1918,7 +1919,7 @@ ADIM 4: Karşılaştırmayı yalnızca "test sertliği" bağlamında sun
 | Alan | Durum |
 |---|---|
 | Referans model seçimi | 🔶 **YÜRÜTME BEKLİYOR** |
-| Koşum (77 blok, aynı harness) | 🔶 **YÜRÜTME BEKLİYOR** |
+| Koşum (68 blok, aynı harness) | 🔶 **YÜRÜTME BEKLİYOR** |
 | `results/calibration_*.md` | 🔶 **YÜRÜTME BEKLİYOR** — henüz oluşturulmadı |
 | Karşılaştırma tablosu | 🔶 **YÜRÜTME BEKLİYOR** — hiçbir sayı bu revizyonda uydurulmamıştır |
 
@@ -3593,85 +3594,35 @@ Mevcut `Tests/RouterHealth/scenarios_v2.json` (31 senaryo) CI regression suite'i
 
 ## Bölüm 13 — PheronAgent'a Özgü Araç Kataloğu Vaka Çalışması (Evrensel Bataryanın Parçası DEĞİLDİR)
 
-> **Kapsam uyarısı (Sürüm 5):** Bu bölümdeki 19 EK-TOOL bloğu, Bölüm 4-10'daki 58 çekirdek bloğun aksine **evrensel test bataryasına dahil değildir**. Blender render, Xcode build, WhatsApp mesajı, Apple Calendar gibi burada test edilen yetenekler, herhangi bir ajanın sahip olması gereken genel yetenekler değil, **PheronAgent'ın kendi araç kataloğunun** somut parçalarıdır. Başka bir ajan geliştiren biri için bu blokların doğrudan bir karşılığı olmayabilir — bu bilinçli bir tercihtir, genellemeye çalışmak (örn. "Blender render yeteneği" yerine "3D içerik üretme yeteneği" gibi soyut bir çerçeveye zorlamak) anlamsızlaşırdı. Bu bölüm, evrensel metodolojinin **gerçek bir ajana nasıl uygulandığını** gösteren vaka çalışmasının bir parçası olarak okunmalıdır.
+> **Kapsam uyarısı (Sürüm 5):** Bu bölümdeki EK-TOOL-20..29 blokları, Bölüm 4-10'daki 58 çekirdek bloğun aksine **evrensel test bataryasına dahil değildir**. Blender render, Xcode build, WhatsApp mesajı, Apple Calendar gibi burada test edilen yetenekler, herhangi bir ajanın sahip olması gereken genel yetenekler değil, **PheronAgent'ın kendi araç kataloğunun** somut parçalarıdır. Başka bir ajan geliştiren biri için bu blokların doğrudan bir karşılığı olmayabilir — bu bilinçli bir tercihtir, genellemeye çalışmak (örn. "Blender render yeteneği" yerine "3D içerik üretme yeteneği" gibi soyut bir çerçeveye zorlamak) anlamsızlaşırdı. Bu bölüm, evrensel metodolojinin **gerçek bir ajana nasıl uygulandığını** gösteren vaka çalışmasının bir parçası olarak okunmalıdır.
 >
-> **Neden bu bölüm var (önceki gerekçe, hâlâ geçerli):** Kısım VII.4'te tespit edilen boşluk — `tool_testing_protocol.md`'deki (Kısım IV) 19 somut L3-TOOL senaryosunun hiçbiri bu 58 test bloğunun (Bölüm 4–10) içinde yer almıyordu. Bu bölüm o 19 senaryoyu Kısım II'nin standart 5-alanlı formatında ekleyerek kapsam boşluğunu kapatır.
+> **Neden bu bölüm var (önceki gerekçe, hâlâ geçerli):** Kısım VII.4'te tespit edilen boşluk — `tool_testing_protocol.md`'deki (Kısım IV) 19 somut L3-TOOL senaryosunun hiçbiri bu 58 test bloğunun (Bölüm 4–10) içinde yer almıyordu. EK-TOOL-01..19, o 19 senaryoyu Kısım II'nin standart 5-alanlı formatına kopyalayarak bu kapsam boşluğunu kapatmak için yazılmıştı.
+>
+> **Sürüm 8 düzeltmesi — EK-TOOL-01..19 ayrı blok olmaktan çıkarıldı:** Aynı 19 senaryoyu iki ayrı ID altında iki yerde tam kopya olarak tutmak, tam da bu belgenin kendi Bölüm 2.6'sının (minimum-k kuralı) ve Sürüm 8 değişiklik notunun uyardığı türden bir çift-sayımdır. Tekil stub girdileri kaldırıldı; izlenebilirlik için eşleme aşağıda korunuyor. **Bu 19 senaryo, Bölüm IV.b'deki L3-TOOL-01..19 kimliği altında bir kez sayılır — ayrı Kısım II bloğu olarak değil.** Kısım II'nin kendi blok sayısı 58 çekirdek + 10 EK-TOOL-20..29 = **68**'dir, 77 değil.
 
-### EK-TOOL-01 — Music DNA (UBID: 18) — DUPLIKE, bkz. L3-TOOL-01
+| Kaldırılan ID | UBID | Senaryo | Kanonik konum |
+|---|---|---|---|
+| EK-TOOL-01 | 18 | Music DNA | L3-TOOL-01, Kısım IV.b |
+| EK-TOOL-02 | 43 | Media Control | L3-TOOL-02, Kısım IV.b |
+| EK-TOOL-03 | 56 | System Volume | L3-TOOL-03, Kısım IV.b |
+| EK-TOOL-04 | 57 | System Brightness | L3-TOOL-04, Kısım IV.b |
+| EK-TOOL-05 | 15 | System Sleep | L3-TOOL-05, Kısım IV.b |
+| EK-TOOL-06 | 40 | Safari Automation | L3-TOOL-06, Kısım IV.b |
+| EK-TOOL-07 | 170 | Native Browser | L3-TOOL-07, Kısım IV.b |
+| EK-TOOL-08 | 20 | Markdown Report | L3-TOOL-08, Kısım IV.b |
+| EK-TOOL-09 | 17 | WhatsApp Message | L3-TOOL-09, Kısım IV.b |
+| EK-TOOL-10 | 54 (alt: 21) | Apple Calendar | L3-TOOL-10, Kısım IV.b |
+| EK-TOOL-11 | 55 | Apple Mail | L3-TOOL-11, Kısım IV.b |
+| EK-TOOL-12 | 60 | Blender 3D Headless Automation | L3-TOOL-12, Kısım IV.b |
+| EK-TOOL-13 | 47 | Xcode Builder | L3-TOOL-13, Kısım IV.b |
+| EK-TOOL-14 | 50 | Apple Shortcuts Listeleme | L3-TOOL-14, Kısım IV.b |
+| EK-TOOL-15 | 100 | Stripe Integration | L3-TOOL-15, Kısım IV.b |
+| EK-TOOL-16 | 101 | GitHub Integration | L3-TOOL-16, Kısım IV.b |
+| EK-TOOL-17 | 103 | Notion Integration | L3-TOOL-17, Kısım IV.b |
+| EK-TOOL-18 | 87 | Higgsfield AI Video Generation | L3-TOOL-18, Kısım IV.b |
+| EK-TOOL-19 | 85 | ID3 Music Tag Processor | L3-TOOL-19, Kısım IV.b |
 
-> Bu blok, Bölüm IV.b'deki **L3-TOOL-01** ile birebir aynı prompt/Beklenen-Araç/Kriter'e sahiptir. 2026-07 revizyonunda tespit edildi: bu 19 blok, o dönemki Kısım II/Kısım IV kapsam-boşluğu tartışması yüzünden aynı senaryonun iki ayrı ID altında tekrarlanmasıyla oluşmuştu. **Tek bir benzersiz test senaryosudur** — coverage/pass-oranı hesaplarında SADECE L3-TOOL-01 altında sayılır, ayrıca çalıştırılmaz. Prompt/kriter detayı için L3-TOOL-01'e bakın (Bölüm IV.b).
-
-### EK-TOOL-02 — Media Control (UBID: 43) — DUPLIKE, bkz. L3-TOOL-02
-
-> Bu blok, Bölüm IV.b'deki **L3-TOOL-02** ile birebir aynı prompt/Beklenen-Araç/Kriter'e sahiptir. 2026-07 revizyonunda tespit edildi: bu 19 blok, o dönemki Kısım II/Kısım IV kapsam-boşluğu tartışması yüzünden aynı senaryonun iki ayrı ID altında tekrarlanmasıyla oluşmuştu. **Tek bir benzersiz test senaryosudur** — coverage/pass-oranı hesaplarında SADECE L3-TOOL-02 altında sayılır, ayrıca çalıştırılmaz. Prompt/kriter detayı için L3-TOOL-02'e bakın (Bölüm IV.b).
-
-### EK-TOOL-03 — System Volume (UBID: 56) — DUPLIKE, bkz. L3-TOOL-03
-
-> Bu blok, Bölüm IV.b'deki **L3-TOOL-03** ile birebir aynı prompt/Beklenen-Araç/Kriter'e sahiptir. 2026-07 revizyonunda tespit edildi: bu 19 blok, o dönemki Kısım II/Kısım IV kapsam-boşluğu tartışması yüzünden aynı senaryonun iki ayrı ID altında tekrarlanmasıyla oluşmuştu. **Tek bir benzersiz test senaryosudur** — coverage/pass-oranı hesaplarında SADECE L3-TOOL-03 altında sayılır, ayrıca çalıştırılmaz. Prompt/kriter detayı için L3-TOOL-03'e bakın (Bölüm IV.b).
-
-### EK-TOOL-04 — System Brightness (UBID: 57) — DUPLIKE, bkz. L3-TOOL-04
-
-> Bu blok, Bölüm IV.b'deki **L3-TOOL-04** ile birebir aynı prompt/Beklenen-Araç/Kriter'e sahiptir. 2026-07 revizyonunda tespit edildi: bu 19 blok, o dönemki Kısım II/Kısım IV kapsam-boşluğu tartışması yüzünden aynı senaryonun iki ayrı ID altında tekrarlanmasıyla oluşmuştu. **Tek bir benzersiz test senaryosudur** — coverage/pass-oranı hesaplarında SADECE L3-TOOL-04 altında sayılır, ayrıca çalıştırılmaz. Prompt/kriter detayı için L3-TOOL-04'e bakın (Bölüm IV.b).
-
-### EK-TOOL-05 — System Sleep (UBID: 15) — DUPLIKE, bkz. L3-TOOL-05
-
-> Bu blok, Bölüm IV.b'deki **L3-TOOL-05** ile birebir aynı prompt/Beklenen-Araç/Kriter'e sahiptir. 2026-07 revizyonunda tespit edildi: bu 19 blok, o dönemki Kısım II/Kısım IV kapsam-boşluğu tartışması yüzünden aynı senaryonun iki ayrı ID altında tekrarlanmasıyla oluşmuştu. **Tek bir benzersiz test senaryosudur** — coverage/pass-oranı hesaplarında SADECE L3-TOOL-05 altında sayılır, ayrıca çalıştırılmaz. Prompt/kriter detayı için L3-TOOL-05'e bakın (Bölüm IV.b).
-
-### EK-TOOL-06 — Safari Automation (UBID: 40) — DUPLIKE, bkz. L3-TOOL-06
-
-> Bu blok, Bölüm IV.b'deki **L3-TOOL-06** ile birebir aynı prompt/Beklenen-Araç/Kriter'e sahiptir. 2026-07 revizyonunda tespit edildi: bu 19 blok, o dönemki Kısım II/Kısım IV kapsam-boşluğu tartışması yüzünden aynı senaryonun iki ayrı ID altında tekrarlanmasıyla oluşmuştu. **Tek bir benzersiz test senaryosudur** — coverage/pass-oranı hesaplarında SADECE L3-TOOL-06 altında sayılır, ayrıca çalıştırılmaz. Prompt/kriter detayı için L3-TOOL-06'e bakın (Bölüm IV.b).
-
-### EK-TOOL-07 — Native Browser (UBID: 170) — DUPLIKE, bkz. L3-TOOL-07
-
-> Bu blok, Bölüm IV.b'deki **L3-TOOL-07** ile birebir aynı prompt/Beklenen-Araç/Kriter'e sahiptir. 2026-07 revizyonunda tespit edildi: bu 19 blok, o dönemki Kısım II/Kısım IV kapsam-boşluğu tartışması yüzünden aynı senaryonun iki ayrı ID altında tekrarlanmasıyla oluşmuştu. **Tek bir benzersiz test senaryosudur** — coverage/pass-oranı hesaplarında SADECE L3-TOOL-07 altında sayılır, ayrıca çalıştırılmaz. Prompt/kriter detayı için L3-TOOL-07'e bakın (Bölüm IV.b).
-
-### EK-TOOL-08 — Markdown Report (UBID: 20) — DUPLIKE, bkz. L3-TOOL-08
-
-> Bu blok, Bölüm IV.b'deki **L3-TOOL-08** ile birebir aynı prompt/Beklenen-Araç/Kriter'e sahiptir. 2026-07 revizyonunda tespit edildi: bu 19 blok, o dönemki Kısım II/Kısım IV kapsam-boşluğu tartışması yüzünden aynı senaryonun iki ayrı ID altında tekrarlanmasıyla oluşmuştu. **Tek bir benzersiz test senaryosudur** — coverage/pass-oranı hesaplarında SADECE L3-TOOL-08 altında sayılır, ayrıca çalıştırılmaz. Prompt/kriter detayı için L3-TOOL-08'e bakın (Bölüm IV.b).
-
-### EK-TOOL-09 — WhatsApp Message (UBID: 17) — DUPLIKE, bkz. L3-TOOL-09
-
-> Bu blok, Bölüm IV.b'deki **L3-TOOL-09** ile birebir aynı prompt/Beklenen-Araç/Kriter'e sahiptir. 2026-07 revizyonunda tespit edildi: bu 19 blok, o dönemki Kısım II/Kısım IV kapsam-boşluğu tartışması yüzünden aynı senaryonun iki ayrı ID altında tekrarlanmasıyla oluşmuştu. **Tek bir benzersiz test senaryosudur** — coverage/pass-oranı hesaplarında SADECE L3-TOOL-09 altında sayılır, ayrıca çalıştırılmaz. Prompt/kriter detayı için L3-TOOL-09'e bakın (Bölüm IV.b).
-
-### EK-TOOL-10 — Apple Calendar (UBID: 54, alt: 21) — DUPLIKE, bkz. L3-TOOL-10
-
-> Bu blok, Bölüm IV.b'deki **L3-TOOL-10** ile birebir aynı prompt/Beklenen-Araç/Kriter'e sahiptir. 2026-07 revizyonunda tespit edildi: bu 19 blok, o dönemki Kısım II/Kısım IV kapsam-boşluğu tartışması yüzünden aynı senaryonun iki ayrı ID altında tekrarlanmasıyla oluşmuştu. **Tek bir benzersiz test senaryosudur** — coverage/pass-oranı hesaplarında SADECE L3-TOOL-10 altında sayılır, ayrıca çalıştırılmaz. Prompt/kriter detayı için L3-TOOL-10'e bakın (Bölüm IV.b).
-
-### EK-TOOL-11 — Apple Mail (UBID: 55) — DUPLIKE, bkz. L3-TOOL-11
-
-> Bu blok, Bölüm IV.b'deki **L3-TOOL-11** ile birebir aynı prompt/Beklenen-Araç/Kriter'e sahiptir. 2026-07 revizyonunda tespit edildi: bu 19 blok, o dönemki Kısım II/Kısım IV kapsam-boşluğu tartışması yüzünden aynı senaryonun iki ayrı ID altında tekrarlanmasıyla oluşmuştu. **Tek bir benzersiz test senaryosudur** — coverage/pass-oranı hesaplarında SADECE L3-TOOL-11 altında sayılır, ayrıca çalıştırılmaz. Prompt/kriter detayı için L3-TOOL-11'e bakın (Bölüm IV.b).
-
-### EK-TOOL-12 — Blender 3D Headless Automation (UBID: 60) — DUPLIKE, bkz. L3-TOOL-12
-
-> Bu blok, Bölüm IV.b'deki **L3-TOOL-12** ile birebir aynı prompt/Beklenen-Araç/Kriter'e sahiptir. 2026-07 revizyonunda tespit edildi: bu 19 blok, o dönemki Kısım II/Kısım IV kapsam-boşluğu tartışması yüzünden aynı senaryonun iki ayrı ID altında tekrarlanmasıyla oluşmuştu. **Tek bir benzersiz test senaryosudur** — coverage/pass-oranı hesaplarında SADECE L3-TOOL-12 altında sayılır, ayrıca çalıştırılmaz. Prompt/kriter detayı için L3-TOOL-12'e bakın (Bölüm IV.b).
-
-### EK-TOOL-13 — Xcode Builder (UBID: 47) — DUPLIKE, bkz. L3-TOOL-13
-
-> Bu blok, Bölüm IV.b'deki **L3-TOOL-13** ile birebir aynı prompt/Beklenen-Araç/Kriter'e sahiptir. 2026-07 revizyonunda tespit edildi: bu 19 blok, o dönemki Kısım II/Kısım IV kapsam-boşluğu tartışması yüzünden aynı senaryonun iki ayrı ID altında tekrarlanmasıyla oluşmuştu. **Tek bir benzersiz test senaryosudur** — coverage/pass-oranı hesaplarında SADECE L3-TOOL-13 altında sayılır, ayrıca çalıştırılmaz. Prompt/kriter detayı için L3-TOOL-13'e bakın (Bölüm IV.b).
-
-### EK-TOOL-14 — Apple Shortcuts Listeleme (UBID: 50) — DUPLIKE, bkz. L3-TOOL-14
-
-> Bu blok, Bölüm IV.b'deki **L3-TOOL-14** ile birebir aynı prompt/Beklenen-Araç/Kriter'e sahiptir. 2026-07 revizyonunda tespit edildi: bu 19 blok, o dönemki Kısım II/Kısım IV kapsam-boşluğu tartışması yüzünden aynı senaryonun iki ayrı ID altında tekrarlanmasıyla oluşmuştu. **Tek bir benzersiz test senaryosudur** — coverage/pass-oranı hesaplarında SADECE L3-TOOL-14 altında sayılır, ayrıca çalıştırılmaz. Prompt/kriter detayı için L3-TOOL-14'e bakın (Bölüm IV.b).
-
-### EK-TOOL-15 — Stripe Integration (UBID: 100) — DUPLIKE, bkz. L3-TOOL-15
-
-> Bu blok, Bölüm IV.b'deki **L3-TOOL-15** ile birebir aynı prompt/Beklenen-Araç/Kriter'e sahiptir. 2026-07 revizyonunda tespit edildi: bu 19 blok, o dönemki Kısım II/Kısım IV kapsam-boşluğu tartışması yüzünden aynı senaryonun iki ayrı ID altında tekrarlanmasıyla oluşmuştu. **Tek bir benzersiz test senaryosudur** — coverage/pass-oranı hesaplarında SADECE L3-TOOL-15 altında sayılır, ayrıca çalıştırılmaz. Prompt/kriter detayı için L3-TOOL-15'e bakın (Bölüm IV.b).
-
-### EK-TOOL-16 — GitHub Integration (UBID: 101) — DUPLIKE, bkz. L3-TOOL-16
-
-> Bu blok, Bölüm IV.b'deki **L3-TOOL-16** ile birebir aynı prompt/Beklenen-Araç/Kriter'e sahiptir. 2026-07 revizyonunda tespit edildi: bu 19 blok, o dönemki Kısım II/Kısım IV kapsam-boşluğu tartışması yüzünden aynı senaryonun iki ayrı ID altında tekrarlanmasıyla oluşmuştu. **Tek bir benzersiz test senaryosudur** — coverage/pass-oranı hesaplarında SADECE L3-TOOL-16 altında sayılır, ayrıca çalıştırılmaz. Prompt/kriter detayı için L3-TOOL-16'e bakın (Bölüm IV.b).
-
-### EK-TOOL-17 — Notion Integration (UBID: 103) — DUPLIKE, bkz. L3-TOOL-17
-
-> Bu blok, Bölüm IV.b'deki **L3-TOOL-17** ile birebir aynı prompt/Beklenen-Araç/Kriter'e sahiptir. 2026-07 revizyonunda tespit edildi: bu 19 blok, o dönemki Kısım II/Kısım IV kapsam-boşluğu tartışması yüzünden aynı senaryonun iki ayrı ID altında tekrarlanmasıyla oluşmuştu. **Tek bir benzersiz test senaryosudur** — coverage/pass-oranı hesaplarında SADECE L3-TOOL-17 altında sayılır, ayrıca çalıştırılmaz. Prompt/kriter detayı için L3-TOOL-17'e bakın (Bölüm IV.b).
-
-### EK-TOOL-18 — Higgsfield AI Video Generation (UBID: 87) — DUPLIKE, bkz. L3-TOOL-18
-
-> Bu blok, Bölüm IV.b'deki **L3-TOOL-18** ile birebir aynı prompt/Beklenen-Araç/Kriter'e sahiptir. 2026-07 revizyonunda tespit edildi: bu 19 blok, o dönemki Kısım II/Kısım IV kapsam-boşluğu tartışması yüzünden aynı senaryonun iki ayrı ID altında tekrarlanmasıyla oluşmuştu. **Tek bir benzersiz test senaryosudur** — coverage/pass-oranı hesaplarında SADECE L3-TOOL-18 altında sayılır, ayrıca çalıştırılmaz. Prompt/kriter detayı için L3-TOOL-18'e bakın (Bölüm IV.b).
-
-### EK-TOOL-19 — ID3 Music Tag Processor (UBID: 85) — DUPLIKE, bkz. L3-TOOL-19
-
-> Bu blok, Bölüm IV.b'deki **L3-TOOL-19** ile birebir aynı prompt/Beklenen-Araç/Kriter'e sahiptir. 2026-07 revizyonunda tespit edildi: bu 19 blok, o dönemki Kısım II/Kısım IV kapsam-boşluğu tartışması yüzünden aynı senaryonun iki ayrı ID altında tekrarlanmasıyla oluşmuştu. **Tek bir benzersiz test senaryosudur** — coverage/pass-oranı hesaplarında SADECE L3-TOOL-19 altında sayılır, ayrıca çalıştırılmaz. Prompt/kriter detayı için L3-TOOL-19'e bakın (Bölüm IV.b).
+Yukarıdaki her satır, Kısım IV.b'deki L3-TOOL karşılığıyla birebir aynı prompt/Beklenen-Araç/Kriter'e sahiptir — gerçek senaryo tanımları için o bölüme bakın. Bu bölümdeki gerçekten yeni, kopya olmayan bloklar aşağıda EK-TOOL-20'den başlıyor.
 
 ### EK-TOOL-20 — Apple Calendar Events List (UBID: 54)
 
@@ -5102,7 +5053,7 @@ Bu 7 maddeden 6'sı (baseline ölçülmedi, GÜV-04 kurulmadı, Metal testleri C
 
 **Sayısal çakışmalarda karar:** İki belge aynı testi farklı k/eşik değerleriyle tanımladığında (örn. L1-HAVA-01'in "baseline sonrası" yaklaşımı vs. UBID-002'nin sabit "pass^5 ≥ %80"), **Kısım II'nin yaklaşımı geçerlidir** — yani hiçbir sabit yüzde, Bölüm 2.2'deki baseline ölçümü yapılmadan nihai kabul edilmez. Kısım III'teki sabit yüzdeler (örn. %80, %67, %95) yalnızca **başlangıç referans noktası** olarak, baseline ölçülene kadar kullanılabilir — bağlayıcı değildir.
 
-**Kısım II'de olup III'te olmayan / III'te olup II'de olmayan testler için karar:** Her iki tarafın da benzersiz içeriği **korunuyor** (silinmedi) — Kısım III arşiv olarak kalmaya devam ediyor, olası gelecekte Kısım II'ye taşınabilecek adaylar (Bölüm G/H — Intent ve UBID matrisleri) burada not ediliyor: bunlar Kısım II'nin resmi 58 (+19 EK = 77) test bloğuna dahil değil, ama gelecekte eklenebilir bir yedek havuz olarak değerli.
+**Kısım II'de olup III'te olmayan / III'te olup II'de olmayan testler için karar:** Her iki tarafın da benzersiz içeriği **korunuyor** (silinmedi) — Kısım III arşiv olarak kalmaya devam ediyor, olası gelecekte Kısım II'ye taşınabilecek adaylar (Bölüm G/H — Intent ve UBID matrisleri) burada not ediliyor: bunlar Kısım II'nin resmi 58 (+10 EK-TOOL-20..29 = 68) test bloğuna dahil değil, ama gelecekte eklenebilir bir yedek havuz olarak değerli.
 
 ---
 
@@ -5110,7 +5061,7 @@ Bu 7 maddeden 6'sı (baseline ölçülmedi, GÜV-04 kurulmadı, Metal testleri C
 
 **Durum: ÇÖZÜLDÜ (19/27 madde) + KISMEN ÇÖZÜLDÜ (8/27 madde açık kaldı)**
 
-**Yapılan:** Kısım II'nin sonuna **Bölüm 13 — Kapsam Genişletme** eklendi (bkz. yukarıda). `tool_testing_protocol.md`'deki 19 somut senaryo (musicDNA, mediaControl, systemVolume, systemBrightness, systemSleep, safariAutomation, nativeBrowser, markdownReport, whatsappMessage, appleCalendar, appleMail, blender3D, xcodeBuilder, shortcutList, stripeTool, githubTool, notionTool, higgsfieldGenerate, id3_processor) EK-TOOL-01..19 olarak Kısım II'nin standart formatına dönüştürüldü. **Toplam test bloğu sayısı artık 58 değil, 77'dir** (58 + 19).
+**Yapılan:** Kısım II'nin sonuna **Bölüm 13 — Kapsam Genişletme** eklendi (bkz. yukarıda). `tool_testing_protocol.md`'deki 19 somut senaryo (musicDNA, mediaControl, systemVolume, systemBrightness, systemSleep, safariAutomation, nativeBrowser, markdownReport, whatsappMessage, appleCalendar, appleMail, blender3D, xcodeBuilder, shortcutList, stripeTool, githubTool, notionTool, higgsfieldGenerate, id3_processor) başlangıçta EK-TOOL-01..19 olarak Kısım II'nin standart formatına dönüştürülmüştü — ama bu, zaten Kısım IV.b'de L3-TOOL-01..19 olarak var olan aynı 19 senaryonun tekrarıydı. **Sürüm 8 düzeltmesi:** bunlar yeni kapsam değil, ikinci bir ID altındaki aynı senaryolar olduğu için ayrı Kısım II bloğu olmaktan çıkarıldı (bkz. Bölüm 13'ün eşleme tablosu) ve artık blok sayısına eklenmiyor. **Kısım II'nin toplam test bloğu sayısı 68'dir, 58 veya 77 değil** (58 çekirdek + 10 gerçekten yeni EK-TOOL-20..29 bloğu).
 
 **Açık kalan (uydurulmadı):** 10 UBID (21, 22, 37, 49, 96, 97, 98, 99, 102, 104) için hiçbir kaynak belgede somut senaryo yok — UBID:22 ayrıca hiç isimlendirilmemiş bir "hayalet" giriş. Bunlar Bölüm 13.1'de "gerçek boşluk" olarak listelendi — kapatılmadı, çünkü kapatmak icat etmek demek olurdu.
 
@@ -5120,9 +5071,9 @@ Bu 7 maddeden 6'sı (baseline ölçülmedi, GÜV-04 kurulmadı, Metal testleri C
 
 | Ölçüm | Eski değer | Yeni değer |
 |---|---|---|
-| Toplam test bloğu | 58 | **77** (58 orijinal + 19 EK-TOOL) |
-| Toplam UBID kapsamı | 17 UBID | **36 UBID** (17 orijinal + 19 EK-TOOL'un kapsadığı UBID'ler) |
-| Kapsam dışı kalan UBID | belirsiz ("~25" tahmini) | **10** (script ile doğrulandı: 21, 22, 37, 49, 96, 97, 98, 99, 102, 104) |
+| Toplam test bloğu (Kısım II) | 58 | **68** (58 çekirdek + 10 EK-TOOL-20..29; bkz. Sürüm 8 düzeltmesi — bu satırın orijinal "77" rakamındaki 19 EK-TOOL-01..19, Kısım IV.b'deki L3-TOOL-01..19'un kopyasıydı ve artık ayrı Kısım II bloğu sayılmıyor) |
+| Toplam UBID kapsamı (belge geneli, Kısım II + Kısım IV.b) | 17 UBID | **36 UBID** (17 Kısım II çekirdek + Kısım IV.b'deki L3-TOOL-01..19 üzerinden kapsanan 19'u — Kısım II'de tekrar değil, referans olarak) |
+| Kapsam dışı kalan UBID | belirsiz ("~25" tahmini) | EK-TOOL-20..29 itibarıyla **0** (önceden 10: 21, 22, 37, 49, 96, 97, 98, 99, 102, 104 — bu bloklarla kapatıldı; ancak Bölüm 13'ün kendi notuna göre senaryo kapsamı tam, canlı-koşum kapsamı değil) |
 
 ---
 
@@ -5677,13 +5628,16 @@ Aşağıdaki her madde şu alanları içerir: **Tam başlık**, **yazarlar**, **
 
 ## IX.4 — Doğrulama Yöntemi ve Kapsamı (Şeffaflık İçin)
 
-1. **30 akademik atıf bağımsız web'de arandı ve doğrulandı:** BFCL, API-Bank, ToolLLM, NESTFUL, GAIA, AgentBench, τ-bench, TaskBench, WebArena, Mind2Web, OSWorld, SWE-bench, AgentHarm, InjecAgent, LongMemEval, LoCoMo, WildClawBench, WebVoyager, AssistGUI, ScreenSpot, MobileAgentBench, AndroidWorld, SWE-bench Multimodal, MLAgentBench, Claw-SWE-Bench, MCPAgentBench, MCPToolBench++, MCP-Universe, MCPSecBench, Astrix Security OpenClaw Scanner.
+> **Sürüm 8 notu — bu bölüm güncel değildi:** Aşağıdaki 1-4 maddeleri Sürüm 3/4'teki durumu anlatıyor (IX.2'de 34 atıf, Sürüm 6'nın 27 yeni atıf eklediği boşluk-kapatma turundan önce). Sayı 61'e çıktığında bu madde listesi hiç güncellenmemişti; bu yüzden belge bir yandan "toplam 40 referans / 39'u doğrulandı" derken (bu bölüm), IX.2'nin kendi girişi (yukarıda) "61" diyordu. İki sayı da farklı zamanlarda doğruydu; ama "sonuç" başlığı altında sadece güncel olan durmalı. Orijinal madde dökümü, ilk doğrulama turunun izlenebilirliği için aşağıda korunuyor; düzeltilmiş toplam hemen ardından geliyor.
+
+1. **30 akademik atıf bağımsız web'de arandı ve doğrulandı (orijinal, Sürüm 3 turu):** BFCL, API-Bank, ToolLLM, NESTFUL, GAIA, AgentBench, τ-bench, TaskBench, WebArena, Mind2Web, OSWorld, SWE-bench, AgentHarm, InjecAgent, LongMemEval, LoCoMo, WildClawBench, WebVoyager, AssistGUI, ScreenSpot, MobileAgentBench, AndroidWorld, SWE-bench Multimodal, MLAgentBench, Claw-SWE-Bench, MCPAgentBench, MCPToolBench++, MCP-Universe, MCPSecBench, Astrix Security OpenClaw Scanner.
 2. **3 atıf çapraz referansla doğrulandı** (birebir arXiv numarasıyla): BrowserGym, WorkArena, AgentDojo.
 2b. **1 atıf (Hermes Function-Calling Dataset) kaynaktan birebir aktarıldı, bağımsız doğrulanmadı** — daha önce bu listeye yanlışlıkla "doğrulandı" olarak dahil edilmişti (2026-07-14'te düzeltildi); kendi IX.2.1 madde 2 kaydında zaten 📄 ile doğru işaretliydi, sadece bu özet listeyle tutarsızdı.
 3. **6 teknik standart/araç detaylıca araştırıldı ve belgelendi:** RFC 8785 (JCS), SPIFFE, ezkl, zkPyTorch, NIST CAISI, Ed25519 (RFC 8032).
 4. **Hatalı referanslar düzeltildi:** Mind2Web (arXiv:2306.06070) ve API-Bank (EMNLP 2023) verileri düzeltildi; Agent Security Bench (arXiv:2410.02644) eklendi.
+5. **Sürüm 6 boşluk-kapatma turu IX.2'ye 27 atıf daha ekledi** (bkz. CHANGELOG Sürüm 6 / bu belgenin kendi sürüm-geçmişi tablosu): OWASP ASI 2026, OWASP MCP Top 10, τ²-bench, Terminal-Bench, TheAgentCompany, SWE-Lancer, MLE-bench, 5 function-calling benchmark'ı, 6 güvenlik benchmark'ı, BEAM, CLEAR, HAL, OTel GenAI semconv, ayrıca gözlemlenebilirlik/harness/red-team araç grupları ve 2 kapsam-kontrol survey'i — o değişiklik notuna göre eklendikleri anda hepsi ✅ bağımsız web-doğrulamalı olarak işaretlenmişti.
 
-**Sonuç:** Belgedeki 34 akademik/sektörel benchmark ve 6 teknik standart olmak üzere toplam 40 referanstan **39'u** bağımsız olarak doğrulanmış, geçerlilikleri ve detayları kesinleştirilmiştir. Tek istisna: Hermes Function-Calling Dataset (IX.2.1 madde 2) kaynak belgeden birebir aktarıldı, hiçbir revizyonda ayrıca bağımsız aranmadı — 📄 ile açıkça işaretli, "doğrulanmamış" olarak dürüstçe bırakıldı, uydurma doğrulama eklenmedi.
+**Düzeltilmiş sonuç (Sürüm 8):** Belge şu an toplam **67 dış referans** içeriyor — IX.2'de **61** (benchmark/araç/survey) + IX.3'te **6** (Kısım V vizyon belgesi için teknik standartlar). Bunlardan **66'sı bağımsız doğrulanmış** (IX.2'nin 61'inden 60'ı, artı IX.3'ün 6'sı da tamamı); tek doğrulanmamış istisna hâlâ **Hermes Function-Calling Dataset** (IX.2.1 madde 2) — kaynak belgeden birebir aktarıldı, hiçbir revizyonda ayrıca bağımsız aranmadı, açıkça 📄 işaretli, uydurma doğrulama eklenmeden dürüstçe "doğrulanmamış" bırakıldı.
 
 **Okuyucu için öneri:** Atıfları `arxiv.org` ve `rfc-editor.org` üzerinden teyit edebilirsiniz.
 
