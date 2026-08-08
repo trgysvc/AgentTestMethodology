@@ -1328,6 +1328,8 @@ A 90% success rate seems close to 100%, but it drops to 35% across an autonomous
 
 **Research finding:** Models show ~71.4% partial function-name accuracy but only ~23.1% exact argument accuracy — a 48-point gap. A model may know which tool to call but not know how to parametrize it.
 
+**Source:** "Talk Less, Call Right: Enhancing Role-Play LLM Agents with Automatic Prompt Optimization and Role Prompting" — Ruangtanusak, Taveekitworachai, Pipatanakul · EMNLP 2025 Wordplay Workshop (Spotlight) · arXiv:2509.00482, Table 2 (best configuration: 0.714 partial function-name accuracy, 0.231 exact argument accuracy). Measured in a role-play-agent function-calling setting — cited here as an illustrative finding, not a claim that this exact gap generalizes to every agent architecture.
+
 ---
 
 ##### 9.4 Trajectory Evaluation vs. Final-State Evaluation

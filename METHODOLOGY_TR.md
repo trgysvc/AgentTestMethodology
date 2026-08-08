@@ -1328,6 +1328,8 @@ Başka bir modelin çıktısını değerlendirmek için yetenekli bir LLM (tipik
 
 **Araştırma bulgusu:** Modeller ~%71.4 kısmi fonksiyon adı doğruluğu ama yalnızca ~%23.1 tam argüman doğruluğu gösterir — %48 puanlık bir uçurum. Modeller hangi aracı çağıracağını bilebilir ama nasıl parametrize edeceğini bilemeyebilir.
 
+**Kaynak:** "Talk Less, Call Right: Enhancing Role-Play LLM Agents with Automatic Prompt Optimization and Role Prompting" — Ruangtanusak, Taveekitworachai, Pipatanakul · EMNLP 2025 Wordplay Workshop (Spotlight) · arXiv:2509.00482, Tablo 2 (en iyi konfigürasyon: 0.714 kısmi fonksiyon-adı doğruluğu, 0.231 tam argüman doğruluğu). Bir rol-yapma (role-play) ajanı fonksiyon-çağırma senaryosunda ölçülmüştür — burada örnekleyici bir bulgu olarak alıntılanmıştır, bu farkın her ajan mimarisine genelleyeceği iddiası değildir.
+
 ---
 
 ##### 9.4 Yörünge Değerlendirmesi vs. Son-Durum Değerlendirmesi
