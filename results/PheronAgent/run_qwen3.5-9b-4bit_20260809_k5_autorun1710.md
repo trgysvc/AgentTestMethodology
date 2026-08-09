@@ -113,3 +113,4 @@
 | L3-TOOL-17 | tool-coverage | JUDGE | 5 | ❌ | ❌ | %0 | ⚠️ evet |
 | L3-TOOL-18 | tool-coverage | JUDGE | 5 | ❌ | ❌ | %40 | ⚠️ evet |
 | L3-TOOL-19 | tool-coverage | STATE | 5 | ✅ | ✅ | %100 | hayır |
+
