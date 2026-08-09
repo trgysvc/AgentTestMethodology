@@ -3585,7 +3585,7 @@ Mevcut `Tests/RouterHealth/scenarios_v2.json` (31 senaryo) CI regression suite'i
 2. **GÜV-04 injection testi:** Local Python HTTP server kurulumu gerektiriyor. Kurulmadıysa "ATLANMIŞ" diye kaydet.
 3. **Metal bağımlı testler:** CI'da PHERON_LIVE_INFERENCE=0 ile atlanıyor.
 4. **L4 live testler:** Ağ bağımlı; k=3 tolerans buna göre.
-5. **[JUDGE] etiketli testler:** L2-WEB-02, L4-LIVE-02, L4-LIVE-03 — Cohen's kappa ölçümü yapılmamış. Hedef ≥0.6. Ölçülene kadar keyword kontrolü ile çalış.
+5. **[JUDGE] etiketli testler:** Golden dataset artık 17 JUDGE bloğu içeriyor (önceki 3'ten fazla — 2026-08-06 revizyonuyla 5 blok STATE'ten JUDGE'a taşındı). 2026-08-08'de `BlockGrader.swift`'e uygulanan v62 fix'i sonrası bu 17 bloktan 15'i, `expected.tool`/`expected.no_tool_call`/`expected.result_contains` alanları set olduğu için heuristic (mekanik) olarak otomatik puanlanabiliyor — ama bu, gerçek Cohen's kappa kalibrasyonunun YERİNE GEÇMEZ, sadece "doğru araç çağrıldı mı" gibi alt-koşulu kontrol eder. Gerçek insan/LLM judge + Cohen's kappa kalibrasyonu hâlâ hiçbir blokta yapılmadı; sadece **HR-04** ve **GÜV-03** (expected alanlarının hiçbiri set edilmemiş, tamamen semantik değerlendirme gerektiren 2 blok) bunu bekliyor. Hedef ≥0.6. Ölçülene kadar bu 2 blok için heuristic/keyword kontrolü ile çalış.
 6. **L2-ZINCIR-06 [KISMI]:** 3-adımlı zinciri test ediyor; tam NESTFUL karmaşıklığı için UBID kataloğunun genişlemesi gerekiyor.
 
 ---
@@ -4944,7 +4944,7 @@ PHERON_LIVE_INFERENCE=1 swift test --filter PheronAgentTests/PheronMarathonTests
 2. **GÜV-04 injection testi** local Python HTTP server kurulumu gerektiriyor; kurulmadıysa "ATLANMIŞ" diye kaydedilir.
 3. **Metal bağımlı testler** CI'da `PHERON_LIVE_INFERENCE=0` ile atlanıyor.
 4. **L4 live testler** ağ bağımlı; k=3 tolerans buna göre ayarlı.
-5. **[JUDGE] etiketli testler** (L2-WEB-02, L4-LIVE-02, L4-LIVE-03) için Cohen's kappa ölçümü yapılmadı; hedef ≥0.6. Ölçülene kadar keyword kontrolüyle çalışılıyor.
+5. **[JUDGE] etiketli testler** — golden dataset'te artık 17 JUDGE bloğu var (2026-08-06 revizyonuyla 5 blok STATE'ten JUDGE'a taşındı, önceki liste L2-WEB-02/L4-LIVE-02/L4-LIVE-03 ile sınırlıydı). 2026-08-08'de `BlockGrader.swift` v62 fix'i sonrası bu 17 bloktan 15'i heuristic ile otomatik puanlanıyor (gerçek kappa kalibrasyonunun yerine geçmez). Gerçek Cohen's kappa ölçümü hâlâ hiçbir blokta yapılmadı; sadece **HR-04** ve **GÜV-03** için yapılması bekleniyor; hedef ≥0.6. Ölçülene kadar bu 2 blok için heuristic/keyword kontrolüyle çalışılıyor.
 6. **L2-ZINCIR-06 [KISMI]:** 3 adımlı zinciri test ediyor; tam NESTFUL karmaşıklığı için UBID kataloğunun genişlemesi gerekiyor — gerçek katalog UBID'leri mi yoksa placeholder mı kullanılacağı açık.
 7. **RouterHealthTests sınıfı mevcut değil** — `scenarios_v2.json` (31 senaryo) şu an tamamen manuel, `/api/agent` üzerinden E2E olarak koşturuluyor. Mayıs 2026'da silinen Python `harness.py`'ın yerini alacak Swift runner henüz yazılmadı.
 
@@ -5021,6 +5021,8 @@ PDF raporu gerçek boşlukları (Python harness kaybı, dosya sistemi izolasyonu
 Bu 7 maddeden 6'sı (baseline ölçülmedi, GÜV-04 kurulmadı, Metal testleri CI'da atlanıyor, L4 ağ bağımlı, JUDGE testleri kalibre edilmedi, L2-ZINCIR-06 kısmi) **belge tutarsızlığı değil, gerçek dünya eylem eksikliğidir.** Bunlar ancak testler fiilen çalıştırılarak, kod yazılarak veya ortam kurularak kapatılabilir. Bu belge onları çözemez — sadece PROTOCOL.md'nin kendi "Açık Sorunlar" bölümünde zaten doğru şekilde işaretlenmiş olduğunu teyit eder.
 
 **7. madde (RouterHealthTests yok) artık ÇÖZÜLDÜ:** 2026-07-14'te kod tabanı doğrudan okunarak doğrulandı — `Tests/PheronAgentTests/RouterHealth/RouterHealthTests.swift` gerçekten mevcut ve çalışır durumda: `scenarios_v2.json`'daki 31 senaryoyu okuyup `/api/agent`'a gerçek istek atıyor, `expected_action`/`expected_tool` karşılaştırması yapıyor (`PHERON_LIVE_INFERENCE=1` guard'ıyla). Kısım VII.1'in kendi metni (tespit kaydı olarak) bilinçli olarak değiştirilmedi — sadece bu çözüm burada, Kısım VIII'in kendi rolüne uygun şekilde kayda geçirildi. İlgili düzeltmeler Bölüm 11.1 ve 11.3'e de işlendi.
+
+**2026-08-08 ek not (5. madde — JUDGE testleri kalibre edilmedi — kapsam güncellemesi):** `Tests/PheronAgentTests/GoldenDataset/BlockGrader.swift`'e v62 fix'i uygulandı: JUDGE-tipi bloklar artık `expected.tool`/`expected.no_tool_call`/`expected.result_contains` alanlarından biri set edilmişse heuristic (mekanik) olarak da puanlanabiliyor. Golden dataset'teki 17 JUDGE bloğundan 15'i bu sayede artık otomatik puanlanıyor. **Ancak bu madde genel olarak hâlâ AÇIK kalıyor** — çünkü gerçek insan/LLM Cohen's kappa kalibrasyonu hâlâ hiçbir blokta fiilen yapılmadı; heuristic puanlama bunun yerine geçmiyor, sadece "doğru araç çağrıldı mı" gibi mekanik bir alt-koşulu kontrol ediyor. Değişen tek şey, kapsamın 17 bloktan **2 bloğa (HR-04, GÜV-03)** daralmış olması — bu 2 blokta `expected` alanlarının hiçbiri set edilmemiş, tamamen semantik değerlendirme gerektiriyorlar ve gerçek kappa ölçümü bekliyorlar.
 
 ---
 

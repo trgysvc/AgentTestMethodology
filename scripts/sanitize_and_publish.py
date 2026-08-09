@@ -50,12 +50,39 @@ PLACEHOLDER_HOME = "/Users/<user>"
 
 
 def sanitize(text: str) -> str:
-    # 1. Repo-root-relative paths first (must run before the home-dir rule below).
+    # JSON allows "/" to be encoded as the escape sequence "\/" (Swift's JSONEncoder does this
+    # for string content, e.g. a model's raw response text quoting a file path) — a plain
+    # replace() on the un-escaped path silently misses every occurrence inside such a string,
+    # leaking the real username throughout the file with zero warning (the leak-check below
+    # only re-checks the same un-escaped needles, so it passed clean while 40+ escaped
+    # occurrences remained). Confirmed live 2026-08-09 on the k=5 autorun1710 report. Fix: build
+    # the escaped variant of each path needle and replace both forms, in both directions —
+    # escaped-form replacement must run BEFORE the plain-form replacement, otherwise the plain
+    # pass would already have consumed the unescaped path segments a naive single-pass escaped
+    # replace still depends on.
+    repo_root_escaped = REPO_ROOT.replace("/", "\\/")
+    home_dir_escaped = HOME_DIR.replace("/", "\\/")
+    placeholder_home_escaped = PLACEHOLDER_HOME.replace("/", "\\/")
+
+    # 1. Repo-root-relative paths first (must run before the home-dir rule below) — escaped
+    #    form before plain form.
+    text = text.replace(repo_root_escaped + "\\/", "")
+    text = text.replace(repo_root_escaped, ".")
     text = text.replace(REPO_ROOT + "/", "")
     text = text.replace(REPO_ROOT, ".")
-    # 2. Remaining home-dir paths (outside the repo, e.g. ~/Desktop/...).
+    # 2. Remaining home-dir paths (outside the repo, e.g. ~/Desktop/...) — escaped form first.
+    text = text.replace(home_dir_escaped, placeholder_home_escaped)
     text = text.replace(HOME_DIR, PLACEHOLDER_HOME)
-    # 3. Contact info.
+    # 3. Bare username, with no path prefix at all — an agent's raw response text can state it
+    #    directly as prose (e.g. "Kullanıcı adı: <username>"), not just embed it inside a path.
+    #    Confirmed live 2026-08-09: this exact sentence leaked past rules 1+2 in the k5 autorun
+    #    1710 report (a GÜV-03 /etc/passwd trial's response text). Must run AFTER the path rules
+    #    above, since those already consumed every path-prefixed occurrence — running this first
+    #    would leave "/Users/<user>" instead of the intended "/Users/<user>" placeholder untouched
+    #    by rule 2 wherever a path-prefixed occurrence was replaced first.
+    username = HOME_DIR.rstrip("/").rsplit("/", 1)[-1]
+    text = text.replace(username, "<user>")
+    # 4. Contact info (no "/" in either, no escaped-form variant needed).
     text = text.replace(REAL_EMAIL, PLACEHOLDER_EMAIL)
     text = text.replace(REAL_PHONE, PLACEHOLDER_PHONE)
     return text
@@ -85,8 +112,14 @@ def main() -> int:
     sanitized = sanitize(content)
     with open(dest, "w", encoding="utf-8") as f:
         f.write(sanitized)
+    # Also check the bare username (HOME_DIR's last path component) on its own — this is what
+    # actually leaked on 2026-08-09 (via JSON's "\/"-escaped path separator, a form the full-path
+    # needles below don't match). Checking the username alone catches that case and any other
+    # future escaping/encoding variant we haven't anticipated, at the cost of being stricter than
+    # strictly necessary — a false positive here just means a manual look, not a silent leak.
+    username = HOME_DIR.rstrip("/").rsplit("/", 1)[-1]
     leaked = []
-    for needle in (REPO_ROOT, HOME_DIR, REAL_EMAIL, REAL_PHONE):
+    for needle in (REPO_ROOT, HOME_DIR, REAL_EMAIL, REAL_PHONE, username):
         if needle in sanitized:
             leaked.append(needle)
     if leaked:

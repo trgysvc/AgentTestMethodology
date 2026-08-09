@@ -1,0 +1,84 @@
+{
+  "blocks" : [
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 5,
+      "level" : "L3-TOOL",
+      "needs_review" : true,
+      "pass_at_1" : true,
+      "pass_at_k_all" : false,
+      "pass_rate" : 0.8,
+      "prompt" : "mevcut Swift projesini Xcode derleyicisi ile build et",
+      "test_id" : "L3-TOOL-13",
+      "trials" : [
+        {
+          "duration_seconds" : 70.51238799095154,
+          "index" : 0,
+          "response_text" : "Proje başarıyla derlendi (`build_and_fix` işlemi tamamlandı).\n\nDerleme logu şu şekilde:\n*   `GenerateManual` ve `GenerateDoccReference` eklentileri derleniyor.\n*   Hata veya uyarı bulunamadı; derleme süreci 0.21 saniye sürdü ve tamamlanma mesajı verildi.\n\nEğer başka bir işlem (örneğin paket oluşturma, simülatör kontrolü) isterseniz lütfen belirtin.",
+          "status" : "pass",
+          "tools_used" : [
+            "xcode_engine",
+            "Building and analyzing Xcode project..."
+          ]
+        },
+        {
+          "duration_seconds" : 94.03191709518433,
+          "index" : 1,
+          "response_text" : "Hangi klasördeki Swift projesini derlememi istiyorsunuz? Lütfen proje klasörünün yolunu belirtirseniz (örn: ~\/Projects\/MySwiftApp veya .\/Path\/to\/Folder), işlemi hızlandırır.",
+          "status" : "pass",
+          "tools_used" : [
+            "xcode_engine",
+            "Building and analyzing Xcode project..."
+          ]
+        },
+        {
+          "duration_seconds" : 121.46238088607788,
+          "index" : 2,
+          "response_text" : "Hangi klasördeki Swift projesini derlememi istiyorsunuz? Lütfen proje dosyalarının bulunduğu klasör yolunu belirtirseniz (örn: `.`), hemen işlemi başlatırım.",
+          "status" : "pass",
+          "tools_used" : [
+            "xcode_engine",
+            "Building and analyzing Xcode project..."
+          ]
+        },
+        {
+          "duration_seconds" : 0.28022301197052,
+          "index" : 3,
+          "reason" : "Trial hit the pre-task hardware gate (test machine resource-starved) — not a real model trial, rerun instead of scoring",
+          "response_text" : "Şu anda sistem kaynakları kritik seviyede (RAM limit exceeded: 97% used — system is overloaded.). Lütfen birkaç saniye bekleyip tekrar deneyin ya da diğer ağır uygulamaları kapatın.",
+          "status" : "needs_review",
+          "tools_used" : [
+
+          ]
+        },
+        {
+          "duration_seconds" : 137.58359396457672,
+          "index" : 4,
+          "response_text" : "Hangi klasördeki Swift projesini derlememi istiyorsunuz? Lütfen proje klasörünün yolunu belirtin.",
+          "status" : "pass",
+          "tools_used" : [
+            "xcode_engine",
+            "Building and analyzing Xcode project..."
+          ]
+        }
+      ]
+    }
+  ],
+  "dataset_path" : "Tests\/AgentTestSuite\/datasets\/l3_tool_13_retest.json",
+  "git_commit" : "7c48878499f524a233b1eb9d43fb4bf8b273549e",
+  "k" : 5,
+  "model_id" : "qwen3.5-9b-4bit",
+  "report_schema_version" : "results-1.0",
+  "run_type" : "published",
+  "summary" : {
+    "graded_blocks" : 0,
+    "needs_review_blocks" : 1,
+    "pass_at_1_count" : 1,
+    "pass_at_1_rate" : 1,
+    "total_blocks" : 1
+  },
+  "tester" : "automated-runner-v1",
+  "timestamp" : "2026-08-09T15:56:14Z",
+  "total_duration_seconds" : 426.50140404701233
+}

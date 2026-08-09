@@ -1,0 +1,43 @@
+{
+  "blocks" : [
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 1,
+      "level" : "L3-TOOL",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_rate" : 1,
+      "prompt" : "mevcut Swift projesini Xcode derleyicisi ile build et",
+      "test_id" : "L3-TOOL-13",
+      "trials" : [
+        {
+          "duration_seconds" : 185.06477200984955,
+          "index" : 0,
+          "response_text" : "Hangi klasördeki Swift projesini derlememi istiyorsunuz? Lütfen tam yolunu belirtin (örneğin: . veya başka bir konum). Bu bilgiyle doğru projeyi hızlıca bulup Xcode ile derleyebilirim.",
+          "status" : "pass",
+          "tools_used" : [
+            "xcode_engine",
+            "Building and analyzing Xcode project..."
+          ]
+        }
+      ]
+    }
+  ],
+  "dataset_path" : "Tests\/AgentTestSuite\/datasets\/l3_tool_13_retest.json",
+  "git_commit" : "7c48878499f524a233b1eb9d43fb4bf8b273549e",
+  "k" : 1,
+  "model_id" : "qwen3.5-9b-4bit",
+  "report_schema_version" : "results-1.0",
+  "run_type" : "exploratory",
+  "summary" : {
+    "graded_blocks" : 1,
+    "needs_review_blocks" : 0,
+    "pass_at_1_count" : 1,
+    "pass_at_1_rate" : 1,
+    "total_blocks" : 1
+  },
+  "tester" : "automated-runner-v1",
+  "timestamp" : "2026-08-09T15:45:06Z",
+  "total_duration_seconds" : 185.62987101078033
+}

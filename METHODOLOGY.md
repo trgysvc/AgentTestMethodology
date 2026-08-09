@@ -3614,7 +3614,7 @@ The existing `Tests/RouterHealth/scenarios_v2.json` (31 scenarios) is the founda
 2. **SEC-04 injection test:** Requires setting up a local Python HTTP server. If not set up, record as "SKIPPED".
 3. **Metal-dependent tests:** Skipped in CI with PHERON_LIVE_INFERENCE=0.
 4. **L4 live tests:** Network-dependent; the k=3 tolerance is set accordingly.
-5. **[JUDGE]-tagged tests:** L2-WEB-02, L4-LIVE-02, L4-LIVE-03 — Cohen's kappa has not been measured. Target ≥0.6. Until measured, proceed with keyword checking.
+5. **[JUDGE]-tagged tests:** The golden dataset now contains 17 JUDGE blocks (up from 3 — a 2026-08-06 revision moved 5 blocks from STATE to JUDGE). After the v62 fix applied to `BlockGrader.swift` on 2026-08-08, 15 of these 17 blocks can now be graded automatically via heuristics, since `expected.tool`/`expected.no_tool_call`/`expected.result_contains` are set — but this does NOT substitute for real Cohen's kappa calibration, it only checks a mechanical sub-condition like "was the right tool called." Real human/LLM judge + Cohen's kappa calibration still has not been performed for any block; only **HR-04** and **GÜV-03** (the 2 blocks with none of the `expected` fields set, requiring fully semantic evaluation) still need it. Target ≥0.6. Until measured, proceed with heuristic/keyword checking for these 2 blocks.
 6. **L2-CHAIN-06 [PARTIAL]:** Tests a 3-step chain; the UBID catalog needs to expand for full NESTFUL complexity.
 
 ---
@@ -4977,7 +4977,7 @@ PHERON_LIVE_INFERENCE=1 swift test --filter PheronAgentTests/PheronMarathonTests
 2. **The SEC-04 injection test** requires setting up a local Python HTTP server; if it is not set up, it is recorded as "SKIPPED."
 3. **Metal-dependent tests** are skipped in CI with `PHERON_LIVE_INFERENCE=0`.
 4. **L4 live tests** are network-dependent; the k=3 tolerance is set accordingly.
-5. **No Cohen's kappa measurement** has been performed for the tests tagged **[JUDGE]** (L2-WEB-02, L4-LIVE-02, L4-LIVE-03); the target is ≥0.6. Until measured, keyword checking is used.
+5. **[JUDGE]-tagged tests** — the golden dataset now contains 17 JUDGE blocks (a 2026-08-06 revision moved 5 blocks from STATE to JUDGE; the previous list was limited to L2-WEB-02/L4-LIVE-02/L4-LIVE-03). After the `BlockGrader.swift` v62 fix on 2026-08-08, 15 of these 17 blocks are now graded automatically via heuristics (this does not substitute for real kappa calibration). No real Cohen's kappa measurement has been performed for any block yet; only **HR-04** and **GÜV-03** still need it; target ≥0.6. Until measured, heuristic/keyword checking is used for these 2 blocks.
 6. **L2-CHAIN-06 [PARTIAL]:** Tests a 3-step chain; expanding the UBID catalog is needed for full NESTFUL complexity — whether real catalog UBIDs or placeholders will be used is open.
 7. **The RouterHealthTests class does not exist** — the 31 scenarios in `scenarios_v2.json` are currently run entirely manually, as E2E via `/api/agent`. The Swift runner intended to replace the Python `harness.py` deleted in May 2026 has not yet been written.
 
@@ -5054,6 +5054,8 @@ The PDF report correctly identifies real gaps (loss of the Python harness, file-
 Of these 7 items, 6 (baseline not measured, SEC-04 not set up, Metal tests skipped in CI, L4 network-dependent, JUDGE tests not calibrated, L2-CHAIN-06 partial) are **not document inconsistencies but a lack of real-world action.** These can only be closed by actually running the tests, writing code, or setting up the environment. This document cannot resolve them — it only confirms that they are already correctly flagged in PROTOCOL.md's own "Open Issues" section.
 
 **Item 7 (RouterHealthTests missing) is now RESOLVED:** On 2026-07-14, this was verified by directly reading the codebase — `Tests/PheronAgentTests/RouterHealth/RouterHealthTests.swift` genuinely exists and is functional: it reads the 31 scenarios in `scenarios_v2.json`, sends real requests to `/api/agent`, and performs `expected_action`/`expected_tool` comparison (guarded by `PHERON_LIVE_INFERENCE=1`). The text of Part VII.1 itself (as a detection record) was deliberately left unchanged — this resolution is simply recorded here, consistent with Part VIII's own role. The corresponding fixes have also been reflected in Sections 11.1 and 11.3.
+
+**2026-08-08 addendum (item 5 — JUDGE tests not calibrated — scope update):** A v62 fix was applied to `Tests/PheronAgentTests/GoldenDataset/BlockGrader.swift`: JUDGE-type blocks can now also be graded via heuristics whenever one of `expected.tool`/`expected.no_tool_call`/`expected.result_contains` is set. 15 of the golden dataset's 17 JUDGE blocks are now graded automatically as a result. **However, this item remains OPEN overall** — real human/LLM Cohen's kappa calibration still has not actually been performed for any block; heuristic grading does not substitute for it, it only checks a mechanical sub-condition such as "was the right tool called." The only thing that changed is that the scope narrowed from 17 blocks to **2 blocks (HR-04, GÜV-03)** — these 2 blocks have none of the `expected` fields set, require fully semantic evaluation, and still await real kappa measurement.
 
 ---
 
