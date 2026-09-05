@@ -16,7 +16,7 @@ The primary document exists in two languages: `METHODOLOGY.md` (English) and `ME
 |---|---|
 | **Part I** | Industry benchmark map — what 61 academic and industry sources measure, and how to use them |
 | **Part II** | Universal test battery — 58 core blocks (L1–L4 / Error Recovery / Multi-Turn / Security), each split into a tool-agnostic *Universal Capability* definition and a concrete *Reference Implementation* |
-| **Parts III–IV, VI** | PheronAgent case study — how the methodology applies to a real agent with 50+ native/MCP tools (read for examples; do not copy verbatim) |
+| **Parts III–IV, VI** | PheronAgent case study — how the methodology applies to a real agent with 72 native/MCP tools (read for examples; do not copy verbatim) |
 | **Part V** | Advanced verifiability roadmap — cryptographic execution proofs, ZKP-based model verification, anti-gaming protocol (explicitly marked as aspirational/not yet implemented) |
 | **Parts VII–IX** | Audit trail — open issues, reconciliation log, full bibliography with verification status for every external claim |
 
