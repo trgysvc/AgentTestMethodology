@@ -1,0 +1,520 @@
+{
+  "blocks" : [
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 3,
+      "level" : "EK-TOOL",
+      "needs_review" : true,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "LinkedIn'de \"Bugün harika bir gün, yeni bir proje başlatıyorum!\" diye bir gönderi paylaş.",
+      "test_id" : "EK-TOOL-63",
+      "trials" : [
+        {
+          "duration_seconds" : 0,
+          "index" : 0,
+          "reason" : "Skipped — requires manual approval (HIGH-RISK confirmation gate), an unattended run cannot satisfy it and a stuck confirmation would corrupt the next block's trial too. Run with PHERON_INCLUDE_MANUAL_APPROVAL=1 and a human present to get real signal.",
+          "status" : "needs_review",
+          "tools_used" : [
+
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 3,
+      "level" : "EK-TOOL",
+      "needs_review" : true,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "X'te (Twitter) \"Merhaba X!\" diye bir tweet paylaş.",
+      "test_id" : "EK-TOOL-64",
+      "trials" : [
+        {
+          "duration_seconds" : 0,
+          "index" : 0,
+          "reason" : "Skipped — requires manual approval (HIGH-RISK confirmation gate), an unattended run cannot satisfy it and a stuck confirmation would corrupt the next block's trial too. Run with PHERON_INCLUDE_MANUAL_APPROVAL=1 and a human present to get real signal.",
+          "status" : "needs_review",
+          "tools_used" : [
+
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 3,
+      "level" : "EK-TOOL",
+      "needs_review" : true,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "Instagram'da masaüstümdeki foto.jpg dosyasını \"Güzel bir gün\" açıklamasıyla paylaş.",
+      "test_id" : "EK-TOOL-65",
+      "trials" : [
+        {
+          "duration_seconds" : 0,
+          "index" : 0,
+          "reason" : "Skipped — requires manual approval (HIGH-RISK confirmation gate), an unattended run cannot satisfy it and a stuck confirmation would corrupt the next block's trial too. Run with PHERON_INCLUDE_MANUAL_APPROVAL=1 and a human present to get real signal.",
+          "status" : "needs_review",
+          "tools_used" : [
+
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 3,
+      "level" : "EK-TOOL",
+      "needs_review" : true,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "TikTok'a masaüstümdeki video.mp4 videosunu taslak (draft) olarak gönder.",
+      "test_id" : "EK-TOOL-66",
+      "trials" : [
+        {
+          "duration_seconds" : 0,
+          "index" : 0,
+          "reason" : "Skipped — requires manual approval (HIGH-RISK confirmation gate), an unattended run cannot satisfy it and a stuck confirmation would corrupt the next block's trial too. Run with PHERON_INCLUDE_MANUAL_APPROVAL=1 and a human present to get real signal.",
+          "status" : "needs_review",
+          "tools_used" : [
+
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 3,
+      "level" : "EK-TOOL",
+      "needs_review" : true,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "Facebook sayfamda \"Yeni ürünümüz çıktı!\" diye bir paylaşım yap.",
+      "test_id" : "EK-TOOL-67",
+      "trials" : [
+        {
+          "duration_seconds" : 0,
+          "index" : 0,
+          "reason" : "Skipped — requires manual approval (HIGH-RISK confirmation gate), an unattended run cannot satisfy it and a stuck confirmation would corrupt the next block's trial too. Run with PHERON_INCLUDE_MANUAL_APPROVAL=1 and a human present to get real signal.",
+          "status" : "needs_review",
+          "tools_used" : [
+
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 3,
+      "level" : "EK-TOOL",
+      "needs_review" : true,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "LinkedIn'deki urn:li:share:12345 ID'li gönderiyi sil.",
+      "test_id" : "EK-TOOL-68",
+      "trials" : [
+        {
+          "duration_seconds" : 0,
+          "index" : 0,
+          "reason" : "Skipped — requires manual approval (HIGH-RISK confirmation gate), an unattended run cannot satisfy it and a stuck confirmation would corrupt the next block's trial too. Run with PHERON_INCLUDE_MANUAL_APPROVAL=1 and a human present to get real signal.",
+          "status" : "needs_review",
+          "tools_used" : [
+
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 3,
+      "level" : "EK-TOOL",
+      "needs_review" : true,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "X'teki 1234567890123 ID'li tweet'i sil.",
+      "test_id" : "EK-TOOL-69",
+      "trials" : [
+        {
+          "duration_seconds" : 0,
+          "index" : 0,
+          "reason" : "Skipped — requires manual approval (HIGH-RISK confirmation gate), an unattended run cannot satisfy it and a stuck confirmation would corrupt the next block's trial too. Run with PHERON_INCLUDE_MANUAL_APPROVAL=1 and a human present to get real signal.",
+          "status" : "needs_review",
+          "tools_used" : [
+
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 3,
+      "level" : "EK-TOOL",
+      "needs_review" : true,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "Facebook sayfamdaki 987654321 ID'li gönderiyi sil.",
+      "test_id" : "EK-TOOL-70",
+      "trials" : [
+        {
+          "duration_seconds" : 0,
+          "index" : 0,
+          "reason" : "Skipped — requires manual approval (HIGH-RISK confirmation gate), an unattended run cannot satisfy it and a stuck confirmation would corrupt the next block's trial too. Run with PHERON_INCLUDE_MANUAL_APPROVAL=1 and a human present to get real signal.",
+          "status" : "needs_review",
+          "tools_used" : [
+
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 3,
+      "level" : "EK-TOOL",
+      "needs_review" : true,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "Aynı \"Yeni özellik geldi!\" metnini hem LinkedIn hem X'te aynı anda paylaş.",
+      "test_id" : "EK-TOOL-71",
+      "trials" : [
+        {
+          "duration_seconds" : 0,
+          "index" : 0,
+          "reason" : "Skipped — requires manual approval (HIGH-RISK confirmation gate), an unattended run cannot satisfy it and a stuck confirmation would corrupt the next block's trial too. Run with PHERON_INCLUDE_MANUAL_APPROVAL=1 and a human present to get real signal.",
+          "status" : "needs_review",
+          "tools_used" : [
+
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 1,
+      "level" : "EK-TOOL",
+      "needs_review" : false,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "Facebook sayfamın son 7 günlük performans istatistiklerini göster.",
+      "test_id" : "EK-TOOL-72",
+      "trials" : [
+        {
+          "duration_seconds" : 0.2696799039840698,
+          "index" : 0,
+          "reason" : "Expected tool 'facebook_page_insights' not among real tools called: [\"get_system_telemetry\"]",
+          "response_text" : "[🖥 System Telemetry Report]\n─────────────────────────────\n• OS             : macOS (Version 27.0 (Build 26A428))\n• Thermal State  : ✅ Cool (Nominal)\n• CPU Cores      : 10 active \/ 10 total\n• Total RAM      : 16.0 GB\n• Used RAM       : 15.5 GB (96%)\n• Free RAM       : 0.5 GB\n• Disk (Free\/Total): 31.1 GB \/ 228.3 GB\n• Uptime         : 12h 39m\n• Architecture   : Apple Silicon (M-Series, arm64)\n─────────────────────────────",
+          "status" : "fail",
+          "tools_used" : [
+            "Checking hardware",
+            "get_system_telemetry",
+            "Checking resource metrics..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 1,
+      "level" : "EK-TOOL",
+      "needs_review" : false,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "Instagram hesabımın profil bilgilerini göster.",
+      "test_id" : "EK-TOOL-73",
+      "trials" : [
+        {
+          "duration_seconds" : 0.2693309783935547,
+          "index" : 0,
+          "reason" : "Expected tool 'instagram_insights' not among real tools called: [\"get_system_telemetry\"]",
+          "response_text" : "[🖥 System Telemetry Report]\n─────────────────────────────\n• OS             : macOS (Version 27.0 (Build 26A428))\n• Thermal State  : ✅ Cool (Nominal)\n• CPU Cores      : 10 active \/ 10 total\n• Total RAM      : 16.0 GB\n• Used RAM       : 14.7 GB (91%)\n• Free RAM       : 1.3 GB\n• Disk (Free\/Total): 31.1 GB \/ 228.3 GB\n• Uptime         : 12h 39m\n• Architecture   : Apple Silicon (M-Series, arm64)\n─────────────────────────────",
+          "status" : "fail",
+          "tools_used" : [
+            "Checking hardware",
+            "get_system_telemetry",
+            "Checking resource metrics..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 1,
+      "level" : "EK-TOOL",
+      "needs_review" : false,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "Facebook sayfamdaki en son gönderinin yorumlarını listele.",
+      "test_id" : "EK-TOOL-74",
+      "trials" : [
+        {
+          "duration_seconds" : 91.6381299495697,
+          "index" : 0,
+          "reason" : "Expected tool 'facebook_comments' not among real tools called: []",
+          "response_text" : "Hangi Facebook sayfasının yorumlarını listelememi istiyorsunuz? Şu sayfalar mevcut: Sonaraura, Savacı Proje, Zahide Uçar veya Atolyeİnci. Lütfen istediğiniz sayfanın adını belirtin.",
+          "status" : "fail",
+          "tools_used" : [
+            "Researching",
+            "facebook_comments"
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 1,
+      "level" : "EK-TOOL",
+      "needs_review" : true,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "Instagram'daki en son gönderimin yorumlarını listele.",
+      "test_id" : "EK-TOOL-75",
+      "trials" : [
+        {
+          "duration_seconds" : 0.2705420255661011,
+          "index" : 0,
+          "reason" : "Trial hit the pre-task hardware gate (test machine resource-starved) — not a real model trial, rerun instead of scoring",
+          "response_text" : "Şu anda sistem kaynakları kritik seviyede (RAM limit exceeded: 97% used — system is overloaded.). Lütfen birkaç saniye bekleyip tekrar deneyin ya da diğer ağır uygulamaları kapatın.",
+          "status" : "needs_review",
+          "tools_used" : [
+
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 1,
+      "level" : "EK-TOOL",
+      "needs_review" : false,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "Zamanlanmış sosyal medya paylaşımlarımı listele.",
+      "test_id" : "EK-TOOL-76",
+      "trials" : [
+        {
+          "duration_seconds" : 97.65740299224854,
+          "index" : 0,
+          "reason" : "Expected tool 'social_schedule' not among real tools called: []",
+          "response_text" : "Hangi sosyal medya platformlarında (LinkedIn, X\/Twitter, Facebook veya Instagram) zamanlanmış paylaşımları listelememi istiyorsunuz?",
+          "status" : "fail",
+          "tools_used" : [
+            "Working on task"
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 1,
+      "level" : "EK-TOOL",
+      "needs_review" : true,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "LinkedIn'deki en son gönderimin yorumlarını listele.",
+      "test_id" : "EK-TOOL-77",
+      "trials" : [
+        {
+          "duration_seconds" : 0.2694450616836548,
+          "index" : 0,
+          "reason" : "Trial hit the pre-task hardware gate (test machine resource-starved) — not a real model trial, rerun instead of scoring",
+          "response_text" : "Şu anda sistem kaynakları kritik seviyede (RAM limit exceeded: 98% used — system is overloaded.). Lütfen birkaç saniye bekleyip tekrar deneyin ya da diğer ağır uygulamaları kapatın.",
+          "status" : "needs_review",
+          "tools_used" : [
+
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 1,
+      "level" : "EK-TOOL",
+      "needs_review" : false,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "X'teki son gönderilerimi (timeline) listele.",
+      "test_id" : "EK-TOOL-78",
+      "trials" : [
+        {
+          "duration_seconds" : 66.50657796859741,
+          "index" : 0,
+          "reason" : "Expected tool 'x_engagement' not among real tools called: []",
+          "response_text" : "⚠️ Bu eylem geri alınamaz veya gerçek sonuç doğurur: **Executing tool: x_engagement...**\n\nParametreler: [:]\n\nOnaylıyor musunuz? Onaylamak için \"evet\", iptal için \"hayır\" yazın.",
+          "status" : "fail",
+          "tools_used" : [
+            "Automating app"
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 3,
+      "level" : "EK-TOOL",
+      "needs_review" : true,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "Facebook'taki 123456789_987654321 ID'li gönderiyi beğen (like).",
+      "test_id" : "EK-TOOL-79",
+      "trials" : [
+        {
+          "duration_seconds" : 0,
+          "index" : 0,
+          "reason" : "Skipped — requires manual approval (HIGH-RISK confirmation gate), an unattended run cannot satisfy it and a stuck confirmation would corrupt the next block's trial too. Run with PHERON_INCLUDE_MANUAL_APPROVAL=1 and a human present to get real signal.",
+          "status" : "needs_review",
+          "tools_used" : [
+
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 3,
+      "level" : "EK-TOOL",
+      "needs_review" : true,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "Facebook sayfamın açıklamasını \"Yeni nesil yapay zeka asistanı\" olarak güncelle.",
+      "test_id" : "EK-TOOL-80",
+      "trials" : [
+        {
+          "duration_seconds" : 0,
+          "index" : 0,
+          "reason" : "Skipped — requires manual approval (HIGH-RISK confirmation gate), an unattended run cannot satisfy it and a stuck confirmation would corrupt the next block's trial too. Run with PHERON_INCLUDE_MANUAL_APPROVAL=1 and a human present to get real signal.",
+          "status" : "needs_review",
+          "tools_used" : [
+
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 1,
+      "level" : "EK-TOOL",
+      "needs_review" : true,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "TikTok hesap bilgilerimi göster.",
+      "test_id" : "EK-TOOL-81",
+      "trials" : [
+        {
+          "duration_seconds" : 0.2636239528656006,
+          "index" : 0,
+          "reason" : "Trial hit the pre-task hardware gate (test machine resource-starved) — not a real model trial, rerun instead of scoring",
+          "response_text" : "Şu anda sistem kaynakları kritik seviyede (RAM limit exceeded: 97% used — system is overloaded.). Lütfen birkaç saniye bekleyip tekrar deneyin ya da diğer ağır uygulamaları kapatın.",
+          "status" : "needs_review",
+          "tools_used" : [
+
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 1,
+      "level" : "EK-TOOL",
+      "needs_review" : true,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "X'teki kendi listelerimi (Lists) göster.",
+      "test_id" : "EK-TOOL-82",
+      "trials" : [
+        {
+          "duration_seconds" : 0.2547680139541626,
+          "index" : 0,
+          "reason" : "This trial's request was swallowed as an implicit cancellation reply to a PREVIOUS trial's still-pending HIGH-RISK confirmation (see pendingConfirmationCancelledPrefix's doc comment) — not a real model trial for THIS block's prompt at all, rerun instead of scoring",
+          "response_text" : "İşlem iptal edildi. Yeni bir istek gönderebilirsiniz.",
+          "status" : "needs_review",
+          "tools_used" : [
+
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 1,
+      "level" : "EK-TOOL",
+      "needs_review" : false,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "X'teki DM (mesaj) geçmişimi listele.",
+      "test_id" : "EK-TOOL-83",
+      "trials" : [
+        {
+          "duration_seconds" : 67.60035002231598,
+          "index" : 0,
+          "reason" : "Expected tool 'x_direct_message' not among real tools called: []",
+          "response_text" : "X'teki DM geçmişini listelemek istiyor musunuz, yoksa yeni bir mesaj göndermek mi?",
+          "status" : "fail",
+          "tools_used" : [
+            "Automating app",
+            "x_direct_message"
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 3,
+      "level" : "EK-TOOL",
+      "needs_review" : true,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "urn:li:share:1234567890 ID'li LinkedIn gönderimin metnini \"Güncellenmiş içerik\" olarak değiştir.",
+      "test_id" : "EK-TOOL-84",
+      "trials" : [
+        {
+          "duration_seconds" : 0,
+          "index" : 0,
+          "reason" : "Skipped — requires manual approval (HIGH-RISK confirmation gate), an unattended run cannot satisfy it and a stuck confirmation would corrupt the next block's trial too. Run with PHERON_INCLUDE_MANUAL_APPROVAL=1 and a human present to get real signal.",
+          "status" : "needs_review",
+          "tools_used" : [
+
+          ]
+        }
+      ]
+    }
+  ],
+  "dataset_path" : "Tests\/AgentTestSuite\/datasets\/golden_dataset_social_isolated.json",
+  "git_commit" : "1549848862c1e108380a307b2bc426c36ffbc834",
+  "k" : 1,
+  "model_id" : "qwen3.5-9b-4bit",
+  "report_schema_version" : "results-1.0",
+  "run_type" : "exploratory",
+  "summary" : {
+    "graded_blocks" : 6,
+    "needs_review_blocks" : 16,
+    "pass_at_1_count" : 0,
+    "pass_at_1_rate" : 0,
+    "total_blocks" : 22
+  },
+  "tester" : "automated-runner-v1",
+  "timestamp" : "2026-09-17T08:52:21Z",
+  "total_duration_seconds" : 330.54817509651184
+}

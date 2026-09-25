@@ -1729,7 +1729,7 @@
             "read_file",
             "file_manager_action",
             "Listing tmp\/...",
-            "Listing trgysvc\/...",
+            "Listing <user>\/...",
             "Listing Users\/..."
           ]
         },

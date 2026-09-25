@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.1",
+  "meta": {},
+  "blocks": [
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-31",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "Bu ayki giderlerimi (Kira: 5000, Market: 2500, Faturalar: 1200) bir Numbers tablosuna dökümle",
+      "layer": "E2E",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 108,
+        "tool": "numbers_office",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-32",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "Proje özeti için 3 slaytlık bir Keynote sunumu oluştur",
+      "layer": "E2E",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 109,
+        "tool": "keynote_office",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-33",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "Toplantı notlarımı (Gündem: Yeni mimari, Kararlar: Swift 6 ve binary protocol) bir Pages belgesine yaz",
+      "layer": "E2E",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 110,
+        "tool": "pages_office",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-34",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "Audacity'de /tmp/pheron_test_audio.wav dosyasındaki gürültüyü azalt",
+      "layer": "E2E",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "setup": [
+        "python3 -c \"import wave, struct; f = wave.open('/tmp/pheron_test_audio.wav', 'w'); f.setnchannels(1); f.setsampwidth(2); f.setframerate(44100); f.writeframes(struct.pack('<h', 0)*44100); f.close()\""
+      ],
+      "teardown": [
+        "rm -f /tmp/pheron_test_audio.wav"
+      ],
+      "expected": {
+        "ubid": 111,
+        "tool": "audacity_control",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory"
+    }
+  ]
+}

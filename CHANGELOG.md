@@ -2,6 +2,31 @@
 
 All notable changes to the methodology document are recorded here. Version numbers refer to the "Sürüm Geçmişi" table inside `METHODOLOGY_TR.md` itself — this file mirrors that table in English for readers who don't read the primary document end to end.
 
+## Version 11 — 2026-09-25
+
+**16 exploratory runs (2026-09-16 → 2026-09-24, 32 files) published together, all `k1`/`k3` — none certified. Published as a batch specifically to show a real, honest bug-hunt cycle in progress, wild swings and all, rather than cherry-picking only the best snapshot.**
+
+- **None of these are Minimum-k-Rule-eligible.** Per Section 2.6, no number here is a "published" benchmark — every file is `run_type: exploratory`. The last certified figure remains `run_qwen3.5-9b-4bit_20260908_k5_autorun1732` (63/126, 50.0% raw / 69.9% trial-adjusted, Version 10).
+- **The headline pass@1 swings across this batch, in date order, are real and mostly explained by DEVLOG entries in the private source repo — reported here rather than smoothed over:**
+
+  | Date | Run | Blocks | pass@1 | What was happening |
+  |---|---|---|---|---|
+  | 09-16 | `autorun2301` | 148 | 50.0% | Baseline before this cycle's refactor work started. |
+  | 09-17 | `socialisolated1152` | 22 | 0.0% | Targeted isolation run on a known-broken social-media subset — not a general-capability sample, a debug probe. |
+  | 09-18 | `xcodedebug2336/2340/2342/2351` | 1 each (k=3) | 0/3, 0/3, 0/3, 1/3 | Four single-block iterative fix→retest cycles against one `xcode_mcp_tool` scenario during that day's Xcode MCP integration work; the last one passing is the fix landing, not a 4-sample average. |
+  | 09-20 | `autorun2325` | 149 | 43.0% | Mid-cycle: a `ResearchFastPath` shortcut had just been added (target-scenario latency 1189s → 44s) but its trigger was over-broad — see the next row. |
+  | 09-21 | `subsetA11203` | 96 | **3.1%** | The `ResearchFastPath` shortcut's category-based trigger was firing on unrelated prompts ("use the MCP git tool…", "via Lark…", "what city am I in?") and forcing them into an irrelevant web search — a real, confirmed regression, not noise. This is the batch's low point. |
+  | 09-21 | `officeverify1318/1340/1410/1749` | 4 each | 25% → 50% → 50% → 100% | Same-day iterative fix-and-retest cycle on an Office/document-type disambiguation bug, converging to green. |
+  | 09-21 | `continuityverify1914` | 17 | 64.7% | Targeted verification of a cross-session long-term-memory (RAG) feature, same day. |
+  | 09-22 | `autorun1646` | 149 | 33.6% | `ResearchFastPath` regression fixed, but this run landed mid a separate, larger refactor (`SpecialistRole` role-isolation rewrite, `ToolRegistry` always-visible-extras fix, `TaskClassifier` SaaS-keyword reordering, `PlannerTemplate` specialist-prompt additions) that was still in progress. |
+  | 09-23 | `autorun0113` | 150 | **16.0%** | Run 0113 landed right after the 09-22 refactor, before that day's own follow-up fixes (a ~29K-token system-prompt bloat root-cause, domain-driven category re-split) were applied — the batch's second low point, from a different cause than 09-21's. |
+  | 09-24 | `autorun1632` | 150 | **54.7%** | This batch's high point and most current snapshot — see the private repo's own golden-test report for the full block-by-block and timing breakdown. 22 real adaptive-prefill-watchdog GPU hangs occurred during this specific 9h14m run (first real-world stress test of a same-day adaptive-timeout rewrite), clustering heavily (14 of 22) in the run's last ~1.5 hours alongside observed memory pressure — correlation noted, root cause not yet proven. |
+
+  **Why publish a batch this volatile at all:** Section headline of this methodology has always been "no invented numbers, no claims ahead of what's actually measured" (see `feedback_research_first` in the private repo's own working notes). A batch that swings from 50% to 3.1% and back to 54.7% inside 8 days is exactly what an honest mid-refactor bug hunt looks like — smoothing it down to only the best number would misrepresent the process this methodology exists to document.
+- **Dataset provenance note:** `golden_dataset_149.json` grew from 149 to 150 blocks partway through this window (an `MT-05` multi-turn block was added 2026-09-21). The copy published here reflects the dataset's *current* (150-block) state; the exact 149-block version actually used by the 09-20 and 09-22 runs above could not be reconstructed and is not separately archived — a real provenance gap, disclosed rather than papered over.
+- **Two dataset files could not be published** (`golden_subset_A1.json`, `xcode_mcp_tool_isolated.json`) — both were temporary/scratch files in the source repo, deleted after use. The corresponding run result files are still complete and published (prompts/responses are embedded inline); see `results/PheronAgent/README.md`.
+- **Metadata capture bug disclosed:** several of these run files show `"model_id": "unknown"` / `"git_commit": "fatal: not a git repository"` in their JSON header instead of real values — a bug in the private repo's own automated-runner harness, not a genuine ambiguity. All 16 runs used the same standing model, `qwen3.5-9b-4bit` (cross-confirmed via the app's persisted model preference and via sibling runs in the same window where capture worked). Filed as a known harness gap rather than silently backfilled.
+
 ## Version 10 — 2026-09-09
 
 **First live k=5 certified run of the 126-block dataset (`run_qwen3.5-9b-4bit_20260908_k5_autorun1732`) — published together with the dataset itself for the first time, plus 3 new agent bugs found in the process.**

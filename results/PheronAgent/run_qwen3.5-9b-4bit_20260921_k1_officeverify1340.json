@@ -1,0 +1,120 @@
+{
+  "blocks" : [
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 1,
+      "level" : "EK-TOOL",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_rate" : 1,
+      "prompt" : "Bu ayki giderlerimi (Kira: 5000, Market: 2500, Faturalar: 1200) bir Numbers tablosuna dökümle",
+      "test_id" : "EK-TOOL-31",
+      "trials" : [
+        {
+          "duration_seconds" : 69.39402902126312,
+          "index" : 0,
+          "response_text" : "İşlem tamamlandı. Giderlerinizi içeren tablo başarıyla oluşturuldu ve `bu_ay_giderleri.xlsx` adresine kaydedildi. Tabloda Kira (5000), Market (2500) ve Faturalar (1200) kalemleri yer almaktadır; ayrıca otomatik hesaplanmış \"Toplam Giderler\" satırı eklenmiştir.",
+          "status" : "pass",
+          "tools_used" : [
+            "Automating app",
+            "numbers_office",
+            "Executing tool: numbers_office..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 1,
+      "level" : "EK-TOOL",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_rate" : 1,
+      "prompt" : "Proje özeti için 3 slaytlık bir Keynote sunumu oluştur",
+      "test_id" : "EK-TOOL-32",
+      "trials" : [
+        {
+          "duration_seconds" : 76.98313999176025,
+          "index" : 0,
+          "response_text" : "Keynote sunumu başarıyla oluşturuldu ve kaydedildi.\n\nDetaylar:\n- **Dosya Yolu:** `proje_ozeti.pptx`\n- **Slayt Sayısı:** 3\n- **Tema:** White (Beyaz)\n- **İçerik:**\n    - Slayt 1: Proje Özeti girişi ve genel kapsam.\n    - Slayt 2: Temel özellikler, hedefler ve beklenen çıktılar.\n    - Slayt 3: Sonuçlar ve gelecekteki geliştirme planları.\n\nSunumunuzu Keynote uygulamasından açıp inceleyebilirsiniz.",
+          "status" : "pass",
+          "tools_used" : [
+            "Automating app",
+            "keynote_office",
+            "Executing tool: keynote_office..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 1,
+      "level" : "EK-TOOL",
+      "needs_review" : false,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "Toplantı notlarımı bir Pages belgesine yaz",
+      "test_id" : "EK-TOOL-33",
+      "trials" : [
+        {
+          "duration_seconds" : 82.54126596450806,
+          "index" : 0,
+          "reason" : "Double\/extra dispatch: expected only 'pages_office', got [\"apple_calendar\", \"system_date\"]",
+          "response_text" : "Bugünün tarihi 21 Eylül 2026. Toplantı notlarını bir Pages belgesine yazmak için önce toplantının hangi tarih ve saatte olacağını belirtmeniz gerekiyor. Lütfen toplantının başlama tarihini ve saati (örneğin: \"2026-09-25T14:00\") gönderin, ardından belgeleri oluşturup içereceğim notları ekleyeceğim.\n\nEğer bu anki topantı notlarını kaydetmek istiyorsanız, lütfen toplantının başlangıç tarihini ve saati iletiniz veya \"şimdi\"yi belirtiniz ki o zaman için hazırlayayım.",
+          "status" : "fail",
+          "tools_used" : [
+            "Automating app",
+            "apple_calendar",
+            "system_date",
+            "Checking time and date data..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 1,
+      "level" : "EK-TOOL",
+      "needs_review" : true,
+      "pass_at_1" : false,
+      "pass_rate" : 0,
+      "prompt" : "Audacity'de \/tmp\/pheron_test_audio.wav dosyasındaki gürültüyü azalt",
+      "test_id" : "EK-TOOL-34",
+      "trials" : [
+        {
+          "duration_seconds" : 1179.0682839155197,
+          "index" : 0,
+          "reason" : "Trial hit the request-level timeout ceiling — for build-related blocks this is often swift-test-harness self-contention (shared package build lock), not real model behavior; verify with a direct \/api\/agent call outside the harness instead of scoring this trial",
+          "response_text" : "İstek zaman aşımına uğradı (1100s). Lütfen görevi sadeleştirin.",
+          "status" : "needs_review",
+          "tools_used" : [
+            "Analyzing audio",
+            "music_dna",
+            "audacity_control",
+            "Executing tool: audacity_control..."
+          ]
+        }
+      ]
+    }
+  ],
+  "dataset_path" : "Tests\/AgentTestSuite\/datasets\/golden_dataset_office_verify.json",
+  "git_commit" : "fc61d227843798ad2cd89eb65df8e3f6937816ae",
+  "k" : 1,
+  "model_id" : "unknown",
+  "report_schema_version" : "results-1.0",
+  "run_type" : "exploratory",
+  "summary" : {
+    "graded_blocks" : 3,
+    "needs_review_blocks" : 1,
+    "pass_at_1_count" : 2,
+    "pass_at_1_rate" : 0.5,
+    "total_blocks" : 4
+  },
+  "tester" : "automated-runner-v1",
+  "timestamp" : "2026-09-21T10:40:21Z",
+  "total_duration_seconds" : 1410.7569880485535
+}

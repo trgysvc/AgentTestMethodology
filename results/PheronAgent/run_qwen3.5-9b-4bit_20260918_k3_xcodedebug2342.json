@@ -1,0 +1,64 @@
+{
+  "blocks" : [
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 3,
+      "level" : "EK-TOOL",
+      "needs_review" : true,
+      "pass_at_1" : false,
+      "pass_rate" : 0.3333333333333333,
+      "prompt" : "xcode mcp tool ile XcodeListTemplates action ile kind=project parametresiyle template listesini getir.",
+      "test_id" : "EK-TOOL-85",
+      "trials" : [
+        {
+          "duration_seconds" : 0.2745250463485718,
+          "index" : 0,
+          "reason" : "Trial hit the pre-task hardware gate (test machine resource-starved) — not a real model trial, rerun instead of scoring",
+          "response_text" : "Şu anda sistem kaynakları kritik seviyede (RAM limit exceeded: 99% used — system is overloaded.). Lütfen birkaç saniye bekleyip tekrar deneyin ya da diğer ağır uygulamaları kapatın.",
+          "status" : "needs_review",
+          "tools_used" : [
+
+          ]
+        },
+        {
+          "duration_seconds" : 0.2600209712982178,
+          "index" : 1,
+          "reason" : "Trial hit the pre-task hardware gate (test machine resource-starved) — not a real model trial, rerun instead of scoring",
+          "response_text" : "Şu anda sistem kaynakları kritik seviyede (RAM limit exceeded: 98% used — system is overloaded.). Lütfen birkaç saniye bekleyip tekrar deneyin ya da diğer ağır uygulamaları kapatın.",
+          "status" : "needs_review",
+          "tools_used" : [
+
+          ]
+        },
+        {
+          "duration_seconds" : 375.24186503887177,
+          "index" : 2,
+          "response_text" : "(no response)",
+          "status" : "pass",
+          "tools_used" : [
+            "Automating app",
+            "xcode_mcp_tool",
+            "Executing tool: xcode_mcp_tool..."
+          ]
+        }
+      ]
+    }
+  ],
+  "dataset_path" : "\/private\/tmp\/claude-501\/-Users-<user>-Developer-EliteAgent\/2b8e465a-6e33-4229-bdee-d5f06445b2a4\/scratchpad\/xcode_mcp_tool_isolated.json",
+  "git_commit" : "f14d0dbb84b353ceb83f864a7d02788b320f7225",
+  "k" : 3,
+  "model_id" : "unknown",
+  "report_schema_version" : "results-1.0",
+  "run_type" : "exploratory",
+  "summary" : {
+    "graded_blocks" : 0,
+    "needs_review_blocks" : 1,
+    "pass_at_1_count" : 0,
+    "pass_at_1_rate" : 0,
+    "total_blocks" : 1
+  },
+  "tester" : "automated-runner-v1",
+  "timestamp" : "2026-09-18T20:42:19Z",
+  "total_duration_seconds" : 377.37273705005646
+}

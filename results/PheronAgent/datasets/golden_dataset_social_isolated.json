@@ -1,0 +1,589 @@
+{
+  "schema_version": "1.1",
+  "blocks": [
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-63",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "LinkedIn'de \"Bugün harika bir gün, yeni bir proje başlatıyorum!\" diye bir gönderi paylaş.",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 125,
+        "tool": "linkedin_post",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory",
+      "notes": "2026-09-16: linkedin_post (UBID 125) golden dataset'te hiç test edilmemişti. HIGH-RISK gated (ToolPrivacyGate: unconditional) — unattended koşumda SKIPPED, sadece insan gözetiminde PHERON_INCLUDE_MANUAL_APPROVAL=1 ile çalışır.",
+      "requires_manual_approval": true
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-64",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "X'te (Twitter) \"Merhaba X!\" diye bir tweet paylaş.",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 126,
+        "tool": "x_post",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory",
+      "notes": "2026-09-16: x_post (UBID 126) hiç test edilmemişti. HIGH-RISK gated + ücretli (X pay-per-use) — manuel onay gerektirir.",
+      "requires_manual_approval": true
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-65",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "Instagram'da masaüstümdeki foto.jpg dosyasını \"Güzel bir gün\" açıklamasıyla paylaş.",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 128,
+        "tool": "instagram_post",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory",
+      "notes": "2026-09-16: instagram_post (UBID 128) hiç test edilmemişti. HIGH-RISK gated.",
+      "requires_manual_approval": true
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-66",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "TikTok'a masaüstümdeki video.mp4 videosunu taslak (draft) olarak gönder.",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 129,
+        "tool": "tiktok_post",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory",
+      "notes": "2026-09-16: tiktok_post (UBID 129) hiç test edilmemişti. HIGH-RISK gated.",
+      "requires_manual_approval": true
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-67",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "Facebook sayfamda \"Yeni ürünümüz çıktı!\" diye bir paylaşım yap.",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 130,
+        "tool": "facebook_post",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory",
+      "notes": "2026-09-16: facebook_post (UBID 130) hiç test edilmemişti. HIGH-RISK gated.",
+      "requires_manual_approval": true
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-68",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "LinkedIn'deki urn:li:share:12345 ID'li gönderiyi sil.",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 131,
+        "tool": "linkedin_delete_post",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory",
+      "notes": "2026-09-16: linkedin_delete_post (UBID 131) hiç test edilmemişti. HIGH-RISK gated, geri alınamaz.",
+      "requires_manual_approval": true
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-69",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "X'teki 1234567890123 ID'li tweet'i sil.",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 132,
+        "tool": "x_delete_post",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory",
+      "notes": "2026-09-16: x_delete_post (UBID 132) hiç test edilmemişti. HIGH-RISK gated, geri alınamaz.",
+      "requires_manual_approval": true
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-70",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "Facebook sayfamdaki 987654321 ID'li gönderiyi sil.",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 133,
+        "tool": "facebook_delete_post",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory",
+      "notes": "2026-09-16: facebook_delete_post (UBID 133) hiç test edilmemişti. HIGH-RISK gated, geri alınamaz.",
+      "requires_manual_approval": true
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-71",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "Aynı \"Yeni özellik geldi!\" metnini hem LinkedIn hem X'te aynı anda paylaş.",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 134,
+        "tool": "social_cross_post",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory",
+      "notes": "2026-09-16: social_cross_post (UBID 134) hiç test edilmemişti. HIGH-RISK gated (fan-out publish).",
+      "requires_manual_approval": true
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-72",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "Facebook sayfamın son 7 günlük performans istatistiklerini göster.",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 135,
+        "tool": "facebook_page_insights",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory",
+      "notes": "2026-09-16: facebook_page_insights (UBID 135) hiç test edilmemişti. Salt-okunur, gate'siz — unattended koşumda gerçek sinyal verir."
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-73",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "Instagram hesabımın profil bilgilerini göster.",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 136,
+        "tool": "instagram_insights",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory",
+      "notes": "2026-09-16: instagram_insights (UBID 136) hiç test edilmemişti. Salt-okunur, gate'siz."
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-74",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "Facebook sayfamdaki en son gönderinin yorumlarını listele.",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 137,
+        "tool": "facebook_comments",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory",
+      "notes": "2026-09-16: facebook_comments (UBID 137) hiç test edilmemişti. 'list' action'ı gate'siz (reply/delete gated)."
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-75",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "Instagram'daki en son gönderimin yorumlarını listele.",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 138,
+        "tool": "instagram_comments",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory",
+      "notes": "2026-09-16: instagram_comments (UBID 138) hiç test edilmemişti. 'list' action'ı gate'siz (reply/delete/hide/unhide gated)."
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-76",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "Zamanlanmış sosyal medya paylaşımlarımı listele.",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 139,
+        "tool": "social_schedule",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory",
+      "notes": "2026-09-16: social_schedule (UBID 139) hiç test edilmemişti. 'list' action'ı gate'siz ('create' gated)."
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-77",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "LinkedIn'deki en son gönderimin yorumlarını listele.",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 140,
+        "tool": "linkedin_comments",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory",
+      "notes": "2026-09-16: linkedin_comments (UBID 140) hiç test edilmemişti. 'list' action'ı gate'siz — ama LinkedIn Community Management API onayı bekliyor, çağrı gerçek bir izin hatasıyla başarısız olacak (kod hatası değil, bilinen kısıt); bu test sadece doğru ARACIN seçilip seçilmediğini ölçer."
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-78",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "X'teki son gönderilerimi (timeline) listele.",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 141,
+        "tool": "x_engagement",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory",
+      "notes": "2026-09-16: x_engagement (UBID 141) hiç test edilmemişti. 'timeline' read action'ı gate'siz."
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-79",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "Facebook'taki 123456789_987654321 ID'li gönderiyi beğen (like).",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 142,
+        "tool": "facebook_engagement",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory",
+      "notes": "2026-09-16: facebook_engagement (UBID 142) hiç test edilmemişti. Her iki action'ı da (like/unlike) gated.",
+      "requires_manual_approval": true
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-80",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "Facebook sayfamın açıklamasını \"Yeni nesil yapay zeka asistanı\" olarak güncelle.",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 147,
+        "tool": "facebook_page_manage",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory",
+      "notes": "2026-09-16: facebook_page_manage (UBID 147) hiç test edilmemişti. Her action'ı gated.",
+      "requires_manual_approval": true
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-81",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "TikTok hesap bilgilerimi göster.",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 143,
+        "tool": "tiktok_insights",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory",
+      "notes": "2026-09-16: tiktok_insights (UBID 143) hiç test edilmemişti. Tamamen salt-okunur, hiçbir zaman gate'lenmiyor."
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-82",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "X'teki kendi listelerimi (Lists) göster.",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 144,
+        "tool": "x_lists",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory",
+      "notes": "2026-09-16: x_lists (UBID 144) hiç test edilmemişti. 'owned_lists' action'ı gate'siz."
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-83",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "X'teki DM (mesaj) geçmişimi listele.",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 145,
+        "tool": "x_direct_message",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory",
+      "notes": "2026-09-16: x_direct_message (UBID 145) hiç test edilmemişti. 'list' action'ı gate'siz ('send' gated)."
+    },
+    {
+      "schema_version": "1.1",
+      "test_id": "EK-TOOL-84",
+      "level": "EK-TOOL",
+      "category": "tool-coverage",
+      "prompt": "urn:li:share:1234567890 ID'li LinkedIn gönderimin metnini \"Güncellenmiş içerik\" olarak değiştir.",
+      "layer": "Live",
+      "yakalayan_katman": "TaskClassifier",
+      "evaluation_type": "STATE",
+      "expected": {
+        "ubid": 146,
+        "tool": "linkedin_update_post",
+        "tools_order": null,
+        "param_keys": null,
+        "result_contains": null,
+        "no_tool_call": null
+      },
+      "fail_patterns": [
+        "Farklı UBID / dispatch yok"
+      ],
+      "k": 3,
+      "threshold": "baseline_calibrated",
+      "tester": "automated-runner-v1",
+      "run_type": "exploratory",
+      "notes": "2026-09-16: linkedin_update_post (UBID 146) hiç test edilmemişti. Her zaman gated (gerçek, görünür düzenleme).",
+      "requires_manual_approval": true
+    }
+  ]
+}

@@ -586,7 +586,7 @@
           "status" : "fail",
           "tools_used" : [
             "file_manager_action",
-            "Listing trgysvc\/...",
+            "Listing <user>\/...",
             "shell_exec"
           ]
         },

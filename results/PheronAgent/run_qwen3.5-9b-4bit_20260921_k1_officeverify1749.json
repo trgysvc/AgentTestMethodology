@@ -1,0 +1,116 @@
+{
+  "blocks" : [
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 1,
+      "level" : "EK-TOOL",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_rate" : 1,
+      "prompt" : "Bu ayki giderlerimi (Kira: 5000, Market: 2500, Faturalar: 1200) bir Numbers tablosuna dökümle",
+      "test_id" : "EK-TOOL-31",
+      "trials" : [
+        {
+          "duration_seconds" : 72.03772497177124,
+          "index" : 0,
+          "response_text" : "Bu ayki gider tablonuz Numbers dosyasına başarıyla kaydedildi. Dosya yolu:\nbu_ay_giderleri.xlsx\n\nTablo içeriği:\n- Kira: 5000 TL\n- Market: 2500 TL\n- Faturalar: 1200 TL\nToplam gider: 8700 TL",
+          "status" : "pass",
+          "tools_used" : [
+            "Automating app",
+            "numbers_office",
+            "Executing tool: numbers_office..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 1,
+      "level" : "EK-TOOL",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_rate" : 1,
+      "prompt" : "Proje özeti için 3 slaytlık bir Keynote sunumu oluştur",
+      "test_id" : "EK-TOOL-32",
+      "trials" : [
+        {
+          "duration_seconds" : 72.50672101974487,
+          "index" : 0,
+          "response_text" : "Sunum başarıyla oluşturuldu ve şu konuma kaydedildi: `proje_ozeti.pptx`",
+          "status" : "pass",
+          "tools_used" : [
+            "Automating app",
+            "keynote_office",
+            "Executing tool: keynote_office..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 1,
+      "level" : "EK-TOOL",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_rate" : 1,
+      "prompt" : "Toplantı notlarımı (Gündem: Yeni mimari, Kararlar: Swift 6 ve binary protocol) bir Pages belgesine yaz",
+      "test_id" : "EK-TOOL-33",
+      "trials" : [
+        {
+          "duration_seconds" : 70.24786698818207,
+          "index" : 0,
+          "response_text" : "Pages belgesi başarıyla oluşturuldu ve `notlar\/toplanti_notlari.docx` adresine kaydedildi.\n\nİçerik yapısı şu şekildedir:\n- **Gündem**: Yeni mimari\n- **Kararlar**: Swift 6 ve binary protocol",
+          "status" : "pass",
+          "tools_used" : [
+            "Automating app",
+            "pages_office",
+            "Executing tool: pages_office..."
+          ]
+        }
+      ]
+    },
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 1,
+      "level" : "EK-TOOL",
+      "needs_review" : false,
+      "pass_at_1" : true,
+      "pass_rate" : 1,
+      "prompt" : "Audacity'de \/tmp\/pheron_test_audio.wav dosyasındaki gürültüyü azalt",
+      "test_id" : "EK-TOOL-34",
+      "trials" : [
+        {
+          "duration_seconds" : 404.02321898937225,
+          "index" : 0,
+          "response_text" : "⚠️ Bu eylem geri alınamaz veya gerçek sonuç doğurur: **Listing directory...**\n\nParametreler: [\"command\": PheronAgentCore.AnyCodable(storage: PheronAgentCore.CodableValue.string(\"ls -la \\'\/tmp\/pheron_test_audio.wav\\'\"))]\n\nOnaylıyor musunuz? Onaylamak için \"evet\", iptal için \"hayır\" yazın.",
+          "status" : "pass",
+          "tools_used" : [
+            "Analyzing audio",
+            "audacity_control",
+            "Executing tool: audacity_control..."
+          ]
+        }
+      ]
+    }
+  ],
+  "dataset_path" : "Tests\/AgentTestSuite\/datasets\/golden_dataset_office_verify.json",
+  "git_commit" : "fc61d227843798ad2cd89eb65df8e3f6937816ae",
+  "k" : 1,
+  "model_id" : "unknown",
+  "report_schema_version" : "results-1.0",
+  "run_type" : "exploratory",
+  "summary" : {
+    "graded_blocks" : 4,
+    "needs_review_blocks" : 0,
+    "pass_at_1_count" : 4,
+    "pass_at_1_rate" : 1,
+    "total_blocks" : 4
+  },
+  "tester" : "automated-runner-v1",
+  "timestamp" : "2026-09-21T14:49:54Z",
+  "total_duration_seconds" : 621.6499229669571
+}

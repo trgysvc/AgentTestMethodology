@@ -1,0 +1,65 @@
+{
+  "blocks" : [
+    {
+      "category" : "tool-coverage",
+      "evaluation_type" : "STATE",
+      "k" : 3,
+      "level" : "EK-TOOL",
+      "needs_review" : true,
+      "pass_at_1" : true,
+      "pass_rate" : 0.6666666666666666,
+      "prompt" : "xcode mcp tool ile XcodeListTemplates action ile kind=project parametresiyle template listesini getir.",
+      "test_id" : "EK-TOOL-85",
+      "trials" : [
+        {
+          "duration_seconds" : 205.87929594516754,
+          "index" : 0,
+          "response_text" : "İşte XcodeListTemplates action'ı ile kind=project parametresi kullanılarak getirilen proje şablonları (templates):\n\n**Kullanılabilir Proje Şablonları:**\n\n1. **App** - Temel macOS uygulama projesi (`com.apple.dt.unit.cocoaApplication`)\n2. **iOS App** - iOS uygulaması (`com.apple.dt.unit.singleViewApplication`)\n3. **WatchOS App** - watchOS uygulaması (`com.apple.dt.unit.unit.application.watchOS`)\n4. **tvOS App** - tvOS uygulaması (`com.apple.dt.unit.tvosApplication`)\n5. **visionOS App** - visionOS uygulaması (`com.apple.dt.unit.visionOS.app`)\n6. **App Playground** - Uygama oynatma alanı projesi (`com.apple.dt.playground.app.ios`)\n7. **Audio Unit Extension App** - Ses birimi genişletmeli uygulama\n8. **Augmented Reality App** - Artırılmış gerçeklik uygulaması (`com.apple.dt.unit.ios.augmentedreality`)\n9. **Command Line Tool** - Komut satırı aracı (`com.apple.dt.unit.commandLineTool`)\n10. **Document App** - Belge tabanlı uygulama (`com.apple.dt.unit.documentBasedViewApplication` veya `multiPlatform.app.document-based`)\n11. **Foveated Streaming App** - Odaklanmış akış uygulaması\n12. **Game** - Oyun şablonları (iOS, macOS, tvOS için ayrı ayrı)\n13. **Immersive Environment App** - Derinlemesine ortam uygulaması (visionOS için)\n14. **iMessage App** - iMessage uygulaması (`com.apple.dt.unit.messagesonlyapplication`)\n15. **Safari Extension App** - Safari genişletmesi (`com.apple.dt.unit.cocoaApplicationWithSafariExtension` veya `cocoaTouch...`)\n16. **Spatial Rendering App** - Uzaysal renderlama uygulaması (macOS için)\n17. **Sticker Pack App** - Stiker paketi uygulaması\n\n**Kategori Bazlı:**\n- **Framework & Library**: iOS\/macOS\/tvOS\/visionOS\/watchOS framework'leri, library'ler\n- **Driver**: Sürücü extension'ları\n- **Other**: Boş proje (`com.apple",
+          "status" : "pass",
+          "tools_used" : [
+            "Automating app",
+            "xcode_mcp_tool",
+            "Executing tool: xcode_mcp_tool..."
+          ]
+        },
+        {
+          "duration_seconds" : 0.2710089683532715,
+          "index" : 1,
+          "reason" : "Trial hit the pre-task hardware gate (test machine resource-starved) — not a real model trial, rerun instead of scoring",
+          "response_text" : "Şu anda sistem kaynakları kritik seviyede (RAM limit exceeded: 98% used — system is overloaded.). Lütfen birkaç saniye bekleyip tekrar deneyin ya da diğer ağır uygulamaları kapatın.",
+          "status" : "needs_review",
+          "tools_used" : [
+
+          ]
+        },
+        {
+          "duration_seconds" : 220.98246002197266,
+          "index" : 2,
+          "response_text" : "İşte Xcode'un proje şablonu (kind=\"project\") listesi:\n\n**Kullanılabilir Proje Şablonları:**\n\n1. **App** (`com.apple.dt.unit.application.watchOS`) - watchOS için uygulama\n2. **App** (`com.apple.dt.unit.cocoaApplication`) - macOS için Cocoa uygulaması\n3. **App** (`com.apple.dt.unit.multiPlatform.app`) - Çok platformlu App\n4. **App** (`com.apple.dt.unit.singleViewApplication`) - iOS tek ekranlı uygulama\n5. **App Playground** (`com.apple.dt.playground.app.ios`) - iOS için uygulama oyun alanı projesi\n6. **Augmented Reality App** (`com.apple.dt.unit.ios.augmentedreality`) - iOS AR uygulaması\n7. **Command Line Tool** (`com.apple.dt.unit.commandLineTool`) - Komut satırı aracı\n8. **Document App** (`com.apple.dt.unit.cocoaDocumentApplication`) - macOS belge uygulaması\n9. **Safari Extension App** (`com.apple.dt.unit.cocoaTouchApplicationWithSafariExtension`) - Safari uzantısı\n\nNot: Şablonlar şu anda seçenek (options) verileri boş döndürüyor çünkü \"broad browse\" modunda çalıştınız. Eğer belirli bir şablondan proje oluşturacaksanız, `XcodeNewProject` aracını kullanmanız ve ilgili seçeneği (`templateIdentifier`) ile birlikte çağırmanız gerekecektir.\n\nÖzellikle projeler için en yaygın kullanılanlar:\n- **Cocoa Touch Application** (iOS mobil uygulamalar)\n- **macOS App \/ Cocoa Application** (masaüstü macOS uygulamaları)\n- **Command Line Tool** (komut satırı araçları)",
+          "status" : "pass",
+          "tools_used" : [
+            "Automating app",
+            "xcode_mcp_tool",
+            "Executing tool: xcode_mcp_tool..."
+          ]
+        }
+      ]
+    }
+  ],
+  "dataset_path" : "\/private\/tmp\/claude-501\/-Users-<user>-Developer-EliteAgent\/2b8e465a-6e33-4229-bdee-d5f06445b2a4\/scratchpad\/xcode_mcp_tool_isolated.json",
+  "git_commit" : "b4559c86d2a195bc24c5780799c43a061f199801",
+  "k" : 3,
+  "model_id" : "unknown",
+  "report_schema_version" : "results-1.0",
+  "run_type" : "exploratory",
+  "summary" : {
+    "graded_blocks" : 0,
+    "needs_review_blocks" : 1,
+    "pass_at_1_count" : 1,
+    "pass_at_1_rate" : 1,
+    "total_blocks" : 1
+  },
+  "tester" : "automated-runner-v1",
+  "timestamp" : "2026-09-18T20:51:36Z",
+  "total_duration_seconds" : 428.71024107933044
+}
