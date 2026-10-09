@@ -31,7 +31,7 @@ For reuse terms, see `LICENSE` (CC BY 4.0 for the methodology, MIT for template 
   Function-calling, multi-step reasoning (including τ²-bench), web/browser, OS/GUI/terminal, software engineering, security (including OWASP Top 10 for Agentic Applications 2026 / ASI01–ASI10), and memory benchmarks; MCP security (OWASP MCP Top 10); OpenClaw/Hermes harness analysis; evaluation methodology (LLM-as-judge, pass^k, exact match vs. partial credit, cost/latency, production observability, automated red-teaming, benchmark reliability, multi-agent systems, regulatory alignment map).
 
 - **Part II — Universal Agent Test Battery + PheronAgent Reference Implementation (Current, Canonical — Active)** (source: `PROTOCOL.md` v1.1 + Section 13 addendum)
-  Environment setup, golden dataset, acceptance/rejection taxonomy, **108 unique test blocks** (66 universal core blocks L1–L4/HR/MT/SEC — each split into Universal Capability + PheronAgent Reference Implementation — + 42 SUPP-TOOL case-study blocks, SUPP-TOOL-20..62). Section 13 also cross-references 18 earlier SUPP-TOOL entries (01..04, 06..19 — SUPP-TOOL-05 was never assigned) that were identified as exact duplicates of Part IV.b's L3-TOOL-01..04/06..19 and are no longer counted as separate blocks (see Version 8 note) — they are not part of the 108. CI integration, result template.
+  Environment setup, golden dataset, acceptance/rejection taxonomy, **reporting integrity / run hygiene / efficiency layer (Section 14, Version 12)**, **108 unique test blocks** (66 universal core blocks L1–L4/HR/MT/SEC — each split into Universal Capability + PheronAgent Reference Implementation — + 42 SUPP-TOOL case-study blocks, SUPP-TOOL-20..62). Section 13 also cross-references 18 earlier SUPP-TOOL entries (01..04, 06..19 — SUPP-TOOL-05 was never assigned) that were identified as exact duplicates of Part IV.b's L3-TOOL-01..04/06..19 and are no longer counted as separate blocks (see Version 8 note) — they are not part of the 108. CI integration, result template.
 
 - **Part III — Early Draft Format (Archive/Historical — Inactive)** (source: `agent_testing_protocol.md`)
   The predecessor/parallel version of PROTOCOL.md — ROUTE/UBID/CHAIN/MEM/SEC test blocks, Intent and UBID matrices. No longer in active use, reference only.
@@ -70,6 +70,7 @@ For reuse terms, see `LICENSE` (CC BY 4.0 for the methodology, MIT for template 
 | 9 | 2026-09-05 | **Full UBID coverage audit + block-count and tool-count correction (self-audit, prompted by an external question: "does the golden dataset actually cover every current tool?").** The private source repo's golden dataset had grown silently from 94 to 126 blocks (32 new SUPP-TOOL/EK-TOOL-30..62 case-study blocks added the same day, closing every tool added 2026-07-25 through 2026-08-27 plus PheronAgent's new ConversationArchiveTool feature, PLUS 12 older tools — `systemSleep`, `subagentDelegate`, `accessibility`, `chicagoVision`, `appDiscovery`, `contactsLookup`, `imageAnalysis`, `timerSet`, `semanticVision`, `skillPatch`, `notesTool` — that turned out to have never been covered even in the original 86/94-block battery, found only by auditing every one of the 72 `ToolUBID` cases programmatically rather than trusting the existing "10 remaining gap" claim). This document had never been resynced for the private repo's 68→86→94 growth either, so the "58 core" figure was already one day stale on the day Version 8 itself was written (the private dataset had reached 94 blocks by 2026-07-31, the day before). **Corrected figures: 108 unique headline test blocks (66 core, up from 58 + 42 case-study, SUPP-TOOL-20..62, up from 10); 72 tools, up from the "50+" figure used throughout (verified against `ToolUBID.allCases` in `ToolIDs.swift`).** Also found and recorded (see VIII.4's new update note) that this document's own VII.4/VIII.4 UBID-gap bookkeeping had become internally self-contradictory (VIII.4's own summary table claimed "0 UBIDs left out of coverage," while the front matter and Part IV role box both still said "10 remain a genuine coverage gap," until this version) and that several individual items in that gap list were already wrong independent of this session (UBID 21 `calendarEvents` no longer exists in the codebase at all; UBID 85 `id3_processor` and UBIDs 17/37 `whatsappMessage`/`messengerMessage` were already tested when the list was last written). Per this document's own established practice (Version 8), historical rows and the VII.4 list itself are left as-written; corrections are recorded as new, dated notes alongside them, not silent rewrites. A full historical reconciliation of Part VII/VIII's UBID bookkeeping was explicitly NOT attempted — flagged as a known open follow-up. Personal-info sanitization (`scripts/sanitize_and_publish.py`) was reviewed but not yet run for this dataset revision — the 126-block dataset still lives only in the private source repo pending its first live battery run and publish pass. |
 | 10 | 2026-09-09 | **First live k=5 certified run of the 126-block dataset, published together with the dataset itself for the first time (superseding Version 9's "still pending" note) — plus 3 new agent bugs found via post-run audit-log review.** Run: `run_qwen3.5-9b-4bit_20260908_k5_autorun1732`, 21.8h unattended, preceded by 3 rounds of same-day agent fixes (a completion-claim verification bypass affecting native tool-calling responses, a `system_sleep` tool that ignored its own delay parameter, a `.chatting`-mode false-completion-claim gap, a `/api/agent` CLARIFY-answer context-loss bug, and a systemic tool-visibility test that found 3 more previously-invisible tools). **Headline reported at two layers:** raw 63/126 pass@1 (50.0%); trial-level, excluding pre-task hardware-gate declines/deliberate manual-approval skips/confirmation-collisions/timeouts/other known infra gaps (25.7% of 578 total trials), **69.9% real pass rate on the 452 genuinely-attempted trials.** A specific operational risk was disclosed and mitigated: the `EK-TOOL-51` deferred-sleep block, for the first time genuinely capable of triggering a real sleep mid-battery after the same-day fix, was run from a content-identical, order-only-changed copy of the dataset with that one block moved to the last position — confirmed after the run that the machine's uptime was unbroken (it never slept; the model chose `set_timer` over `system_sleep` in all 3 real trials instead). **3 new bugs found:** (1) `ContactsTool`'s AppleScript uses `person` as a loop variable, colliding with a reserved class name in Contacts.app's own AppleScript dictionary — every real call fails, previously undiscovered only because the tool had never been reachable in FOCUSED MODE before this run's own visibility fix; (2) the `EVIDENCE GUARD`'s completion-claim keyword list doesn't include phrasings like "kuruldu"/"girecek", so a model claim that `set_timer` would cause the machine to sleep went unverified even with the same-day guard-wiring fix in place; (3) systematic (3/3) tool-selection confusion between `set_timer` and `system_sleep` traced to the prompt phrasing "bir zamanlayıcı kur" lexically favoring `set_timer`'s name. A `ScreenCaptureKit`/TCC screen-recording permission confound (12 intermittent failures across the run, cause not conclusively identified) was flagged rather than asserted. **Same-day fix attempts + live re-tests (reported exactly as verified, not rounded up):** bug (1) fixed and fully verified live (exact failing query re-run, 24 real contacts returned, no error). Bug (2)'s keyword-breadth fix worked exactly as designed when re-tested live — but exposed a second, deeper, still-open flaw in the same guard: its evidence-check matched the unrelated word "started" (from the tool's own "Timer started for 600 seconds" output) as sufficient evidence for the sleep claim, because the guard never verifies that matched evidence belongs to the specific claim made — deliberately not patched further (narrowing the evidence-keyword list risks breaking other legitimate uses of "started"). Bug (3)'s fix (explicit tool-description cross-referencing) was re-tested live once: the model chose `set_timer` again — one trial is not enough to call this fixed or disproven, left open. Net: a real deferred-sleep trigger remains unobserved across all live tests to date (four consecutive negatives). Separately, closer reading of the raw JSON found that `EK-TOOL-53`/`EK-TOOL-56` (which exercise the `apple_accessibility`/`contacts_find` reachability fixes) each mechanically confirm the tool now IS reachable and gets called — but neither block scored an actual pass in this run, for reasons distinct from reachability (grading strictness on a plausible prerequisite tool call, plus genuine non-deterministic misses) — "reachable and called" is not the same claim as "block passes," and this was corrected before publication rather than left implied. |
 | 11 | 2026-09-25 | **16 exploratory runs (32 files, 2026-09-16 → 2026-09-24) from a single active development/refactor cycle published as a batch — none certified (all k1/k3).** Pass@1 swings sharply across this window: 50.0% → 43.0% → **3.1%** → (4 small targeted-verification runs: 25%→50%→50%→100%) → 64.7% → 33.6% → **16.0%** → 54.7%. This swing is not noise — it tracks real events documented in the private repo's DEVLOG: the 3.1% low point was a genuine regression in an over-broad, category-triggered `ResearchFastPath` shortcut (forcing unrelated prompts — "use the MCP git tool…", "via Lark…", "what city am I in?" — into an irrelevant web search); the 16.0% low point landed mid a separate, larger refactor (a ~29K-token system-prompt bloat fix plus role-isolation rewrite) the following day, before that day's own fixes were applied. The most recent/highest run (`autorun1632`, 150 blocks, 54.7%) is this window's latest snapshot but is STILL k=1 — not a certified figure. Three honesty notes recorded: (1) two datasets used by this batch (`golden_subset_A1.json`, `xcode_mcp_tool_isolated.json`) no longer exist in the source repo (temporary/scratch files, deleted after use) — their run results are still fully published (prompts/responses embedded), but the reusable dataset files are unavailable; (2) `golden_dataset_149.json` grew from 149 to 150 blocks within this window (an `MT-05` block was added) — the copy published here reflects the *current* 150-block state; the exact 149-block version used by the 09-20/09-22 runs could not be reconstructed; (3) several run files show `model_id: "unknown"` / `git_commit: "fatal: not a git repository"` in their JSON metadata — a bug in the harness's own metadata capture, not a genuine ambiguity (all runs used the same standing model, `qwen3.5-9b-4bit`, cross-confirmed via the app's persisted model preference and sibling runs in the same window where capture worked correctly). Details: `CHANGELOG.md` Version 11, `results/PheronAgent/README.md`. |
+| 12 | 2026-10-09 | **Reporting integrity, run hygiene and the efficiency layer (new Section 14):** result schema `results-1.1` (per-trial KV-cache/timing/guard telemetry, `termination_reason`, `quality_flags`, `run_meta`); a verdict-versus-outcome rule with a second, *clean pass@1* figure; environment-caused results declared unscoreable; a run preflight/runbook; the efficiency tests for local models (prompt byte-stability, auxiliary-call isolation, no history rewriting while a cache is valid, reuse equivalence); mock and side-effect rules; a fix-validation protocol (root cause vs. guard, mutation check, proof by log line); run-to-run stability matrix; dataset immutability; 7 candidate universal blocks (proposed, not counted in the 58). Optional extra dataset fields documented in Section 2.1. Derived from the 2026-10-08/09 live runs of `targeted_phase3_11_blocks`. |
 
 ---
 
@@ -1845,6 +1846,7 @@ Each test block in this document can be exported into `golden_dataset_v1.json` u
 - `threshold`: write "baseline_calibrated" until measured, do not write an exact number
 - `tester` (added in v1.1, **required**): who ran/scored this block — not free text, but a fixed identity (e.g. `"claude-sonnet-5"`, `"antigravity-ai"`, `"turgay-manual"`). See Section 2.5 — rater consistency cannot be tracked without this field.
 - `run_type` (added in v1.1, **required**): `"exploratory"` (k<5, discovery/bug-hunting run) | `"published"` (k≥5, conforms to the Section 2.6 rule, shareable externally). See Section 2.6.
+- *Optional fields used by the PheronAgent datasets (Version 12; absent from schema 1.1 above, tolerated by readers):* `requires_manual_approval` (bool — the block has a confirmation gate or real side effect; skipped when unattended, see Section 14.4), `setup` / `teardown` (lists of shell commands run before/after **every** trial so a mutating block starts from the same state), `notes` (free text), `expected.require_tool_called` (a tool that must appear among the dispatched tools, used by JUDGE blocks), `turns` / `turnExpected` (multi-turn blocks). Result files add the fields of Section 14.1.
 
 > [!IMPORTANT]
 > **Adapting Reference Files to Your Environment:**
@@ -2072,6 +2074,8 @@ Every PASS criterion carries one of the following three tags:
 | `[STATE]` | Deterministic state check — does the file exist, is CALL(XX) in the log, was there no dispatch | assert / grep / file read |
 | `[KEYWORD]` | Does the response text contain a specific term(s) | string contains check |
 | `[JUDGE]` | Semantic judgment: "is it real?", "does it make sense?" — requires human or LLM evaluation | Cohen's kappa calibration (Section 2.3) |
+
+> **Version 12 note:** a `[STATE]` pass proves a deterministic condition (usually that the expected tool was dispatched), not that the task was done. Reports therefore carry `quality_flags` and a second *clean pass@1* figure — see Section 14.2. Result files from Version 12 on use schema `results-1.1` (Section 14.1; the filename convention of Section 2.7 is unchanged).
 
 ##### 3.5 Determinism Rule
 
@@ -3824,8 +3828,120 @@ Note:             Written by Claude Code after a code review, never tested live.
 ### 13.1 — Resolved Coverage Gaps and Current Status
 
 Concrete test scenarios have been added between `SUPP-TOOL-20` and `SUPP-TOOL-29` for the 10 UBIDs (21, 22, 37, 49, 96, 97, 98, 99, 102, 104) that were previously in the gap. It has been confirmed via the `ToolUBID` enum in the Swift codebase that the "ghost UBID" 22 is in fact `emailLegacy` (the legacy email tool), and the test scenario has been written accordingly. As a result, there is no longer any tool/UBID **without a written scenario** — but this does not mean all of them have **actually been run**: SUPP-TOOL-21/22/24/25/26/29 are each explicitly marked in their own `Note:` field as "never tested live," while SUPP-TOOL-27/28 cannot be run at all due to environment constraints (no connected account). Scenario coverage is complete; run coverage is not — this distinction must not be confused.
-</content>
-</invoke>
+
+#### Section 14 — Reporting Integrity, Run Hygiene and the Efficiency Layer (Version 12 addendum)
+
+> **Why this section exists.** On 2026-10-08 and 2026-10-09 the PheronAgent team ran the same 11-block live battery (`targeted_phase3_11_blocks`) repeatedly — three complete runs (8/11, 9/11, 9/11) plus aborted and diagnostic ones — while fixing the agent underneath it. Each run produced a verdict table that looked comparable to the last and was not: a request budget had cut two blocks short, a "pass" sometimes only proved that a tool was dispatched, KV-cache behaviour (which decides wall-clock time on a local model) was visible only by slicing a log by hand, and the report header carried `model_id: "unknown"` and an error string as the git commit. This section turns those lessons into rules. It is deliberately about *how results are recorded and read*, not about which blocks exist.
+>
+> Everything quoted below as a measurement comes from one machine (Apple Silicon with a 12.1 GB GPU memory budget, a 4-bit 9B-parameter model) and is evidence for the rule, not a benchmark. See the results folder README for the files.
+
+##### 14.1 Result schema `results-1.1`
+
+All new fields are optional, so every earlier result file stays valid.
+
+| Level | Field | Meaning |
+|---|---|---|
+| trial | `telemetry.started_at`, `ended_at` | Wall-clock start/end of the trial (ISO 8601). |
+| trial | `telemetry.audit_log_start_offset`, `audit_log_end_offset` | Byte range of the agent's audit log written while the trial ran, so any claim about a trial can be re-checked against the raw log. `null` if the log rotated meanwhile. |
+| trial | `telemetry.planning_turns` | Number of planning turns the agent took. |
+| trial | `telemetry.kv_hits`, `kv_misses`, `kv_miss_reasons` | KV-cache reuse per call and the reason for every miss (e.g. `noState`, `differentContext`, `snapshotNotAPrefix`). |
+| trial | `telemetry.cold_prefill_tokens` | Tokens prefilled from scratch in calls of 1 000+ tokens — the work a cache hit would have saved. |
+| trial | `telemetry.guards_fired` | Counts of the agent's safety/steering guards seen in the log slice (see 14.7). |
+| trial | `termination_reason` | `completed`, or why the trial ended early: `request_budget_cut`, `turn_limit_loop`, `critic_escalation`, `empty_response_fallback`, `infra_error`. |
+| trial | `quality_flags` | Reasons a verdict deserves a second look (14.2). Flags never change the verdict. |
+| run | `run_meta.chip`, `physical_memory_gb`, `os_version` | The machine. |
+| run | `run_meta.thermal_state_at_start`, `thermal_state_at_end` | `nominal` / `fair` / `serious` / `critical`. |
+| run | `run_meta.dataset_sha256` | Hash of the exact dataset file used (14.10). |
+| run | `run_meta.test_mode_declared`, `mocked_tools` | What the operator declares about mocked tools (14.6). |
+| run | `model_id` | Read from the running agent's health endpoint, not typed by the operator; an environment variable remains as an override. |
+| run | `git_commit` | A 40-character hex hash of the repository under test; anything else is recorded as `"unknown"`. |
+
+Reference implementation: `RunTelemetry.swift` in the PheronAgent test target (pure parsing functions with unit tests). `scripts/validate_run_report.py` in this repository checks a published file against these rules.
+
+##### 14.2 A verdict is not an outcome
+
+A `[STATE]` pass (Section 3.4) proves that a deterministic condition held — typically that the expected tool was dispatched. It does not prove that the task was done. Observed in the PheronAgent runs: a messaging block passed while the final answer said the messenger was unavailable; a social-media block passed while the answer was a clarifying question; a delegation block passed while the log showed repeated identical tool calls, and its final answer said it could not do the task.
+
+Rules:
+1. Every trial records `quality_flags`. The reference set: `dispatch_only` (a STATE pass), `answer_is_question`, `guard_assisted` (a steering guard rewrote the model's move — see 14.7), `loop_signals` (loop-detection or de-duplication fired), `ended_by_<reason>` (the trial ended by a limit), `mock_output_in_response`, `heuristic_graded` (a JUDGE block graded by keyword heuristics instead of the calibrated judge of Section 2.3).
+2. A publication reports two figures: **pass@1** (the grader's verdict) and **clean pass@1** — passes carrying none of `answer_is_question`, `guard_assisted`, `loop_signals`, `ended_by_*`, `mock_output_in_response`. The gap between them is the honest uncertainty.
+3. `heuristic_graded` blocks are not equivalent to the judge-calibrated blocks of Section 2.3 and must not be pooled with them in a single "judged" percentage.
+
+##### 14.3 Results caused by the environment, not the agent
+
+A trial that ends in `request_budget_cut`, `infra_error`, or while the machine was blocked (a modal OS dialog, a thermal throttle recorded in `run_meta`) says nothing about the model. Such trials are **not scoreable**: re-run them before counting, and report the count of re-runs.
+
+Evidence: a 600-second request ceiling ended two blocks that were making progress (621 s and 653 s) and the report showed `fail` / `needs_review`; a macOS Keychain dialog blocked the agent for about 28 minutes of one run; an earlier run lost 17.6 % of trials to a hardware gate.
+
+##### 14.4 Run preflight and runbook
+
+Check, and record in `run_meta`, before every run:
+1. The agent binary under test is the one just built (observed on macOS: after a rebuild a Keychain permission dialog appears at the first launch and **blocks the agent silently** — count modal dialogs with `ps` before and during the run, and use a stack sample of the agent process to confirm a stall).
+2. No stale checkpoint: a runner that resumes from an incremental checkpoint will silently skip finished blocks — move it aside for a fresh run.
+3. Manual-approval blocks (`requires_manual_approval: true`) are skipped unattended and report `needs_review` in 0 seconds; include them only with a human present, and declare their real side effects (14.6).
+4. Log rotation: the agent's log may roll over at local midnight; slice by byte offset (14.1) or read the archive.
+5. Thermal state and memory pressure at start; one idle minute after model load.
+6. Never count a run whose preflight failed.
+
+##### 14.5 The efficiency layer (local models)
+
+On a local model, wall-clock time is dominated by *prefill* — reading the prompt — not by generation. PheronAgent measurements (one machine): a cold 26 000-token prefill took about 252 s; the next turn of the same task, reusing the cached prefix, took 17 s; generation stayed at 13–20 tokens/s throughout. The following are universal and testable:
+
+| Metric | Why |
+|---|---|
+| `cold_prefill_tokens`, `kv_hits`, `kv_misses` (+ reasons) per block | What a cache decided, per call. |
+| `planning_turns` per block | A turn costs seconds when warm and minutes when cold. |
+| prefill and decode tokens/second, measured | Time budgets must be derived from these, not from constants (14.9). |
+
+Universal tests (no dependence on a model name; the cache layer reports its own capabilities, e.g. whether it can be rewound):
+1. **Prompt byte-stability.** Within one task, the system prompt of consecutive planning turns is byte-identical (`diff` = 0). Per-turn state (allowed tools, hints) travels at the end of the message list. Anything the template computes from live state (which integrations are currently connected, the clock) must be frozen per task. *Found by:* two prompts differing by two lines because a connector appeared between turns.
+2. **Auxiliary-call isolation.** A call with its own, different prompt (a critic, a summariser, a classifier, context compaction) must not read or overwrite the main conversation's cached state. Test: record cold-prefill tokens of the next main turn before/after an auxiliary call. *Found by:* a 1 000-token critic call replacing a 21 500-token cached prefix, costing the next turn about 3 minutes.
+3. **No history rewriting while a reusable state exists.** Pruning or truncating earlier messages must be disabled while a cached state (live cache *or* snapshot) is valid. *Found by:* an old tool result clipped from 5 132 to 661 characters, invalidating a 27 648-token snapshot.
+4. **Reuse equivalence.** Continuing from a trimmed or snapshotted cache must give the same next-token distribution as computing the whole prompt: compare argmax, top-5 overlap and maximum absolute logit difference on the loaded model.
+
+Reference numbers from the PheronAgent runs on the 11-block battery (single machine; the first two figures are windowed from the log by duration sums and are approximate): total cold-prefill tokens 438 968 → 355 614 → 261 741 across three successive configurations, `differentContext` misses 23 → 17 → 4.
+
+##### 14.6 Mocks and side effects
+
+1. A mock must respond to the action and parameters it is given. A mock that returns the same payload for every action (observed: a workspace-search mock answering `fetch` with the `search` result) makes the block measure the mock, not the agent.
+2. A mock's output must not be mistaken for data by the agent *or* the grader. Mock responses carry a visible marker, and a response quoting it is flagged `mock_output_in_response`.
+3. Declare in `run_meta.mocked_tools` which tools were mocked, and which blocks produce **real** side effects (a message to a real number, an e-mail, a file outside the workspace). Real side effects go only to addresses and numbers owned by the tester, and only in attended runs.
+
+##### 14.7 Fix-validation protocol and guard attribution
+
+When a run improves after a code change, the report must say *why it improved*.
+1. **Classify the fix**: *root cause* (the faulty rule or state is corrected) or *guard* (a deterministic check that redirects the model — e.g. rejecting a clarifying question and supplying the call). Guards are legitimate, but a guard-assisted pass is not evidence that the model improved (flag `guard_assisted`).
+2. **Test with the real failing input**, then run a **mutation check**: disable the fix; the test must fail. A test that stays green with the fix removed proves nothing.
+3. **Prove it live by a log line.** A pass in which the guard or fix never fired (e.g. a placeholder detector that never triggered) does not validate that fix.
+4. **Record what you did not examine.** Unexamined call sites and unverified assumptions belong in the run notes.
+
+##### 14.8 Stability across repeated exploratory runs
+
+Section 2.6 requires k ≥ 5 before publishing a rate. During a fix cycle, runs are k = 1, so run-to-run variance must be shown instead of hidden: publish a block × run matrix with the *flip count* per block (`scripts/stability_matrix.py`). Observed: one delegation block went pass / pass / needs_review across three consecutive complete runs, and a messaging block pass / fail / fail / pass across four.
+
+##### 14.9 Hardware descriptor and rate-relative budgets
+
+Results are comparable across machines only if the machine is described (14.1 `run_meta`). Time limits inside the agent and the harness must be derived from measured prefill and decode rates and the thermal state, not written as seconds; report the limits actually used. Lower bounds are allowed where a legitimate run was observed to need them, and must say so.
+
+##### 14.10 Dataset immutability
+
+Every dataset used by a published or certified run is stored unchanged, together with its SHA-256 (`run_meta.dataset_sha256`). Scratch datasets used for one-off diagnosis are labelled as such, never feed a published number, and are kept if any published file references them (an earlier batch lost two this way).
+
+##### 14.11 Candidate universal blocks (proposed — NOT part of the 58 counted blocks, EXECUTION PENDING as universal definitions)
+
+Each was derived from a real failure; the PheronAgent case is the reference implementation. Promote a candidate into Part II only after a run with the Section 2.6 minimum k.
+
+| ID | Universal capability | Acceptance (tool-agnostic) | Reference case |
+|---|---|---|---|
+| UNIV-CAND-01 | **Candidate-pool recall.** The tool a request names is offered to the model whatever category the request was routed to. | For prompts naming a capability (a messaging service, a phone number), the tool list sent to the model contains the matching tool. `[STATE]`, no model needed. | A message request routed to a generic category ran without the messaging tool; the model reported the service as unavailable. |
+| UNIV-CAND-02 | **Act, don't ask, when optional input is missing.** | When recipient and subject are given but the body is not, the agent calls the tool with a sensible default (the confirmation gate still applies). `[STATE]`. | E-mail with subject only; a messaging service not specified; "latest post" without an id. |
+| UNIV-CAND-03 | **Report what a delegate returned.** | After a sub-agent returns (including "nothing found"), the parent finishes with that result — no further exploratory tool calls. `[STATE]` + turn count. | A delegated search over an empty workspace looped for 17 turns in the parent. |
+| UNIV-CAND-04 | **Data is not a placeholder.** | A value present in tool output (e.g. a real file named `TODO_notes.md`) is never rejected as template filler. `[STATE]`. | A report listing the folder's real file was blocked by a "TODO" placeholder detector. |
+| UNIV-CAND-05 | **Honour an explicit destination.** | When the request names one output path, the write goes to exactly that path. `[STATE]`. | The model planned `/tmp/…` and wrote into its workspace. |
+| UNIV-CAND-06 | **Prose is not a code.** | Ordinary hyphenated words in the agent's own description of its work ("sub-agent", "e-mail") never fail entity grounding; real codes (`OLE_TYO`, `Sprint-42`) are still checked. `[STATE]` on the grounding component. | A truthful sentence was rejected as fabricated because "Sub-agent" was read as a technical code. |
+| UNIV-CAND-07 | Prompt byte-stability, auxiliary-call isolation, history-rewrite protection, reuse equivalence (14.5). | As listed in 14.5. | See 14.5. |
+
+---
 
 # PART III — EARLY DRAFT FORMAT (ARCHIVE/HISTORICAL — OFFICIAL STATUS: INACTIVE)
 
@@ -5723,4 +5839,3 @@ This document's primary identity (see "What This Is For" at the start) is a univ
 - **Rater diversity (Section 2.5):** the runs in the `results/` folder were conducted by at least 3 different raters, none of them verified by double-scoring. This may be a source of possible inconsistency in past figures.
 - **Small sample size (Section 2.6) — updated 2026-07-14:** the early runs in the `results/` folder (2026-06-29 – 07-03) were conducted with k=1 or k=3 and have "exploratory" status. However, this no longer applies to the entire folder: `results_434_final_14.jsonl` + `results_434_final_72.jsonl` (436 records, 86 tests) were counted programmatically — **82/86 tests were run with k=5, 2 tests with k=10, 2 tests with k=3**, meaning it effectively satisfies the k≥5 rule. Still, since this run has not yet been transcribed into the golden-dataset schema (Section 2.1, the `tester`/`run_type` fields), it is not officially labeled `"published"` — numerically ready, but not formally. When preparing a separate results document to be shared alongside this one, this distinction (which run is k≥5 AND which run is formatted to the schema) must be clearly stated to the reader.
 - **License:** the reuse terms for this document and the Part I–IX methodology are defined in the `LICENSE` file (CC BY 4.0). Machine-readable files under `templates/` are additionally licensed under MIT.
-</content>

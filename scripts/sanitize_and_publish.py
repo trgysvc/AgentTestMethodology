@@ -49,6 +49,36 @@ PLACEHOLDER_PHONE = "+90XXXXXXXXXX"
 PLACEHOLDER_HOME = "/Users/<user>"
 
 
+def phone_variants(phone: str) -> list:
+    """Every spelling of one phone number that can appear in a result file, longest first.
+
+    A number is written differently by different layers: the user's prompt has "+905551234567",
+    a messaging URL has "phone=905551234567" (no plus), a shell command or a model's prose may use
+    the national form "05551234567" or spaced groups. Replacing only the configured spelling left
+    the others in plaintext (found in the 2026-10-09 review: the WhatsApp tool logs the number
+    without the plus). Variants: as given, digits only, national form (country code replaced by 0),
+    and the spaced/dashed renderings of each.
+    """
+    digits = "".join(ch for ch in phone if ch.isdigit())
+    if len(digits) < 7:
+        return [phone] if phone else []
+    forms = {phone, digits, "+" + digits}
+    for cc in ("90", "1", "44", "49", "33", "358"):
+        if digits.startswith(cc) and len(digits) > len(cc) + 6:
+            national = digits[len(cc):]
+            forms.update({"0" + national, national})
+    for base in list(forms):
+        d = "".join(ch for ch in base if ch.isdigit())
+        prefix = "+" if base.startswith("+") else ""
+        if len(d) >= 10:
+            tail = d[-7:]
+            head = d[:-7]
+            forms.add(prefix + head[:-3] + " " + head[-3:] + " " + tail[:3] + " " + tail[3:5] + " " + tail[5:])
+            forms.add(prefix + head + " " + tail[:3] + " " + tail[3:5] + " " + tail[5:])
+            forms.add(prefix + head + "-" + tail[:3] + "-" + tail[3:])
+    return sorted((f for f in forms if f), key=len, reverse=True)
+
+
 def sanitize(text: str) -> str:
     # JSON allows "/" to be encoded as the escape sequence "\/" (Swift's JSONEncoder does this
     # for string content, e.g. a model's raw response text quoting a file path) — a plain
@@ -84,7 +114,8 @@ def sanitize(text: str) -> str:
     text = text.replace(username, "<user>")
     # 4. Contact info (no "/" in either, no escaped-form variant needed).
     text = text.replace(REAL_EMAIL, PLACEHOLDER_EMAIL)
-    text = text.replace(REAL_PHONE, PLACEHOLDER_PHONE)
+    for variant in phone_variants(REAL_PHONE):
+        text = text.replace(variant, PLACEHOLDER_PHONE)
     return text
 
 
@@ -119,7 +150,7 @@ def main() -> int:
     # strictly necessary — a false positive here just means a manual look, not a silent leak.
     username = HOME_DIR.rstrip("/").rsplit("/", 1)[-1]
     leaked = []
-    for needle in (REPO_ROOT, HOME_DIR, REAL_EMAIL, REAL_PHONE, username):
+    for needle in (REPO_ROOT, HOME_DIR, REAL_EMAIL, username, *phone_variants(REAL_PHONE)):
         if needle in sanitized:
             leaked.append(needle)
     if leaked:

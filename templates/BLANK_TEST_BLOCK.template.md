@@ -33,6 +33,11 @@ fields — keep both in sync if you extend either.
 | **Tester** | Fixed identity string of whoever ran/graded this (human or model) — required for inter-rater tracking |
 | **Run type** | `exploratory` (k<5) or `published` (k>=5, externally shareable) |
 | **Teardown** | Exact commands/state resets needed after this block runs, so re-runs start clean |
+| **Setup** (v1.2) | Commands run before EVERY trial (not once per block), so a block that mutates its fixture starts from the same state each time |
+| **Side effects / manual approval** (v1.2) | Does the block produce a real side effect or hit a confirmation gate? If yes: `requires_manual_approval`, who owns the target address/number, and that it only runs attended (METHODOLOGY Section 14.4, 14.6) |
+| **Mocked tools** (v1.2) | Which tools are mocked in this block; each mock must answer per action and parameter, and its output must carry a visible marker (Section 14.6) |
+| **Outcome check** (v1.2) | Beyond "the expected tool was dispatched": what deterministic check shows the task was actually done (file content, returned value, state change)? A STATE pass without one is reported with the `dispatch_only` flag (Section 14.2) |
+| **Derived from** (v1.2) | The real failure that motivated the block, if any — one line |
 
 ### Four-layer test architecture (adapt, don't copy verbatim)
 

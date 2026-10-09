@@ -1,9 +1,9 @@
 {
-  "_comment": "Generic, project-agnostic golden-dataset entry template. Derived from the Pheron Agent test documentation, Kısım II / Bölüm 2.1 (schema v1.1). Delete this _comment key before use — JSON does not support real comments. Fork this file, fill one object per test block, and keep the field set below unchanged so tooling built against this schema stays portable across projects.",
+  "_comment": "Generic, project-agnostic golden-dataset entry template. Derived from the Pheron Agent test documentation, Kısım II / Bölüm 2.1 (schema v1.2). Delete this _comment key before use — JSON does not support real comments. Fork this file, fill one object per test block, and keep the field set below unchanged so tooling built against this schema stays portable across projects.",
   "_license": "MIT — see ../LICENSE",
-  "_schema_version": "1.1",
+  "_schema_version": "1.2",
 
-  "schema_version": "1.1",
+  "schema_version": "1.2",
   "test_id": "REPLACE-ME (e.g. L1-CATEGORY-01 — pick your own level/category naming scheme)",
   "level": "REPLACE-ME (e.g. L1, L2, L3, L4 — your own tiering, does not have to match Pheron's)",
   "category": "REPLACE-ME (e.g. the functional area this block probes)",
@@ -14,7 +14,9 @@
   "expected": {
     "_comment": "Free-form object — put whatever your grading needs (tool id, tool name, substring match, exact value, etc.)",
     "tool": "REPLACE-ME or null if no tool call is expected",
-    "result_contains": "REPLACE-ME or null"
+    "result_contains": "REPLACE-ME or null",
+    "require_tool_called": "OPTIONAL (v1.2): a tool that must appear among the dispatched tools — useful for JUDGE blocks",
+    "no_tool_call": "OPTIONAL (v1.2): true if NO tool call is the correct behaviour (chat, refusal, genuine clarification)"
   },
   "fail_patterns": [
     "REPLACE-ME: list the concrete conditions that constitute a FAIL for this block, not a vague description"
@@ -24,7 +26,15 @@
   "tester": "REPLACE-ME (fixed identity string, e.g. \"gpt-4o\", \"human-reviewer-1\" — required, do not leave blank; enables inter-rater tracking, see Bölüm 2.5)",
   "run_type": "exploratory",
 
+  "requires_manual_approval": false,
+  "setup": ["OPTIONAL (v1.2): shell commands run before EVERY trial so a block that mutates its fixture starts from the same state"],
+  "teardown": ["OPTIONAL (v1.2): shell commands run after every trial (also kill background processes the setup started)"],
+  "notes": "OPTIONAL (v1.2): free text — why the block exists, what failure it was derived from",
+
   "_field_notes": {
+    "requires_manual_approval": "v1.2. true if the block hits a human-confirmation gate or produces a REAL side effect (a message to a real number, an e-mail, a file outside the workspace). Skipped when unattended (it reports needs_review in 0 s); include it only with a human present and only with addresses/numbers the tester owns. See METHODOLOGY Section 14.4 and 14.6.",
+    "setup/teardown": "v1.2. Run before and after EVERY trial, not once per block (a block that rewrites its own fixture makes trial 2 fail for the wrong reason).",
+    "expected.require_tool_called": "v1.2. See Section 14.2: a STATE pass proves dispatch, not outcome; pair it with result_contains or an outcome check wherever the outcome can be checked deterministically.",
     "k": "Minimum 5 before this entry's result may be reported as a published pass rate — see Bölüm 2.6 (minimum-k rule). k=1..4 runs are exploratory/bug-hunting only.",
     "threshold": "Do not hardcode a number here until you have actually measured a baseline (Bölüm 2.2). Leave as \"baseline_calibrated\" until then.",
     "run_type": "\"exploratory\" (k<5, bug-hunting) or \"published\" (k>=5, may be shared externally). Set to \"published\" only after the k>=5 condition is actually met."

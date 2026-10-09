@@ -2,7 +2,7 @@
 
 **Universal AI Agent Testing Methodology — with PheronAgent as Reference Case Study**
 
-Version 8 · 2026-08-02
+Version 12 · 2026-10-09
 
 ---
 
@@ -19,6 +19,7 @@ The primary document exists in two languages: `METHODOLOGY.md` (English) and `ME
 | **Parts III–IV, VI** | PheronAgent case study — how the methodology applies to a real agent with 72 native/MCP tools (read for examples; do not copy verbatim) |
 | **Part V** | Advanced verifiability roadmap — cryptographic execution proofs, ZKP-based model verification, anti-gaming protocol (explicitly marked as aspirational/not yet implemented) |
 | **Parts VII–IX** | Audit trail — open issues, reconciliation log, full bibliography with verification status for every external claim |
+| **Part II, Section 14** | Reporting integrity, run hygiene and the efficiency layer for local models — result schema `results-1.1`, verdict-vs-outcome rule, run preflight, KV-cache tests, mock/side-effect rules, fix-validation protocol, 7 *candidate* universal blocks (not counted in the 58) |
 
 **PheronAgent is one case study.** The methodology is the product.
 
@@ -113,7 +114,10 @@ AgentTestMethodology/
 │   ├── BLANK_TEST_BLOCK.template.md   # Empty test block — fill in for your agent
 │   └── golden_dataset.template.json   # Golden dataset schema
 ├── scripts/
-│   └── sanitize_and_publish.py        # Sync + sanitize a result file from the private source repo
+│   ├── sanitize_and_publish.py        # Sync + sanitize a result file from the private source repo
+│   ├── test_sanitize.py               # Self-test of the sanitizer with fake values
+│   ├── validate_run_report.py         # Check a result file against Section 14 (model_id, commit, not-scoreable trials, clean pass@1)
+│   └── stability_matrix.py            # Block x run verdict matrix with flip counts (Section 14.8)
 └── results/
     └── PheronAgent/
         ├── README.md                          # What this folder contains

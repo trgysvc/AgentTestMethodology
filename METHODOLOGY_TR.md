@@ -70,6 +70,7 @@ Yeniden kullanım şartları için `LICENSE` (CC BY 4.0 metodoloji) ve `LICENSE-
 | 9 | 2026-09-05 | **Tam UBID kapsam denetimi + blok-sayısı ve araç-sayısı düzeltmesi (öz-denetim, dışarıdan gelen bir soruyla tetiklendi: "golden dataset gerçekten güncel her aracı kapsıyor mu?").** Private kaynak repo'daki golden dataset sessizce 94'ten 126 bloğa çıkmıştı (aynı gün eklenen 32 yeni EK-TOOL-30..62 vaka çalışması bloğu — 2026-07-25 ile 2026-08-27 arası eklenen her araç + PheronAgent'ın yeni ConversationArchiveTool özelliği kapatıldı, ARTI 12 daha eski araç — `systemSleep`, `subagentDelegate`, `accessibility`, `chicagoVision`, `appDiscovery`, `contactsLookup`, `imageAnalysis`, `timerSet`, `semanticVision`, `skillPatch`, `notesTool` — bunların orijinal 86/94-bloklu bataryada da HİÇ kapsanmadığı ortaya çıktı, ancak 72 `ToolUBID` case'inin her birini var olan "10 kalan boşluk" iddiasına güvenmeden programatik olarak denetleyince bulundu). Bu belge private repo'nun 68→86→94 büyümesi için de hiç yeniden senkronize edilmemişti — yani "58 çekirdek" rakamı, Sürüm 8'in kendisi yazıldığı gün bile zaten bir gün bayattı (private dataset bir önceki gün, 2026-07-31'de zaten 94 bloğa ulaşmıştı). **Düzeltilmiş rakamlar: 108 benzersiz başlık test bloğu (58'den 66'ya çıkan çekirdek + 10'dan 42'ye çıkan vaka çalışması, EK-TOOL-20..62); belge genelinde kullanılan "50+" yerine 72 araç (`ToolIDs.swift`'teki `ToolUBID.allCases`'e karşı doğrulandı).** Ayrıca (bkz. VIII.4'ün yeni güncelleme notu) bu belgenin kendi Kısım VII.4/VIII.4 UBID-boşluk muhasebesinin iç-tutarsız hale geldiği bulundu ve kayda geçirildi (VIII.4'ün kendi özet tablosu "kapsam dışı kalan UBID: 0" diyordu, ama bu sürüme kadar ön kısım ve Kısım IV rolü kutusu hâlâ "10'u gerçek kapsam boşluğu olarak kalıyor" diyordu) ve o boşluk listesindeki birkaç münferit maddenin bu oturumdan bağımsız olarak zaten yanlış olduğu (UBID 21 `calendarEvents` artık kod tabanında hiç yok; UBID 85 `id3_processor` ile UBID 17/37 `whatsappMessage`/`messengerMessage` liste son yazıldığında zaten test ediliyordu) bulundu. Bu belgenin kendi yerleşik pratiğine uygun olarak (Sürüm 8), tarihli satırlar ve VII.4'ün kendi listesi olduğu gibi bırakıldı; düzeltmeler yanlarına yeni, tarihli notlar olarak eklendi, sessizce yeniden yazılmadı. Kısım VII/VIII'in UBID muhasebesinin tam tarihsel uzlaştırılması bilinçli olarak DENENMEDİ — bilinen açık bir takip maddesi olarak işaretlendi. Kişisel-bilgi sanitizasyonu (`scripts/sanitize_and_publish.py`) gözden geçirildi ama bu dataset revizyonu için henüz çalıştırılmadı — 126 bloklu dataset ilk canlı batarya koşumunu ve yayın geçişini bekleyerek şu an sadece private kaynak repoda yaşıyor. |
 | 10 | 2026-09-09 | **126 bloklu dataset'in ilk canlı k=5 sertifikalı koşumu, dataset'in kendisiyle birlikte İLK KEZ yayınlandı (Sürüm 9'un "hâlâ bekliyor" notunun yerini alıyor) — koşum-sonrası audit.log incelemesiyle 3 yeni agent bug'ı bulundu.** Koşum: `run_qwen3.5-9b-4bit_20260908_k5_autorun1732`, 21.8 saat insansız, aynı gün yapılan 3 tur agent düzeltmesinin ardından (native tool-calling yanıtlarını etkileyen bir tamamlanma-iddiası doğrulama atlaması, kendi gecikme parametresini yok sayan bir `system_sleep` aracı, `.chatting` modunda yanlış-tamamlanma-iddiası boşluğu, `/api/agent`'ta CLARIFY-cevap bağlam kaybı bug'ı, ve 3 daha önce görünmez aracı bulan sistemik bir görünürlük testi). **İki katmanda dürüstçe raporlandı:** ham 63/126 pass@1 (%50.0); donanım-gate reddi/kasıtlı manuel-onay atlaması/onay-çakışması/zaman-aşımı/diğer bilinen altyapı boşluklarını (578 trial'ın %25.7'si) hariç tutunca, **452 gerçekten denenen trial üzerinden %69.9 gerçek geçme oranı.** Somut bir operasyonel risk açıkça belirtildi ve azaltıldı: `EK-TOOL-51` (gecikmeli uyku bloğu), aynı gün yapılan düzeltme sayesinde ilk kez gerçekten koşum-ortasında bir uyku tetikleyebilecek durumdaydı — dataset'in içerik olarak birebir aynı, sadece sırası değişmiş bir kopyasından, bu tek blok en sona alınarak koşturuldu; koşum sonrası makinenin uptime'ının kesintisiz olduğu (hiç uyumadığı; model 3 gerçek denemenin hepsinde `system_sleep` yerine `set_timer` seçti) doğrulandı. **3 yeni bug bulundu:** (1) `ContactsTool`'un AppleScript'i döngü değişkeni olarak `person` kullanıyor — bu, Contacts.app'in kendi AppleScript sözlüğündeki ayrılmış `person` sınıf adıyla çakışıyor, her gerçek çağrı başarısız oluyor; bu araç bu koşumun kendi görünürlük düzeltmesinden önce FOCUSED MODE'da hiç erişilebilir olmadığı için şimdiye kadar hiç keşfedilmemişti. (2) `EVIDENCE GUARD`'ın tamamlanma-iddiası anahtar kelime listesi "kuruldu"/"girecek" gibi ifadeleri içermiyor — bu yüzden `set_timer`'ın makineyi uyutacağına dair bir model iddiası, aynı gün yapılan guard-bağlama düzeltmesine rağmen doğrulanmadan geçti. (3) `set_timer` ile `system_sleep` arasında sistematik (3/3) araç-seçim karışıklığı — "bir zamanlayıcı kur" ifadesinin sözcüksel olarak `set_timer`'ın adına daha çok benzemesine bağlandı. `ScreenCaptureKit`/TCC ekran-kayıt izni çakışması (koşum boyunca 12 kez, aralıklı, kesin nedeni belirlenemedi) kesin bir iddia olarak değil, açık bir bulgu olarak işaretlendi. **Aynı gün yapılan düzeltme denemeleri + canlı yeniden testler (tam olarak doğrulandığı gibi raporlandı, yuvarlanmadı):** (1) numaralı bug düzeltildi ve TAM canlı doğrulandı (aynı başarısız sorgu tekrar çalıştırıldı, 24 gerçek kişi hatasız döndü). (2) numaralı bug'ın anahtar-kelime-genişliği düzeltmesi canlı testte TAM olarak tasarlandığı gibi çalıştı — ama AYNI guard'da ikinci, daha derin, hâlâ açık bir kusur ortaya çıkardı: guard'ın kanıt kontrolü, tool sonucundaki alakasız "started" kelimesini (`"Timer started for 600 seconds"`) uyku iddiası için yeterli kanıt saydı — çünkü guard eşleşen kanıtın gerçekten O İDDİAYA ait olup olmadığını hiç kontrol etmiyor; bilinçli olarak daha fazla yamanmadı (kanıt-kelime listesinden "started"ı çıkarmak başka meşru kullanımları bozma riski taşıyor). (3) numaralı bug'ın düzeltmesi (açık araç-description çapraz-referansı) bir kez canlı yeniden test edildi: model yine `set_timer` seçti — tek deneme düzeltildi ya da çürütüldü denemez, açık bırakıldı. Net durum: gerçek gecikmeli-uyku tetiklemesi bugüne kadarki TÜM canlı testlerde hâlâ hiç gözlemlenmedi (4. art arda negatif). Ayrıca ham JSON'un daha yakın incelenmesinde, `apple_accessibility`/`contacts_find` erişilebilirlik düzeltmelerini test eden `EK-TOOL-53`/`EK-TOOL-56` bloklarının HER İKİSİNİN de aracın artık erişilebilir olduğunu ve gerçekten çağrıldığını mekanik olarak doğruladığı ama HİÇBİRİNİN bu koşumda gerçek bir PASS almadığı bulundu — erişilebilirlikle ilgisiz nedenlerle (makul bir ön-koşul araç çağrısında grading sertliği, artı gerçek non-deterministik kaçırmalar) — "erişilebilir ve çağrıldı" ile "blok geçti" AYNI iddia değil, bu yayından önce düzeltildi, ima edilerek bırakılmadı. |
 | 11 | 2026-09-25 | **2026-09-16 → 2026-09-24 arası, tek bir aktif geliştirme/refactor döngüsüne ait 16 exploratory koşum (32 dosya) toplu yayınlandı — hiçbiri sertifikalı değil (hepsi k1/k3).** Pass@1 rakamları bu pencerede %50.0 → %43.0 → **%3.1** → (4 küçük hedefli-doğrulama koşumu: %25→%50→%50→%100) → %64.7 → %33.6 → **%16.0** → %54.7 arası sert biçimde salınıyor. Bu salınım gürültü değil, private repo'nun DEVLOG'unda belgelenmiş gerçek olaylara bağlı: %3.1'lik dip, kategori-bazlı tetiklenen aşırı-geniş bir `ResearchFastPath` kestirmesinin (git/Lark/konum gibi alakasız istemleri gereksiz web aramasına çeviren) gerçek bir regresyonuydu; %16.0'lık ikinci dip ise ertesi günkü (~29K token sistem-promptu şişmesi + rol-izolasyonu) büyük bir refactor'ün ARA durumuna denk geldi. En güncel/en yüksek koşum (`autorun1632`, 150 blok, %54.7) bu pencerenin en son durumu ama YİNE DE k=1 — sertifikalı bir rakam değil. Ayrıca üç dürüstlük notu kayda geçirildi: (1) iki koşumun kullandığı `golden_subset_A1.json` ve `xcode_mcp_tool_isolated.json` dataset dosyaları artık kaynak repoda yok (geçici/scratch dosyalardı, kullanım sonrası silinmiş) — sonuç dosyaları yine de tam yayınlandı (istem/yanıt gömülü), ama yeniden-kullanılabilir dataset dosyaları eksik; (2) `golden_dataset_149.json` bu pencerede 149'dan 150 bloğa büyüdü (MT-05 eklendi) — burada yayınlanan kopya GÜNCEL (150 blok) hali, 09-20/09-22 koşumlarının kullandığı tam 149-bloklu sürüm geriye dönük yeniden oluşturulamadı; (3) birkaç koşum dosyasının JSON meta verisinde `model_id: "unknown"` / `git_commit: "fatal: not a git repository"` görünüyor — bu, harness'ın kendi metaveri-yakalama hatası, gerçek bir belirsizlik değil (tüm koşumların aynı standart model olan `qwen3.5-9b-4bit` ile yapıldığı, uygulamanın kalıcı model tercihinden ve aynı pencerede doğru yakalanan diğer koşumlardan çapraz doğrulandı). Detaylar: `CHANGELOG.md` Sürüm 11, `results/PheronAgent/README.md`. |
+| 12 | 2026-10-09 | **Rapor bütünlüğü, koşum hijyeni ve verimlilik katmanı (yeni Bölüm 14):** `results-1.1` sonuç şeması (deneme başına KV önbellek/zaman/koruma telemetrisi, `termination_reason`, `quality_flags`, `run_meta`); karar–sonuç ayrımı kuralı ve ikinci bir *temiz pass@1* rakamı; ortamdan doğan sonuçların puanlanamaz sayılması; koşum öncesi kontrol/çalıştırma kılavuzu; yerel modeller için verimlilik testleri (prompt bayt kararlılığı, yardımcı çağrı yalıtımı, önbellek geçerliyken geçmişi yeniden yazmama, yeniden kullanım denkliği); mock ve yan etki kuralları; düzeltme doğrulama protokolü (kök neden–koruma, mutasyon kontrolü, log satırıyla kanıt); koşumlar arası kararlılık matrisi; dataset değişmezliği; 7 aday evrensel blok (öneri, 58'e dahil değil). Ek isteğe bağlı dataset alanları Bölüm 2.1'de belgelendi. `targeted_phase3_11_blocks` için 2026-10-08/09 canlı koşumlarından türetildi. |
 
 ---
 
@@ -1845,6 +1846,7 @@ Bu belgedeki her test bloğu aşağıdaki JSON şeması ile `golden_dataset_v1.j
 - `threshold`: Ölçüm yapılana kadar "baseline_calibrated" yaz, kesin sayı yazma
 - `tester` (v1.1'de eklendi, **zorunlu**): Bu bloğu kim koştu/puanladı — serbest metin değil, sabit bir kimlik (ör. `"claude-sonnet-5"`, `"antigravity-ai"`, `"turgay-manual"`). Bkz. Bölüm 2.5 — değerlendirici tutarlılığı bu alan olmadan izlenemez.
 - `run_type` (v1.1'de eklendi, **zorunlu**): `"exploratory"` (k<5, keşif/hata-avlama turu) | `"published"` (k≥5, Bölüm 2.6 kuralına uygun, dışarıya paylaşılabilir). Bkz. Bölüm 2.6.
+- *PheronAgent dataset'lerinin kullandığı isteğe bağlı alanlar (Sürüm 12; yukarıdaki 1.1 şemasında yok, okuyucular tarafından tolere edilir):* `requires_manual_approval` (bool — blokta onay kapısı ya da gerçek yan etki var; gözetimsiz koşumda atlanır, bkz. Bölüm 14.4), `setup` / `teardown` (**her** denemeden önce/sonra çalışan kabuk komutları; durumu değiştiren blok aynı durumdan başlar), `notes` (serbest metin), `expected.require_tool_called` (dispatch edilen araçlar arasında bulunması gereken araç; JUDGE bloklarında), `turns` / `turnExpected` (çok turlu bloklar). Sonuç dosyaları Bölüm 14.1'deki alanları ekler.
 
 > [!IMPORTANT]
 > **Yerel Ortam Uyarısı (Environment Configuration):**
@@ -2072,6 +2074,8 @@ Her PASS kriteri aşağıdaki üç etiketten birini taşır:
 | `[STATE]` | Dosya var mı, log'da CALL(XX) var mı, dispatch yok mu — deterministik durum kontrolü | assert / grep / dosya okuma |
 | `[KEYWORD]` | Yanıt metninde belirli terim(ler) geçiyor mu | string contains kontrolü |
 | `[JUDGE]` | Semantik karar: "gerçek mi?", "mantıklı mı?" — insan veya LLM değerlendirmesi gerekir | Cohen's kappa kalibrasyonu (Bölüm 2.3) |
+
+> **Sürüm 12 notu:** bir `[STATE]` pass'i deterministik bir koşulu (genellikle beklenen aracın çağrıldığını) kanıtlar; görevin yapıldığını değil. Bu yüzden raporlar `quality_flags` ve ikinci bir *temiz pass@1* rakamı taşır — bkz. Bölüm 14.2. Sürüm 12'den itibaren sonuç dosyaları `results-1.1` şemasını kullanır (Bölüm 14.1; Bölüm 2.7'deki dosya adı kuralı değişmedi).
 
 ##### 3.5 Determinizm Kuralı
 
@@ -3792,6 +3796,120 @@ Not:              Claude Code tarafından kod incelemesi sonrası yazıldı, can
 ### 13.1 — Giderilen Kapsam Boşlukları ve Güncel Durum
 
 Daha önce boşlukta olan 10 UBID (21, 22, 37, 49, 96, 97, 98, 99, 102, 104) için somut test senaryoları `EK-TOOL-20` ile `EK-TOOL-29` arasına eklenmiştir. "Hayalet UBID" olan UBID 22'nin aslında `emailLegacy` (eski e-posta aracı) olduğu Swift kod tabanındaki `ToolUBID` enumu üzerinden doğrulanmış ve test senaryosu bu doğrultuda yazılmıştır. Böylece **senaryosu yazılmamış** hiçbir araç/UBID kalmamıştır — ancak bu, hepsinin **fiilen koşulduğu** anlamına gelmez: EK-TOOL-21/22/24/25/26/29'un kendi `Not:` alanları "canlı ortamda hiç test edilmedi" diye açıkça işaretli, EK-TOOL-27/28 ise ortam kısıtı (bağlı hesap yok) nedeniyle hiç koşulamıyor. Senaryo kapsamı tam, koşum kapsamı değil — bu ayrım karıştırılmamalı.
+
+#### Bölüm 14 — Rapor Bütünlüğü, Koşum Hijyeni ve Verimlilik Katmanı (Sürüm 12 eki)
+
+> **Bu bölüm neden var.** 2026-10-08 ve 2026-10-09'da PheronAgent ekibi aynı 11 bloklu canlı bataryayı (`targeted_phase3_11_blocks`) altındaki ajanı düzeltirken defalarca koştu — üç tam koşum (8/11, 9/11, 9/11) ile yarıda kesilen ve tanı amaçlı koşumlar. Her koşum bir öncekiyle karşılaştırılabilir görünen bir karar tablosu üretti ama değildi: bir istek bütçesi iki bloğu yarıda kesmişti, bir "pass" bazen yalnızca aracın çağrıldığını kanıtlıyordu, yerel modelde duvar saatini belirleyen KV önbellek davranışı yalnızca log'u elle dilimleyerek görülebiliyordu, rapor başlığında `model_id: "unknown"` ve git commit yerine bir hata metni vardı. Bu bölüm bu dersleri kurala çevirir. Hangi blokların var olduğunu değil, **sonuçların nasıl kaydedilip okunacağını** konu alır.
+>
+> Aşağıda ölçüm olarak anılan her şey tek makineden (12,1 GB GPU bellek bütçeli Apple Silicon, 4-bit 9B parametreli model) gelir ve kuralın kanıtıdır, kıyaslama (benchmark) değildir.
+
+##### 14.1 Sonuç şeması `results-1.1`
+
+Yeni alanların hepsi isteğe bağlıdır; önceki tüm sonuç dosyaları geçerli kalır.
+
+| Düzey | Alan | Anlam |
+|---|---|---|
+| deneme | `telemetry.started_at`, `ended_at` | Denemenin başlangıç/bitiş zamanı (ISO 8601). |
+| deneme | `telemetry.audit_log_start_offset`, `audit_log_end_offset` | Deneme sürerken ajanın denetim log'una yazılan bayt aralığı; denemeyle ilgili her iddia ham log'a karşı yeniden kontrol edilebilir. Log o sırada döndüyse `null`. |
+| deneme | `telemetry.planning_turns` | Ajanın attığı planlama turu sayısı. |
+| deneme | `telemetry.kv_hits`, `kv_misses`, `kv_miss_reasons` | Çağrı başına KV önbellek yeniden kullanımı ve her ıskalamanın nedeni (`noState`, `differentContext`, `snapshotNotAPrefix` …). |
+| deneme | `telemetry.cold_prefill_tokens` | 1 000+ token'lık çağrılarda sıfırdan okunan token sayısı — bir önbellek isabetinin tasarruf edeceği iş. |
+| deneme | `telemetry.guards_fired` | Log diliminde görülen güvenlik/yönlendirme korumalarının sayıları (14.7). |
+| deneme | `termination_reason` | `completed` ya da denemenin erken bitme nedeni: `request_budget_cut`, `turn_limit_loop`, `critic_escalation`, `empty_response_fallback`, `infra_error`. |
+| deneme | `quality_flags` | Bir kararın ikinci bakışı hak ettiği nedenler (14.2). Bayraklar kararı değiştirmez. |
+| koşum | `run_meta.chip`, `physical_memory_gb`, `os_version` | Makine. |
+| koşum | `run_meta.thermal_state_at_start`, `thermal_state_at_end` | `nominal` / `fair` / `serious` / `critical`. |
+| koşum | `run_meta.dataset_sha256` | Kullanılan dataset dosyasının özeti (14.10). |
+| koşum | `run_meta.test_mode_declared`, `mocked_tools` | Operatörün mock'lanmış araçlar hakkındaki beyanı (14.6). |
+| koşum | `model_id` | Çalışan ajanın sağlık uç noktasından okunur, operatör yazmaz; ortam değişkeni geçersiz kılma olarak kalır. |
+| koşum | `git_commit` | Test edilen deponun 40 karakterlik onaltılık özeti; başka her şey `"unknown"` yazılır. |
+
+Referans uygulama: PheronAgent test hedefindeki `RunTelemetry.swift` (birim testli saf ayrıştırma fonksiyonları). Bu depodaki `scripts/validate_run_report.py` yayınlanacak bir dosyayı bu kurallara göre denetler.
+
+##### 14.2 Karar, sonuç değildir
+
+Bir `[STATE]` pass'i (Bölüm 3.4) deterministik bir koşulun sağlandığını kanıtlar — genellikle beklenen aracın çağrıldığını. Görevin yapıldığını kanıtlamaz. PheronAgent koşularında gözlendi: bir mesajlaşma bloğu, nihai cevap "messenger mevcut değil" derken geçti; bir sosyal medya bloğu cevap bir açıklama sorusuyken geçti; bir delegasyon bloğu log'da tekrarlanan özdeş araç çağrıları görülürken ve nihai cevap görevi yapamadığını söylerken geçti.
+
+Kurallar:
+1. Her deneme `quality_flags` kaydeder. Referans küme: `dispatch_only` (STATE pass'i), `answer_is_question`, `guard_assisted` (bir yönlendirme koruması modelin hamlesini yeniden yazdı — 14.7), `loop_signals` (döngü algılama ya da tekilleştirme çalıştı), `ended_by_<neden>` (deneme bir sınırla bitti), `mock_output_in_response`, `heuristic_graded` (JUDGE bloğu, Bölüm 2.3'ün kalibre yargıcı yerine anahtar kelime sezgisiyle notlandı).
+2. Yayın iki rakam verir: **pass@1** (notlayıcının kararı) ve **temiz pass@1** — `answer_is_question`, `guard_assisted`, `loop_signals`, `ended_by_*`, `mock_output_in_response` bayraklarından hiçbirini taşımayan pass'ler. İkisi arasındaki fark dürüst belirsizliktir.
+3. `heuristic_graded` bloklar Bölüm 2.3'ün yargıç-kalibreli bloklarına eşdeğer değildir ve tek bir "yargılanan" yüzdede birleştirilmez.
+
+##### 14.3 Ajandan değil ortamdan doğan sonuçlar
+
+`request_budget_cut`, `infra_error` ile biten ya da makinenin bloke olduğu (modal işletim sistemi penceresi, `run_meta`'da kayıtlı termal kısıt) bir deneme model hakkında bir şey söylemez. Bu denemeler **puanlanamaz**: saymadan önce yeniden koşulur ve yeniden koşum sayısı raporlanır.
+
+Kanıt: 600 saniyelik istek tavanı ilerleme kaydeden iki bloğu bitirdi (621 sn ve 653 sn) ve rapor `fail` / `needs_review` gösterdi; bir macOS Keychain penceresi bir koşumda ajanı yaklaşık 28 dakika bloke etti; daha önceki bir koşum denemelerinin %17,6'sını donanım kapısına kaybetti.
+
+##### 14.4 Koşum öncesi kontrol ve çalıştırma kılavuzu
+
+Her koşumdan önce kontrol edilir ve `run_meta`'ya yazılır:
+1. Test edilen ajan ikilisi az önce derlenen mi (macOS'ta gözlendi: yeniden derlemeden sonra ilk açılışta bir Keychain izin penceresi çıkar ve **ajanı sessizce bloke eder** — modal pencereleri koşum öncesi ve sırasında `ps` ile say, takılmayı ajan sürecinin yığın örneğiyle doğrula).
+2. Eski kontrol noktası yok: artımlı kontrol noktasından devam eden bir runner biten blokları sessizce atlar — yeni koşumda kenara al.
+3. Manuel onaylı bloklar (`requires_manual_approval: true`) gözetimsiz koşumda atlanır ve 0 saniyede `needs_review` yazar; yalnızca insan başındayken dahil edilir ve gerçek yan etkileri beyan edilir (14.6).
+4. Log dönmesi: ajanın log'u yerel gece yarısı dönebilir; bayt ofsetiyle (14.1) dilimle ya da arşivi oku.
+5. Başlangıçta termal durum ve bellek baskısı; model yüklendikten sonra bir dakika boşta bekleme.
+6. Ön kontrolü başarısız bir koşum asla sayılmaz.
+
+##### 14.5 Verimlilik katmanı (yerel modeller)
+
+Yerel modelde duvar saatini üretim değil *prefill* — prompt'u okuma — belirler. PheronAgent ölçümleri (tek makine): 26 000 token'lık soğuk bir prefill yaklaşık 252 sn sürdü; aynı görevin önbellekli önek kullanan bir sonraki turu 17 sn sürdü; üretim hızı boyunca 13–20 token/sn kaldı. Aşağıdakiler evrenseldir ve test edilebilir:
+
+| Metrik | Neden |
+|---|---|
+| blok başına `cold_prefill_tokens`, `kv_hits`, `kv_misses` (+ nedenler) | Önbelleğin çağrı başına verdiği karar. |
+| blok başına `planning_turns` | Bir tur sıcakken saniye, soğukken dakika tutar. |
+| ölçülen prefill ve decode token/sn | Zaman bütçeleri sabitlerden değil bunlardan türetilmeli (14.9). |
+
+Evrensel testler (model adına bağımlı değil; önbellek katmanı kendi yeteneklerini bildirir, ör. geri sarılıp sarılamadığı):
+1. **Prompt bayt kararlılığı.** Bir görev içinde ardışık planlama turlarının sistem prompt'u bayt bayt aynıdır (`diff` = 0). Tur başına durum (izinli araçlar, ipuçları) mesaj listesinin sonuna gider. Şablonun canlı durumdan hesapladığı her şey (hangi entegrasyonların şu an bağlı olduğu, saat) görev başına dondurulur. *Nasıl bulundu:* turlar arasında bir bağlayıcı belirdiği için iki satır farklı olan iki prompt.
+2. **Yardımcı çağrı yalıtımı.** Kendi, farklı prompt'u olan bir çağrı (eleştirmen, özetleyici, sınıflandırıcı, bağlam sıkıştırma) ana konuşmanın önbellek durumunu ne okumalı ne ezmeli. Test: yardımcı çağrıdan önce/sonra bir sonraki ana turun cold-prefill token'ını kaydet. *Nasıl bulundu:* 1 000 token'lık bir eleştirmen çağrısı 21 500 token'lık önbelleğe alınmış öneki ezdi ve sonraki tura yaklaşık 3 dakika kaybettirdi.
+3. **Yeniden kullanılabilir durum varken geçmişi yeniden yazma yok.** Önbelleğe alınmış bir durum (canlı önbellek *ya da* snapshot) geçerliyken eski mesajların budanması/kesilmesi kapalı olmalı. *Nasıl bulundu:* eski bir araç sonucunun 5 132 karakterden 661'e kırpılması 27 648 token'lık snapshot'ı geçersiz kıldı.
+4. **Yeniden kullanım denkliği.** Kırpılmış ya da snapshot'lanmış önbellekten devam etmek, tüm prompt'u baştan hesaplamakla aynı sonraki-token dağılımını vermeli: yüklü modelde argmax, ilk-5 örtüşmesi ve en büyük mutlak logit farkı karşılaştırılır.
+
+11 blokluk bataryada PheronAgent koşularından referans rakamlar (tek makine; ilk iki değer log'dan süre toplamlarıyla dilimlenmiştir ve yaklaşıktır): art arda üç yapılandırmada toplam cold-prefill token'ı 438 968 → 355 614 → 261 741, `differentContext` ıskalaması 23 → 17 → 4.
+
+##### 14.6 Mock'lar ve yan etkiler
+
+1. Mock, aldığı eyleme ve parametrelere cevap vermelidir. Her eylem için aynı yükü döndüren bir mock (gözlenen: `fetch` eylemine `search` sonucunu döndüren bir çalışma alanı arama mock'u) bloğun ajanı değil mock'u ölçmesine yol açar.
+2. Mock çıktısı ajan *ya da* notlayıcı tarafından veri sanılmamalı. Mock yanıtları görünür bir işaret taşır; bunu alıntılayan cevap `mock_output_in_response` bayrağı alır.
+3. `run_meta.mocked_tools` içinde hangi araçların mock'landığını ve hangi blokların **gerçek** yan etki ürettiğini (gerçek bir numaraya mesaj, e-posta, çalışma alanı dışında dosya) beyan et. Gerçek yan etkiler yalnızca test edenin sahip olduğu adres/numaralara ve yalnızca gözetimli koşumlarda gider.
+
+##### 14.7 Düzeltme doğrulama protokolü ve koruma ataması
+
+Bir kod değişikliğinden sonra koşum iyileştiyse rapor *neden iyileştiğini* söylemelidir.
+1. **Düzeltmeyi sınıflandır**: *kök neden* (hatalı kural ya da durum düzeltilir) veya *koruma* (modeli yönlendiren deterministik bir denetim — ör. açıklama sorusunu reddedip çağrıyı vermek). Korumalar meşrudur ama koruma destekli bir pass modelin iyileştiğinin kanıtı değildir (`guard_assisted` bayrağı).
+2. **Gerçek başarısız girdiyle test et**, ardından **mutasyon kontrolü** yap: düzeltmeyi kapat; test kırılmalı. Düzeltme kaldırılınca yeşil kalan test hiçbir şey kanıtlamaz.
+3. **Log satırıyla canlıda kanıtla.** Koruma/düzeltmenin hiç çalışmadığı bir pass (ör. hiç tetiklenmeyen bir yer tutucu algılayıcı) o düzeltmeyi doğrulamaz.
+4. **İncelenmeyenleri kaydet.** Bakılmamış çağrı noktaları ve doğrulanmamış varsayımlar koşum notlarına yazılır.
+
+##### 14.8 Tekrarlı keşif koşumlarında kararlılık
+
+Bölüm 2.6 oran yayınlamadan önce k ≥ 5 şartı koyar. Düzeltme döngüsünde koşumlar k = 1'dir; bu yüzden koşumdan koşuma varyans gizlenmek yerine gösterilir: blok başına *dönüş sayısı* (flip) ile blok × koşum matrisi (`scripts/stability_matrix.py`). Gözlendi: bir delegasyon bloğu üç ardışık tam koşumda pass / pass / needs_review, bir mesajlaşma bloğu dört koşumda pass / fail / fail / pass verdi.
+
+##### 14.9 Donanım tanımı ve hıza bağlı bütçeler
+
+Sonuçlar ancak makine tarif edilirse (14.1 `run_meta`) makineler arası karşılaştırılabilir. Ajanın ve harness'in içindeki zaman sınırları saniye olarak yazılmaz; ölçülen prefill/decode hızı ve termal durumdan türetilir; fiilen kullanılan sınırlar raporlanır. Meşru bir koşumun gerçekten ihtiyaç duyduğu gözlenen alt sınırlar kullanılabilir ve bunu belirtmelidir.
+
+##### 14.10 Dataset değişmezliği
+
+Yayınlanan ya da sertifikalı bir koşumda kullanılan her dataset değiştirilmeden, SHA-256'sıyla (`run_meta.dataset_sha256`) saklanır. Tek seferlik tanı için kullanılan geçici dataset'ler böyle etiketlenir, yayınlanan hiçbir rakamı beslemez ve yayınlanan bir dosya onlara atıf yapıyorsa saklanır (önceki bir toplu yayında bu yüzden iki dosya kaybedildi).
+
+##### 14.11 Aday evrensel bloklar (öneri — sayılan 58 bloğa DAHİL DEĞİL, evrensel tanım olarak ÇALIŞTIRILMADI)
+
+Her biri gerçek bir hatadan türetildi; PheronAgent vakası referans uygulamadır. Bir aday ancak Bölüm 2.6'daki asgari k ile bir koşumdan sonra Bölüm II'ye alınır.
+
+| ID | Evrensel yetenek | Kabul (araçtan bağımsız) | Referans vaka |
+|---|---|---|---|
+| UNIV-CAND-01 | **Aday havuzu geri çağırma.** İstekte adı geçen araç, istek hangi kategoriye yönlendirilirse yönlendirilsin modele sunulur. | Bir yeteneği (mesajlaşma servisi, telefon numarası) adlandıran prompt'larda modele giden araç listesi eşleşen aracı içerir. `[STATE]`, model gerekmez. | Genel kategoriye yönlendirilen mesaj isteği mesajlaşma aracı olmadan koştu; model servisi mevcut değil dedi. |
+| UNIV-CAND-02 | **İsteğe bağlı girdi eksikse sorma, yap.** | Alıcı ve konu verilmiş, gövde verilmemişse ajan makul bir varsayılanla aracı çağırır (onay kapısı yine geçerli). `[STATE]`. | Yalnızca konulu e-posta; belirtilmeyen mesajlaşma servisi; kimliksiz "son gönderi". |
+| UNIV-CAND-03 | **Delegenin döndürdüğünü aktar.** | Alt ajan döndükten sonra (“bulunamadı” dahil) üst ajan o sonuçla bitirir — başka keşif aracı çağrısı yok. `[STATE]` + tur sayısı. | Boş çalışma alanında delege edilmiş arama, üst ajanda 17 tur döngü. |
+| UNIV-CAND-04 | **Veri yer tutucu değildir.** | Araç çıktısında bulunan bir değer (ör. gerçek `TODO_notes.md` dosyası) şablon dolgusu diye reddedilmez. `[STATE]`. | Klasörün gerçek dosyasını listeleyen rapor "TODO" yer tutucu algılayıcısına takıldı. |
+| UNIV-CAND-05 | **Açık hedefe uy.** | İstek tek bir çıktı yolu adlandırıyorsa yazma tam o yola gider. `[STATE]`. | Model `/tmp/…` dedi, çalışma alanına yazdı. |
+| UNIV-CAND-06 | **Düz yazı kod değildir.** | Ajanın kendi işini anlatan cümlelerdeki tireli sözcükler ("sub-agent", "e-posta") varlık doğrulamasında başarısız olmaz; gerçek kodlar (`OLE_TYO`, `Sprint-42`) hâlâ denetlenir. Doğrulama bileşeninde `[STATE]`. | "Sub-agent" teknik kod sanıldığı için doğru bir cümle uydurma diye reddedildi. |
+| UNIV-CAND-07 | Prompt bayt kararlılığı, yardımcı çağrı yalıtımı, geçmiş yeniden yazma koruması, yeniden kullanım denkliği (14.5). | 14.5'te listelendiği gibi. | Bkz. 14.5. |
+
+---
 
 ---
 

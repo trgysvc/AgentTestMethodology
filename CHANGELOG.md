@@ -2,6 +2,32 @@
 
 All notable changes to the methodology document are recorded here. Version numbers refer to the "Sürüm Geçmişi" table inside `METHODOLOGY_TR.md` itself — this file mirrors that table in English for readers who don't read the primary document end to end.
 
+## Version 12 — 2026-10-09
+
+**Reporting integrity, run hygiene and an efficiency layer for local models — new Section 14 (English and Turkish), schema `results-1.1`, templates v1.2, three scripts. Nothing from the 2026-10-08/09 runs is published yet: the files still have to be sanitized and the decision to publish is the maintainer's.**
+
+Derived from repeated live runs of an 11-block battery while the agent underneath was being fixed (three complete runs: 8/11, 9/11, 9/11). Each run looked comparable to the last and was not. A review of this repository against that work produced 12 findings; this version addresses all of them:
+
+1. **Efficiency / KV-cache layer (new, Section 14.5).** The document had no vocabulary for the thing that dominates wall-clock time on a local model — prefill. Metrics (`cold_prefill_tokens`, `kv_hits`, `kv_misses` with reasons, `planning_turns`) and four universal tests: prompt byte-stability, auxiliary-call isolation, no history rewriting while a cache is valid, reuse equivalence.
+2. **Verdict vs. outcome (14.2).** A `[STATE]` pass proves dispatch, not that the task was done. `quality_flags` and a second figure, *clean pass@1*.
+3. **JUDGE grading honesty (14.2).** Blocks graded by keyword heuristics are flagged `heuristic_graded` and must not be pooled with the calibrated-judge blocks of Section 2.3.
+4. **Environment-caused results (14.3).** `request_budget_cut` and `infra_error` trials are not scoreable; re-run before counting. (A 600 s ceiling had ended two blocks that were making progress.)
+5. **Run preflight and runbook (14.4).** Modal OS dialogs, stale checkpoints that silently skip blocks, manual-approval blocks reporting `needs_review` in 0 s, log rotation, thermal state.
+6. **Dataset schema (Section 2.1, templates v1.2).** Documented the fields the PheronAgent datasets already used: `requires_manual_approval`, `setup`, `teardown`, `notes`, `expected.require_tool_called`, `turns`; added "Side effects", "Mocked tools", "Outcome check" and "Derived from" to the block template.
+7. **Result metadata (14.1).** `model_id` read from the agent, `git_commit` validated (the bug disclosed in Version 11 was traced to the report being given the agent's workspace folder instead of the repository), `run_meta`, per-trial timestamps and audit-log byte ranges. `scripts/validate_run_report.py` flags `model_id: "unknown"` and a malformed commit — it flags `run_qwen3.5-9b-4bit_20260921_k1_officeverify1749.json`, already published here.
+8. **Mocks and side effects (14.6).** Mocks must answer per action and parameter and carry a visible marker; real side effects only to the tester's own targets, attended.
+9. **Run-to-run stability (14.8).** `scripts/stability_matrix.py` prints a block × run matrix with flip counts.
+10. **Fix-validation protocol (14.7).** Root cause vs. guard, mutation check, proof by log line; a pass in which the fix never fired validates nothing.
+11. **Hardware descriptor and rate-relative budgets (14.9).**
+12. **Dataset immutability (14.10)** and **candidate universal blocks (14.11, UNIV-CAND-01..07)** — proposed, *not* counted in the 58, EXECUTION PENDING as universal definitions.
+
+Other changes:
+- **Removed leaked tool-call markup** (`</content>`, `</invoke>`) that had been left inside `METHODOLOGY.md` (three lines; the Turkish file was clean).
+- **`scripts/sanitize_and_publish.py` now replaces every spelling of the tester's phone number** (with/without `+`, digits only, national form, spaced) and checks for them. Before, only the configured spelling was replaced; a messaging tool that logs the number without the plus would have leaked it. `scripts/test_sanitize.py` is a self-test using fake values.
+- Stale "Version 8" line in `README.md` corrected.
+
+**Not done, deliberately:** no run from 2026-10-04..09 and no new dataset were added to `results/` (they must be sanitized and the maintainer decides what to publish); the certified-run headline is unchanged (Version 10, k=5, 63/126); the 58-block count is unchanged.
+
 ## Version 11 — 2026-09-25
 
 **16 exploratory runs (2026-09-16 → 2026-09-24, 32 files) published together, all `k1`/`k3` — none certified. Published as a batch specifically to show a real, honest bug-hunt cycle in progress, wild swings and all, rather than cherry-picking only the best snapshot.**
